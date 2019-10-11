@@ -49,9 +49,9 @@ select * from usertbl;
 select sum(if(m.season='봄', 1, 0)) as '봄',  sum(if(m.season='여름', 1, 0)) as '여름',  sum(if(m.season='가을', 1, 0)) as '가을',  sum(if(m.season='겨울',1, 0)) as '겨울'
 from (
 	select case 
-						when 2 < month(u.mDate) and month(u.mDate)< 6 then '봄'
-						when 6 <= month(u.mDate) and month(u.mDate)< 9 then '여름'
-						when 9 <= month(u.mDate) and month(u.mDate)< 12 then '가을'
+						when month(u.mDate) in (3, 4, 5) then '봄'
+						when month(u.mDate) in (6, 7, 8) then '여름'
+						when month(u.mDate) in (9, 10, 11) then '가을'
 						else '겨울' end season
 	from usertbl u ) as m;
 
