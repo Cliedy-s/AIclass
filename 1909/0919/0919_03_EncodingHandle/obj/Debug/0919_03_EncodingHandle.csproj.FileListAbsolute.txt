@@ -1,7 +1,0 @@
-D:\AIclass\1909\0919\0919_03_EncodingHandle\bin\Debug\0919_03_EncodingHandle.exe.config
-D:\AIclass\1909\0919\0919_03_EncodingHandle\bin\Debug\0919_03_EncodingHandle.exe
-D:\AIclass\1909\0919\0919_03_EncodingHandle\bin\Debug\0919_03_EncodingHandle.pdb
-D:\AIclass\1909\0919\0919_03_EncodingHandle\obj\Debug\0919_03_EncodingHandle.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0919\0919_03_EncodingHandle\obj\Debug\0919_03_EncodingHandle.exe
-D:\AIclass\1909\0919\0919_03_EncodingHandle\obj\Debug\0919_03_EncodingHandle.pdb
-D:\AIclass\1909\0919\0919_03_EncodingHandle\obj\Debug\0919_03_EncodingHandle.csprojAssemblyReference.cache

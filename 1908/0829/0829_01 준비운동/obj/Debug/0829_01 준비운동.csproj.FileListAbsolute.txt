@@ -1,7 +1,0 @@
-D:\AIclass\1908\0829\0829_01 준비운동\bin\Debug\0829_01 준비운동.exe.config
-D:\AIclass\1908\0829\0829_01 준비운동\bin\Debug\0829_01 준비운동.exe
-D:\AIclass\1908\0829\0829_01 준비운동\bin\Debug\0829_01 준비운동.pdb
-D:\AIclass\1908\0829\0829_01 준비운동\obj\Debug\0829_01 준비운동.csprojAssemblyReference.cache
-D:\AIclass\1908\0829\0829_01 준비운동\obj\Debug\0829_01 준비운동.csproj.CoreCompileInputs.cache
-D:\AIclass\1908\0829\0829_01 준비운동\obj\Debug\0829_01 준비운동.exe
-D:\AIclass\1908\0829\0829_01 준비운동\obj\Debug\0829_01 준비운동.pdb

@@ -1,6 +1,0 @@
-D:\AIclass\1908\0828\0828_04 foreach\bin\Release\0828_04 foreach.exe.config
-D:\AIclass\1908\0828\0828_04 foreach\bin\Release\0828_04 foreach.exe
-D:\AIclass\1908\0828\0828_04 foreach\bin\Release\0828_04 foreach.pdb
-D:\AIclass\1908\0828\0828_04 foreach\obj\Release\0828_04 foreach.csproj.CoreCompileInputs.cache
-D:\AIclass\1908\0828\0828_04 foreach\obj\Release\0828_04 foreach.exe
-D:\AIclass\1908\0828\0828_04 foreach\obj\Release\0828_04 foreach.pdb

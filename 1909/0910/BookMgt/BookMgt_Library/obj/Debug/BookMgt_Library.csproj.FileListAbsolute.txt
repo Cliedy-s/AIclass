@@ -1,5 +1,0 @@
-C:\Users\GD6\Desktop\BookMgt\BookMgt_Library\bin\Debug\BookMgt_Library.dll
-C:\Users\GD6\Desktop\BookMgt\BookMgt_Library\bin\Debug\BookMgt_Library.pdb
-C:\Users\GD6\Desktop\BookMgt\BookMgt_Library\obj\Debug\BookMgt_Library.csproj.CoreCompileInputs.cache
-C:\Users\GD6\Desktop\BookMgt\BookMgt_Library\obj\Debug\BookMgt_Library.dll
-C:\Users\GD6\Desktop\BookMgt\BookMgt_Library\obj\Debug\BookMgt_Library.pdb

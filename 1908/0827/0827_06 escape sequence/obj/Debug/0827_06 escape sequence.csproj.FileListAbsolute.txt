@@ -1,7 +1,0 @@
-D:\AIclass\1908\0827\0827\0827_06 escape sequence\bin\Debug\0827_06 escape sequence.exe.config
-D:\AIclass\1908\0827\0827\0827_06 escape sequence\bin\Debug\0827_06 escape sequence.exe
-D:\AIclass\1908\0827\0827\0827_06 escape sequence\bin\Debug\0827_06 escape sequence.pdb
-D:\AIclass\1908\0827\0827\0827_06 escape sequence\obj\Debug\0827_06 escape sequence.csprojAssemblyReference.cache
-D:\AIclass\1908\0827\0827\0827_06 escape sequence\obj\Debug\0827_06 escape sequence.csproj.CoreCompileInputs.cache
-D:\AIclass\1908\0827\0827\0827_06 escape sequence\obj\Debug\0827_06 escape sequence.exe
-D:\AIclass\1908\0827\0827\0827_06 escape sequence\obj\Debug\0827_06 escape sequence.pdb

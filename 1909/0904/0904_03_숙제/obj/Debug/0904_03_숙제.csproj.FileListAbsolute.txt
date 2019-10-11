@@ -1,6 +1,0 @@
-D:\AIclass\1909\0904\0904_03_숙제\bin\Debug\0904_03_숙제.exe.config
-D:\AIclass\1909\0904\0904_03_숙제\bin\Debug\0904_03_숙제.exe
-D:\AIclass\1909\0904\0904_03_숙제\bin\Debug\0904_03_숙제.pdb
-D:\AIclass\1909\0904\0904_03_숙제\obj\Debug\0904_03_숙제.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0904\0904_03_숙제\obj\Debug\0904_03_숙제.exe
-D:\AIclass\1909\0904\0904_03_숙제\obj\Debug\0904_03_숙제.pdb

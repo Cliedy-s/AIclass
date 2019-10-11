@@ -1,7 +1,0 @@
-D:\AIclass\1909\0903\0903_02_상속\bin\Debug\0903_02_상속.exe.config
-D:\AIclass\1909\0903\0903_02_상속\bin\Debug\0903_02_상속.exe
-D:\AIclass\1909\0903\0903_02_상속\bin\Debug\0903_02_상속.pdb
-D:\AIclass\1909\0903\0903_02_상속\obj\Debug\0903_02_상속.csprojAssemblyReference.cache
-D:\AIclass\1909\0903\0903_02_상속\obj\Debug\0903_02_상속.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0903\0903_02_상속\obj\Debug\0903_02_상속.exe
-D:\AIclass\1909\0903\0903_02_상속\obj\Debug\0903_02_상속.pdb

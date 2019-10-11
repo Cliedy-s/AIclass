@@ -1,6 +1,0 @@
-D:\AIclass\1909\0926\0926_Prec01_EchoServer\bin\Debug\0926_Prec01_EchoServer.dll
-D:\AIclass\1909\0926\0926_Prec01_EchoServer\bin\Debug\0926_Prec01_EchoServer.pdb
-D:\AIclass\1909\0926\0926_Prec01_EchoServer\obj\Debug\0926_Prec01_EchoServer.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0926\0926_Prec01_EchoServer\obj\Debug\0926_Prec01_EchoServer.dll
-D:\AIclass\1909\0926\0926_Prec01_EchoServer\obj\Debug\0926_Prec01_EchoServer.pdb
-D:\AIclass\1909\0926\0926_Prec01_EchoServer\obj\Debug\0926_Prec01_EchoServer.csprojAssemblyReference.cache

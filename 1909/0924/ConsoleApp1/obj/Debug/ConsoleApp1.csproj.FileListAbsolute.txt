@@ -1,7 +1,0 @@
-D:\AIclass\1909\0924\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
-D:\AIclass\1909\0924\ConsoleApp1\bin\Debug\ConsoleApp1.exe
-D:\AIclass\1909\0924\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
-D:\AIclass\1909\0924\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
-D:\AIclass\1909\0924\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0924\ConsoleApp1\obj\Debug\ConsoleApp1.exe
-D:\AIclass\1909\0924\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

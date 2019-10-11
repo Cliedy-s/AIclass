@@ -1,7 +1,0 @@
-D:\AIclass\1909\0910\0910_01_IEnumerable\bin\Debug\0910_01_IEnumerable.exe.config
-D:\AIclass\1909\0910\0910_01_IEnumerable\bin\Debug\0910_01_IEnumerable.exe
-D:\AIclass\1909\0910\0910_01_IEnumerable\bin\Debug\0910_01_IEnumerable.pdb
-D:\AIclass\1909\0910\0910_01_IEnumerable\obj\Debug\0910_01_IEnumerable.csprojAssemblyReference.cache
-D:\AIclass\1909\0910\0910_01_IEnumerable\obj\Debug\0910_01_IEnumerable.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0910\0910_01_IEnumerable\obj\Debug\0910_01_IEnumerable.exe
-D:\AIclass\1909\0910\0910_01_IEnumerable\obj\Debug\0910_01_IEnumerable.pdb

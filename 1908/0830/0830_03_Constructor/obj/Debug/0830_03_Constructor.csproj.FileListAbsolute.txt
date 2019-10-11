@@ -1,7 +1,0 @@
-D:\AIclass\1908\0830\0830_03_Constructor\bin\Debug\0830_03_Constructor.exe.config
-D:\AIclass\1908\0830\0830_03_Constructor\bin\Debug\0830_03_Constructor.exe
-D:\AIclass\1908\0830\0830_03_Constructor\bin\Debug\0830_03_Constructor.pdb
-D:\AIclass\1908\0830\0830_03_Constructor\obj\Debug\0830_03_Constructor.csprojAssemblyReference.cache
-D:\AIclass\1908\0830\0830_03_Constructor\obj\Debug\0830_03_Constructor.csproj.CoreCompileInputs.cache
-D:\AIclass\1908\0830\0830_03_Constructor\obj\Debug\0830_03_Constructor.exe
-D:\AIclass\1908\0830\0830_03_Constructor\obj\Debug\0830_03_Constructor.pdb

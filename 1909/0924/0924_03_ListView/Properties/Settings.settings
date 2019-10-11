@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="_0924_03_ListView.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="MessageString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">삭제하시겠습니까?</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

@@ -1,7 +1,0 @@
-D:\AIclass\1909\0917~_PhoneBook\PhoneBook02\bin\Debug\PhoneBook02.exe.config
-D:\AIclass\1909\0917~_PhoneBook\PhoneBook02\bin\Debug\PhoneBook02.exe
-D:\AIclass\1909\0917~_PhoneBook\PhoneBook02\bin\Debug\PhoneBook02.pdb
-D:\AIclass\1909\0917~_PhoneBook\PhoneBook02\obj\Debug\PhoneBook02.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0917~_PhoneBook\PhoneBook02\obj\Debug\PhoneBook02.exe
-D:\AIclass\1909\0917~_PhoneBook\PhoneBook02\obj\Debug\PhoneBook02.pdb
-D:\AIclass\1909\0917~_PhoneBook\PhoneBook02\obj\Debug\PhoneBook02.csprojAssemblyReference.cache

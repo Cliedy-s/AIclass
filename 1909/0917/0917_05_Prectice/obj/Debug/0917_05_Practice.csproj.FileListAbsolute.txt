@@ -1,7 +1,0 @@
-D:\AIclass\1909\0917\0917_05_Prectice\bin\Debug\0917_05_Practice.exe.config
-D:\AIclass\1909\0917\0917_05_Prectice\bin\Debug\0917_05_Practice.exe
-D:\AIclass\1909\0917\0917_05_Prectice\bin\Debug\0917_05_Practice.pdb
-D:\AIclass\1909\0917\0917_05_Prectice\obj\Debug\0917_05_Practice.csprojAssemblyReference.cache
-D:\AIclass\1909\0917\0917_05_Prectice\obj\Debug\0917_05_Practice.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0917\0917_05_Prectice\obj\Debug\0917_05_Practice.exe
-D:\AIclass\1909\0917\0917_05_Prectice\obj\Debug\0917_05_Practice.pdb

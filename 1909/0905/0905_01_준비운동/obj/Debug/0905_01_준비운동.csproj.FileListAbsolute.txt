@@ -1,7 +1,0 @@
-D:\AIclass\1909\0905\0905_01_준비운동\bin\Debug\0905_01_준비운동.exe.config
-D:\AIclass\1909\0905\0905_01_준비운동\bin\Debug\0905_01_준비운동.exe
-D:\AIclass\1909\0905\0905_01_준비운동\bin\Debug\0905_01_준비운동.pdb
-D:\AIclass\1909\0905\0905_01_준비운동\obj\Debug\0905_01_준비운동.csprojAssemblyReference.cache
-D:\AIclass\1909\0905\0905_01_준비운동\obj\Debug\0905_01_준비운동.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0905\0905_01_준비운동\obj\Debug\0905_01_준비운동.exe
-D:\AIclass\1909\0905\0905_01_준비운동\obj\Debug\0905_01_준비운동.pdb

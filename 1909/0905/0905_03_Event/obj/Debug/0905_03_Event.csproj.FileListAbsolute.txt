@@ -1,7 +1,0 @@
-D:\AIclass\1909\0905\0905_03_Event\bin\Debug\0905_03_Event.exe.config
-D:\AIclass\1909\0905\0905_03_Event\bin\Debug\0905_03_Event.exe
-D:\AIclass\1909\0905\0905_03_Event\bin\Debug\0905_03_Event.pdb
-D:\AIclass\1909\0905\0905_03_Event\obj\Debug\0905_03_Event.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0905\0905_03_Event\obj\Debug\0905_03_Event.exe
-D:\AIclass\1909\0905\0905_03_Event\obj\Debug\0905_03_Event.pdb
-D:\AIclass\1909\0905\0905_03_Event\obj\Debug\0905_03_Event.csprojAssemblyReference.cache

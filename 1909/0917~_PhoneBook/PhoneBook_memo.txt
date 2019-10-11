@@ -1,7 +1,0 @@
-PhoneBook - 간단한 전화번호부 (이름, 핸드폰번호, 생일)
-PhoneBook2 - 클래스를  세분화하고, 인스턴스클래스 도입
-PhoneBook3 - 전화번호부 유형을 세분(일반, 대학생, 회사로 구분)
-PhoneBook4 - 입력범위에 대한 예외처리 반영, 싱글톤 구현
-PhoneBook5 - 정렬 기능 추가
-PhoneBook6 - HashSet 사용(입력, 검색, 목록, 삭제 수정), 열거형 도입
-PhoneBook7 - 파일저장

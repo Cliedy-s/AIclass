@@ -1,7 +1,0 @@
-D:\AIclass\1909\0911\0911_01_준비운동_가위바위보\bin\Release\0911_01_준비운동_가위바위보.exe.config
-D:\AIclass\1909\0911\0911_01_준비운동_가위바위보\bin\Release\0911_01_준비운동_가위바위보.exe
-D:\AIclass\1909\0911\0911_01_준비운동_가위바위보\bin\Release\0911_01_준비운동_가위바위보.pdb
-D:\AIclass\1909\0911\0911_01_준비운동_가위바위보\obj\Release\0911_01_준비운동_가위바위보.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0911\0911_01_준비운동_가위바위보\obj\Release\0911_01_준비운동_가위바위보.exe
-D:\AIclass\1909\0911\0911_01_준비운동_가위바위보\obj\Release\0911_01_준비운동_가위바위보.pdb
-D:\AIclass\1909\0911\0911_01_준비운동_가위바위보\obj\Release\0911_01_준비운동_가위바위보.csprojAssemblyReference.cache

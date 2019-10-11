@@ -1,7 +1,0 @@
-D:\AIclass\1908\0828\projectEuler_003\bin\Release\projectEuler_003.exe.config
-D:\AIclass\1908\0828\projectEuler_003\bin\Release\projectEuler_003.exe
-D:\AIclass\1908\0828\projectEuler_003\bin\Release\projectEuler_003.pdb
-D:\AIclass\1908\0828\projectEuler_003\obj\Release\projectEuler_003.csprojAssemblyReference.cache
-D:\AIclass\1908\0828\projectEuler_003\obj\Release\projectEuler_003.csproj.CoreCompileInputs.cache
-D:\AIclass\1908\0828\projectEuler_003\obj\Release\projectEuler_003.exe
-D:\AIclass\1908\0828\projectEuler_003\obj\Release\projectEuler_003.pdb

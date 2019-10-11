@@ -1,5 +1,0 @@
-D:\AIclass\1908\0830\0830_01_MyCalculator\bin\Debug\0830_01_MyCalculator.dll
-D:\AIclass\1908\0830\0830_01_MyCalculator\bin\Debug\0830_01_MyCalculator.pdb
-D:\AIclass\1908\0830\0830_01_MyCalculator\obj\Debug\0830_01_MyCalculator.csproj.CoreCompileInputs.cache
-D:\AIclass\1908\0830\0830_01_MyCalculator\obj\Debug\0830_01_MyCalculator.dll
-D:\AIclass\1908\0830\0830_01_MyCalculator\obj\Debug\0830_01_MyCalculator.pdb

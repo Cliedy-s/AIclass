@@ -1,6 +1,0 @@
-D:\AIclass\1908\0827\0827\0827_05\bin\Debug\0827_05.exe.config
-D:\AIclass\1908\0827\0827\0827_05\bin\Debug\0827_05.exe
-D:\AIclass\1908\0827\0827\0827_05\bin\Debug\0827_05.pdb
-D:\AIclass\1908\0827\0827\0827_05\obj\Debug\0827_05.csproj.CoreCompileInputs.cache
-D:\AIclass\1908\0827\0827\0827_05\obj\Debug\0827_05.exe
-D:\AIclass\1908\0827\0827\0827_05\obj\Debug\0827_05.pdb

@@ -1,7 +1,0 @@
-D:\AIclass\1909\0918\0918_01_Predicate\bin\Debug\0918_01_Predicate.exe.config
-D:\AIclass\1909\0918\0918_01_Predicate\bin\Debug\0918_01_Predicate.exe
-D:\AIclass\1909\0918\0918_01_Predicate\bin\Debug\0918_01_Predicate.pdb
-D:\AIclass\1909\0918\0918_01_Predicate\obj\Debug\0918_01_Predicate.csprojAssemblyReference.cache
-D:\AIclass\1909\0918\0918_01_Predicate\obj\Debug\0918_01_Predicate.csproj.CoreCompileInputs.cache
-D:\AIclass\1909\0918\0918_01_Predicate\obj\Debug\0918_01_Predicate.exe
-D:\AIclass\1909\0918\0918_01_Predicate\obj\Debug\0918_01_Predicate.pdb
