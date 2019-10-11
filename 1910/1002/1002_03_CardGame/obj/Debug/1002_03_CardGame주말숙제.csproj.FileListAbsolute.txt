@@ -1,0 +1,10 @@
+D:\AIclass\1910\1002\1002_03_CardGame\bin\Debug\1002_03_CardGame.exe.config
+D:\AIclass\1910\1002\1002_03_CardGame\bin\Debug\1002_03_CardGame.exe
+D:\AIclass\1910\1002\1002_03_CardGame\bin\Debug\1002_03_CardGame.pdb
+D:\AIclass\1910\1002\1002_03_CardGame\obj\Debug\_1002_03_CardGame.Form1.resources
+D:\AIclass\1910\1002\1002_03_CardGame\obj\Debug\_1002_03_CardGame.Properties.Resources.resources
+D:\AIclass\1910\1002\1002_03_CardGame\obj\Debug\1002_03_CardGame주말숙제.csproj.GenerateResource.cache
+D:\AIclass\1910\1002\1002_03_CardGame\obj\Debug\1002_03_CardGame주말숙제.csproj.CoreCompileInputs.cache
+D:\AIclass\1910\1002\1002_03_CardGame\obj\Debug\1002_03_CardGame.exe
+D:\AIclass\1910\1002\1002_03_CardGame\obj\Debug\1002_03_CardGame.pdb
+D:\AIclass\1910\1002\1002_03_CardGame\obj\Debug\1002_03_CardGame주말숙제.csprojAssemblyReference.cache

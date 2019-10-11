@@ -1,0 +1,7 @@
+D:\AIclass\1909\0925_NetwordProgram_Client\0925_02_NetwordProgram_Client\bin\Debug\0925_02_NetwordProgram_Client.exe.config
+D:\AIclass\1909\0925_NetwordProgram_Client\0925_02_NetwordProgram_Client\bin\Debug\0925_02_NetwordProgram_Client.exe
+D:\AIclass\1909\0925_NetwordProgram_Client\0925_02_NetwordProgram_Client\bin\Debug\0925_02_NetwordProgram_Client.pdb
+D:\AIclass\1909\0925_NetwordProgram_Client\0925_02_NetwordProgram_Client\obj\Debug\0925_02_NetwordProgram_Client.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0925_NetwordProgram_Client\0925_02_NetwordProgram_Client\obj\Debug\0925_02_NetwordProgram_Client.exe
+D:\AIclass\1909\0925_NetwordProgram_Client\0925_02_NetwordProgram_Client\obj\Debug\0925_02_NetwordProgram_Client.pdb
+D:\AIclass\1909\0925_NetwordProgram_Client\0925_02_NetwordProgram_Client\obj\Debug\0925_02_NetwordProgram_Client.csprojAssemblyReference.cache

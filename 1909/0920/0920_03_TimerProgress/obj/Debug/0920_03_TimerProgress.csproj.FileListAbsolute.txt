@@ -1,0 +1,9 @@
+D:\AIclass\1909\0920\0920_03_TimerProgress\bin\Debug\0920_03_TimerProgress.exe.config
+D:\AIclass\1909\0920\0920_03_TimerProgress\bin\Debug\0920_03_TimerProgress.exe
+D:\AIclass\1909\0920\0920_03_TimerProgress\bin\Debug\0920_03_TimerProgress.pdb
+D:\AIclass\1909\0920\0920_03_TimerProgress\obj\Debug\_0920_03_TimerProgress.Form1.resources
+D:\AIclass\1909\0920\0920_03_TimerProgress\obj\Debug\_0920_03_TimerProgress.Properties.Resources.resources
+D:\AIclass\1909\0920\0920_03_TimerProgress\obj\Debug\0920_03_TimerProgress.csproj.GenerateResource.cache
+D:\AIclass\1909\0920\0920_03_TimerProgress\obj\Debug\0920_03_TimerProgress.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0920\0920_03_TimerProgress\obj\Debug\0920_03_TimerProgress.exe
+D:\AIclass\1909\0920\0920_03_TimerProgress\obj\Debug\0920_03_TimerProgress.pdb

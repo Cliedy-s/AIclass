@@ -1,0 +1,7 @@
+D:\AIclass\1909\0917\0917_04_StringBuilder\bin\Debug\0917_04_StringBuilder.exe.config
+D:\AIclass\1909\0917\0917_04_StringBuilder\bin\Debug\0917_04_StringBuilder.exe
+D:\AIclass\1909\0917\0917_04_StringBuilder\bin\Debug\0917_04_StringBuilder.pdb
+D:\AIclass\1909\0917\0917_04_StringBuilder\obj\Debug\0917_04_StringBuilder.csprojAssemblyReference.cache
+D:\AIclass\1909\0917\0917_04_StringBuilder\obj\Debug\0917_04_StringBuilder.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0917\0917_04_StringBuilder\obj\Debug\0917_04_StringBuilder.exe
+D:\AIclass\1909\0917\0917_04_StringBuilder\obj\Debug\0917_04_StringBuilder.pdb

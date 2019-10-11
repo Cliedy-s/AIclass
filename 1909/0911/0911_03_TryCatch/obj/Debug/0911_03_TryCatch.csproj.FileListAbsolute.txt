@@ -1,0 +1,7 @@
+D:\AIclass\1909\0911\0911_03_TryCatch\bin\Debug\0911_03_TryCatch.exe.config
+D:\AIclass\1909\0911\0911_03_TryCatch\bin\Debug\0911_03_TryCatch.exe
+D:\AIclass\1909\0911\0911_03_TryCatch\bin\Debug\0911_03_TryCatch.pdb
+D:\AIclass\1909\0911\0911_03_TryCatch\obj\Debug\0911_03_TryCatch.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0911\0911_03_TryCatch\obj\Debug\0911_03_TryCatch.exe
+D:\AIclass\1909\0911\0911_03_TryCatch\obj\Debug\0911_03_TryCatch.pdb
+D:\AIclass\1909\0911\0911_03_TryCatch\obj\Debug\0911_03_TryCatch.csprojAssemblyReference.cache

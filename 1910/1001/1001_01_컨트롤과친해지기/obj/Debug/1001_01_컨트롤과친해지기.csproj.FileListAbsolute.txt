@@ -1,0 +1,11 @@
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\bin\Debug\1001_01_컨트롤과친해지기.exe.config
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\bin\Debug\1001_01_컨트롤과친해지기.exe
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\bin\Debug\1001_01_컨트롤과친해지기.pdb
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\_1001_01_컨트롤과친해지기.Form1.resources
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\_1001_01_컨트롤과친해지기.Properties.Resources.resources
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\1001_01_컨트롤과친해지기.csproj.GenerateResource.cache
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\1001_01_컨트롤과친해지기.csproj.CoreCompileInputs.cache
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\1001_01_컨트롤과친해지기.exe
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\1001_01_컨트롤과친해지기.pdb
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\_1001_01_컨트롤과친해지기.Form2.resources
+D:\AIclass\1910\1001\1001_01_컨트롤과친해지기\obj\Debug\_1001_01_컨트롤과친해지기.Form3.resources

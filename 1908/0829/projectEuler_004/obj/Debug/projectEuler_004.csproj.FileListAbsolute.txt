@@ -1,0 +1,7 @@
+D:\AIclass\1908\0829\projectEuler_004\bin\Debug\projectEuler_004.exe.config
+D:\AIclass\1908\0829\projectEuler_004\bin\Debug\projectEuler_004.exe
+D:\AIclass\1908\0829\projectEuler_004\bin\Debug\projectEuler_004.pdb
+D:\AIclass\1908\0829\projectEuler_004\obj\Debug\projectEuler_004.csproj.CoreCompileInputs.cache
+D:\AIclass\1908\0829\projectEuler_004\obj\Debug\projectEuler_004.exe
+D:\AIclass\1908\0829\projectEuler_004\obj\Debug\projectEuler_004.pdb
+D:\AIclass\1908\0829\projectEuler_004\obj\Debug\projectEuler_004.csprojAssemblyReference.cache

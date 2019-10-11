@@ -1,0 +1,10 @@
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\obj\Debug\0923~_SignUp.csprojAssemblyReference.cache
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\obj\Debug\_0923__SignUp.Form1.resources
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\obj\Debug\_0923__SignUp.Properties.Resources.resources
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\obj\Debug\0923~_SignUp.csproj.GenerateResource.cache
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\obj\Debug\0923~_SignUp.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\bin\Debug\0923~_SignUp.exe.config
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\bin\Debug\0923~_SignUp.exe
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\bin\Debug\0923~_SignUp.pdb
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\obj\Debug\0923~_SignUp.exe
+D:\AIclass\1909\0923~_SignUp\0923~_SignUp\obj\Debug\0923~_SignUp.pdb

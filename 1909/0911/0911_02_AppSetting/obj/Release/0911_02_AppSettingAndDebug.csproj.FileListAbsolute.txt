@@ -1,0 +1,7 @@
+D:\AIclass\1909\0911\0911_02_AppSetting\bin\Release\0911_02_AppSettingAndDebug.exe.config
+D:\AIclass\1909\0911\0911_02_AppSetting\bin\Release\0911_02_AppSettingAndDebug.exe
+D:\AIclass\1909\0911\0911_02_AppSetting\bin\Release\0911_02_AppSettingAndDebug.pdb
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Release\0911_02_AppSettingAndDebug.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Release\0911_02_AppSettingAndDebug.exe
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Release\0911_02_AppSettingAndDebug.pdb
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Release\0911_02_AppSettingAndDebug.csprojAssemblyReference.cache

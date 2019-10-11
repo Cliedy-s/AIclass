@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>0910_02_commendTest</name>
+    </assembly>
+    <members>
+        <member name="T:_0910_02_commendTest.commentTest">
+            <summary>
+            테스트 클래스입니다.
+            </summary>
+        </member>
+        <member name="M:_0910_02_commendTest.commentTest.#ctor(System.Int32)">
+            <summary>
+            테스트 클래스의 생성자입니다.
+            </summary>
+            <param name="index">곱할 값1</param>
+        </member>
+        <member name="M:_0910_02_commendTest.commentTest.TestFunc(System.Int32,System.Int32)">
+            <summary>
+            테스트 함수입니다. index와 value를 곱해 반환합니다.
+            </summary>
+            <param name="index">곱할 값1</param>
+            <param name="value">곱할 값2</param>
+            <returns>index와 value의 곱입니다.</returns>
+        </member>
+    </members>
+</doc>

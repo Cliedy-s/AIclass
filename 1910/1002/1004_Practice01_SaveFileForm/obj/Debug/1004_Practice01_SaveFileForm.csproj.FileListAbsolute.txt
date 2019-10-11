@@ -1,0 +1,10 @@
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\obj\Debug\1004_Practice01_SaveFileForm.csprojAssemblyReference.cache
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\obj\Debug\_1004_Practice01_SaveFileForm.Form1.resources
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\obj\Debug\_1004_Practice01_SaveFileForm.Properties.Resources.resources
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\obj\Debug\1004_Practice01_SaveFileForm.csproj.GenerateResource.cache
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\obj\Debug\1004_Practice01_SaveFileForm.csproj.CoreCompileInputs.cache
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\bin\Debug\1004_Practice01_SaveFileForm.exe.config
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\bin\Debug\1004_Practice01_SaveFileForm.exe
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\bin\Debug\1004_Practice01_SaveFileForm.pdb
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\obj\Debug\1004_Practice01_SaveFileForm.exe
+D:\AIclass\1910\1002\1004_Practice01_SaveFileForm\obj\Debug\1004_Practice01_SaveFileForm.pdb

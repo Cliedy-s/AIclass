@@ -1,0 +1,15 @@
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\bin\Debug\0930_02_WindowMediaPlayer.exe.config
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\bin\Debug\0930_02_WindowMediaPlayer.exe
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\bin\Debug\0930_02_WindowMediaPlayer.pdb
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\bin\Debug\Interop.WMPLib.dll
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\bin\Debug\AxInterop.WMPLib.dll
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\0930_02_WindowMediaPlayer.csprojAssemblyReference.cache
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\Interop.WMPLib.dll
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\AxInterop.WMPLib.dll
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\0930_02_WindowMediaPlayer.csproj.ResolveComReference.cache
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\_0930_02_WindowMediaPlayer.Form1.resources
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\_0930_02_WindowMediaPlayer.Properties.Resources.resources
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\0930_02_WindowMediaPlayer.csproj.GenerateResource.cache
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\0930_02_WindowMediaPlayer.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\0930_02_WindowMediaPlayer.exe
+D:\AIclass\1909\0930\0930_02_WindowMediaPlayer\obj\Debug\0930_02_WindowMediaPlayer.pdb

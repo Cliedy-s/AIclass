@@ -1,0 +1,7 @@
+D:\AIclass\1909\0904\0904_02_Array\bin\Debug\0904_02_Array.exe.config
+D:\AIclass\1909\0904\0904_02_Array\bin\Debug\0904_02_Array.exe
+D:\AIclass\1909\0904\0904_02_Array\bin\Debug\0904_02_Array.pdb
+D:\AIclass\1909\0904\0904_02_Array\obj\Debug\0904_02_Array.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0904\0904_02_Array\obj\Debug\0904_02_Array.exe
+D:\AIclass\1909\0904\0904_02_Array\obj\Debug\0904_02_Array.pdb
+D:\AIclass\1909\0904\0904_02_Array\obj\Debug\0904_02_Array.csprojAssemblyReference.cache

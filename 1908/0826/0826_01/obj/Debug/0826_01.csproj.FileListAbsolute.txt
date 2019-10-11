@@ -1,0 +1,7 @@
+D:\AIclass\0826\0826\0826_01\bin\Debug\0826_01.exe.config
+D:\AIclass\0826\0826\0826_01\bin\Debug\0826_01.exe
+D:\AIclass\0826\0826\0826_01\bin\Debug\0826_01.pdb
+D:\AIclass\0826\0826\0826_01\obj\Debug\0826_01.csprojAssemblyReference.cache
+D:\AIclass\0826\0826\0826_01\obj\Debug\0826_01.csproj.CoreCompileInputs.cache
+D:\AIclass\0826\0826\0826_01\obj\Debug\0826_01.exe
+D:\AIclass\0826\0826\0826_01\obj\Debug\0826_01.pdb

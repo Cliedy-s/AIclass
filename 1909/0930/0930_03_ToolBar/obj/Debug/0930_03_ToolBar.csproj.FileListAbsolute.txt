@@ -1,0 +1,12 @@
+D:\AIclass\1909\0930\0930_03_ToolBar\bin\Debug\0930_03_ToolBar.exe.config
+D:\AIclass\1909\0930\0930_03_ToolBar\bin\Debug\0930_03_ToolBar.exe
+D:\AIclass\1909\0930\0930_03_ToolBar\bin\Debug\0930_03_ToolBar.pdb
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\0930_03_ToolBar.csprojAssemblyReference.cache
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\_0930_03_ToolBar.Form1.resources
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\_0930_03_ToolBar.Properties.Resources.resources
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\0930_03_ToolBar.csproj.GenerateResource.cache
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\0930_03_ToolBar.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\0930_03_ToolBar.exe
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\0930_03_ToolBar.pdb
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\_0930_03_ToolBar.Form2.resources
+D:\AIclass\1909\0930\0930_03_ToolBar\obj\Debug\_0930_03_ToolBar.Form3.resources

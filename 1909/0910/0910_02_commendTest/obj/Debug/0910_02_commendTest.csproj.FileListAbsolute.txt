@@ -1,0 +1,8 @@
+D:\AIclass\1909\0910\0910_02_commendTest\bin\Debug\0910_02_commendTest.exe.config
+D:\AIclass\1909\0910\0910_02_commendTest\bin\Debug\0910_02_commendTest.xml
+D:\AIclass\1909\0910\0910_02_commendTest\bin\Debug\0910_02_commendTest.exe
+D:\AIclass\1909\0910\0910_02_commendTest\bin\Debug\0910_02_commendTest.pdb
+D:\AIclass\1909\0910\0910_02_commendTest\obj\Debug\0910_02_commendTest.csprojAssemblyReference.cache
+D:\AIclass\1909\0910\0910_02_commendTest\obj\Debug\0910_02_commendTest.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0910\0910_02_commendTest\obj\Debug\0910_02_commendTest.exe
+D:\AIclass\1909\0910\0910_02_commendTest\obj\Debug\0910_02_commendTest.pdb

@@ -1,0 +1,11 @@
+D:\AIclass\1909\0924\0924_04_ClassGrammer\bin\Debug\0924_04_ClassGrammer.exe.config
+D:\AIclass\1909\0924\0924_04_ClassGrammer\bin\Debug\0924_04_ClassGrammer.exe
+D:\AIclass\1909\0924\0924_04_ClassGrammer\bin\Debug\0924_04_ClassGrammer.pdb
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\0924_04_ClassGrammer.csprojAssemblyReference.cache
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\_0924_04_ClassGrammer.Form1.resources
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\_0924_04_ClassGrammer.Form2.resources
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\_0924_04_ClassGrammer.Properties.Resources.resources
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\0924_04_ClassGrammer.csproj.GenerateResource.cache
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\0924_04_ClassGrammer.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\0924_04_ClassGrammer.exe
+D:\AIclass\1909\0924\0924_04_ClassGrammer\obj\Debug\0924_04_ClassGrammer.pdb

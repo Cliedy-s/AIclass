@@ -1,0 +1,6 @@
+D:\AIclass\1909\0927\Test\MyTCPClient\bin\Debug\MyTCPClient.exe.config
+D:\AIclass\1909\0927\Test\MyTCPClient\bin\Debug\MyTCPClient.exe
+D:\AIclass\1909\0927\Test\MyTCPClient\bin\Debug\MyTCPClient.pdb
+D:\AIclass\1909\0927\Test\MyTCPClient\obj\Debug\MyTCPClient.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0927\Test\MyTCPClient\obj\Debug\MyTCPClient.exe
+D:\AIclass\1909\0927\Test\MyTCPClient\obj\Debug\MyTCPClient.pdb

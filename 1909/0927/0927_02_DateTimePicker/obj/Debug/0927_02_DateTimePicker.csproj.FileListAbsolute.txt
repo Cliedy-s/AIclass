@@ -1,0 +1,10 @@
+D:\AIclass\1909\0927\0927_02_DateTimePicker\bin\Debug\0927_02_DateTimePicker.exe.config
+D:\AIclass\1909\0927\0927_02_DateTimePicker\bin\Debug\0927_02_DateTimePicker.exe
+D:\AIclass\1909\0927\0927_02_DateTimePicker\bin\Debug\0927_02_DateTimePicker.pdb
+D:\AIclass\1909\0927\0927_02_DateTimePicker\obj\Debug\_0927_02_DateTimePicker.Form1.resources
+D:\AIclass\1909\0927\0927_02_DateTimePicker\obj\Debug\_0927_02_DateTimePicker.Properties.Resources.resources
+D:\AIclass\1909\0927\0927_02_DateTimePicker\obj\Debug\0927_02_DateTimePicker.csproj.GenerateResource.cache
+D:\AIclass\1909\0927\0927_02_DateTimePicker\obj\Debug\0927_02_DateTimePicker.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0927\0927_02_DateTimePicker\obj\Debug\0927_02_DateTimePicker.exe
+D:\AIclass\1909\0927\0927_02_DateTimePicker\obj\Debug\0927_02_DateTimePicker.pdb
+D:\AIclass\1909\0927\0927_02_DateTimePicker\obj\Debug\0927_02_DateTimePicker.csprojAssemblyReference.cache

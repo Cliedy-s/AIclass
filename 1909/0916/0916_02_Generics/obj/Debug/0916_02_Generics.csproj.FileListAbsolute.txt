@@ -1,0 +1,7 @@
+D:\AIclass\1909\0916\0916_02_Generics\bin\Debug\0916_02_Generics.exe.config
+D:\AIclass\1909\0916\0916_02_Generics\bin\Debug\0916_02_Generics.exe
+D:\AIclass\1909\0916\0916_02_Generics\bin\Debug\0916_02_Generics.pdb
+D:\AIclass\1909\0916\0916_02_Generics\obj\Debug\0916_02_Generics.csprojAssemblyReference.cache
+D:\AIclass\1909\0916\0916_02_Generics\obj\Debug\0916_02_Generics.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0916\0916_02_Generics\obj\Debug\0916_02_Generics.exe
+D:\AIclass\1909\0916\0916_02_Generics\obj\Debug\0916_02_Generics.pdb

@@ -1,0 +1,13 @@
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\bin\Debug\BookMgt_Winform.exe.config
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\bin\Debug\BookMgt_Winform.exe
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\bin\Debug\BookMgt_Winform.pdb
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.csprojAssemblyReference.cache
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.Properties.Resources.resources
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.csproj.GenerateResource.cache
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.csproj.CoreCompileInputs.cache
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.exe
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.pdb
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.Form1.resources
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\obj\Debug\BookMgt_Winform.csproj.CopyComplete
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\bin\Debug\BookMgt_Library.dll
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Winform\bin\Debug\BookMgt_Library.pdb
