@@ -1,0 +1,3 @@
+﻿View. ---  
+으로 ImageView를 RadioButton으로 설정하고,
+제일 아래는 선택된 값의 정보를 아래에 서술하는 폼이였음

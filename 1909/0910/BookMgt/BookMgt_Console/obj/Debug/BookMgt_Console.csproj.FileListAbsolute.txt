@@ -1,0 +1,7 @@
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Console\bin\Debug\BookMgt_Console.exe.config
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Console\bin\Debug\BookMgt_Console.exe
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Console\bin\Debug\BookMgt_Console.pdb
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Console\obj\Debug\BookMgt_Console.csproj.CoreCompileInputs.cache
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Console\obj\Debug\BookMgt_Console.exe
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Console\obj\Debug\BookMgt_Console.pdb
+C:\Users\GD6\Desktop\BookMgt\BookMgt_Console\obj\Debug\BookMgt_Console.csprojAssemblyReference.cache

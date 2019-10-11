@@ -1,0 +1,11 @@
+D:\AIclass\1909\0924\0924_01_ComboBox\bin\Debug\0924_01_ComboBox.exe.config
+D:\AIclass\1909\0924\0924_01_ComboBox\bin\Debug\0924_01_ComboBox.exe
+D:\AIclass\1909\0924\0924_01_ComboBox\bin\Debug\0924_01_ComboBox.pdb
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\0924_01_ComboBox.csprojAssemblyReference.cache
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\_0924_01_ComboBox.Form1.resources
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\_0924_01_ComboBox.Properties.Resources.resources
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\0924_01_ComboBox.csproj.GenerateResource.cache
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\0924_01_ComboBox.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\0924_01_ComboBox.exe
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\0924_01_ComboBox.pdb
+D:\AIclass\1909\0924\0924_01_ComboBox\obj\Debug\_0924_01_ComboBox.Form2.resources

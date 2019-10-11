@@ -1,0 +1,9 @@
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.csprojAssemblyReference.cache
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.Form1.resources
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.Properties.Resources.resources
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.csproj.GenerateResource.cache
+D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MachineProject.exe.config
+D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MachineProject.exe
+D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MachineProject.pdb
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.exe
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.pdb

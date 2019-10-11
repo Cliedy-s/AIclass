@@ -1,0 +1,7 @@
+D:\AIclass\1909\0911\0911_02_AppSetting\bin\Debug\0911_02_AppSetting.exe.config
+D:\AIclass\1909\0911\0911_02_AppSetting\bin\Debug\0911_02_AppSetting.exe
+D:\AIclass\1909\0911\0911_02_AppSetting\bin\Debug\0911_02_AppSetting.pdb
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Debug\0911_02_AppSetting.csprojAssemblyReference.cache
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Debug\0911_02_AppSetting.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Debug\0911_02_AppSetting.exe
+D:\AIclass\1909\0911\0911_02_AppSetting\obj\Debug\0911_02_AppSetting.pdb

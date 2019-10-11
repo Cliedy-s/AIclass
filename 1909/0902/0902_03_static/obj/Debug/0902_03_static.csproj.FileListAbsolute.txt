@@ -1,0 +1,7 @@
+D:\AIclass\1909\0902\0902_03_static\bin\Debug\0902_03_static.exe.config
+D:\AIclass\1909\0902\0902_03_static\bin\Debug\0902_03_static.exe
+D:\AIclass\1909\0902\0902_03_static\bin\Debug\0902_03_static.pdb
+D:\AIclass\1909\0902\0902_03_static\obj\Debug\0902_03_static.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0902\0902_03_static\obj\Debug\0902_03_static.exe
+D:\AIclass\1909\0902\0902_03_static\obj\Debug\0902_03_static.pdb
+D:\AIclass\1909\0902\0902_03_static\obj\Debug\0902_03_static.csprojAssemblyReference.cache

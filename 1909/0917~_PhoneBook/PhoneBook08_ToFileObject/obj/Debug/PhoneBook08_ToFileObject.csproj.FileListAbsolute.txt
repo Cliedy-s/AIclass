@@ -1,0 +1,7 @@
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook08_ToFileObject\bin\Debug\PhoneBook08_ToFileObject.exe.config
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook08_ToFileObject\bin\Debug\PhoneBook08_ToFileObject.exe
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook08_ToFileObject\bin\Debug\PhoneBook08_ToFileObject.pdb
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook08_ToFileObject\obj\Debug\PhoneBook08_ToFileObject.csprojAssemblyReference.cache
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook08_ToFileObject\obj\Debug\PhoneBook08_ToFileObject.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook08_ToFileObject\obj\Debug\PhoneBook08_ToFileObject.exe
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook08_ToFileObject\obj\Debug\PhoneBook08_ToFileObject.pdb

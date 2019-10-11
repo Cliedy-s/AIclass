@@ -1,0 +1,11 @@
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\_1001_03_CustomControl.Form1.resources
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\_1001_03_CustomControl.Properties.Resources.resources
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\_1001_03_CustomControl.FIleFinderUserControl.resources
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\1001_03_CustomControl.csproj.GenerateResource.cache
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\1001_03_CustomControl.csproj.CoreCompileInputs.cache
+D:\AIclass\1910\1001\1001_03_PersonalControl\bin\Debug\1001_03_CustomControl.exe.config
+D:\AIclass\1910\1001\1001_03_PersonalControl\bin\Debug\1001_03_CustomControl.exe
+D:\AIclass\1910\1001\1001_03_PersonalControl\bin\Debug\1001_03_CustomControl.pdb
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\1001_03_CustomControl.exe
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\1001_03_CustomControl.pdb
+D:\AIclass\1910\1001\1001_03_PersonalControl\obj\Debug\_1001_03_CustomControl.PeriodSearch.resources

@@ -1,0 +1,5 @@
+C:\Users\GD6\source\repos\ConsoleApp0830\MyCalculator\bin\Debug\MyCalculator.dll
+C:\Users\GD6\source\repos\ConsoleApp0830\MyCalculator\bin\Debug\MyCalculator.pdb
+C:\Users\GD6\source\repos\ConsoleApp0830\MyCalculator\obj\Debug\MyCalculator.csproj.CoreCompileInputs.cache
+C:\Users\GD6\source\repos\ConsoleApp0830\MyCalculator\obj\Debug\MyCalculator.dll
+C:\Users\GD6\source\repos\ConsoleApp0830\MyCalculator\obj\Debug\MyCalculator.pdb

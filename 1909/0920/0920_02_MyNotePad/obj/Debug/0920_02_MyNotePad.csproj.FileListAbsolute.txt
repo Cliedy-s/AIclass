@@ -1,0 +1,9 @@
+D:\AIclass\1909\0920\0920_02_MyNotePad\obj\Debug\_0920_02_MyNotePad.Properties.Resources.resources
+D:\AIclass\1909\0920\0920_02_MyNotePad\obj\Debug\0920_02_MyNotePad.csproj.GenerateResource.cache
+D:\AIclass\1909\0920\0920_02_MyNotePad\obj\Debug\0920_02_MyNotePad.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0920\0920_02_MyNotePad\bin\Debug\0920_02_MyNotePad.exe.config
+D:\AIclass\1909\0920\0920_02_MyNotePad\bin\Debug\0920_02_MyNotePad.exe
+D:\AIclass\1909\0920\0920_02_MyNotePad\bin\Debug\0920_02_MyNotePad.pdb
+D:\AIclass\1909\0920\0920_02_MyNotePad\obj\Debug\0920_02_MyNotePad.csprojAssemblyReference.cache
+D:\AIclass\1909\0920\0920_02_MyNotePad\obj\Debug\0920_02_MyNotePad.exe
+D:\AIclass\1909\0920\0920_02_MyNotePad\obj\Debug\0920_02_MyNotePad.pdb

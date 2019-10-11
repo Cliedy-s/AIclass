@@ -1,0 +1,7 @@
+D:\AIclass\1909\0906\0906_01_Interface\bin\Debug\0906_01_Interface.exe.config
+D:\AIclass\1909\0906\0906_01_Interface\bin\Debug\0906_01_Interface.exe
+D:\AIclass\1909\0906\0906_01_Interface\bin\Debug\0906_01_Interface.pdb
+D:\AIclass\1909\0906\0906_01_Interface\obj\Debug\0906_01_Interface.csprojAssemblyReference.cache
+D:\AIclass\1909\0906\0906_01_Interface\obj\Debug\0906_01_Interface.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0906\0906_01_Interface\obj\Debug\0906_01_Interface.exe
+D:\AIclass\1909\0906\0906_01_Interface\obj\Debug\0906_01_Interface.pdb

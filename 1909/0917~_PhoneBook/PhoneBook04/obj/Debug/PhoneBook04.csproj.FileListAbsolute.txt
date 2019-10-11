@@ -1,0 +1,7 @@
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook04\bin\Debug\PhoneBook04.exe.config
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook04\bin\Debug\PhoneBook04.exe
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook04\bin\Debug\PhoneBook04.pdb
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook04\obj\Debug\PhoneBook04.csprojAssemblyReference.cache
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook04\obj\Debug\PhoneBook04.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook04\obj\Debug\PhoneBook04.exe
+D:\AIclass\1909\0917~_PhoneBook\PhoneBook04\obj\Debug\PhoneBook04.pdb

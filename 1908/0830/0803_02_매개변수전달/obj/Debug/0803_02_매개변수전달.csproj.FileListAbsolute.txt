@@ -1,0 +1,7 @@
+D:\AIclass\1908\0830\0803_02_매개변수전달\bin\Debug\0803_02_매개변수전달.exe.config
+D:\AIclass\1908\0830\0803_02_매개변수전달\bin\Debug\0803_02_매개변수전달.exe
+D:\AIclass\1908\0830\0803_02_매개변수전달\bin\Debug\0803_02_매개변수전달.pdb
+D:\AIclass\1908\0830\0803_02_매개변수전달\obj\Debug\0803_02_매개변수전달.csprojAssemblyReference.cache
+D:\AIclass\1908\0830\0803_02_매개변수전달\obj\Debug\0803_02_매개변수전달.csproj.CoreCompileInputs.cache
+D:\AIclass\1908\0830\0803_02_매개변수전달\obj\Debug\0803_02_매개변수전달.exe
+D:\AIclass\1908\0830\0803_02_매개변수전달\obj\Debug\0803_02_매개변수전달.pdb

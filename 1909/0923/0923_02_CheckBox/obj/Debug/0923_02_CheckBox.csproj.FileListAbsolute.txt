@@ -1,0 +1,10 @@
+D:\AIclass\1909\0923\0923_02_CheckBox\bin\Debug\0923_02_CheckBox.exe.config
+D:\AIclass\1909\0923\0923_02_CheckBox\bin\Debug\0923_02_CheckBox.exe
+D:\AIclass\1909\0923\0923_02_CheckBox\bin\Debug\0923_02_CheckBox.pdb
+D:\AIclass\1909\0923\0923_02_CheckBox\obj\Debug\_0923_02_CheckBox.Form1.resources
+D:\AIclass\1909\0923\0923_02_CheckBox\obj\Debug\_0923_02_CheckBox.Properties.Resources.resources
+D:\AIclass\1909\0923\0923_02_CheckBox\obj\Debug\0923_02_CheckBox.csproj.GenerateResource.cache
+D:\AIclass\1909\0923\0923_02_CheckBox\obj\Debug\0923_02_CheckBox.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0923\0923_02_CheckBox\obj\Debug\0923_02_CheckBox.exe
+D:\AIclass\1909\0923\0923_02_CheckBox\obj\Debug\0923_02_CheckBox.pdb
+D:\AIclass\1909\0923\0923_02_CheckBox\obj\Debug\0923_02_CheckBox.csprojAssemblyReference.cache

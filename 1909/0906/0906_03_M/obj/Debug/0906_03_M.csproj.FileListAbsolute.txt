@@ -1,0 +1,7 @@
+D:\AIclass\1909\0906\0906_03_M\bin\Debug\0906_03_M.exe.config
+D:\AIclass\1909\0906\0906_03_M\bin\Debug\0906_03_M.exe
+D:\AIclass\1909\0906\0906_03_M\bin\Debug\0906_03_M.pdb
+D:\AIclass\1909\0906\0906_03_M\obj\Debug\0906_03_M.csprojAssemblyReference.cache
+D:\AIclass\1909\0906\0906_03_M\obj\Debug\0906_03_M.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0906\0906_03_M\obj\Debug\0906_03_M.exe
+D:\AIclass\1909\0906\0906_03_M\obj\Debug\0906_03_M.pdb

@@ -1,0 +1,5 @@
+D:\AIclass\1909\0927\Test\MyTCPServer\obj\Debug\MyTCPServerProject.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0927\Test\MyTCPServer\bin\Debug\MyTCPServerProject.dll
+D:\AIclass\1909\0927\Test\MyTCPServer\bin\Debug\MyTCPServerProject.pdb
+D:\AIclass\1909\0927\Test\MyTCPServer\obj\Debug\MyTCPServerProject.dll
+D:\AIclass\1909\0927\Test\MyTCPServer\obj\Debug\MyTCPServerProject.pdb

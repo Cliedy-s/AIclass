@@ -1,0 +1,13 @@
+D:\AIclass\1909\0909_01_Enum\0909_02_IndexerTest\bin\Debug\0909_02_IndexerTest.exe.config
+D:\AIclass\1909\0909_01_Enum\0909_02_IndexerTest\bin\Debug\0909_02_IndexerTest.exe
+D:\AIclass\1909\0909_01_Enum\0909_02_IndexerTest\bin\Debug\0909_02_IndexerTest.pdb
+D:\AIclass\1909\0909_01_Enum\0909_02_IndexerTest\obj\Debug\0909_03_IndexerTest.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0909_01_Enum\0909_02_IndexerTest\obj\Debug\0909_02_IndexerTest.exe
+D:\AIclass\1909\0909_01_Enum\0909_02_IndexerTest\obj\Debug\0909_02_IndexerTest.pdb
+D:\AIclass\1909\0909\0909_02_IndexerTest\bin\Debug\0909_02_IndexerTest.exe.config
+D:\AIclass\1909\0909\0909_02_IndexerTest\bin\Debug\0909_02_IndexerTest.exe
+D:\AIclass\1909\0909\0909_02_IndexerTest\bin\Debug\0909_02_IndexerTest.pdb
+D:\AIclass\1909\0909\0909_02_IndexerTest\obj\Debug\0909_03_IndexerTest.csprojAssemblyReference.cache
+D:\AIclass\1909\0909\0909_02_IndexerTest\obj\Debug\0909_03_IndexerTest.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0909\0909_02_IndexerTest\obj\Debug\0909_02_IndexerTest.exe
+D:\AIclass\1909\0909\0909_02_IndexerTest\obj\Debug\0909_02_IndexerTest.pdb

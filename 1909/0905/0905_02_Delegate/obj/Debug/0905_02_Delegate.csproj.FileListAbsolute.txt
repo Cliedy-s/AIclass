@@ -1,0 +1,7 @@
+D:\AIclass\1909\0905\0905_02_Delegate\bin\Debug\0905_02_Delegate.exe.config
+D:\AIclass\1909\0905\0905_02_Delegate\bin\Debug\0905_02_Delegate.exe
+D:\AIclass\1909\0905\0905_02_Delegate\bin\Debug\0905_02_Delegate.pdb
+D:\AIclass\1909\0905\0905_02_Delegate\obj\Debug\0905_02_Delegate.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0905\0905_02_Delegate\obj\Debug\0905_02_Delegate.exe
+D:\AIclass\1909\0905\0905_02_Delegate\obj\Debug\0905_02_Delegate.pdb
+D:\AIclass\1909\0905\0905_02_Delegate\obj\Debug\0905_02_Delegate.csprojAssemblyReference.cache

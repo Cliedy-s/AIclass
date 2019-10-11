@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0925_02_NetwordProgram_Client", "0925_02_NetwordProgram_Client\0925_02_NetwordProgram_Client.csproj", "{C27471C9-5752-44AE-84EA-3360686BFEBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0925_02_NetwordProgram_ClientWinForm", "0925_02_NetwordProgram_ClientWinForm\0925_02_NetwordProgram_ClientWinForm.csproj", "{BE920C85-EC26-44B9-9CEB-00CCC44515BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C27471C9-5752-44AE-84EA-3360686BFEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27471C9-5752-44AE-84EA-3360686BFEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27471C9-5752-44AE-84EA-3360686BFEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27471C9-5752-44AE-84EA-3360686BFEBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE920C85-EC26-44B9-9CEB-00CCC44515BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE920C85-EC26-44B9-9CEB-00CCC44515BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE920C85-EC26-44B9-9CEB-00CCC44515BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE920C85-EC26-44B9-9CEB-00CCC44515BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9E0EBC5-0EBF-41A5-A7AD-87C1C4C80A99}
+	EndGlobalSection
+EndGlobal

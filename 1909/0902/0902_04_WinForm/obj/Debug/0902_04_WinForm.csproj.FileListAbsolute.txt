@@ -1,0 +1,12 @@
+D:\AIclass\1909\0902\0902_04_WinForm\bin\Debug\0902_04_WinForm.exe.config
+D:\AIclass\1909\0902\0902_04_WinForm\bin\Debug\0902_04_WinForm.exe
+D:\AIclass\1909\0902\0902_04_WinForm\bin\Debug\0902_04_WinForm.pdb
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\0902_04_WinForm.csprojAssemblyReference.cache
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\_0902_04_WinForm.Properties.Resources.resources
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\0902_04_WinForm.csproj.GenerateResource.cache
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\0902_04_WinForm.csproj.CoreCompileInputs.cache
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\0902_04_WinForm.exe
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\0902_04_WinForm.pdb
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\_0902_04_WinForm.Form1.resources
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\_0902_04_WinForm.Form2.resources
+D:\AIclass\1909\0902\0902_04_WinForm\obj\Debug\_0902_04_WinForm.Form3.resources
