@@ -12,8 +12,17 @@ group by userID;
 -- 2. 구매 내역 중 제품의 카테고리명이 없는 제품은?
 select prodName
 from buytbl
-where groupName is null
+where groupName is null 
 group by prodName;
+
+select prodName, length(groupName)
+from buytbl
+where length(groupName) < 1;
+
+select prodName
+from buytbl
+where length(ifnull(groupName, "")) < 1;
+
 -- 3. 구매된 제품의 카테고리명이 없는 경우는 '미분류' 라는 카테고리로 표시하세요. 
 select prodName, ifnull(groupName, '미분류') as 카테고리
 from buytbl
@@ -23,8 +32,9 @@ group by prodName;
 --     임시로 회원아이디 + 출생년도2자리 + '1234'로 설정한다.
 commit;
 select * from usertbl;
+desc usertbl;
 alter table usertbl add ( user_password varchar(20) );
-update usertbl set user_password= concat(userID, right(birthYear,2), 1234);
+update usertbl set user_password= concat(userID, right(birthYear,2), 1234) where 1=1; # 항상 하게함...
 #|| 
 update usertbl set user_password= concat(userID, substring(birthYear, 3), 1234); #?
 
@@ -32,6 +42,14 @@ update usertbl set user_password= concat(userID, substring(birthYear, 3), 1234);
 -- 5. 이번달에 가입감사 메일을 보낼 회원을 조회
 #????????????????????????????????????????????????????
 select if(month(mDate) = month(now()), '보낼회원','pass') as '보낼회원조회', userID from usertbl;
+
+select userid, mdate
+from usertbl
+where month(mDate) = month(now());
+
+select userid, mdate, timestampdiff(year, mdate, curdate()) as period
+from usertbl
+where month(mDate) = month(curdate());
 #????????????????????????????????????????????????????
 
 -- 6. 회원의 가입시기를 봄, 여름, 가을, 겨울로 구분하여 가입총계를 조회
@@ -46,7 +64,11 @@ select * from usertbl;
 -- 						else '겨울' end season
 -- 	from usertbl u;
 
-select sum(if(m.season='봄', 1, 0)) as '봄',  sum(if(m.season='여름', 1, 0)) as '여름',  sum(if(m.season='가을', 1, 0)) as '가을',  sum(if(m.season='겨울',1, 0)) as '겨울'
+select 
+	sum(if(m.season='봄', 1, 0)) as '봄'
+    ,  sum(if(m.season='여름', 1, 0)) as '여름'
+    ,  sum(if(m.season='가을', 1, 0)) as '가을'
+    ,  sum(if(m.season='겨울',1, 0)) as '겨울'
 from (
 	select case 
 						when month(u.mDate) in (3, 4, 5) then '봄'
@@ -54,10 +76,54 @@ from (
 						when month(u.mDate) in (9, 10, 11) then '가을'
 						else '겨울' end season
 	from usertbl u ) as m;
+    
+    select 
+	sum(if(m.months in(3,4,5), 1, 0)) as '봄'
+    ,  sum(if(m.months in(6,7,8), 1, 0)) as '여름'
+    ,  sum(if(m.months in(9,10,11), 1, 0)) as '가을'
+    ,  sum(if(m.months in(12,1,2),1, 0)) as '겨울'
+from (
+	select month(u.mDate) as months, case 
+						when month(u.mDate) in (3, 4, 5) then '봄'
+						when month(u.mDate) in (6, 7, 8) then '여름'
+						when month(u.mDate) in (9, 10, 11) then '가을'
+						else '겨울' end season
+	from usertbl u ) as m;
+-- d001부서에서 일하는 사원의 고용 계절을 보고싶다.
+use employees;
+
+select concat(first_name, ' ' , last_name)
+	, case when month(hire_date) in ( 3, 4, 5) then '봄'
+				when month(hire_date) in ( 6, 7, 8) then '여름'
+				when month(hire_date) in ( 9, 10, 11) then '가을'
+                else '겨울' end '고용 계절'
+from dept_emp de
+	join employees e on de.emp_no = e.emp_no
+where dept_no = 'd001' and year(to_date) = 9999;
+
+-- pivot 부서당 
+
+select 
+	sum(if(m.mSeason ='봄', 1, 0)) as '봄'
+    ,  sum(if(m.mSeason ='여름', 1, 0)) as '여름'
+    ,  sum(if(m.mSeason ='가을', 1, 0)) as '가을'
+    ,  sum(if(m.mSeason ='겨울',1, 0)) as '겨울'
+from (
+select concat(first_name, ' ' , last_name) as mName
+	, case when month(hire_date) in ( 3, 4, 5) then '봄'
+				when month(hire_date) in ( 6, 7, 8) then '여름'
+				when month(hire_date) in ( 9, 10, 11) then '가을'
+                else '겨울' end mSeason
+from dept_emp de
+	join employees e on de.emp_no = e.emp_no
+where dept_no = 'd001' and year(to_date) = 9999 ) as m;
+
+# concat(first_name, ' ' , last_name) as mname
 
 -- 7. BBK 회원의 모든 구매내역을 조회 => 유저 내용 보여주기 #?????????????
+use goodie;
 select num, prodName, name, birthYear, addr, mobile1, mobile2, height, mDate
-from buytbl b join usertbl u on b.userID = u.userID
+from buytbl b inner join usertbl u on b.userID = u.userID
 where b.userID = 'BBK';
 
 -- 8. 구매내역이 있는 회원 정보 조회
@@ -66,19 +132,18 @@ from usertbl u  natural join buytbl b
 group by userID;
 
 # ||
-select u.userID, name, birthYear, addr, mobile1, mobile2, height, mDate
-from usertbl u  join buytbl b on u.userID = b.userID
-group by userID;
+select distinct u.userID, name, birthYear, addr, mobile1, mobile2, height, mDate
+from usertbl u  join buytbl b on u.userID = b.userID;
 
 
 -- 9. 구매기록이 없는 회원만 출력 
-select u.userID, name, birthYear, addr, mobile1, mobile2, height, mDate, b.num
+select distinct u.userID, name, birthYear, addr, mobile1, mobile2, height, mDate
 from usertbl u left outer join buytbl b on u.userID = b.userID
 where b.num is null;
-
 -- /////////////////////////////////////////////////////////////
 -- 1. 현재 근무 중인 직원 정보를 출력하시오.
 use employees;
+
 select e.emp_no, birth_date, first_name, last_name, gender, hire_date
 from employees e inner join dept_emp de on e.emp_no = de.emp_no
 where year(de.to_date) = 9999;
@@ -105,7 +170,7 @@ select dept_no, from_date
 from dept_emp de
 where year(de.to_date) = 9999
 order by from_date asc
-limit 5;
+limit 10;
 
 -- 5. 부서별로 직원 수를 구하되 부서 이름이 나오게 출력하시오.
 select d.dept_name, count(de.emp_no)
@@ -126,6 +191,7 @@ group by d.dept_name, e.gender;
 select avg(salary) as `급여평균`, de.dept_no
 from dept_emp de 
 		inner join salaries s on de.emp_no = s.emp_no
+where year(de.to_date) =9999
 group by de.dept_no
 order by `급여평균` desc
 limit 5;
@@ -134,6 +200,7 @@ limit 5;
 select avg(salary) as `급여평균`, de.dept_no
 from dept_emp de 
 		inner join salaries s on de.emp_no = s.emp_no
+where year(de.to_date) =9999
 group by de.dept_no
 order by `급여평균` desc
 limit 1, 5;
