@@ -202,7 +202,7 @@ SELECT COUNT(*) -- 107706
 				   WHERE TO_DATE = '9999-01-01');
 
 -- 6. 퇴직한 직원 정보를 구하시오.
-
+use employees;
 SELECT *
   FROM EMPLOYEES E  
  WHERE NOT EXISTS(SELECT 1 FROM DEPT_EMP DE 
@@ -399,7 +399,7 @@ select * from v_userBuyTble;
 select * from dept_emp_latest_date;
 
 # 
-
+SELECT * FROM goodie.member;
 
 --
 use goodie;
