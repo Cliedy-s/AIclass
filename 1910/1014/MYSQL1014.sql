@@ -97,6 +97,7 @@ SELECT D.DEPT_NAME, COUNT(*)
  WHERE DE.TO_DATE = '9999-01-01'
  GROUP BY D.DEPT_NAME;
  
+ 
  -- 문자열로 그룹화 하는 것보다는 정형화된 코드로 그룹화하는 것이 좋다.
  SELECT DEPT_NAME, CNT
    FROM DEPARTMENTS D
@@ -115,10 +116,23 @@ from dept_emp de inner join departments d on de.dept_no = d.dept_no
 where year(de.to_date) = 9999
 group by d.dept_no;
 
+select d.dept_name
+from dept_emp de inner join departments d on de.dept_no = d.dept_no
+where year(de.to_date) = 9999;
+
+
 -- subquery
 select d.dept_name, 
-	(select count(*) from dept_emp de where year(de.to_date) = 9999 and de.dept_no = d.dept_no) as '직원 수'
+	(
+    select count(*) from dept_emp de 
+    where year(de.to_date) = 9999 
+    and de.dept_no = d.dept_no
+    ) as '직원 수'# 스칼라 서브쿼리 => 전체 데이터 행 수 만큼 실행
 from departments d;
+
+select count(*) from dept_emp de 
+where year(de.to_date) = 9999 
+and de.dept_no = 'd001';
 
 --  subquery + inner join ( 가장 빠름  => 결과 집합을 작게 )
 select dept_name, cnt
@@ -127,8 +141,7 @@ from departments d
 							from dept_emp
                             where year(to_date) = 9999
                             group by dept_no 
-                            ) as ds on d.dept_no = ds.dept_no
-group by d.dept_no; # 코드로 group by 
+                            ) as ds on d.dept_no = ds.dept_no; # 코드로 group by 
 -- )
  
 -- 2. 각 부서에서 가장 오래 근무한 직원을 출력하시오.
@@ -176,7 +189,6 @@ SELECT EM.*
   FROM EMPLOYEES EM
  ORDER BY HIRE_DATE
  LIMIT 10;
-
 
 -- 4. 각 부서에서 급여를 가장 많이 받는 직원 리스트를 구하시오.
 
@@ -234,9 +246,9 @@ select userID, price * amount as totalPrice from buytbl where price * amount >= 
 # in..
 
 # STORED PROCEDURE=
-SELECT *, 
+SELECT *, timestampdiff(year, curdate(), hire_date ),
 		case 
-			when timestampdiff(year, hire_date, curdate()) < 5 then '5년 미만'
+			when timestampdiff(year, curdate(), hire_date ) < 5 then '5년 미만'
 			else '5년 이상' end '고용일수'
 FROM employees
 WHERE emp_no = 10001;
