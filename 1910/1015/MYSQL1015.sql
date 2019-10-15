@@ -37,20 +37,14 @@ create table goodie.deleted_member as select * from goodie.member where 1=0;
 delete from goodie.member where userid='test01';
 
 rollback;
-
 -- 어제사고 오늘 탈퇴했을 때도 정상적으로 다 출력되게 하시오
 select * from goodie.deleted_member
 union
 select * from goodie.member;
-
 --
-
 select userid, username, 'Y' as useYn from goodie.member
 union
 select userid, username, 'N' as useNn from goodie.member;
-
 --
-
-
 
 select * from employees;
