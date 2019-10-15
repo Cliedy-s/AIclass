@@ -32,6 +32,7 @@ insert into v_View(emp_no, view_name, dept_no, dept_name) values(1,'aaa','11','1
 
 select * from goodie.member;
 
+
 create table goodie.deleted_member as select * from goodie.member where 1=0;
 
 delete from goodie.member where userid='test01';
@@ -46,5 +47,31 @@ select userid, username, 'Y' as useYn from goodie.member
 union
 select userid, username, 'N' as useNn from goodie.member;
 --
+use employees;
+
+select *, count(*)
+from employees e
+	inner join dept_emp de on de.emp_no= e.emp_no #
+group by de.dept_no;
+
+use employees;
+desc departments;
+select *, count(*)
+from employees e, dept_emp de 
+where de.emp_no= e.emp_no
+group by de.dept_no;
+
+USE employees;
+SELECT emp_no, goodie.FNC_DEPTNAME(dept_no) as dept_name
+FROM employees.dept_emp
+WHERE emp_no like '100%';
 
 select * from employees;
+
+use goodie;
+CREATE or replace VIEW v_userBuyTble
+AS (SELECT  u.userid, u.name, b.prodName, u.addr, price * amount as '구매액'
+FROM usertbl u INNER JOIN buytbl b ON u.userid = b.userid);
+
+-- 커서..
+
