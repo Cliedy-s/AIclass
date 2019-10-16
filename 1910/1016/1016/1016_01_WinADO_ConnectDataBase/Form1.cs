@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
+/// <summary>
+/// 오류가 있는 코드.. 다른 컴퓨터에서 한번 돌려보는게 좋겠음
+/// </summary>
 namespace _1016_01_WinADO_ConnectDataBase
 {
     public partial class Form1 : Form
@@ -51,7 +55,11 @@ namespace _1016_01_WinADO_ConnectDataBase
                 connection.Close();
             }
         }
-
+        /// <summary>
+        /// 문제가 되는 부분
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             /*
@@ -118,6 +126,11 @@ namespace _1016_01_WinADO_ConnectDataBase
             cmbDepartments.DataSource = list;
         }
 
+        /// <summary>
+        /// 문제가 되는 부분
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbDepartments_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
@@ -166,16 +179,12 @@ namespace _1016_01_WinADO_ConnectDataBase
         */
             using (MySqlConnection conn = new MySqlConnection("Server=localhost;Uid=root;Pwd=1234;Database=employees"))
             {
-
-
                 StringBuilder sb = new StringBuilder();
 
                 sb.Append(" select e.emp_no, birth_date,concat(first_name, ' ', last_name) as emp_name, gender, hire_date ");
                 sb.Append(" from employees e inner join dept_emp de on e.emp_no = de.emp_no ");
-
                 sb.Append(" where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ");
                 sb.Append(" order by emp_name ");
-
 
                 MySqlCommand cmd = new MySqlCommand(sb.ToString(), conn);
                 conn.Open();
@@ -205,7 +214,6 @@ namespace _1016_01_WinADO_ConnectDataBase
             comboBox1.DisplayMember = "dept_name";
             comboBox1.ValueMember = "dept_no";
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             MySqlConnection connection = null;
