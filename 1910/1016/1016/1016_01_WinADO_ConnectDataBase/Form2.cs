@@ -55,7 +55,7 @@ namespace _1016_01_WinADO_ConnectDataBase
             StringBuilder sql1 = new StringBuilder(string.Format(" select userID, userPWD, userName from members where 1=1 "));
             if (!isAll)
             {
-                sql1.Append(" and userName = '"+ name +"' ");
+                sql1.Append(" and userName = '" + name + "' ");
             }
             using (MySqlConnection connection = new MySqlConnection(goodieConnectionString))
             {

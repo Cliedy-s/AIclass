@@ -1,4 +1,4 @@
-﻿namespace _1016_01_WinADO_ConnectDataBase
+﻿namespace WindowsFormsApp1
 {
     partial class Form1
     {

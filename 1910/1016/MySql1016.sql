@@ -16,4 +16,13 @@ insert into members (userID, userPWD, userName) values('abc','1234','홍길동')
 commit;
 select userID, userPWD, userName from members;
 
-update members set userPWD = '1234', userName = 'abc' where userID = 'aaa'
+update members set userPWD = '1234', userName = 'abc' where userID = 'aaa';
+rollback;
+delete from members where userID = '';
+commit;
+
+
+select concat(first_name, ' ', last_name) as emp_name, de.dept_no 
+from employees e 
+     inner join ( select emp_no, dept_no from dept_emp where dept_no = 'd001' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no 
+

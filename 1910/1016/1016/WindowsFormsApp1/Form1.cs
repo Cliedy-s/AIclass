@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace _1016_01_WinADO_ConnectDataBase
+namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
@@ -172,7 +172,6 @@ namespace _1016_01_WinADO_ConnectDataBase
 
                 sb.Append(" select e.emp_no, birth_date,concat(first_name, ' ', last_name) as emp_name, gender, hire_date ");
                 sb.Append(" from employees e inner join dept_emp de on e.emp_no = de.emp_no ");
-
                 sb.Append(" where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ");
                 sb.Append(" order by emp_name ");
 
@@ -223,8 +222,10 @@ namespace _1016_01_WinADO_ConnectDataBase
                 dataGridView2.DataSource = ds.Tables["MyEmployee"];
             }
         }
+
+
     }
-    public class ComboData
+    class ComboData
     {
         public string Code { get; set; }
         public string Text { get; set; }
