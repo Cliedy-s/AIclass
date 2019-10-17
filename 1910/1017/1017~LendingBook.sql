@@ -18,5 +18,19 @@ CREATE TABLE Student (
     department varchar(50),
     deleted bit(1) default b'0',
     primary key (studentid)
-)
+);
+
+SELECT * FROM student;
+
+INSERT INTO student (studentid, studentname, department) VALUES(10001, '홍길동','철학과');
+ROLLBACK;
+
+SELECT bookid, bookname, author, publisher FROM book WHERE deleted = 0;
+SELECT studentid, studentname, department FROM student WHERE deleted = 0;
+
+
+SELECT * FROM Book;
+DESC Book;
+
+
 

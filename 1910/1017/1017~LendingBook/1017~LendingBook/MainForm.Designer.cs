@@ -61,6 +61,7 @@
             this.도서관리ToolStripMenuItem.Name = "도서관리ToolStripMenuItem";
             this.도서관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.도서관리ToolStripMenuItem.Text = "도서관리";
+            this.도서관리ToolStripMenuItem.Click += new System.EventHandler(this.도서관리ToolStripMenuItem_Click);
             // 
             // 대여관리ToolStripMenuItem
             // 

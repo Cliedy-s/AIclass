@@ -22,5 +22,11 @@ namespace _1017_LendingBook
             StudentForm studentform = new StudentForm();
             studentform.Show();
         }
+
+        private void 도서관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookForm bookform = new BookForm();
+            bookform.Show();
+        }
     }
 }
