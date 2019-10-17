@@ -172,7 +172,7 @@ namespace WindowsFormsApp1
 
                 sb.Append(" select e.emp_no, birth_date,concat(first_name, ' ', last_name) as emp_name, gender, hire_date ");
                 sb.Append(" from employees e inner join dept_emp de on e.emp_no = de.emp_no ");
-                sb.Append(" where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ");
+                sb.Append(" where dept_no = '" + cmbDepartments.SelectedValue.ToString() + "' and to_date = '9999-01-01' ");
                 sb.Append(" order by emp_name ");
 
 

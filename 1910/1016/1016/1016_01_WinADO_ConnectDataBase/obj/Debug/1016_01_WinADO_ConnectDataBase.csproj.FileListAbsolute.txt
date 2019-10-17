@@ -13,3 +13,4 @@ D:\AIclass\1910\1016\1016\1016_01_WinADO_ConnectDataBase\obj\Debug\1016_01_WinAD
 D:\AIclass\1910\1016\1016\1016_01_WinADO_ConnectDataBase\obj\Debug\1016_01_WinADO_ConnectDataBase.exe
 D:\AIclass\1910\1016\1016\1016_01_WinADO_ConnectDataBase\obj\Debug\1016_01_WinADO_ConnectDataBase.pdb
 D:\AIclass\1910\1016\1016\1016_01_WinADO_ConnectDataBase\obj\Debug\_1016_01_WinADO_ConnectDataBase.Form2.resources
+D:\AIclass\1910\1016\1016\1016_01_WinADO_ConnectDataBase\obj\Debug\1016_01_WinADO_ConnectDataBase.csprojAssemblyReference.cache

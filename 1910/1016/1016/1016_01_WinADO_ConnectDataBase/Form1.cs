@@ -62,7 +62,8 @@ namespace _1016_01_WinADO_ConnectDataBase
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            /*
+            cmbDepartments.SelectedIndexChanged -= cmbDepartments_SelectedIndexChanged;
+            //
             MySqlConnection connection = null;
             MySqlDataReader reader = null;
             BindingList<ComboData> list = new BindingList<ComboData>();
@@ -86,8 +87,6 @@ namespace _1016_01_WinADO_ConnectDataBase
 
                         list.Add(item);
                     }
-                    reader.Close();
-                    connection.Close();
                 }
                 
                 cmbDepartments.DisplayMember = "Text"; 
@@ -100,11 +99,8 @@ namespace _1016_01_WinADO_ConnectDataBase
             }
             finally
             {
-                reader.Close();
-                connection.Close();
             }
-            */
-
+            /*
             MySqlConnection conn = new MySqlConnection("Server=127.0.0.1;Uid=root;Pwd=1234;Database=employees;");
 
 
@@ -124,6 +120,12 @@ namespace _1016_01_WinADO_ConnectDataBase
             cmbDepartments.DisplayMember = "Text";
             cmbDepartments.ValueMember = "Code";
             cmbDepartments.DataSource = list;
+            foreach (var item in list)
+            {
+                Debug.WriteLine(item.Code + item.Text);
+            }
+            */
+            cmbDepartments.SelectedIndexChanged += cmbDepartments_SelectedIndexChanged;
         }
 
         /// <summary>
@@ -133,116 +135,102 @@ namespace _1016_01_WinADO_ConnectDataBase
         /// <param name="e"></param>
         private void cmbDepartments_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
+
             //MySqlConnection connection = null;
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                
-                /*
-                StringBuilder strCommnad = new StringBuilder();
-                strCommnad.Append("select concat(first_name, ' ', last_name) as emp_name, de.dept_no ");
-                strCommnad.Append("from employees e "); 
-                strCommnad.Append("     inner join ( select emp_no, dept_no from dept_emp where dept_no = '"+ cmbDepartments.SelectedValue.ToString() + "' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no ");
-                */
-
-            //StringBuilder strCommnad = new StringBuilder(string.Format("select concat(first_name, ' ', last_name) as emp_name, de.dept_no "+
-            //                                                                "from employees e "+
-            //                                                                "inner join ( select emp_no, dept_no from dept_emp where dept_no = '" + cmbDepartments.SelectedValue.ToString() + "' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no "));
-
-            /*
-            StringBuilder strCommnad = new StringBuilder();
-            strCommnad.Append("select concat(first_name, ' ', last_name) as emp_name, de.dept_no ");
-            strCommnad.Append("from employees e ");
-            strCommnad.Append("     inner join ( select emp_no, dept_no from dept_emp where dept_no = '" + cmbDepartments.SelectedValue.ToString() + "'  and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no ");
-
-            MySqlCommand command = new MySqlCommand(strCommnad.ToString(), connection);
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-
-            BindingList<ComboData> list = new BindingList<ComboData>();
-            while (reader.Read())
-            {
-                //Debug.WriteLine(reader["dept_no"].ToString()+ reader["emp_name"].ToString());
-                list.Add(new ComboData(reader["dept_no"].ToString(), reader["emp_name"].ToString()));
-            }
 
 
-            DataTable data = new DataTable();
-            data.Load(command.ExecuteReader());
-
-            dataGridView1.DataSource = data;
-
-            reader.Close();
-        }
-
-        */
-            using (MySqlConnection conn = new MySqlConnection("Server=localhost;Uid=root;Pwd=1234;Database=employees"))
-            {
-                StringBuilder sb = new StringBuilder();
-
-                sb.Append(" select e.emp_no, birth_date,concat(first_name, ' ', last_name) as emp_name, gender, hire_date ");
-                sb.Append(" from employees e inner join dept_emp de on e.emp_no = de.emp_no ");
-                sb.Append(" where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ");
-                sb.Append(" order by emp_name ");
-
-                MySqlCommand cmd = new MySqlCommand(sb.ToString(), conn);
-                conn.Open();
-                //MySqlDataReader reader = cmd.ExecuteReader();
-
-                DataTable dt = new DataTable();
-                //dt.Load(reader);
-                dt.Load(cmd.ExecuteReader());
-                dataGridView1.DataSource = dt;
-
-            }
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            // DataAdapter
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            string commandstr = "select dept_no, dept_name from departments;";
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(commandstr, connection);
-            DataSet ds = new DataSet();
-            connection.Open();
-            dataAdapter.Fill(ds);
-            connection.Close();
-
-            comboBox1.DataSource = ds.Tables[0];
-            comboBox1.DisplayMember = "dept_name";
-            comboBox1.ValueMember = "dept_no";
-        }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MySqlConnection connection = null;
-            using (connection = new MySqlConnection(connectionString))
-            {
                 StringBuilder strCommnad = new StringBuilder();
                 strCommnad.Append("select concat(first_name, ' ', last_name) as emp_name, de.dept_no ");
                 strCommnad.Append("from employees e ");
-                strCommnad.Append("     inner join ( select emp_no, dept_no from dept_emp where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no ");
+                strCommnad.Append("     inner join ( select emp_no, dept_no from dept_emp where dept_no = '" + cmbDepartments.SelectedValue.ToString() + "'  and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no ");
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter(strCommnad.ToString(), connection);
+                MySqlCommand command = new MySqlCommand(strCommnad.ToString(), connection);
+
                 connection.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+
+                //BindingList<ComboData> list = new BindingList<ComboData>();
+                //while (reader.Read())
+                //{
+                //    //Debug.WriteLine(reader["dept_no"].ToString()+ reader["emp_name"].ToString());
+                //    list.Add(new ComboData(reader["dept_no"].ToString(), reader["emp_name"].ToString()));
+                //}
+                DataTable data = new DataTable();
+                data.Load(reader);
+                dataGridView1.DataSource = data;
+
+                reader.Close();
+
+                /*
+                using (MySqlConnection conn = new MySqlConnection("Server=localhost;Uid=root;Pwd=1234;Database=employees"))
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.Append(" select e.emp_no, birth_date,concat(first_name, ' ', last_name) as emp_name, gender, hire_date ");
+                    sb.Append(" from employees e inner join dept_emp de on e.emp_no = de.emp_no ");
+                    sb.Append(" where dept_no = '" + cmbDepartments.SelectedValue.ToString() + "' and to_date = '9999-01-01' ");
+                    sb.Append(" order by emp_name ");
+
+                    MySqlCommand cmd = new MySqlCommand(sb.ToString(), conn);
+                    conn.Open();
+                    //MySqlDataReader reader = cmd.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+                    //dt.Load(reader);
+                    dt.Load(cmd.ExecuteReader());
+                    dataGridView1.DataSource = dt;
+
+                }
+                */
+            }
+
+        }
+            private void button5_Click(object sender, EventArgs e)
+            {
+                // DataAdapter
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                string commandstr = "select dept_no, dept_name from departments;";
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(commandstr, connection);
                 DataSet ds = new DataSet();
-                adapter.Fill(ds, "MyEmployee");
-                dataGridView2.DataSource = ds.Tables["MyEmployee"];
+                connection.Open();
+                dataAdapter.Fill(ds);
+                connection.Close();
+
+                comboBox1.DataSource = ds.Tables[0];
+                comboBox1.DisplayMember = "dept_name";
+                comboBox1.ValueMember = "dept_no";
+            }
+            private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+            {
+                MySqlConnection connection = null;
+                using (connection = new MySqlConnection(connectionString))
+                {
+                    StringBuilder strCommnad = new StringBuilder();
+                    strCommnad.Append("select concat(first_name, ' ', last_name) as emp_name, de.dept_no ");
+                    strCommnad.Append("from employees e ");
+                    strCommnad.Append("     inner join ( select emp_no, dept_no from dept_emp where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no ");
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(strCommnad.ToString(), connection);
+                    connection.Open();
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "MyEmployee");
+                    dataGridView2.DataSource = ds.Tables["MyEmployee"];
+                }
             }
         }
-    }
-    public class ComboData
-    {
-        public string Code { get; set; }
-        public string Text { get; set; }
-
-        public ComboData(string code, string text)
+        public class ComboData
         {
-            Code = code;
-            Text = text;
-        }
+            public string Code { get; set; }
+            public string Text { get; set; }
 
-        public ComboData() { }
+            public ComboData(string code, string text)
+            {
+                Code = code;
+                Text = text;
+            }
+
+            public ComboData() { }
+        }
     }
-}

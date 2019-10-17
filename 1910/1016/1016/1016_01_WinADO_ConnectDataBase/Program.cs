@@ -16,7 +16,7 @@ namespace _1016_01_WinADO_ConnectDataBase
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form2());
         }
     }
 }
