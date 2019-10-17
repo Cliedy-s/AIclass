@@ -107,7 +107,9 @@ namespace _1016_01_WinADO_ConnectDataBase
                 MySqlCommand command = new MySqlCommand(sql.ToString(), connection);
 
                 connection.Open();
-                command.ExecuteNonQuery();
+                int iresult = command.ExecuteNonQuery();
+                if(iresult > 0) { MessageBox.Show("회원정보가 수정되었습니다."); }
+                else { MessageBox.Show("수정할 정보가 없습니다."); }
             }
             DataRetrieve();
         }
@@ -115,13 +117,19 @@ namespace _1016_01_WinADO_ConnectDataBase
         private void btnDelete_Click(object sender, EventArgs e)
         {
             btnUpdate.Enabled = false;
-            StringBuilder sql = new StringBuilder(string.Format("delete from members where userID = '{0}'; ", txtID.Text));
-            using(MySqlConnection connection= new MySqlConnection(goodieConnectionString))
+            if (!string.IsNullOrEmpty(txtID.Text))
             {
-                MySqlCommand command = new MySqlCommand(sql.ToString(), connection);
+                if (MessageBox.Show("정말로 삭제하시겠습니까", "삭제", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    StringBuilder sql = new StringBuilder(string.Format("delete from members where userID = '{0}'; ", txtID.Text));
+                    using (MySqlConnection connection = new MySqlConnection(goodieConnectionString))
+                    {
+                        MySqlCommand command = new MySqlCommand(sql.ToString(), connection);
 
-                connection.Open();
-                command.ExecuteNonQuery();
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
             DataRetrieve();
         }

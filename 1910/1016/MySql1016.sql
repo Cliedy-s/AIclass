@@ -25,4 +25,7 @@ commit;
 select concat(first_name, ' ', last_name) as emp_name, de.dept_no 
 from employees e 
      inner join ( select emp_no, dept_no from dept_emp where dept_no = 'd001' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no 
-
+;
+select concat(first_name, ' ', last_name) as emp_name, de.dept_no
+ from employees e      inner join ( select emp_no, dept_no from dept_emp where dept_no = 'd002' and to_date = '9999-01-01' ) de
+                                        on de.emp_no = e.emp_no
