@@ -42,6 +42,7 @@ INSERT INTO Customer (CustomerID, CustomerName) VALUES(10002,'김영만');
 INSERT INTO Customer (CustomerID, CustomerName) VALUES(10003,'박영만');
 
 UPDATE Customer SET CustomerName = '박박박' WHERE CustomerID = 10001;
+DELETE FROM Customer WHERE CustomerID = 10001;
 
 COMMIT;
 ROLLBACK;
