@@ -41,6 +41,9 @@ SELECT bookid, bookname, author, publisher FROM book WHERE deleted = 0;
 SELECT studentid, studentname, department FROM student WHERE deleted = 0;
 SELECT deleted FROM student WHERE studentid = 234;
 SELECT count(*) FROM student WHERE deleted = 1 AND studentid = 234;
+SELECT bookid, bookname, author, publisher, ifnull(reservestuid, 0) as reservestuid, lendingstate FROM book where deleted = b'0';
+SELECT count(*) FROM book WHERE bookid = 1;
+
 
 
 -- ----------------------------------------------------------------------
@@ -63,7 +66,6 @@ INSERT INTO book (bookid, bookname, author, publisher) VALUES('1010','식객10',
 INSERT INTO lending(lendingid, studentid,lenddate ) VALUES (1,1,sysdate());
 INSERT INTO lendingitem(lendingid, bookitem, bookid, returndate) VALUES (1,1,1,sysdate());
 
-SELECT bookid, bookname, author, publisher, ifnull(reservestuid, 0) as reservestuid, lendingstate FROM book where deleted = b'0';
 
 UPDATE book SET reservestuid =0 WHERE reservestuid is null;
 UPDATE student SET studentname = '', department='' WHERE studentid = 234;
