@@ -58,6 +58,7 @@
             this.btnFormClose.TabIndex = 1;
             this.btnFormClose.Text = "닫기";
             this.btnFormClose.UseVisualStyleBackColor = true;
+            this.btnFormClose.Click += new System.EventHandler(this.btnFormClose_Click);
             // 
             // btnDelete
             // 
@@ -68,6 +69,7 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "학생삭제";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnInsert
             // 

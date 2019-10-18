@@ -16,7 +16,11 @@ namespace _1017_LendingBook
         public enum EditMode { Input, Update };
         public Student StudentInfo {
             get => new Student(Convert.ToInt32(txtStudentID.Text), txtStudentName.Text, txtDepartment.Text);
-            set { }
+            set {
+                txtStudentID.Text = value.ID.ToString();
+                txtDepartment.Text = value.Dept;
+                txtStudentName.Text = value.Name;
+            }
         }
         public StudentInUpForm()
         {

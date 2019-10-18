@@ -26,3 +26,8 @@ D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\obj\Debug\_1017_LendingBo
 D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\obj\Debug\_1017_LendingBook.BookSearchForm.resources
 D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\bin\Debug\BookDBClass.dll
 D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\bin\Debug\BookDBClass.pdb
+D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\obj\Debug\_1017_LendingBook.LendingForm.resources
+D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\obj\Debug\_1017_LendingBook.temp.resources
+D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\obj\Debug\_1017_LendingBook.newLending.resources
+D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\bin\Debug\LendingDBClass.dll
+D:\AIclass\1910\1017\1017~LendingBook\1017~LendingBook\bin\Debug\LendingDBClass.pdb

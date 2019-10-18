@@ -21,6 +21,23 @@ namespace _1017_LendingBook
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            StudentSearchForm frm = new StudentSearchForm();
+            if (DialogResult.OK == frm.ShowDialog())
+            {
+                // 입력한 학생정보 불러오기
+                DataView dv = ((DataTable)studentGrid.DataSource).DefaultView;
+                dv.Sort = "studentID";
+                int rowidx = dv.Find(frm.StudentID);
+                if (rowidx == -1) { 
+                    MessageBox.Show("존재하지 않는 학번입니다."); 
+                }
+                else
+                {
+                    studentGrid.ClearSelection();
+                    studentGrid.Rows[rowidx].Selected = true; // 못 찾으면 -1
+                }
+            }
+            LoadData();
 
         }
 
@@ -28,12 +45,12 @@ namespace _1017_LendingBook
         {
             StudentInUpForm frm = new StudentInUpForm();
 
-            if(DialogResult.OK == frm.ShowDialog())
+            if (DialogResult.OK == frm.ShowDialog())
             {
                 // 입력한 학생정보 불러오기
                 Student student = frm.StudentInfo;
                 StudentDB.StudentDB db = new StudentDB.StudentDB();
-                MessageBox.Show(db.Insert(student));
+                db.Insert(student);
                 db.Dispose();
             }
             LoadData();
@@ -42,6 +59,8 @@ namespace _1017_LendingBook
         private void StudentForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            studentGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            studentGrid.MultiSelect = false; 
         }
 
         private void LoadData()
@@ -54,16 +73,46 @@ namespace _1017_LendingBook
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             StudentInUpForm frm = new StudentInUpForm(EditMode.Update);
-            // frm.StudentInfo = 
+            Student std = new Student();
+            std.ID = Convert.ToInt32(studentGrid["studentid", studentGrid.CurrentRow.Index].Value);
+            std.Name = studentGrid["studentname", studentGrid.CurrentRow.Index].Value.ToString();
+            std.Dept = studentGrid["department", studentGrid.CurrentRow.Index].Value.ToString();
+            frm.StudentInfo = std;
             if (DialogResult.OK == frm.ShowDialog())
             {
                 // 입력한 학생정보 불러오기
                 Student student = frm.StudentInfo;
                 StudentDB.StudentDB db = new StudentDB.StudentDB();
-                MessageBox.Show(db.Insert(student));
+                db.Update(student);
                 db.Dispose();
             }
             LoadData();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("정말로 삭제하시겠습니까?", "삭제", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    int studentID = Convert.ToInt32(studentGrid["studentid", studentGrid.CurrentRow.Index].Value.ToString());
+                    StudentDB.StudentDB db = new StudentDB.StudentDB();
+                    db.Delete(studentID);
+                    db.Dispose();
+                    LoadData();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void btnFormClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            //Application.Exit();
+            //Environment.Exit();
         }
     }
 }

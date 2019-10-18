@@ -64,11 +64,23 @@
     <Compile Include="BookSearchForm.Designer.cs">
       <DependentUpon>BookSearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LendingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LendingForm.Designer.cs">
+      <DependentUpon>LendingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="newLending.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="newLending.Designer.cs">
+      <DependentUpon>newLending.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +102,12 @@
     <Compile Include="StudentSearchForm.Designer.cs">
       <DependentUpon>StudentSearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="temp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="temp.Designer.cs">
+      <DependentUpon>temp.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,8 +117,14 @@
     <EmbeddedResource Include="BookSearchForm.resx">
       <DependentUpon>BookSearchForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LendingForm.resx">
+      <DependentUpon>LendingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newLending.resx">
+      <DependentUpon>newLending.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -120,6 +144,9 @@
     <EmbeddedResource Include="StudentSearchForm.resx">
       <DependentUpon>StudentSearchForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="temp.resx">
+      <DependentUpon>temp.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -137,6 +164,10 @@
     <ProjectReference Include="..\BookDB\BookDB.csproj">
       <Project>{48B80FBA-0617-4CB9-AADE-5ACF1E6989B1}</Project>
       <Name>BookDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LendingDB\LendingDB.csproj">
+      <Project>{f0423031-8fdd-46f7-8ef1-8e5abe544390}</Project>
+      <Name>LendingDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\StudentDB\StudentDB.csproj">
       <Project>{DE934F10-DD7B-419D-A781-682407A5EDC1}</Project>

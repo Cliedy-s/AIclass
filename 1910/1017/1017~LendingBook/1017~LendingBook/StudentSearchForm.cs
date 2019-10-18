@@ -16,5 +16,25 @@ namespace _1017_LendingBook
         {
             InitializeComponent();
         }
+
+        public int StudentID { get { return Convert.ToInt32(txtStudentID.Text); } } // 읽기 전용 프로퍼티
+
+        private void txtStudentID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)//(e.KeyChar == 13)
+            {
+                //입력x
+                if (string.IsNullOrEmpty(txtStudentID.Text.Trim()))
+                {
+                    btnCancel.PerformClick();
+                }
+                else // 입력 o
+                {
+                    btnOK.PerformClick();
+                }
+                
+
+            }
+        }
     }
 }

@@ -28,5 +28,11 @@ namespace _1017_LendingBook
             BookForm bookform = new BookForm();
             bookform.Show();
         }
+
+        private void 대여관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LendingForm lendingForm = new LendingForm();
+            lendingForm.Show();
+        }
     }
 }

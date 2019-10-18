@@ -57,10 +57,62 @@ namespace BookDBClass
             dataAdapter.Fill(ds, "Student");
             return ds;
         }
-
         public void Dispose()
         {
             conn.Close();
+        }
+        public bool IsValid(int bookID)
+        {
+            string sql = string.Format("SELECT count(*) FROM book WHERE bookid = {0}; ", bookID);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
+                return false;
+            return true;
+        }
+        /// <summary>
+        /// 예약 : true 예약x : false
+        /// </summary>
+        public bool IsLended(int bookID)
+        {
+            string sql = string.Format("SELECT LendingState FROM book WHERE bookid = {0}; ", bookID);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
+                return false;
+            return true;
+        }
+        /// <summary>
+        /// 예약한 사람o : true, 예약한 사람x : false
+        /// </summary>
+        public bool IsBooked(int bookID, int stdID)
+        { // 해당 학생이 해당 책을 예약했는지?
+            string sql = string.Format("SELECT Count(*) FROM book WHERE bookid = {0} and ReserveStuID = {1}; ", bookID, stdID);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
+                return false;
+            return true;
+        }
+        //public int IsBooked(int bookID)
+        //{
+        //    string sql = string.Format("SELECT ReserveStuID FROM book WHERE bookid = {0}; ", bookID);
+        //    MySqlCommand cmd = new MySqlCommand(sql, conn);
+        //    return Convert.ToInt32(cmd.ExecuteScalar());
+        //}
+        /// <summary>
+        /// 예약한 책
+        /// </summary>
+        public bool IsBooked(int bookID)
+        { // 책이 예약돼있는지?
+            string sql = string.Format("SELECT Count(*) FROM book WHERE bookid = {0} and ReserveStuID is null; ", bookID);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
+                return false;
+            return true;
+        }
+
+        public Book BookInfos(int bookID)
+        {
+            string sql = string.Format("");
+            return new Book();
         }
     }
 }
