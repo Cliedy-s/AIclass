@@ -1,0 +1,11 @@
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\bin\Debug\WinTCPServer.exe.config
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\bin\Debug\WinTCPServer.exe
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\bin\Debug\WinTCPServer.pdb
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinServer.csprojAssemblyReference.cache
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinTCPServer.Form1.resources
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinTCPServer.Form2.resources
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinTCPServer.Properties.Resources.resources
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinServer.csproj.GenerateResource.cache
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinServer.csproj.CoreCompileInputs.cache
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinTCPServer.exe
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPServer\obj\Debug\WinTCPServer.pdb

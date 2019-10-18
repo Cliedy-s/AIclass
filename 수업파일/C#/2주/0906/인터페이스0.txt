@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0906
+{
+    interface IMan
+    {
+        string Name { get; set; }
+        void Save();
+        void Show();
+    }
+
+    interface IPerson : IMan
+    {
+
+    }
+
+    class Employee : IPerson
+    {
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        string IMan.Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public void Save()
+        {
+            Console.WriteLine("save method");
+        }
+
+        void IMan.Show()
+        {
+            Console.WriteLine("show method");
+        }
+
+        //public void Show()
+        //{
+        //    Console.WriteLine("show method");
+        //}
+
+
+    }
+
+    class InterfaceTest
+    {
+        static void Main(string[] args)
+        {
+            Employee emp = new Employee();
+            emp.Name = "아이린";
+
+            IPerson per;
+            per = emp;  //자동형변화
+
+            per.Save();
+            per.Show();
+
+            //명시적 인터페이스로 정의를 하면, 클래스타입의 인스턴스로 접근불가
+            //emp.Show();
+            ((IMan)emp).Show();
+        }
+    }
+}

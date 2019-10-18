@@ -1,0 +1,11 @@
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\bin\Debug\WinTCPClient.exe.config
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\bin\Debug\WinTCPClient.exe
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\bin\Debug\WinTCPClient.pdb
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinClient.csprojAssemblyReference.cache
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinTCPClient.Form1.resources
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinTCPClient.Form2.resources
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinTCPClient.Properties.Resources.resources
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinClient.csproj.GenerateResource.cache
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinClient.csproj.CoreCompileInputs.cache
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinTCPClient.exe
+C:\Users\GD6\Desktop\C#\5주\20190925\WinNetwork\WinTCPClient\obj\Debug\WinTCPClient.pdb

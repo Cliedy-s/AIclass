@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0917
+{
+    class stringBuilderTest
+    {
+        static void Main()
+        {
+            Dictionary<string, string> dicStu = new Dictionary<string, string>();
+            dicStu["2019001"] = "홍길동";
+            dicStu["2019002"] = "김길동";
+            dicStu["2019003"] = "박길동";
+            dicStu["2019004"] = "이길동";
+            dicStu["2019005"] = "정길동";
+
+            //string str = string.Empty;
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var item in dicStu)
+            {
+                //str += string.Format("{0}:{1}\n", item.Key, item.Value);
+
+                sb.AppendFormat("{0}:{1},", item.Key, item.Value);
+            }
+
+            //Console.WriteLine(sb.ToString().Substring(0, sb.ToString().Length-1));
+            Console.WriteLine(sb.ToString().TrimEnd(','));
+        }
+    }
+}

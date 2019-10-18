@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0905
+{
+    abstract class Person
+    {
+        private string strFName;
+        private string strLName;
+
+        public string FirstName
+        {
+            get { return strFName; }
+            set { strFName = value; }
+        }
+
+        public string LastName
+        {
+            get { return strLName; }
+            set { strLName = value; }
+        }
+
+        //public Person()
+        //{
+        //    Console.WriteLine("PersonClass의 기본 생성자 호출");
+        //}
+
+        public Person(string strFName, string strLName)
+        {
+            this.strFName = strFName;
+            this.strLName = strLName;
+            Console.WriteLine("PersonClass의 특정 생성자 호출");
+        }
+
+        public abstract void Show();
+    }
+
+    class Employee : Person
+    {
+        int iEmployeeID;
+
+        public Employee(int employeeId) :base("아", "이유")
+        {
+            this.iEmployeeID = employeeId;
+        }
+
+        public override void Show()
+        {
+            System.Console.WriteLine("==========Person==================");
+            System.Console.WriteLine(" EmployeeId : {0}", iEmployeeID);
+            System.Console.WriteLine(" FirstName  : {0}", FirstName);
+            System.Console.WriteLine(" LastName   : {0}", LastName);
+            System.Console.WriteLine("==================================");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //추상클래스는 인스턴스화 할 수 없다.
+            //Person per = new Person();
+
+            Employee emp = new Employee(5);
+            emp.Show();
+        }
+    }
+}

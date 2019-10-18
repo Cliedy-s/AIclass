@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0909
+{
+    class MyDate
+    {
+        int yyyy;
+        int mm;
+        readonly int dd;
+        const int baseYY = 1970;
+
+        public int Month //읽기전용속성
+        {
+            get { return this.mm;  }
+        }
+
+        public MyDate(int yyyy)
+        {
+            this.yyyy = yyyy;
+            this.dd = 1;
+        }
+
+        public void Print()
+        {
+            this.yyyy = 2020;
+            //this.dd = 5;
+            //baseYY = 2020;
+            Console.WriteLine("{0}년 {1}월 {2}일", yyyy, mm, dd);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyDate d1 = new MyDate(2019);
+            //d1.Month = 9;
+            d1.Print();
+        }
+    }
+}

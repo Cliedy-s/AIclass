@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0917
+{
+    class Calculator<T>
+    {
+        public T Add(T a, T b)
+        {
+            dynamic da = a;
+            dynamic db = b;
+            return da + db;
+        }
+
+        public T Minus(T a, T b)
+        {
+            dynamic da = a;
+            dynamic db = b;
+            return da - db;
+        }
+
+        public T Multiply(T a, T b)
+        {
+            dynamic da = a;
+            dynamic db = b;
+            return da * db;
+        }
+
+        public T Divide(T a, T b)
+        {
+            dynamic da = a;
+            dynamic db = b;
+            return da / db;
+        }
+    }
+    
+    class Class1
+    {
+        static void Main()
+        {
+            Calculator<int> ical = new Calculator<int>();
+            Console.WriteLine(ical.Add(2, 5));
+
+            Calculator<double> dcal = new Calculator<double>();
+            Console.WriteLine(dcal.Add(2.56, 4.56));
+        }
+    }
+}

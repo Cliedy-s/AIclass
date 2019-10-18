@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0902
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rand = new Random();
+            int guessesTaken = 0;
+            int number = rand.Next(1, 21);
+            int guess = 0;
+
+            while (guessesTaken < 6)
+            {
+                Console.WriteLine("1부터 20까지의 숫자를 입력하세요.");
+                guess = int.Parse(Console.ReadLine());
+
+                guessesTaken++;
+
+                if (guess < number)
+                    Console.WriteLine("Up!");
+
+                if (guess > number)
+                    Console.WriteLine("Down!");
+
+                if (guess == number)
+                    break;
+            }
+
+            if (guess == number)
+            {
+                Console.WriteLine("성공! {0} 번 만에 맞추셨습니다!", guessesTaken);
+            }
+
+            if (guess != number)
+            {
+                Console.WriteLine("다음 기회에! 정답은 {0}이었습니다.", number);
+            }
+        }
+    }
+}

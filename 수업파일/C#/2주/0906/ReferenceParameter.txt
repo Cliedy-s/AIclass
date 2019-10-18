@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0906
+{
+    class MyClass
+    {
+        public int x = 0;
+    }
+
+    class ReferenceParameter
+    {
+        static void Main(string[] args)
+        {
+            //PassByValue / PassByRef / PassByOut 의 차이점
+            MyClass c1 = new MyClass();
+            MyClass c2 = new MyClass();
+            MyClass c3 = new MyClass();
+
+            c1.x = c2.x = c3.x = 100;
+
+            PassByValue(c1);
+            Console.WriteLine(c1.x); //101
+                        
+            PassByRef(ref c2);
+            Console.WriteLine(c2.x); //101, 1
+
+            PassByOut(out c2);
+            Console.WriteLine(c2.x); //1
+        }
+
+        //변수의 스택값이 복사
+        static void PassByValue(MyClass c)
+        {
+            c.x++;
+        }
+
+        //변수의 스택값을 담고 있는 주소자체가 전달
+        static void PassByRef(ref MyClass c)
+        {
+            //c = new MyClass();
+            c.x++;
+        }
+
+        static void PassByOut(out MyClass c)
+        {
+            c = new MyClass();
+            c.x++;
+        }
+    }
+}
