@@ -1,0 +1,2 @@
+D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\obj\Release\DBClasses.csprojAssemblyReference.cache
+D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\obj\Release\DBClasses.csproj.CoreCompileInputs.cache

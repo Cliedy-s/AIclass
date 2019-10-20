@@ -29,7 +29,6 @@ D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\bin\Debug\Google.Pro
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\bin\Debug\Renci.SshNet.dll
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\bin\Debug\BouncyCastle.Crypto.dll
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\bin\Debug\DBClasses.pdb
-D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\bin\Debug\MySql.Data.xml
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\1018_Licenses.csprojAssemblyReference.cache
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\_1018_Licenses.LicenseInsUpForm.resources
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\_1018_Licenses.LicenseRegistryInsForm.resources
@@ -44,3 +43,6 @@ D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\1018_Licen
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\1018_Licenses.csproj.CopyComplete
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\1018_Licenses.exe
 D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\1018_Licenses.pdb
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\bin\Debug\MySql.Data.dll
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\bin\Debug\MySql.Data.xml
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Debug\1018_Licenses.exe.config

@@ -1,0 +1,11 @@
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\1018_Licenses.csprojAssemblyReference.cache
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.LicenseInsUpForm.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.LicenseRegistryInsForm.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.CustomerInsUpForm.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.LicenseForm.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.LicenseRegistryForm.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.CustomerForm.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.MainForm.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\_1018_Licenses.Properties.Resources.resources
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\1018_Licenses.csproj.GenerateResource.cache
+D:\2019\SecondSemester\AIclass\1910\1018\1018\1018_Licenses\obj\Release\1018_Licenses.csproj.CoreCompileInputs.cache

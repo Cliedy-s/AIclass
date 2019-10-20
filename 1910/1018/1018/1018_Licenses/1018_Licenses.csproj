@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -136,7 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LicenseDBClass\DBClasses.csproj">
-      <Project>{D610B309-13B5-41DB-AFD8-863ABB457C2C}</Project>
+      <Project>{d610b309-13b5-41db-afd8-863abb457c2c}</Project>
       <Name>DBClasses</Name>
     </ProjectReference>
   </ItemGroup>

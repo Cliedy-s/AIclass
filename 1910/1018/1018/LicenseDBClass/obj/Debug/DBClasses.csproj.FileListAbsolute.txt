@@ -17,7 +17,6 @@ D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\bin\Debug\BouncyCas
 D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\bin\Debug\Google.Protobuf.dll
 D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\bin\Debug\Renci.SshNet.dll
 D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\bin\Debug\Google.Protobuf.xml
-D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\bin\Debug\MySql.Data.xml
 D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\bin\Debug\Renci.SshNet.xml
 D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\obj\Debug\DBClasses.csprojAssemblyReference.cache
 D:\2019\SecondSemester\AIclass\1910\1018\1018\LicenseDBClass\obj\Debug\DBClasses.csproj.CoreCompileInputs.cache

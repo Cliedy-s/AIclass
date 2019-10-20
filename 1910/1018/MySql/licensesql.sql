@@ -1,4 +1,10 @@
 CREATE SCHEMA LICENSEDB;
+USE LICENSEDB;
+
+drop table if exists CUSTOMER;
+drop table if exists LICENSE;
+drop table if exists LICENSEREGISTRY;
+
 CREATE TABLE CUSTOMER (
 CustomerID varchar(20) primary key
 , CustomerName varchar(30) not null
@@ -16,3 +22,11 @@ registrycode int auto_increment primary key
 , CustomerID varchar(20) not null
 , LicesneID varchar(20) not null
 );
+
+INSERT INTO Customer (CustomerID, CustomerName) VALUES(10001, '정정정'); 
+
+INSERT INTO License (LicenseID, LicenseName, LicenseCost) VALUES(20001, '정처산기', 15000);
+
+INSERT INTO LICENSEREGISTRY (CustomerID, LicesneID) VALUES(10001, 20001);
+
+commit;
