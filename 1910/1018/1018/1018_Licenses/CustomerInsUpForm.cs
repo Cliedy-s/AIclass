@@ -35,5 +35,16 @@ namespace _1018_Licenses
             else if (edtMode == EditMode.Update)
                 txtCustomerID.Enabled = false;
         }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void TxtCustomerName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                this.DialogResult = DialogResult.OK;
+        }
     }
 }

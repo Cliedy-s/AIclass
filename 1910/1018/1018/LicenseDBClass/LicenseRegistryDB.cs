@@ -11,12 +11,13 @@ namespace DBClasses
 {
     public struct LicenseRegistry
     {
-        public LicenseRegistry(int customerID, int licenseID)
+        public LicenseRegistry( int customerID, int licenseID, int registrycode = -1)
         {
+            this.RegistryCode = registrycode;
             this.CustomerID = customerID;
             this.LicenseID = licenseID;
         }
-
+        public int RegistryCode { get; set; }
         public int LicenseID { get; set; }
         public int CustomerID { get; set; }
     }
@@ -31,27 +32,27 @@ namespace DBClasses
         }
         public DataSet GetAll()
         {
-            string sql = "SELECT LicenseID, LicenseName, LicenseCost FROM License; ";
+            string sql = "SELECT registrycode, CustomerID, LicesneID FROM licenseregistry; ";
             MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
             DataSet dataset = new DataSet();
-            adapter.Fill(dataset, "Licenses");
+            adapter.Fill(dataset, "licenseregistry");
             return dataset;
         }
-        public void Insert(License license)
+        public void Insert(LicenseRegistry licenseRegistry)
         {
-            string sql = string.Format("INSERT INTO License (LicenseID, LicenseName, LicenseCost) VALUES({0},'{1}',{2}); ", license.LicenseID, license.LicenseName, license.LicenseCost);
+            string sql = string.Format("INSERT INTO licenseregistry (CustomerID, LicesneID) VALUES({0},{1}); ", licenseRegistry.CustomerID, licenseRegistry.LicenseID);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
         }
-        public void Update(License license)
+        public void Update(LicenseRegistry licenseRegistry)
         {
-            string sql = string.Format("UPDATE License SET LicenseName = '{1}', LicenseCost ={2} WHERE LicenseID = {0}; ", license.LicenseID, license.LicenseName, license.LicenseCost);
+            string sql = string.Format("UPDATE licenseregistry SET CustomerID = {1}, LicesneID ={2} WHERE registrycode = {0}; ", licenseRegistry.RegistryCode, licenseRegistry.CustomerID, licenseRegistry.LicenseID);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             int result = cmd.ExecuteNonQuery();
         }
-        public void Delete(int licenseID)
+        public void Delete(int registrycode)
         {
-            string sql = string.Format("DELETE FROM License WHERE LicenseID = {0}; ", licenseID);
+            string sql = string.Format("DELETE FROM licenseregistry WHERE registrycode = {0}; ", registrycode);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             int result = cmd.ExecuteNonQuery();
         }

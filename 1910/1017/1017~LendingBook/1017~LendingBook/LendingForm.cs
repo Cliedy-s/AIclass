@@ -55,5 +55,10 @@ namespace _1017_LendingBook
 
             }
         }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

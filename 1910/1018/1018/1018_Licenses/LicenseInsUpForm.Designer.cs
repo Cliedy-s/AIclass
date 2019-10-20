@@ -34,7 +34,7 @@
             this.txtLicenseID = new System.Windows.Forms.TextBox();
             this.txtLicenseName = new System.Windows.Forms.TextBox();
             this.txtLicenseCost = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.submit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +69,7 @@
             this.txtLicenseID.Location = new System.Drawing.Point(136, 22);
             this.txtLicenseID.Name = "txtLicenseID";
             this.txtLicenseID.Size = new System.Drawing.Size(140, 21);
-            this.txtLicenseID.TabIndex = 1;
+            this.txtLicenseID.TabIndex = 0;
             // 
             // txtLicenseName
             // 
@@ -83,23 +83,25 @@
             this.txtLicenseCost.Location = new System.Drawing.Point(136, 93);
             this.txtLicenseCost.Name = "txtLicenseCost";
             this.txtLicenseCost.Size = new System.Drawing.Size(140, 21);
-            this.txtLicenseCost.TabIndex = 1;
+            this.txtLicenseCost.TabIndex = 2;
+            this.txtLicenseCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtLicenseCost_KeyPress);
             // 
-            // button1
+            // submit
             // 
-            this.button1.Location = new System.Drawing.Point(201, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submit.Location = new System.Drawing.Point(201, 136);
+            this.submit.Name = "submit";
+            this.submit.Size = new System.Drawing.Size(75, 23);
+            this.submit.TabIndex = 3;
+            this.submit.Text = "submit";
+            this.submit.UseVisualStyleBackColor = true;
+            this.submit.Click += new System.EventHandler(this.submit_Click);
             // 
             // LicenseInsUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 182);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.submit);
             this.Controls.Add(this.txtLicenseCost);
             this.Controls.Add(this.txtLicenseName);
             this.Controls.Add(this.txtLicenseID);
@@ -108,6 +110,7 @@
             this.Controls.Add(this.label1);
             this.Name = "LicenseInsUpForm";
             this.Text = "LicenseInsUpForm";
+            this.Load += new System.EventHandler(this.LicenseInsUpForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +124,6 @@
         private System.Windows.Forms.TextBox txtLicenseID;
         private System.Windows.Forms.TextBox txtLicenseName;
         private System.Windows.Forms.TextBox txtLicenseCost;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button submit;
     }
 }

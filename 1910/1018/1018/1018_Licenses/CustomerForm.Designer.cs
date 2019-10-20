@@ -62,8 +62,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnSignUp);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 400;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 466);
+            this.splitContainer1.SplitterDistance = 411;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -73,8 +73,10 @@
             this.dgvCustomerList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCustomerList.Location = new System.Drawing.Point(0, 0);
             this.dgvCustomerList.Name = "dgvCustomerList";
+            this.dgvCustomerList.ReadOnly = true;
+            this.dgvCustomerList.RowHeadersWidth = 51;
             this.dgvCustomerList.RowTemplate.Height = 23;
-            this.dgvCustomerList.Size = new System.Drawing.Size(800, 400);
+            this.dgvCustomerList.Size = new System.Drawing.Size(800, 411);
             this.dgvCustomerList.TabIndex = 0;
             // 
             // btnClose
@@ -121,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 466);
             this.Controls.Add(this.splitContainer1);
             this.Name = "CustomerForm";
             this.Text = "CustomerForm";

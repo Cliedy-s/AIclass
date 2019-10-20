@@ -26,18 +26,41 @@ namespace _1018_Licenses
 
         private void LicenseRegistryForm_Load(object sender, EventArgs e)
         {
-
+            dgvLicenseList.ReadOnly = true;
+            dgvLicenseList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRegistryList.ReadOnly = true;
+            dgvRegistryList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            LoadData();
         }
         private void LoadData()
         {
-            //DataSet dataset = new DataSet();
+            DataSet data = new DataSet();
 
-            //LicenseRegistryDB cdb = new LicenseRegistryDB();
-            //dataset = cdb.GetAll();
-            //cdb.Dispose();
+            //Load
+            LicenseDB ldb = new LicenseDB();
+            foreach (DataTable item in ldb.GetAll().Tables)
+            {
+                data.Tables.Add(item.Copy());
+            }
+            ldb.Dispose();
 
-            //dgvCustomerList.DataSource = dataset;
-            //dgvCustomerList.DataMember = "Customers";
+            LicenseRegistryDB lrdb = new LicenseRegistryDB();
+            foreach (DataTable item in lrdb.GetAll().Tables)
+            {
+                data.Tables.Add(item.Copy());
+            }
+            lrdb.Dispose();
+            //
+            
+            //setRelation
+            DataRelation relation = new DataRelation("fk_license_licenseregistry", data.Tables["Licenses"].Columns["LicenseID"], data.Tables["licenseregistry"].Columns["LicesneID"]);
+            data.Relations.Add(relation);
+            //
+
+            dgvLicenseList.DataSource = data;
+            dgvLicenseList.DataMember = "licenses";
+            dgvRegistryList.DataSource = data;
+            dgvRegistryList.DataMember = "licenses.fk_license_licenseregistry";
         }
     }
 }

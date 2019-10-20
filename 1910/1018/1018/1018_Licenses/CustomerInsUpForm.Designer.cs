@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.submit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +58,7 @@
             this.txtCustomerID.Location = new System.Drawing.Point(137, 45);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(140, 21);
-            this.txtCustomerID.TabIndex = 1;
+            this.txtCustomerID.TabIndex = 0;
             // 
             // txtCustomerName
             // 
@@ -66,23 +66,25 @@
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(140, 21);
             this.txtCustomerName.TabIndex = 1;
+            this.txtCustomerName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCustomerName_KeyPress);
             // 
-            // button1
+            // submit
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(201, 136);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.submit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.submit.Location = new System.Drawing.Point(201, 136);
+            this.submit.Name = "submit";
+            this.submit.Size = new System.Drawing.Size(75, 23);
+            this.submit.TabIndex = 2;
+            this.submit.Text = "submit";
+            this.submit.UseVisualStyleBackColor = true;
+            this.submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // CustomerInsUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 182);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.submit);
             this.Controls.Add(this.txtCustomerName);
             this.Controls.Add(this.txtCustomerID);
             this.Controls.Add(this.label2);
@@ -101,6 +103,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button submit;
     }
 }

@@ -20,6 +20,8 @@ namespace _1018_Licenses
         private void CustomerForm_Load(object sender, EventArgs e)
         {
             LoadData();
+            dgvCustomerList.ReadOnly = true;
+            dgvCustomerList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -68,7 +70,6 @@ namespace _1018_Licenses
 
             dgvCustomerList.DataSource = dataset;
             dgvCustomerList.DataMember = "Customers";
-            dgvCustomerList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
     }
