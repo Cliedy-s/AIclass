@@ -30,3 +30,4 @@ D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\BookDB.csproj.CoreCompileInput
 D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\BookDB.csproj.CopyComplete
 D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\BookDBClass.dll
 D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\BookDBClass.pdb
+D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\BookDB.csprojAssemblyReference.cache

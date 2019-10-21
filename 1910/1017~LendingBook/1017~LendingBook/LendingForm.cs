@@ -55,9 +55,22 @@ namespace _1017_LendingBook
         private void btnLend_Click(object sender, EventArgs e)
         {
             newLending frm = new newLending();
-            if(frm.ShowDialog() == DialogResult.OK)
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-
+                LendingDB lendingDB = null;
+                try
+                {
+                    lendingDB = new LendingDB();
+                    lendingDB.LendBook(frm.StudentID, frm.AddedBooks);
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+                finally
+                {
+                    lendingDB.Dispose();
+                }
             }
         }
 

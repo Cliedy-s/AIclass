@@ -23,7 +23,7 @@ namespace LendingDBClass
             conn.Open();
         }
 
-        public void Insert()
+        public void LendBook(int studentID, int[] bookIDs)
         {
             string insertsql = "INSERT";
             MySqlCommand command = new MySqlCommand();

@@ -1,4 +1,5 @@
 ﻿using BookDBClass;
+using LendingDBClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,21 @@ namespace _1017_LendingBook
 {
     public partial class newLending : Form
     {
+        public int StudentID { get {
+                return Convert.ToInt32(txtStudentID.Text);
+            } }
+        public int[] AddedBooks { get {
+                int[] ints = new int[lstLendBooks.Items.Count];
+                for (int i = 0; i < lstLendBooks.Items.Count; i++)
+                {
+                    ints[i] = Convert.ToInt32(lstLendBooks.Items[i].ToString().Substring(0,6));
+                }
+                return ints;
+            } }
+
         public newLending()
         {
             InitializeComponent();
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void newLending_Load(object sender, EventArgs e)
@@ -38,7 +46,7 @@ namespace _1017_LendingBook
         private void btnAdd_Click(object sender, EventArgs e)
         {
             BookDB bookDB = new BookDB();
-            txtStudentID.Enabled = false;
+            Book book = new Book();
             try
             {
                 int bookID = int.Parse(txtBookID.Text);
@@ -53,23 +61,60 @@ namespace _1017_LendingBook
                 else if (bookDB.IsBooked(bookID))
                 {
                     // 예약자가 입력된 학생인지
-                    if (!bookDB.IsBooked(bookID, stdID))
+                    if (bookDB.IsBooked(bookID, stdID))
                         throw new Exception("이미 예약된 책 입니다.");
                 }
                 // 이미 추가된 책인지 체크
-                // 좀있다가..ㅎ
+                else if (IsAlreadyAdded(bookID))
+                {
+                    throw new Exception("이미 선택한 책 입니다.");
+                }
                 // 빌리자!
                 else
                 {
-                    lstLendBooks.Items.Add(string.Format("{0,6} - {1,6}, {2,6}", bookID,  "",""));
+                    book = bookDB.GetbyBookID(bookID);
+                    lstLendBooks.Items.Add(string.Format("{0,6} - {1,6}, {2,6}", book.bookid, book.bookname, book.author));
+                    txtBookID.Text = "";
+                    txtStudentID.Enabled = false;
                 }
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
+        }
+        /// <summary>
+        /// 리스트박스에 이미 있는지
+        /// </summary>
+        /// <param name="bookID">책 ID</param>
+        /// <returns>true : 존재 , false : 존재x</returns>
+        public bool IsAlreadyAdded(int bookID)
+        {
+            foreach (string item in lstLendBooks.Items)
+            {
+                if (bookID == Convert.ToInt32(item.Substring(0, 6))) // 형변환 줄이기
+                // if (bookID.ToString() == item.Substring(0, 6).Trim())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            if (txtStudentID.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("학번을 입력하세요.");
+            }
+            else if (lstLendBooks.Items.Count == 0)
+            {
+                MessageBox.Show("책을 선택하세요.");
+            }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
+            }
         }
     }
 }

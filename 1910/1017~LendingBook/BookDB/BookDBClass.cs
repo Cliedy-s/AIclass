@@ -103,7 +103,7 @@ namespace BookDBClass
         /// </summary>
         public bool IsBooked(int bookID)
         { // 책이 예약돼있는지?
-            string sql = string.Format("SELECT Count(*) FROM book WHERE bookid = {0} and ReserveStuID is null; ", bookID);
+            string sql = string.Format("SELECT Count(*) FROM book WHERE bookid = {0} and ReserveStuID is not null; ", bookID);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             if (Convert.ToInt32(cmd.ExecuteScalar()) == 0)
                 return false;

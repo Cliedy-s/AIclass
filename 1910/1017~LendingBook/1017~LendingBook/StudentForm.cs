@@ -27,6 +27,7 @@ namespace _1017_LendingBook
                 // 입력한 학생정보 불러오기
                 DataView dv = ((DataTable)studentGrid.DataSource).DefaultView;
                 dv.Sort = "studentID";
+                //int rowidx = dv.Find(frm.stdName);
                 int rowidx = dv.Find(frm.StudentID);
                 if (rowidx == -1) { 
                     MessageBox.Show("존재하지 않는 학번입니다."); 

@@ -18,6 +18,7 @@ namespace _1017_LendingBook
         }
 
         public int StudentID { get { return Convert.ToInt32(txtStudentID.Text); } } // 읽기 전용 프로퍼티
+        //public string stdName { get { return txtStudentID.Text; } } // 읽기 전용 프로퍼티
 
         private void txtStudentID_KeyPress(object sender, KeyPressEventArgs e)
         {
