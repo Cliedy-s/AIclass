@@ -69,7 +69,8 @@ INSERT INTO lendingitem(lendingid, bookitem, bookid, returndate) VALUES (1,1,1,s
 
 UPDATE book SET reservestuid =0 WHERE reservestuid is null;
 UPDATE student SET studentname = '', department='' WHERE studentid = 234;
-UPDATE book SET lendingstate = b'1' WHERE bookid%2 = 0 ;
+UPDATE book SET lendingstate = b'0' WHERE bookid%2 = 0 ;
+select * from book;
 DELETE FROM student WHERE studentid = 234;
 COMMIT;
 ROLLBACK;

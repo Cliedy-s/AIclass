@@ -46,5 +46,11 @@
     <Compile Include="BookDBClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StudentDB\StudentDB.csproj">
+      <Project>{DE934F10-DD7B-419D-A781-682407A5EDC1}</Project>
+      <Name>StudentDB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

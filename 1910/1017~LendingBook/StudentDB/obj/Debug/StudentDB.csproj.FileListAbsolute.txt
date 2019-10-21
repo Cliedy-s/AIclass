@@ -37,3 +37,4 @@ D:\AIclass\1910\1017~LendingBook\StudentDB\obj\Debug\StudentDB.csproj.CoreCompil
 D:\AIclass\1910\1017~LendingBook\StudentDB\obj\Debug\StudentDB.csproj.CopyComplete
 D:\AIclass\1910\1017~LendingBook\StudentDB\obj\Debug\StudentDB.dll
 D:\AIclass\1910\1017~LendingBook\StudentDB\obj\Debug\StudentDB.pdb
+D:\AIclass\1910\1017~LendingBook\StudentDB\obj\Debug\StudentDB.csprojAssemblyReference.cache

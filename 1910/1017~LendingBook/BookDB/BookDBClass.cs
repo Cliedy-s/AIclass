@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using StudentDB;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -55,7 +56,7 @@ namespace BookDBClass
             //dataAdapter.SelectCommand.CommandText = "SELECT studentid, studentname, department FROM student WHERE deleted = 0; ";
             //dataAdapter.SelectCommand.Connection = conn;
             DataSet ds = new DataSet();
-            dataAdapter.Fill(ds, "Student");
+            dataAdapter.Fill(ds, "Book");
             return ds;
         }
         public void Dispose()
@@ -71,7 +72,7 @@ namespace BookDBClass
             return true;
         }
         /// <summary>
-        /// 예약 : true 예약x : false
+        /// 대여 : true 대여x : false
         /// </summary>
         public bool IsLended(int bookID)
         {
@@ -113,7 +114,7 @@ namespace BookDBClass
         public Book GetbyBookID(int bookID)
         {
             Book BookInfo = new Book();
-            string cmdText = string.Format("SELECT bookid, bookname, author, publisher FROM Book WHERE BOOKID={0} AND Deleted =0; ",bookID );
+            string cmdText = string.Format("SELECT bookid, bookname, author, publisher FROM Book WHERE BOOKID={0} AND Deleted =0; ", bookID);
             MySqlCommand cmd = new MySqlCommand(cmdText, conn);
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())

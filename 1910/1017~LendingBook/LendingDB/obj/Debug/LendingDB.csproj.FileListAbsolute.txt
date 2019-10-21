@@ -31,3 +31,8 @@ D:\AIclass\1910\1017~LendingBook\LendingDB\obj\Debug\LendingDB.csproj.CoreCompil
 D:\AIclass\1910\1017~LendingBook\LendingDB\obj\Debug\LendingDB.csproj.CopyComplete
 D:\AIclass\1910\1017~LendingBook\LendingDB\obj\Debug\LendingDBClass.dll
 D:\AIclass\1910\1017~LendingBook\LendingDB\obj\Debug\LendingDBClass.pdb
+D:\AIclass\1910\1017~LendingBook\LendingDB\bin\Debug\StudentDB.dll
+D:\AIclass\1910\1017~LendingBook\LendingDB\bin\Debug\StudentDB.pdb
+D:\AIclass\1910\1017~LendingBook\LendingDB\obj\Debug\LendingDB.csprojAssemblyReference.cache
+D:\AIclass\1910\1017~LendingBook\LendingDB\bin\Debug\BookDBClass.dll
+D:\AIclass\1910\1017~LendingBook\LendingDB\bin\Debug\BookDBClass.pdb

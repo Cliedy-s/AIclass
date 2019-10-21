@@ -1,4 +1,5 @@
-﻿using LendingDBClass;
+﻿using BookDBClass;
+using LendingDBClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace _1017_LendingBook
     public partial class LendingForm : Form
     {
         DataSet ds;
+        DataType datatype = DataType.Lending;
         public LendingForm()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace _1017_LendingBook
             dgvUnlendable.ReadOnly = true;
         }
 
+        enum DataType { Reserve, Lending }
         private void LoadData()
         {
             ds = new DataSet();
@@ -36,19 +39,33 @@ namespace _1017_LendingBook
             ds = lendingDB.GetAll();
             lendingDB.Dispose();
 
-            DataView dvLendable = new DataView(ds.Tables["Book"]);
-            dvLendable.RowFilter = "lendingstate = 0";
-            groupBox1.Text = "대여 가능 목록";
-            dgvLendable.DataSource = dvLendable;
+            DataView dvAble = new DataView(ds.Tables["Book"]);
+            DataView dvUnable = new DataView(ds.Tables["Book"]);
 
-            DataView dvUnLendable = new DataView(ds.Tables["Book"]);
-            dvUnLendable.RowFilter = "lendingstate = 1";
-            groupBox2.Text = "대여 불가능 목록";
-            dgvUnlendable.DataSource = dvUnLendable;
+            switch (datatype)
+            {
+                case DataType.Lending:
+                    groupBox1.Text = "대여 가능 목록";
+                    groupBox2.Text = "대여 불가능 목록";
+                    dvAble.RowFilter = "lendingstate = 0";
+                    dvUnable.RowFilter = "lendingstate = 1";
+                    break;
+                case DataType.Reserve:
+                    groupBox1.Text = "예약 가능 목록";
+                    groupBox2.Text = "예약 불가능 목록";
+                    dvAble.RowFilter = "reservestuid = 0 and lendingstate = 0";
+                    dvUnable.RowFilter = "reservestuid <> 0";
+                    break;
+            }
+            dgvLendable.DataSource = dvAble;
+            dgvUnlendable.DataSource = dvUnable;
         }
 
         private void btnLendlist_Click(object sender, EventArgs e)
         {
+            groupBox1.Text = "대여 가능 목록";
+            groupBox2.Text = "대여 불가능 목록";
+            datatype = DataType.Lending;
             LoadData();
         }
 
@@ -62,6 +79,7 @@ namespace _1017_LendingBook
                 {
                     lendingDB = new LendingDB();
                     lendingDB.LendBook(frm.StudentID, frm.AddedBooks);
+                    LoadData();
                 }
                 catch (Exception err)
                 {
@@ -77,6 +95,40 @@ namespace _1017_LendingBook
         private void Panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void ReserveList_Click(object sender, EventArgs e)
+        {
+            datatype = DataType.Reserve;
+            LoadData();
+        }
+
+        private void BtnReserve_Click(object sender, EventArgs e)
+        {
+            ReserveForm frm = new ReserveForm();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LendingDB ledingDB = null;
+                try
+                {
+                    ledingDB = new LendingDB();
+                    ledingDB.Reserve(frm.StudentID, frm.BookID);
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+                finally
+                {
+                    ledingDB.Dispose();
+                }
+                LoadData();
+            }
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

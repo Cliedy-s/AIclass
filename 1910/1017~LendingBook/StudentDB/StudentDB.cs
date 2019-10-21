@@ -66,6 +66,15 @@ namespace StudentDB
             else
                 return false;
         }
+        public bool isValied(int stdID)
+        {
+            string sql = string.Format("SELECT count(*) FROM student WHERE deleted = 0 and studentid = {0}; ", stdID);
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            if (Convert.ToInt32(command.ExecuteScalar()) == 1)
+                return true;
+            else
+                return false;
+        }
         public DataSet GetAll()
         {
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT studentid, studentname, department FROM student WHERE deleted = 0; ", conn);

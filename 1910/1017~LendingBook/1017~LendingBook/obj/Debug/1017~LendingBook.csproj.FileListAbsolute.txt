@@ -97,3 +97,4 @@ D:\AIclass\1910\1017~LendingBook\1017~LendingBook\obj\Debug\1017~LendingBook.csp
 D:\AIclass\1910\1017~LendingBook\1017~LendingBook\obj\Debug\1017~LendingBook.csproj.CopyComplete
 D:\AIclass\1910\1017~LendingBook\1017~LendingBook\obj\Debug\1017~LendingBook.exe
 D:\AIclass\1910\1017~LendingBook\1017~LendingBook\obj\Debug\1017~LendingBook.pdb
+D:\AIclass\1910\1017~LendingBook\1017~LendingBook\obj\Debug\_1017_LendingBook.ReserveForm.resources
