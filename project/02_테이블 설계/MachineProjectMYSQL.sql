@@ -1,3 +1,5 @@
+USE machineprojectdb;
+
 DROP TABLE IF EXISTS MACHINE;
 DROP TABLE IF EXISTS EMPLOYEES;
 DROP TABLE IF EXISTS PRODUCTION;
@@ -38,7 +40,7 @@ ProductionCode                 INT     NOT NULL  ,
 MachineID                      CHAR (5)   NOT NULL  ,
 ProductionID                   CHAR (5)   NOT NULL  ,
 TodoCode                       INT     NOT NULL  ,
-EmployeeCode                   CHAR (5)   NOT NULL  ,
+EmployeeID                   CHAR (5)   NOT NULL  ,
 Amount                         INT     NOT NULL  ,
 ProductionDate                 DATETIME     NOT NULL  ,
 DefectRate                     DOUBLE      
@@ -65,40 +67,57 @@ ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT pk_producttionlist_productioncode PRIM
 ALTER TABLE PLISTBYMACHINE ADD CONSTRAINT pk_plistbymachine_machineid_productionid PRIMARY KEY(machineid, productionid);				
 ALTER TABLE PRODUCTIONPLAN ADD CONSTRAINT pk_productionplan_productionplancode PRIMARY KEY( ProductionPlanCode);				
 
-#FK
-ALTER TABLE TODO ADD CONSTRAINT fk_machine_todo_machineid  FOREIGN KEY(MachineID ) REFERENCES machine(MachineID);					
-ALTER TABLE TODO ADD CONSTRAINT fk_production_todo_productionid  FOREIGN KEY(ProductionID ) REFERENCES production(ProductionID);					
-ALTER TABLE TODO ADD CONSTRAINT fk_employees_todo_employeeid  FOREIGN KEY(EmployeeID ) REFERENCES employees(EmployeeID);					
-ALTER TABLE TODO ADD CONSTRAINT fk_productionplan_todo_amount  FOREIGN KEY(Amount ) REFERENCES ProductionPlan(Amount);					
+#FK	
+-- ALTER TABLE TODO ADD CONSTRAINT fk_machine_todo_machineid  FOREIGN KEY(MachineID ) REFERENCES machine(MachineID);					
+-- ALTER TABLE TODO ADD CONSTRAINT fk_production_todo_productionid  FOREIGN KEY(ProductionID ) REFERENCES production(ProductionID);					
+-- ALTER TABLE TODO ADD CONSTRAINT fk_employees_todo_employeeid  FOREIGN KEY(EmployeeID ) REFERENCES employees(EmployeeID);		
+#=>
+ALTER TABLE TODO ADD CONSTRAINT fk_plistbymachine_todo_machineid  FOREIGN KEY(MachineID ) REFERENCES plistbymachine(MachineID);					
+ALTER TABLE TODO ADD CONSTRAINT fk_plistbymachine_todo_productionid  FOREIGN KEY(ProductionID ) REFERENCES plistbymachine(ProductionID);					
+ALTER TABLE TODO ADD CONSTRAINT fk_employees_todo_employeeid  FOREIGN KEY(EmployeeID ) REFERENCES employees(EmployeeID);
+#			
 
-ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_machine_productionlist_machineid  FOREIGN KEY(MachineID ) REFERENCES machine(MachineID);					
-ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_production_productionlist_productionid  FOREIGN KEY(ProductionID ) REFERENCES production(ProductionID);					
+-- ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_machine_productionlist_machineid  FOREIGN KEY(MachineID ) REFERENCES machine(MachineID);					
+-- ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_production_productionlist_productionid  FOREIGN KEY(ProductionID ) REFERENCES production(ProductionID);					
+-- ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_todo_productionlist_todocode  FOREIGN KEY(TodoCode ) REFERENCES todo(TodoCode);					
+-- ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_employees_productionlist_employeeid  FOREIGN KEY(EmployeeID ) REFERENCES employees(EmployeeID);					
+#=>
+ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_plistbymachine_productionlist_machineid  FOREIGN KEY(MachineID ) REFERENCES plistbymachine(MachineID);					
+ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_plistbymachine_productionlist_productionid  FOREIGN KEY(ProductionID ) REFERENCES plistbymachine(ProductionID);					
 ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_todo_productionlist_todocode  FOREIGN KEY(TodoCode ) REFERENCES todo(TodoCode);					
-ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_employees_productionlist_employeecode  FOREIGN KEY(EmployeeCode ) REFERENCES employees(EmployeeCode);					
-# ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_todo_productionlist_amount  FOREIGN KEY(Amount ) REFERENCES Todo(Amount);					
+ALTER TABLE PRODUCTIONLIST ADD CONSTRAINT fk_employees_productionlist_employeeid  FOREIGN KEY(EmployeeID ) REFERENCES employees(EmployeeID);					
+#
 
 ALTER TABLE PLISTBYMACHINE ADD CONSTRAINT fk_machine_plistbymachine_machineid  FOREIGN KEY(MachineID ) REFERENCES Machine(MachineID);					
-ALTER TABLE PLISTBYMACHINE ADD CONSTRAINT fk_production_plistbymachine_productionid  FOREIGN KEY(ProductionID ) REFERENCES Production(ProductionID);			
+ALTER TABLE PLISTBYMACHINE ADD CONSTRAINT fk_production_plistbymachine_productionid  FOREIGN KEY(ProductionID ) REFERENCES Production(ProductionID);					
 
-ALTER TABLE PRODUCTIONPLAN ADD CONSTRAINT fk_production_productionplan_productionid  FOREIGN KEY(ProductionID ) REFERENCES Production(ProductionID);		
+ALTER TABLE PRODUCTIONPLAN ADD CONSTRAINT fk_production_productionplan_productionid  FOREIGN KEY(ProductionID ) REFERENCES Production(ProductionID);					
 
 
-# DROP CONSTRAINT
-ALTER TABLE TODO DROP FOREIGN KEY  `fk_machine_todo_machineid`;					
-ALTER TABLE TODO DROP FOREIGN KEY  `fk_production_todo_productionid`;					
-ALTER TABLE TODO DROP FOREIGN KEY  `fk_employees_todo_employeeid`;					
-ALTER TABLE TODO DROP FOREIGN KEY  `fk_productionplan_todo_amount`;		
+# DROP CONSTRAINT		
+-- ALTER TABLE TODO DROP FOREIGN KEY  `fk_machine_todo_machineid`;					
+-- ALTER TABLE TODO DROP FOREIGN KEY  `fk_production_todo_productionid`;					
+-- ALTER TABLE TODO DROP FOREIGN KEY  `fk_employees_todo_employeeid`;				
+#=>
+ALTER TABLE TODO DROP FOREIGN KEY  `fk_plistbymachine_todo_machineid`;					
+ALTER TABLE TODO DROP FOREIGN KEY  `fk_plistbymachine_todo_productionid`;					
+ALTER TABLE TODO DROP FOREIGN KEY  `fk_employees_todo_employeeid`;	
+#
 
-ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_machine_productionlist_machineid`;					
-ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_production_productionlist_productionid`;					
+-- ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_machine_productionlist_machineid`;					
+-- ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_production_productionlist_productionid`;					
+-- ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_todo_productionlist_todocode`;					
+-- ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_employees_productionlist_employeeid`;	
+#=>
+ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_plistbymachine_productionlist_machineid`;					
+ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_plistbymachine_productionlist_productionid`;					
 ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_todo_productionlist_todocode`;					
-ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_employees_productionlist_employeecode`;					
-ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_todo_productionlist_amount`;					
-					
+ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_employees_productionlist_employeeid`;				
+#
 
 ALTER TABLE PLISTBYMACHINE DROP FOREIGN KEY  `fk_machine_plistbymachine_machineid`;					
 ALTER TABLE PLISTBYMACHINE DROP FOREIGN KEY  `fk_production_plistbymachine_productionid`;					
-			
+
 ALTER TABLE PRODUCTIONPLAN DROP FOREIGN KEY  `fk_production_productionplan_productionid`;					
 
 
