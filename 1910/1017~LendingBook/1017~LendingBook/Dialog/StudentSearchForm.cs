@@ -37,5 +37,10 @@ namespace _1017_LendingBook
 
             }
         }
+
+        private void StudentSearchForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

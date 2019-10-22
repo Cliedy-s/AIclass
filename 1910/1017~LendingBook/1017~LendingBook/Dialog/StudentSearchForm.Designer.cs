@@ -83,6 +83,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "StudentSearchForm";
             this.Text = "StudentSearchForm";
+            this.Load += new System.EventHandler(this.StudentSearchForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
