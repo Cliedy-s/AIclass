@@ -10,14 +10,16 @@ using System.Windows.Forms;
 
 namespace _1017_LendingBook
 {
-    public partial class temp : Form
+    public partial class ReturnInputForm : Form
     {
-        public temp()
+        public ReturnInputForm()
         {
             InitializeComponent();
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        public int BookID { get { return Convert.ToInt32(txtBookID.Text); }  }
+
+        private void ReturnInputForm_Load(object sender, EventArgs e)
         {
 
         }

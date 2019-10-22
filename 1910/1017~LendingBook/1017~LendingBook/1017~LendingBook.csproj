@@ -46,22 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BookForm.Designer.cs">
       <DependentUpon>BookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BookInUpForm.cs">
+    <Compile Include="Dialog\BookInUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookInUpForm.Designer.cs">
+    <Compile Include="Dialog\BookInUpForm.Designer.cs">
       <DependentUpon>BookInUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BookSearchForm.cs">
+    <Compile Include="Dialog\BookSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookSearchForm.Designer.cs">
+    <Compile Include="Dialog\BookSearchForm.Designer.cs">
       <DependentUpon>BookSearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LendingForm.cs">
@@ -70,25 +76,43 @@
     <Compile Include="LendingForm.Designer.cs">
       <DependentUpon>LendingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="newLending.cs">
+    <Compile Include="Dialog\newLending.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="newLending.Designer.cs">
+    <Compile Include="Dialog\newLending.Designer.cs">
       <DependentUpon>newLending.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReserveForm.cs">
+    <Compile Include="Dialog\ReserveForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReserveForm.Designer.cs">
+    <Compile Include="Dialog\ReserveForm.Designer.cs">
       <DependentUpon>ReserveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnForm.Designer.cs">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ReturnInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\ReturnInputForm.Designer.cs">
+      <DependentUpon>ReturnInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentForm.cs">
       <SubType>Form</SubType>
@@ -96,40 +120,40 @@
     <Compile Include="StudentForm.Designer.cs">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StudentInUpForm.cs">
+    <Compile Include="Dialog\StudentInUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentInUpForm.Designer.cs">
+    <Compile Include="Dialog\StudentInUpForm.Designer.cs">
       <DependentUpon>StudentInUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StudentSearchForm.cs">
+    <Compile Include="Dialog\StudentSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentSearchForm.Designer.cs">
+    <Compile Include="Dialog\StudentSearchForm.Designer.cs">
       <DependentUpon>StudentSearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="temp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="temp.Designer.cs">
-      <DependentUpon>temp.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BookForm.resx">
       <DependentUpon>BookForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BookInUpForm.resx">
+    <EmbeddedResource Include="Dialog\BookInUpForm.resx">
       <DependentUpon>BookInUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BookSearchForm.resx">
+    <EmbeddedResource Include="Dialog\BookSearchForm.resx">
       <DependentUpon>BookSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LendingForm.resx">
       <DependentUpon>LendingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="newLending.resx">
+    <EmbeddedResource Include="Dialog\newLending.resx">
       <DependentUpon>newLending.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -141,20 +165,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ReserveForm.resx">
+    <EmbeddedResource Include="Dialog\ReserveForm.resx">
       <DependentUpon>ReserveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnForm.resx">
+      <DependentUpon>ReturnForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\ReturnInputForm.resx">
+      <DependentUpon>ReturnInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentForm.resx">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StudentInUpForm.resx">
+    <EmbeddedResource Include="Dialog\StudentInUpForm.resx">
       <DependentUpon>StudentInUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StudentSearchForm.resx">
+    <EmbeddedResource Include="Dialog\StudentSearchForm.resx">
       <DependentUpon>StudentSearchForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="temp.resx">
-      <DependentUpon>temp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -170,17 +197,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookDB\BookDB.csproj">
+    <ProjectReference Include="..\BookDB\DBClass.csproj">
       <Project>{48B80FBA-0617-4CB9-AADE-5ACF1E6989B1}</Project>
-      <Name>BookDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LendingDB\LendingDB.csproj">
-      <Project>{f0423031-8fdd-46f7-8ef1-8e5abe544390}</Project>
-      <Name>LendingDB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StudentDB\StudentDB.csproj">
-      <Project>{DE934F10-DD7B-419D-A781-682407A5EDC1}</Project>
-      <Name>StudentDB</Name>
+      <Name>DBClass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

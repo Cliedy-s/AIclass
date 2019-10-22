@@ -1,5 +1,4 @@
 ﻿using BookDBClass;
-using LendingDBClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,17 +13,25 @@ namespace _1017_LendingBook
 {
     public partial class newLending : Form
     {
-        public int StudentID { get {
+        public int StudentID
+        {
+            get
+            {
                 return Convert.ToInt32(txtStudentID.Text);
-            } }
-        public int[] AddedBooks { get {
+            }
+        }
+        public int[] AddedBooks
+        {
+            get
+            {
                 int[] ints = new int[lstLendBooks.Items.Count];
                 for (int i = 0; i < lstLendBooks.Items.Count; i++)
                 {
-                    ints[i] = Convert.ToInt32(lstLendBooks.Items[i].ToString().Substring(0,6));
+                    ints[i] = Convert.ToInt32(lstLendBooks.Items[i].ToString().Substring(0, 6));
                 }
                 return ints;
-            } }
+            }
+        }
 
         public newLending()
         {
@@ -51,32 +58,22 @@ namespace _1017_LendingBook
             {
                 int bookID = int.Parse(txtBookID.Text);
                 int stdID = int.Parse(txtStudentID.Text);
-                // 책 번호가 유효한지 체크
-                if (!bookDB.IsValid(bookID))
+                
+                if (!bookDB.IsValid(bookID)) // 책 번호가 유효한지 체크
                     throw new Exception("예약된 책인지, 존재하는 책인지 확인해주세요");
-                // 대여 중인 책인지 체크
-                else if (bookDB.IsLended(bookID))
+                else if (bookDB.IsLended(bookID)) // 대여 중인 책인지 체크
                     throw new Exception("이미 대여중인 책 입니다.");
-                // 예약된 책인지 체크
-                else if (bookDB.IsBooked(bookID))
-                {
-                    // 예약자가 입력된 학생인지
-                    if (bookDB.IsBooked(bookID, stdID))
+                else if (bookDB.IsBooked(bookID)) // 예약된 책인지 체크
+                    if (!bookDB.IsBooked(bookID, stdID)) // 예약자가 입력된 학생인지
                         throw new Exception("이미 예약된 책 입니다.");
-                }
-                // 이미 추가된 책인지 체크
-                else if (IsAlreadyAdded(bookID))
-                {
+                else if (IsAlreadyAdded(bookID))// 이미 추가된 책인지 체크
                     throw new Exception("이미 선택한 책 입니다.");
-                }
+                
                 // 빌리자!
-                else
-                {
-                    book = bookDB.GetbyBookID(bookID);
-                    lstLendBooks.Items.Add(string.Format("{0,6} - {1,6}, {2,6}", book.bookid, book.bookname, book.author));
-                    txtBookID.Text = "";
-                    txtStudentID.Enabled = false;
-                }
+                book = bookDB.GetbyBookID(bookID);
+                lstLendBooks.Items.Add(string.Format("{0,6} - {1,6}, {2,6}", book.bookid, book.bookname, book.author));
+                txtBookID.Text = "";
+                txtStudentID.Enabled = false;
             }
             catch (Exception err)
             {

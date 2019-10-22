@@ -33,6 +33,7 @@
             this.도서관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.대여관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.반납괸라ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.제품정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,8 @@
             this.학생관리ToolStripMenuItem,
             this.도서관리ToolStripMenuItem,
             this.대여관리ToolStripMenuItem,
-            this.반납괸라ToolStripMenuItem});
+            this.반납괸라ToolStripMenuItem,
+            this.제품정보ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -75,6 +77,14 @@
             this.반납괸라ToolStripMenuItem.Name = "반납괸라ToolStripMenuItem";
             this.반납괸라ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.반납괸라ToolStripMenuItem.Text = "반납관리";
+            this.반납괸라ToolStripMenuItem.Click += new System.EventHandler(this.반납괸라ToolStripMenuItem_Click);
+            // 
+            // 제품정보ToolStripMenuItem
+            // 
+            this.제품정보ToolStripMenuItem.Name = "제품정보ToolStripMenuItem";
+            this.제품정보ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.제품정보ToolStripMenuItem.Text = "제품정보";
+            this.제품정보ToolStripMenuItem.Click += new System.EventHandler(this.제품정보ToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -85,6 +95,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -99,6 +110,7 @@
         private System.Windows.Forms.ToolStripMenuItem 도서관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 대여관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 반납괸라ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 제품정보ToolStripMenuItem;
     }
 }
 
