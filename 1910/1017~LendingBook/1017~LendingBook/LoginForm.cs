@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,20 +25,37 @@ namespace _1017_LendingBook
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            // admin - 1234?
+            LoginDB login = new LoginDB();
+            bool bCheck = login.LoginCheck(txtUserID.Text.Trim(), txtPWD.Text.Trim());
+            if (bCheck)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("로그인 정보가 정확하지 않습니다.", "알림", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                txtUserID.Text = "";
+                txtPWD.Text = "";
+                txtUserID.Focus();
+            }
+        }
 
-            //if(!(textBox1.Text== "admin" && textBox2.Text=="1234"))
-            //{
-            //    // 로그인 성공?
-            //    // if (!)
-            //    {
-            //        // 실패
-            //        return;
-            //    }
-            //}
-            //
+        public class LoginDB {
+            public bool LoginCheck(string id, string password )
+            {
+                // DB 연결
+                // 사용자 존재 체크, admin인지 아닌지도
+                // select * from UserTbl where userid = @userid and password = @password; 
+                //MySqlDataReader reader = new MySqlDataReader();
+                //if (reader.Read())
+                //{
+                    Global.UserName = null ;
+                    Global.g_userID = "admin";
+                    return true;
+                //}
+                //return false;
 
-            this.DialogResult = DialogResult.OK;    
+            }
         }
     }
 }

@@ -58,6 +58,8 @@ namespace _1017_LendingBook
             {
                 Dispose();
             }
+
+            MessageBox.Show(Global.UserName ?? "미가입" + "님 반갑습니다" );
         }
     }
 }

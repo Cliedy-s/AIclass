@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1017_LendingBook
+{
+    static class Global
+    {
+        public static string g_userID; //
+        public static string UserName { get; set; }
+    }
+}

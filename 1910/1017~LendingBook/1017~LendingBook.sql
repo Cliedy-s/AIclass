@@ -67,7 +67,7 @@ INSERT INTO lending(lendingid, studentid,lenddate ) VALUES (1,1,sysdate());
 INSERT INTO lendingitem(lendingid, bookitem, bookid, returndate) VALUES (1,1,1,sysdate());
 
 
-UPDATE book SET reservestuid =0 WHERE reservestuid is null;
+UPDATE book SET reservestuid =null where bookid =1002 and reservestuid = 1;
 UPDATE student SET studentname = '', department='' WHERE studentid = 234;
 UPDATE book SET lendingstate = b'0' WHERE bookid%2 = 0 ;
 select * from book;
@@ -75,5 +75,18 @@ DELETE FROM student WHERE studentid = 234;
 COMMIT;
 ROLLBACK;
 
+UPDATE book SET lendingstate = b'1' ;
+UPDATE lendingitem SET returndate = now() WHERE bookid = 1001;
+
+use goodeeproject;
+select * from book;
+
+select lendingid, bookitem, bookid, returndate from lendingitem ;
+select bookid, max(returndate) from lendingitem group by bookid;
+#
 
 
+
+-- DELIMITER $$
+-- CREATE PROCEDURE ReturnProcedure(in bookids VARCHAR(1000), IN studid INT)
+-- DELIMITER ;

@@ -52,7 +52,7 @@
             // txtUserID
             // 
             this.txtUserID.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txtUserID.Location = new System.Drawing.Point(326, 31);
+            this.txtUserID.Location = new System.Drawing.Point(326, 44);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(100, 21);
             this.txtUserID.TabIndex = 1;
@@ -61,7 +61,7 @@
             // txtPWD
             // 
             this.txtPWD.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txtPWD.Location = new System.Drawing.Point(326, 64);
+            this.txtPWD.Location = new System.Drawing.Point(326, 77);
             this.txtPWD.Name = "txtPWD";
             this.txtPWD.PasswordChar = '*';
             this.txtPWD.Size = new System.Drawing.Size(100, 21);
@@ -93,7 +93,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(246, 35);
+            this.label1.Location = new System.Drawing.Point(246, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 12);
             this.label1.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(246, 68);
+            this.label2.Location = new System.Drawing.Point(246, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 12);
             this.label2.TabIndex = 6;
