@@ -1,0 +1,6 @@
+D:\AIclass\1910\1023\DataGridViewAddColumns\bin\Debug\DataGridViewAddColumns.dll
+D:\AIclass\1910\1023\DataGridViewAddColumns\bin\Debug\DataGridViewAddColumns.pdb
+D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\DataGridViewAddColumns.csproj.CoreCompileInputs.cache
+D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\DataGridViewAddColumns.dll
+D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\DataGridViewAddColumns.pdb
+D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\DataGridViewAddColumns.csprojAssemblyReference.cache

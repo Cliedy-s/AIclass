@@ -1,0 +1,10 @@
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\bin\Debug\1023_02_TableLayoutPanel.exe.config
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\bin\Debug\1023_02_TableLayoutPanel.exe
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\bin\Debug\1023_02_TableLayoutPanel.pdb
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.csprojAssemblyReference.cache
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\_1023_02_TableLayoutPanel.Form1.resources
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\_1023_02_TableLayoutPanel.Properties.Resources.resources
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.csproj.GenerateResource.cache
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.csproj.CoreCompileInputs.cache
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.exe
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.pdb

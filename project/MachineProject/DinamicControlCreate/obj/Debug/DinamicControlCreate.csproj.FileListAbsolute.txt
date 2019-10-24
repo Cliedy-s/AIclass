@@ -1,0 +1,6 @@
+D:\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\DinamicControlCreate.dll
+D:\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\DinamicControlCreate.pdb
+D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\DinamicControlCreate.csprojAssemblyReference.cache
+D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\DinamicControlCreate.csproj.CoreCompileInputs.cache
+D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\DinamicControlCreate.dll
+D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\DinamicControlCreate.pdb
