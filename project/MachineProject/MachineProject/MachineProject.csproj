@@ -46,30 +46,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="GlobalUsage.cs" />
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MachinePanel.cs">
+    <Compile Include="MachineState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MachineState.Designer.cs">
+      <DependentUpon>MachineState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUpForm.Designer.cs">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MachinePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MachinePanel.Designer.cs">
+    <Compile Include="UserControls\MachinePanel.Designer.cs">
       <DependentUpon>MachinePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tempForm.cs">
+    <Compile Include="WorkForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="tempForm.Designer.cs">
-      <DependentUpon>tempForm.cs</DependentUpon>
+    <Compile Include="WorkForm.Designer.cs">
+      <DependentUpon>WorkForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MachinePanel.resx">
+    <EmbeddedResource Include="MachineState.resx">
+      <DependentUpon>MachineState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUpForm.resx">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MachinePanel.resx">
       <DependentUpon>MachinePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -80,9 +108,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="tempForm.resx">
-      <DependentUpon>tempForm.cs</DependentUpon>
+    <EmbeddedResource Include="WorkForm.resx">
+      <DependentUpon>WorkForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -98,10 +127,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DinamicControlCreate\DinamicControlCreate.csproj">
-      <Project>{69BB202E-2155-4786-B624-5C0F82B08C7C}</Project>
-      <Name>DinamicControlCreate</Name>
+    <ProjectReference Include="..\DinamicControlCreate\MachineProject_DinamicControlCreate.csproj">
+      <Project>{69bb202e-2155-4786-b624-5c0f82b08c7c}</Project>
+      <Name>MachineProject_DinamicControlCreate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RecursiveForChangeControls_MachineProject\RecursiveForChangeControls_MachineProject.csproj">
+      <Project>{cbcbd4d4-68c7-46be-adf3-028b2bb253ff}</Project>
+      <Name>RecursiveForChangeControls_MachineProject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\레몬.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

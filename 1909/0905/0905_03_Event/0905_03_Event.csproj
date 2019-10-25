@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>_0905_03_Event.EventClass</StartupObject>
+    <StartupObject>_0905_03_Event.MouseEventClass</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,10 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Event.cs" />
-    <Compile Include="EventClass.cs" />
-    <Compile Include="EventClass_.cs" />
-    <Compile Include="Event_.cs" />
+    <Compile Include="KeyEvent - 복사본.cs" />
+    <Compile Include="KeyEvent.cs" />
+    <Compile Include="MouseEventClass.cs" />
+    <Compile Include="선생님\EventClass_.cs" />
+    <Compile Include="선생님\Event_.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

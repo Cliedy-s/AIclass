@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1023_OpenAPI_Address", "1023_OpenAPI_Address\1023_OpenAPI_Address.csproj", "{1BC770BB-B97F-4B23-B82A-7BDDC4C48C04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewAddColumns", "DataGridViewAddColumns\DataGridViewAddColumns.csproj", "{FE51FAE3-9BEB-422E-9D8F-069DA8543171}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1023_DataGridViewAddColumns", "DataGridViewAddColumns\1023_DataGridViewAddColumns.csproj", "{FE51FAE3-9BEB-422E-9D8F-069DA8543171}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUserControls", "MyUserControls\MyUserControls.csproj", "{F66EA179-AF15-4BBA-9845-70B7B0C749D6}"
 EndProject

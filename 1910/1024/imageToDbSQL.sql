@@ -9,7 +9,7 @@ CREATE TABLE productimage(
 	productImgID INT NOT NULL AUTO_INCREMENT,
     productID INT DEFAULT NULL,
     productImgFileName VARCHAR(100) DEFAULT NULL,
-    productImage LONGBLOB,
+    productImage LONGBLOB machine,
     PRIMARY KEY(productImgID)
 );
 
@@ -24,3 +24,12 @@ truncate productImage;
 select * from productimage;
 rollback;
 commit;
+
+select a.productID, a.productName, b.productImage
+from product a inner join ( select productID, productImage from productimage where productImage is not null ) as b on a.productID = b.productID
+order by  a.productName;
+
+select * from productImage;
+select a.productID, a.productName, b.productImgFileName
+from product a inner join ( select productID, productImgFileName from productimage where productImage is null ) as b on a.productID = b.productID
+order by  a.productName;

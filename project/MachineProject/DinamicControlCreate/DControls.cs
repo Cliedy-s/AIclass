@@ -59,5 +59,13 @@ namespace DinamicControlCreate
             return listBox;
 
         }
+        public Button CreateButton(string controlName, Size size = default, Point point = default)
+        {
+            Button btn = new Button();
+            btn.Name = controlName;
+            btn.Size = size;
+            btn.Location = point;
+            return btn;
+        }
     }
 }

@@ -173,7 +173,7 @@ namespace _1024_01_ImageToDB
                 MySqlDataAdapter adpt = new MySqlDataAdapter(sql, conn);
                 adpt.Fill(dt);
 
-                byte[] bits = new byte[0];
+                byte[] bits;
                 bits = (byte[])dt.Rows[0][0];
                 MemoryStream ms = new MemoryStream(bits);
                 this.pictureBox1.Image = Bitmap.FromStream(ms);
