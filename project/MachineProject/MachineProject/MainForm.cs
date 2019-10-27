@@ -35,13 +35,18 @@ namespace MachineProject
             // 매니저면은
             if (login.ID == "1") authority = Authority.Manager;
             // 권한에 따라 다른 폼을 보여주는 부분
+            panForDefectAlarm.Location = new Point(0, 0);
+            panForWork.Location = new Point(0, 0);
+            splitContainer1.SplitterDistance = 550;
             switch (authority)
             {
                 case Authority.Manager:
+                    worksToolStripMenuItem.Visible = true;
                     panForDefectAlarm.Visible = true;
                     panForWork.Visible = false;
                     break;
                 case Authority.Employee:
+                    worksToolStripMenuItem.Visible = false;
                     panForDefectAlarm.Visible = false;
                     panForWork.Visible = true;
                     break;
