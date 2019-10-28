@@ -3,7 +3,6 @@ D:\AIclass\1910\1023\MyUserControls\bin\Debug\MyUserControls.pdb
 D:\AIclass\1910\1023\MyUserControls\obj\Debug\MyUserControls.csproj.CoreCompileInputs.cache
 D:\AIclass\1910\1023\MyUserControls\obj\Debug\MyUserControls.dll
 D:\AIclass\1910\1023\MyUserControls\obj\Debug\MyUserControls.pdb
-D:\AIclass\1910\1023\MyUserControls\obj\Debug\MyUserControls.csprojAssemblyReference.cache
 D:\AIclass\1910\1023\MyUserControls\obj\Debug\MyUserControls.AddressSearchForm.resources
 D:\AIclass\1910\1023\MyUserControls\obj\Debug\MyUserControls.AddressUserControl.resources
 D:\AIclass\1910\1023\MyUserControls\obj\Debug\MyUserControls.csproj.GenerateResource.cache

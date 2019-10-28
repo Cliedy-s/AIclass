@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MyUserControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\dlls\MyUserControls.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC\EmployeesDAC.cs" />
+    <Compile Include="DAC\MachineDAC.cs" />
+    <Compile Include="DAC\PListByMachineDAC.cs" />
+    <Compile Include="DAC\ProductionDAC.cs" />
+    <Compile Include="DAC\ProductionListDAC.cs" />
+    <Compile Include="DAC\ProductionPlanDAC.cs" />
+    <Compile Include="DAC\TodoDAC.cs" />
+    <Compile Include="DTO\EmployeesDTO.cs" />
+    <Compile Include="DTO\MachineDTO.cs" />
+    <Compile Include="DTO\PListByMachineDTO.cs" />
+    <Compile Include="DTO\ProductionDTO.cs" />
+    <Compile Include="DTO\ProductionListDTO.cs" />
+    <Compile Include="DTO\ProductionPlanDTO.cs" />
+    <Compile Include="DTO\TodoDTO.cs" />
     <Compile Include="GlobalUsage.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -136,11 +154,6 @@
       <Name>RecursiveForChangeControls_MachineProject</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\레몬.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

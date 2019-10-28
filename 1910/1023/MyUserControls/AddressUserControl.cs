@@ -36,9 +36,9 @@ namespace MyUserControls
             frm = new AddressSearchForm();
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                zip = frm.Zip;
-                addr1 = frm.Addr1;
-                addr2 = frm.Addr2;
+                textBox1.Text = frm.Zip;
+                textBox2.Text = frm.Addr1;
+                textBox3.Text = frm.Addr2;
             }
         }
     }

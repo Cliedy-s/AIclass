@@ -38,3 +38,4 @@ D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\M
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.csproj.CopyComplete
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.exe
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.pdb
+D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MyUserControls.dll

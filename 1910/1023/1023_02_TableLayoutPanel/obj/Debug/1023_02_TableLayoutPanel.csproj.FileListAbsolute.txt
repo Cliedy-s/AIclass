@@ -8,3 +8,6 @@ D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel
 D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.csproj.CoreCompileInputs.cache
 D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.exe
 D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.pdb
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\bin\Debug\MyUserControls.dll
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\bin\Debug\MyUserControls.pdb
+D:\AIclass\1910\1023\1023_02_TableLayoutPanel\obj\Debug\1023_02_TableLayoutPanel.csproj.CopyComplete

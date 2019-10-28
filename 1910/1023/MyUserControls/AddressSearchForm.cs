@@ -29,6 +29,11 @@ namespace MyUserControls
             InitializeComponent();
         }
 
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void TxtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -58,7 +63,7 @@ namespace MyUserControls
             XmlReader read = new XmlTextReader(wc.OpenRead(apiurl)); //읽어서 xmltext에 xml파일을 넣음
             DataSet ds = new DataSet();
             ds.ReadXml(read); // xml파일을 dataset에서 읽음
-            dgvSearchData.DataSource = ds.Tables[1];
+            dgvSearchData.DataSource = ds.Tables["juso"];
         }
 
         private void AddrSearchForm_Load(object sender, EventArgs e)
@@ -68,11 +73,25 @@ namespace MyUserControls
             dgvSearchData.MultiSelect = false;
             dgvSearchData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            DataGridViewAddColumns.DataGridViewAddColumns da = new DataGridViewAddColumns.DataGridViewAddColumns();
-            da.AddNewColumnToDataGridView("우편번호", "zipNo", dgvSearchData, typeof(string), 100);
-            da.AddNewColumnToDataGridView("주소1", "roadAddr", dgvSearchData, typeof(string), 100);
-            da.AddNewColumnToDataGridView("주소2", "jibunAddr", dgvSearchData, typeof(string), 100);
+            AddNewColumnToDataGridView("우편번호", "zipNo", dgvSearchData, typeof(string), 100);
+            AddNewColumnToDataGridView("주소1", "roadAddr", dgvSearchData, typeof(string), 100);
+            AddNewColumnToDataGridView("주소2", "jibunAddr", dgvSearchData, typeof(string), 100);
 
+        }
+        public void AddNewColumnToDataGridView(string headerText, string dataPropertyName,
+                                                                    DataGridView dataGridView, Type type, int colWidth = 100, string name = null, bool visibility = true,
+                                                                    DataGridViewContentAlignment alignment = DataGridViewContentAlignment.MiddleCenter)
+        {
+            DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+            col.HeaderText = headerText;
+            col.DataPropertyName = dataPropertyName;
+            col.Name = name ?? dataPropertyName;
+            col.Width = colWidth;
+            col.Visible = visibility;
+            col.ValueType = type;
+            col.ReadOnly = true;
+            col.DefaultCellStyle.Alignment = alignment;
+            dataGridView.Columns.Add(col);
         }
 
         private void DgvSearchData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -80,14 +99,11 @@ namespace MyUserControls
             DataTable dt = (DataTable)dgvSearchData.DataSource;
             if (e.RowIndex > -1 && e.RowIndex < dt.Rows.Count)
             {
-                txtRoadZipCode.Text = txtJibunZipCode.Text = dt.Rows[e.RowIndex]["zipNo"].ToString();
+                txtRoadZipCode.Text = dt.Rows[e.RowIndex]["zipNo"].ToString();
                 txtRoadAddr1.Text = dt.Rows[e.RowIndex]["roadAddrPart1"].ToString();
-                txtRoadAddr2.Text = txtJibunAddr2.Text = dt.Rows[e.RowIndex]["roadAddrPart2"].ToString();
+                txtRoadAddr2.Text = dt.Rows[e.RowIndex]["roadAddrPart2"].ToString();
 
-                txtJibunAddr1.Text = dt.Rows[e.RowIndex]["jibunAddr"].ToString();
-                txtJibunAddr2.Text = "";
-
-                txtRoadAddr2.Enabled = txtJibunAddr2.Enabled = true;
+                txtRoadAddr2.Enabled = true;
             }
         }
 
@@ -98,22 +114,6 @@ namespace MyUserControls
                 zip = txtRoadZipCode.Text;
                 addr1 = txtRoadAddr1.Text;
                 addr2 = txtRoadAddr2.Text;
-
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("상세주소를 입력하여 주세요.");
-            }
-        }
-
-        private void BtnJibun_Click(object sender, EventArgs e)
-        {
-            if (txtJibunAddr2.Text.Length > 0)
-            {
-                zip = txtJibunZipCode.Text;
-                addr1 = txtJibunAddr1.Text;
-                addr2 = txtJibunAddr2.Text;
 
                 this.DialogResult = DialogResult.OK;
             }

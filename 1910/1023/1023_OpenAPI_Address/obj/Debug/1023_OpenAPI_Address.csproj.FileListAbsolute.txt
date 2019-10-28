@@ -9,4 +9,3 @@ D:\AIclass\1910\1023\1023_OpenAPI_Address\obj\Debug\1023_OpenAPI_Address.exe
 D:\AIclass\1910\1023\1023_OpenAPI_Address\obj\Debug\1023_OpenAPI_Address.pdb
 D:\AIclass\1910\1023\1023_OpenAPI_Address\obj\Debug\_1023_OpenAPI_Address.AddrSearchForm.resources
 D:\AIclass\1910\1023\1023_OpenAPI_Address\obj\Debug\_1023_OpenAPI_Address.AddrUserControl.resources
-D:\AIclass\1910\1023\1023_OpenAPI_Address\obj\Debug\1023_OpenAPI_Address.csprojAssemblyReference.cache

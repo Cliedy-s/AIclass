@@ -44,27 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressSearchForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddressSearchForm.Designer.cs">
-      <DependentUpon>AddressSearchForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddressUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="AddressUserControl.Designer.cs">
       <DependentUpon>AddressUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddressSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddressSearchForm.Designer.cs">
+      <DependentUpon>AddressSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataGridViewAddColumns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AddressSearchForm.resx">
-      <DependentUpon>AddressSearchForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddressUserControl.resx">
       <DependentUpon>AddressUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddressSearchForm.resx">
+      <DependentUpon>AddressSearchForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,13 +20,8 @@ namespace MachineProject
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
             RecursiveForChangeControls rcontrols = new RecursiveForChangeControls();
             rcontrols.ChangeControls(this.Controls, GlobalUsage.ChangeFont);
-        }
-        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -37,6 +32,15 @@ namespace MachineProject
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LnkSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SignUpForm frm = new SignUpForm();
+            if(frm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

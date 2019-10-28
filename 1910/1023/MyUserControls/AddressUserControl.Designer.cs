@@ -39,21 +39,21 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(68, 58);
+            this.textBox3.Location = new System.Drawing.Point(138, 59);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(424, 21);
             this.textBox3.TabIndex = 13;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(68, 31);
+            this.textBox2.Location = new System.Drawing.Point(138, 32);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(424, 21);
             this.textBox2.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(207, 2);
+            this.button1.Location = new System.Drawing.Point(277, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -63,7 +63,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(68, 3);
+            this.textBox1.Location = new System.Drawing.Point(138, 4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(133, 21);
             this.textBox1.TabIndex = 10;
@@ -89,7 +89,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 7;
@@ -107,7 +107,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddressUserControl";
-            this.Size = new System.Drawing.Size(495, 82);
+            this.Size = new System.Drawing.Size(566, 82);
             this.ResumeLayout(false);
             this.PerformLayout();
 

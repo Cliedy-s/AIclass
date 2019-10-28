@@ -1,30 +1,34 @@
 USE MACHINEPROJECTDB;
-DROP TABLE IF EXISTS MACHINE;
-CREATE TABLE MACHINE (																
-machineID                      CHAR (10)   NOT NULL  PRIMARY KEY,						
-isRunning                      BIT (1)   DEFAULT b'0'  							
-) ;
 
-DROP TABLE EMPLOYEES ;
-CREATE TABLE EMPLOYEES (
-emp_Code                       CHAR (10)   NOT NULL  PRIMARY KEY,
-emp_Name                       VARCHAR (30)   NOT NULL  ,
-emp_Phone                      VARCHAR (14)    ,
-emp_Email                      VARCHAR (30)    ,
-emp_Addr                       VARCHAR (50)    ,
-emp_authority                  VARCHAR (10)   NOT NULL  ,
-emp_ID                         VARCHAR (20)   NOT NULL  ,
-emp_password                   VARCHAR (20)   NOT NULL  
-) ;
+select * from employees;
+select * from machine;
+select * from  plistbymachine;
+select * from  production;
+select * from productionlist;
+select * from productionplan;
+select * from todo;
 
-DROP TABLE PRODUCTTION ;
-CREATE TABLE PRODUCTTION (
-prd_ProductionCode             INT   PRIMARY KEY  AUTO_INCREMENT,
-prd_MachineID                  CHAR (10)   NOT NULL  ,
-prd_ProductID                  CHAR (10)   NOT NULL  ,
-prd_TodoCode                   INT     NOT NULL  ,
-prd_EmployeeCode               CHAR (10)   NOT NULL  ,
-prd_Amount                     INT     NOT NULL  ,
-prd_Date                       DATETIME     NOT NULL  ,
-prd_DefectRate                 DOUBLE 
-);
+ALTER TABLE employees DROP COLUMN Addr;
+ALTER TABLE employees ADD COLUMN ( Addr2 varchar(50));
+
+ALTER TABLE TODO DROP FOREIGN KEY  `fk_employees_todo_employeeid`;			
+
+ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_employees_productionlist_employeeid`;					
+ALTER TABLE PRODUCTIONLIST DROP FOREIGN KEY  `fk_todo_productionlist_todocode`;						
+
+ALTER TABLE PLISTBYMACHINE DROP FOREIGN KEY  `fk_machine_plistbymachine_machineid`;					
+ALTER TABLE PLISTBYMACHINE DROP FOREIGN KEY  `fk_production_plistbymachine_productionid`;					
+
+ALTER TABLE PRODUCTIONPLAN DROP FOREIGN KEY  `fk_production_productionplan_productionid`;					
+
+
+
+
+
+
+
+
+
+
+
+

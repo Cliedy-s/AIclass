@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1023_OpenAPI_Address", "102
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1023_DataGridViewAddColumns", "DataGridViewAddColumns\1023_DataGridViewAddColumns.csproj", "{FE51FAE3-9BEB-422E-9D8F-069DA8543171}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUserControls", "MyUserControls\MyUserControls.csproj", "{F66EA179-AF15-4BBA-9845-70B7B0C749D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUserControls_1023", "MyUserControls\MyUserControls_1023.csproj", "{F66EA179-AF15-4BBA-9845-70B7B0C749D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1023_02_TableLayoutPanel", "1023_02_TableLayoutPanel\1023_02_TableLayoutPanel.csproj", "{E27C2835-0680-472E-9D07-35EC0ADBC051}"
 EndProject
