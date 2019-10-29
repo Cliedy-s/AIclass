@@ -357,3 +357,4 @@ MigrationBackup/
 
 *.exe.config/
 App.config/
+*.config
