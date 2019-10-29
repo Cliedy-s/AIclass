@@ -24,7 +24,7 @@ namespace _1028_01_ADO.NET
 
         public void Update(MemberInfoVO item)
         {
-            string sql = "UPDATE memberInfo SET Birth=@Birth, Email=@Email, Family=@Family WHERE Name=@Name; ";
+            string sql = "UPDATE memberinfo SET Birth=@Birth, Email=@Email, Family=@Family WHERE Name=@Name; ";
             MySqlCommand comm = new MySqlCommand(sql, conn);
             FillParameters(comm, item);
             comm.ExecuteNonQuery();
@@ -32,7 +32,7 @@ namespace _1028_01_ADO.NET
 
         public void Delete(MemberInfoVO item)
         {
-            string sql = "DELETE FROM memberInfo WHERE Name=@Name; ";
+            string sql = "DELETE FROM memberinfo WHERE Name=@Name; ";
             MySqlCommand comm = new MySqlCommand(sql, conn);
             FillParameters(comm, item);
             comm.ExecuteNonQuery();
