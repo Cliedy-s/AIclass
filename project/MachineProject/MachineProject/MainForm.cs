@@ -15,8 +15,7 @@ namespace MachineProject
 {
     public partial class MainForm : Form
     {
-        enum Authority { Manager, Employee }
-        Authority authority = Authority.Employee;
+        int authority = 0b0001;
         List<string> alamList;
         DControls dcontrols;
         public MainForm()
@@ -32,37 +31,45 @@ namespace MachineProject
             {
                 Environment.Exit(0);
             }
-            // 매니저면은
-            if (login.ID == "1") authority = Authority.Manager;
-            // 권한에 따라 다른 폼을 보여주는 부분
-            panForDefectAlarm.Location = new Point(0, 0);
-            panForWork.Location = new Point(0, 0);
-            splitContainer1.SplitterDistance = 550;
-            switch (authority)
-            {
-                case Authority.Manager:
-                    worksToolStripMenuItem.Visible = true;
-                    panForDefectAlarm.Visible = true;
-                    panForWork.Visible = false;
-                    break;
-                case Authority.Employee:
-                    worksToolStripMenuItem.Visible = false;
-                    panForDefectAlarm.Visible = false;
-                    panForWork.Visible = true;
-                    break;
-            }
-            panForDefectAlarm.Location = panForWork.Location;
+            //
 
-            // 알람 리스트
-            alamList = new List<string>();
-            flpBase.AutoScroll = true; // 스크롤 자동 생성
+            // 매니저 권한 지정 // TODO - 사용자의 권한으로 변경
+            if (login.ID == "1") authority = 0b0010;
+            else authority = 0b0001;
+
+            //flowlayoutpanel 내부 설정
+            flpBase.AutoScroll = true; //스크롤 설정
+            panForWork.Location = panForDefectAlarm.Location = new Point(0, 0); // 내부 알람패널, 일 패널 위치
+            splitContainer1.SplitterDistance = 550; // 스플릿 거리 
+            nudNewDefectRateAlarm.DecimalPlaces = 2; // 누메릭업다운 소수점 설정
+
 
             // TODO - 지우기 : 메뉴를 임시로 생성함.
             for (int i = 0; i < 11; i++)
             {
-                NewMachineMenu("item" + "Machine0" + i, flpBase);
+                NewMenuItem("item" + "Machine0" + i, flpBase);
             }
-            NewMenuItem("itemTotalSelect", "전체선택", Total_CheckedChanged);
+            NewMenuItem("itemTotalSelect", "전체선택", Total_CheckedChanged, true);
+            //
+
+            // 권한에 따라 다른 폼을 보여주는 부분----------------
+            if((authority & 0b0010) == 0b0010) // 관리자 권한
+            {
+                worksToolStripMenuItem.Visible = true;
+                panForDefectAlarm.Visible = true;
+                panForWork.Visible = false;
+                NewMenuItem("itemMachineState", "기계상태확인", CheckMachineState_Click);
+            }
+            else if ((authority & 0b0001) == 0b0001) // 일반 사용자 권한
+            {
+                worksToolStripMenuItem.Visible = false;
+                panForDefectAlarm.Visible = false;
+                panForWork.Visible = true;
+            }
+            //-------------------------------------------------------------
+
+            // 알람 리스트
+            alamList = new List<string>();
 
             // 자식까지 폰트를 바꿈..
             RecursiveForChangeControls rcontrols = new RecursiveForChangeControls();
@@ -71,7 +78,10 @@ namespace MachineProject
 
 
         // 메뉴 아이템 생성 모듈 => 머신 메뉴를 위함
-        private void NewMachineMenu(string machineName, Control chileToContainer)
+        /// <summary>
+        /// 머신메뉴 생성
+        /// </summary>
+        private void NewMenuItem(string machineName, Control chileToContainer)
         {
             ToolStripMenuItem Machine = new ToolStripMenuItem();
 
@@ -84,17 +94,35 @@ namespace MachineProject
 
             machinesToolStripMenuItem.DropDownItems.Add(Machine);
         }
-
-        // 메뉴 아이템 생성 모듈 => 일반 메뉴
-        private void NewMenuItem(string menuName, string itemText, EventHandler method)
+        // 전체 머신 메뉴 선택
+        /// <summary>
+        /// 전체 머신메뉴 선택 아이템
+        /// </summary>
+        private void NewMenuItem(string menuName, string itemText, EventHandler method, bool checkOnClick)
         {
             ToolStripMenuItem item = new ToolStripMenuItem();
 
             item.CheckState = CheckState.Unchecked;
             item.Name = menuName;
             item.Text = itemText;
-            item.CheckOnClick = true;
+            item.CheckOnClick = checkOnClick;
             item.CheckedChanged += method;
+
+            machinesToolStripMenuItem.DropDownItems.Add(item);
+        }
+
+        // 메뉴 아이템 생성 모듈 => 일반 메뉴
+        /// <summary>
+        /// 일반 메뉴 생성
+        /// </summary>
+        private void NewMenuItem(string menuName, string itemText, EventHandler method)
+        {
+            ToolStripMenuItem item = new ToolStripMenuItem();
+
+            item.Name = menuName;
+            item.Text = itemText;
+            item.Click += method;
+            item.Tag = "nomalMenu";
 
             machinesToolStripMenuItem.DropDownItems.Add(item);
         }
@@ -116,8 +144,7 @@ namespace MachineProject
                 }
             }
         }
-
-        // 전체 메뉴 체크
+        // 전체 기계 메뉴 체크
         private void Total_CheckedChanged(object sender, EventArgs e)
         {
             if (sender is ToolStripMenuItem)
@@ -125,9 +152,16 @@ namespace MachineProject
                 ToolStripMenuItem me = sender as ToolStripMenuItem;
                 foreach (ToolStripMenuItem item in machinesToolStripMenuItem.DropDownItems)
                 {
-                    item.Checked = me.Checked;
+                    // 아이템을 생성할 때 머신메뉴의 태그에만 컨트롤을 삽입함
+                    if (item.Tag is Control) item.Checked = me.Checked; 
                 }
             }
+        }
+        // 기계 상태확인 열기 메소드
+        private void CheckMachineState_Click(object sender, EventArgs e)
+        {
+            MachineStateForm frm = new MachineStateForm();
+            frm.ShowDialog();
         }
         //
 
@@ -140,18 +174,22 @@ namespace MachineProject
             machinePanel.doubleClick += MachinePanel_doubleClick; // 더블클릭 이벤트 핸들러 => 더블클릭시 실행
             container.Controls.Add(machinePanel);
         }
+
         // 기계 패널을 더블클릭했을 때
         private void MachinePanel_doubleClick(object sender, MachinePanel.MachineStringsEventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(e.ReturnValues.MachineName);
-            sb.AppendLine(e.ReturnValues.TotalAmount);
-            sb.AppendLine(e.ReturnValues.DefectAmount);
-            sb.AppendLine(e.ReturnValues.DefectRate);
-            sb.AppendLine(e.ReturnValues.DefectRateAlarm);
+            sb.AppendLine(e.ReturnValues.MachineName.ToString());
+            sb.AppendLine(e.ReturnValues.TotalAmount.ToString());
+            sb.AppendLine(e.ReturnValues.DefectAmount.ToString());
+            sb.AppendLine(e.ReturnValues.DefectRate.ToString());
+            sb.AppendLine(e.ReturnValues.DefectRateAlarm.ToString());
             MessageBox.Show(sb.ToString());
-        }
 
+            lblMachineName.Text = e.ReturnValues.MachineName;
+            lblOldDefectRateAlarm.Text = string.Format("{0}",e.ReturnValues.DefectRateAlarm);
+            nudNewDefectRateAlarm.Value = Convert.ToDecimal(e.ReturnValues.DefectRateAlarm);
+        }
         //
 
 
@@ -213,10 +251,13 @@ namespace MachineProject
         private void TodoSetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WorkForm frm = new WorkForm();
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
+            frm.ShowDialog();
+        }
 
-            }
+        private void ShowMyInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MyInfoForm frm = new MyInfoForm();
+            frm.ShowDialog();
         }
     }
 }

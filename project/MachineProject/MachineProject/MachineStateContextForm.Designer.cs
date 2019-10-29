@@ -1,6 +1,6 @@
 ﻿namespace MachineProject
 {
-    partial class MachineState
+    partial class MachineStateContextForm
     {
         /// <summary>
         /// Required designer variable.

@@ -20,16 +20,18 @@ namespace MachineProject
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public string MachineName { get => lblMahineName.Text; set => lblMahineName.Text = value; }
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string TotalAmount { get => lblTotalAmount_V.Text; set => lblTotalAmount_V.Text = value; }
+        public int TotalAmount { get => int.Parse(lblTotalAmount_V.Text); set => lblTotalAmount_V.Text = value.ToString(); }
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string DefectAmount { get => lblDefectAmount_V.Text; set => lblDefectAmount_V.Text = value; }
+        public int DefectAmount { get => int.Parse(lblDefectAmount_V.Text); set => lblDefectAmount_V.Text = value.ToString(); }
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string DefectRate { get => lblDefectRate_V.Text; set => lblDefectRate_V.Text = value; }
+        public double DefectRate { get => double.Parse(lblDefectRate_V.Text); set => lblDefectRate_V.Text = value.ToString(); }
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string DefectRateAlarm { get => lblDefectRateAlarm_V.Text; set => lblDefectRateAlarm_V.Text = value; }
+        public double DefectRateAlarm { get => double.Parse(lblDefectRateAlarm_V.Text); set => lblDefectRateAlarm_V.Text = value.ToString(); }
 
         private void MachinePanel_Load(object sender, EventArgs e)
         {
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+
             panel1.DoubleClick += All_DoubleClick;
             foreach (Control item in panel1.Controls)
             {
@@ -56,11 +58,11 @@ namespace MachineProject
         public struct values
         {
             public string MachineName;
-            public string TotalAmount;
-            public string DefectAmount;
-            public string DefectRate;
-            public string DefectRateAlarm;
-            public values(string machineName, string totalAmount, string defectAmount, string defectRate, string defectRateAlarm)
+            public int TotalAmount;
+            public int DefectAmount;
+            public double DefectRate;
+            public double DefectRateAlarm;
+            public values(string machineName, int totalAmount, int defectAmount, double defectRate, double defectRateAlarm)
             {
                 MachineName = machineName;
                 TotalAmount = totalAmount;

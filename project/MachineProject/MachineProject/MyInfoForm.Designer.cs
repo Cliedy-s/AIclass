@@ -1,6 +1,6 @@
 ﻿namespace MachineProject
 {
-    partial class SignUpForm
+    partial class MyInfoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.cmbEmailDomain = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
-            this.address = new MyUserControls.AddressUserControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblEmployeeID = new System.Windows.Forms.Label();
+            this.addressUserControl1 = new MyUserControls.AddressUserControl();
             this.SuspendLayout();
-            // 
-            // txtEmployeeID
-            // 
-            this.txtEmployeeID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmployeeID.Location = new System.Drawing.Point(171, 284);
-            this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(100, 21);
-            this.txtEmployeeID.TabIndex = 0;
             // 
             // label1
             // 
@@ -96,14 +85,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Email";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtEmail.Location = new System.Drawing.Point(171, 42);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 21);
-            this.txtEmail.TabIndex = 6;
-            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -118,7 +99,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 79);
+            this.label6.Location = new System.Drawing.Point(37, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 12);
             this.label6.TabIndex = 13;
@@ -138,39 +119,21 @@
             this.btnSubmit.Location = new System.Drawing.Point(418, 334);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 14;
-            this.btnSubmit.Text = "가입";
+            this.btnSubmit.TabIndex = 0;
+            this.btnSubmit.Text = "변경";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
             // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Location = new System.Drawing.Point(517, 334);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 15;
             this.button2.Text = "취소";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // cmbEmailDomain
-            // 
-            this.cmbEmailDomain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cmbEmailDomain.FormattingEnabled = true;
-            this.cmbEmailDomain.Location = new System.Drawing.Point(293, 42);
-            this.cmbEmailDomain.Name = "cmbEmailDomain";
-            this.cmbEmailDomain.Size = new System.Drawing.Size(121, 20);
-            this.cmbEmailDomain.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(274, 46);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 12);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "@";
             // 
             // txtPhone
             // 
@@ -180,25 +143,6 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(127, 21);
             this.txtPhone.TabIndex = 21;
-            // 
-            // address
-            // 
-            this.address.Addr1 = "";
-            this.address.Addr2 = "";
-            this.address.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.address.Location = new System.Drawing.Point(33, 107);
-            this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(566, 97);
-            this.address.TabIndex = 22;
-            this.address.Zip = "";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(420, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(113, 21);
-            this.textBox1.TabIndex = 23;
             // 
             // label7
             // 
@@ -214,7 +158,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(154, 45);
+            this.label8.Location = new System.Drawing.Point(154, 46);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(11, 12);
             this.label8.TabIndex = 25;
@@ -240,33 +184,60 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "*";
             // 
-            // SignUpForm
+            // lblEmail
+            // 
+            this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(171, 46);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(37, 12);
+            this.lblEmail.TabIndex = 28;
+            this.lblEmail.Text = "Email";
+            // 
+            // lblEmployeeID
+            // 
+            this.lblEmployeeID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEmployeeID.AutoSize = true;
+            this.lblEmployeeID.Location = new System.Drawing.Point(171, 286);
+            this.lblEmployeeID.Name = "lblEmployeeID";
+            this.lblEmployeeID.Size = new System.Drawing.Size(73, 12);
+            this.lblEmployeeID.TabIndex = 29;
+            this.lblEmployeeID.Text = "EmployeeID";
+            // 
+            // addressUserControl1
+            // 
+            this.addressUserControl1.Addr1 = "Hello";
+            this.addressUserControl1.Addr2 = "";
+            this.addressUserControl1.Location = new System.Drawing.Point(33, 105);
+            this.addressUserControl1.Name = "addressUserControl1";
+            this.addressUserControl1.Size = new System.Drawing.Size(566, 99);
+            this.addressUserControl1.TabIndex = 30;
+            this.addressUserControl1.Zip = "";
+            // 
+            // MyInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 379);
+            this.Controls.Add(this.addressUserControl1);
+            this.Controls.Add(this.lblEmployeeID);
+            this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.address);
             this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.cmbEmailDomain);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtEmployeeID);
-            this.Name = "SignUpForm";
-            this.Text = "SignUpForm";
+            this.Name = "MyInfoForm";
+            this.Text = "MyInfoForm";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,25 +245,22 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cmbEmailDomain;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox txtPhone;
-        private MyUserControls.AddressUserControl address;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblEmployeeID;
+        private MyUserControls.AddressUserControl addressUserControl1;
     }
 }

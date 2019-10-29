@@ -3,4 +3,3 @@ D:\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\MachineProject_
 D:\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\MachineProject_DinamicControlCreate.pdb
 D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.dll
 D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.pdb
-D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.csprojAssemblyReference.cache

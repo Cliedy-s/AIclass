@@ -117,53 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error_EmpEmailAlreadyExist_msg" xml:space="preserve">
-    <value>이미 가입된 이메일입니다.</value>
-  </data>
-  <data name="Error_EmpIDAlreadyExist_msg" xml:space="preserve">
-    <value>이미 존재하는 사용자입니다.</value>
-  </data>
-  <data name="Error_EmpIDNotExist_msg" xml:space="preserve">
-    <value>존재하지 않는 사용자입니다.</value>
-  </data>
-  <data name="MachineState_Crash" xml:space="preserve">
-    <value>고장</value>
-  </data>
-  <data name="MachineState_Run" xml:space="preserve">
-    <value>실행</value>
-  </data>
-  <data name="MachineState_Running" xml:space="preserve">
-    <value>실행중</value>
-  </data>
-  <data name="MachineState_Stop" xml:space="preserve">
-    <value>중지</value>
-  </data>
-  <data name="MachineState_Stopping" xml:space="preserve">
-    <value>중지중</value>
-  </data>
-  <data name="Regex_idEx" xml:space="preserve">
-    <value>^[a-zA-Z0-9_-]{5,20}$</value>
-  </data>
-  <data name="Regex_idEx_msg" xml:space="preserve">
-    <value>ID는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.</value>
-  </data>
-  <data name="Regex_nameEx" xml:space="preserve">
-    <value>^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$</value>
-  </data>
-  <data name="Regex_nameEx_msg" xml:space="preserve">
-    <value>이름을 확인해주세요</value>
-  </data>
-  <data name="Regex_phoneEx" xml:space="preserve">
-    <value>^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$</value>
-  </data>
-  <data name="Regex_phoneEx_msg" xml:space="preserve">
-    <value>휴대폰 번호를 확인해주세요</value>
-  </data>
-  <data name="Regex_pwdEx" xml:space="preserve">
-    <value>^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&amp;*-]).{8,}$</value>
-    <comment>주석을타이핑합닏</comment>
-  </data>
-  <data name="Regex_pwdEx_msg" xml:space="preserve">
-    <value>비밀번호는 숫자1이상, 영문자1이상, 특수문자 1이상, 글자수 8자리 이상입니다.</value>
-  </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

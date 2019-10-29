@@ -12,25 +12,21 @@ namespace MyUserControls
 {
     public partial class AddressUserControl : UserControl
     {
-        string zip;
-        string addr1;
-        string addr2;
-        AddressSearchForm frm;
-
         [Description("Zipcode")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string Zip { get => zip; }
+        public string Zip { get => textBox1.Text; set => textBox1.Text = value; }
         [Description("Addr1")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string Addr1 { get => addr1; }
+        public string Addr1 { get => textBox2.Text; set => textBox2.Text = value; }
         [Description("Addr2")]
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string Addr2 { get => addr2; }
+        public string Addr2 { get => textBox3.Text; set => textBox3.Text = value; }
         public AddressUserControl()
         {
             InitializeComponent();
         }
 
+        AddressSearchForm frm;
         private void Button1_Click(object sender, EventArgs e)
         {
             frm = new AddressSearchForm();

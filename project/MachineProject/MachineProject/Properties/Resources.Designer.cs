@@ -59,5 +59,149 @@ namespace MachineProject.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   이미 가입된 이메일입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_EmpEmailAlreadyExist_msg {
+            get {
+                return ResourceManager.GetString("Error_EmpEmailAlreadyExist_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   이미 존재하는 사용자입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_EmpIDAlreadyExist_msg {
+            get {
+                return ResourceManager.GetString("Error_EmpIDAlreadyExist_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   존재하지 않는 사용자입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_EmpIDNotExist_msg {
+            get {
+                return ResourceManager.GetString("Error_EmpIDNotExist_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   고장과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MachineState_Crash {
+            get {
+                return ResourceManager.GetString("MachineState_Crash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   실행과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MachineState_Run {
+            get {
+                return ResourceManager.GetString("MachineState_Run", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   실행중과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MachineState_Running {
+            get {
+                return ResourceManager.GetString("MachineState_Running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   중지과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MachineState_Stop {
+            get {
+                return ResourceManager.GetString("MachineState_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   중지중과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string MachineState_Stopping {
+            get {
+                return ResourceManager.GetString("MachineState_Stopping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ^[a-zA-Z0-9_-]{5,20}$과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_idEx {
+            get {
+                return ResourceManager.GetString("Regex_idEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ID는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_idEx_msg {
+            get {
+                return ResourceManager.GetString("Regex_idEx_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_nameEx {
+            get {
+                return ResourceManager.GetString("Regex_nameEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   이름을 확인해주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_nameEx_msg {
+            get {
+                return ResourceManager.GetString("Regex_nameEx_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_phoneEx {
+            get {
+                return ResourceManager.GetString("Regex_phoneEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   휴대폰 번호를 확인해주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_phoneEx_msg {
+            get {
+                return ResourceManager.GetString("Regex_phoneEx_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&amp;*-]).{8,}$과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_pwdEx {
+            get {
+                return ResourceManager.GetString("Regex_pwdEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   비밀번호는 숫자1이상, 영문자1이상, 특수문자 1이상, 글자수 8자리 이상입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_pwdEx_msg {
+            get {
+                return ResourceManager.GetString("Regex_pwdEx_msg", resourceCulture);
+            }
+        }
     }
 }

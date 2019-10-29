@@ -33,12 +33,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MyUserControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\dlls\MyUserControls.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.18\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MyUserControls_1023">
+      <HintPath>..\..\..\dlls\MyUserControls_1023.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,7 +75,7 @@
     <Compile Include="DAC\ProductionListDAC.cs" />
     <Compile Include="DAC\ProductionPlanDAC.cs" />
     <Compile Include="DAC\TodoDAC.cs" />
-    <Compile Include="DTO\EmployeesDTO.cs" />
+    <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\MachineDTO.cs" />
     <Compile Include="DTO\PListByMachineDTO.cs" />
     <Compile Include="DTO\ProductionDTO.cs" />
@@ -71,11 +89,30 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MachineState.cs">
+    <Compile Include="MyInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MachineState.Designer.cs">
-      <DependentUpon>MachineState.cs</DependentUpon>
+    <Compile Include="MyInfoForm.Designer.cs">
+      <DependentUpon>MyInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MachineControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MachineControl.Designer.cs">
+      <DependentUpon>MachineControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MachineStateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MachineStateForm.Designer.cs">
+      <DependentUpon>MachineStateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\EmployeesService.cs" />
+    <Compile Include="MachineStateContextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MachineStateContextForm.Designer.cs">
+      <DependentUpon>MachineStateContextForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -106,8 +143,17 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MachineState.resx">
-      <DependentUpon>MachineState.cs</DependentUpon>
+    <EmbeddedResource Include="MyInfoForm.resx">
+      <DependentUpon>MyInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MachineControl.resx">
+      <DependentUpon>MachineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineStateForm.resx">
+      <DependentUpon>MachineStateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MachineStateContextForm.resx">
+      <DependentUpon>MachineStateContextForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -131,6 +177,7 @@
     <EmbeddedResource Include="WorkForm.resx">
       <DependentUpon>WorkForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
