@@ -72,10 +72,11 @@ namespace MyUserControls
             dgvSearchData.AllowUserToAddRows = false;
             dgvSearchData.MultiSelect = false;
             dgvSearchData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSearchData.RowHeadersVisible = false;
 
             AddNewColumnToDataGridView("우편번호", "zipNo", dgvSearchData, typeof(string), 100);
-            AddNewColumnToDataGridView("주소1", "roadAddr", dgvSearchData, typeof(string), 100);
-            AddNewColumnToDataGridView("주소2", "jibunAddr", dgvSearchData, typeof(string), 100);
+            AddNewColumnToDataGridView("주소1", "roadAddr", dgvSearchData, typeof(string), 175);
+            AddNewColumnToDataGridView("주소2", "jibunAddr", dgvSearchData, typeof(string), 175);
 
         }
         public void AddNewColumnToDataGridView(string headerText, string dataPropertyName,

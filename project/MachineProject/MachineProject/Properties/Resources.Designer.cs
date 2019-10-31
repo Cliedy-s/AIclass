@@ -61,6 +61,15 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
+        ///   직접입력과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string ComboBox_DomainUserBy {
+            get {
+                return ResourceManager.GetString("ComboBox_DomainUserBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   이미 가입된 이메일입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Error_EmpEmailAlreadyExist_msg {
@@ -70,7 +79,16 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
-        ///   이미 존재하는 사용자입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   존재하지 않는 이메일 입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_EmpEmailNotExist_msg {
+            get {
+                return ResourceManager.GetString("Error_EmpEmailNotExist_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   이미 존재하는 직원코드입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Error_EmpIDAlreadyExist_msg {
             get {
@@ -84,6 +102,15 @@ namespace MachineProject.Properties {
         internal static string Error_EmpIDNotExist_msg {
             get {
                 return ResourceManager.GetString("Error_EmpIDNotExist_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   비밀번호가 틀렸습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_EmpWrongPwd_msg {
+            get {
+                return ResourceManager.GetString("Error_EmpWrongPwd_msg", resourceCulture);
             }
         }
         

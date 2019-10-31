@@ -44,7 +44,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblEmployeeID = new System.Windows.Forms.Label();
-            this.addressUserControl1 = new MyUserControls.AddressUserControl();
+            this.addressControl = new MyUserControls.AddressUserControl();
             this.SuspendLayout();
             // 
             // label1
@@ -204,22 +204,22 @@
             this.lblEmployeeID.TabIndex = 29;
             this.lblEmployeeID.Text = "EmployeeID";
             // 
-            // addressUserControl1
+            // addressControl
             // 
-            this.addressUserControl1.Addr1 = "Hello";
-            this.addressUserControl1.Addr2 = "";
-            this.addressUserControl1.Location = new System.Drawing.Point(33, 105);
-            this.addressUserControl1.Name = "addressUserControl1";
-            this.addressUserControl1.Size = new System.Drawing.Size(566, 99);
-            this.addressUserControl1.TabIndex = 30;
-            this.addressUserControl1.Zip = "";
+            this.addressControl.Addr1 = "";
+            this.addressControl.Addr2 = "";
+            this.addressControl.Location = new System.Drawing.Point(33, 105);
+            this.addressControl.Name = "addressControl";
+            this.addressControl.Size = new System.Drawing.Size(566, 99);
+            this.addressControl.TabIndex = 30;
+            this.addressControl.Zip = "";
             // 
             // MyInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 379);
-            this.Controls.Add(this.addressUserControl1);
+            this.Controls.Add(this.addressControl);
             this.Controls.Add(this.lblEmployeeID);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.label10);
@@ -261,6 +261,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblEmployeeID;
-        private MyUserControls.AddressUserControl addressUserControl1;
+        private MyUserControls.AddressUserControl addressControl;
     }
 }

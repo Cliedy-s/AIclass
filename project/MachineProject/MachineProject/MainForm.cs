@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RecursiveForChangeControls_MachineProject;
-
+using MachineProject.Services;
 
 namespace MachineProject
 {
@@ -23,8 +23,10 @@ namespace MachineProject
             InitializeComponent();
         }
 
+        DataSet ds;
         private void Form1_Load(object sender, EventArgs e)
         {
+            ds = new DataSet();
             // 로그인폼
             LoginForm login = new LoginForm();
             if(!(login.ShowDialog() == DialogResult.OK))
@@ -33,38 +35,54 @@ namespace MachineProject
             }
             //
 
-            // 매니저 권한 지정 // TODO - 사용자의 권한으로 변경
-            if (login.ID == "1") authority = 0b0010;
-            else authority = 0b0001;
+            // 사용자 권한 지정
+            authority = GlobalUsage.MyInfo.Authority;
 
             //flowlayoutpanel 내부 설정
             flpBase.AutoScroll = true; //스크롤 설정
             panForWork.Location = panForDefectAlarm.Location = new Point(0, 0); // 내부 알람패널, 일 패널 위치
-            splitContainer1.SplitterDistance = 550; // 스플릿 거리 
+            splitContainer1.SplitterDistance = this.ClientSize.Width - 301; // 스플릿 거리 
             nudNewDefectRateAlarm.DecimalPlaces = 2; // 누메릭업다운 소수점 설정
 
 
             // TODO - 지우기 : 메뉴를 임시로 생성함.
-            for (int i = 0; i < 11; i++)
-            {
-                NewMenuItem("item" + "Machine0" + i, flpBase);
-            }
+            //for (int i = 0; i < 11; i++)
+            //{
+            //    NewMenuItem("2000" + i, flpBase);
+            //}
+            NewMenuItem("20001", flpBase);
             NewMenuItem("itemTotalSelect", "전체선택", Total_CheckedChanged, true);
             //
 
             // 권한에 따라 다른 폼을 보여주는 부분----------------
-            if((authority & 0b0010) == 0b0010) // 관리자 권한
+            panForWork.Dock = DockStyle.Fill;
+            panForDefectAlarm.Dock = DockStyle.Fill;
+            if ((authority & 0b0010) == 0b0010) // 관리자 권한
             {
                 worksToolStripMenuItem.Visible = true;
                 panForDefectAlarm.Visible = true;
                 panForWork.Visible = false;
-                NewMenuItem("itemMachineState", "기계상태확인", CheckMachineState_Click);
+                employeesToolStripMenuItem.Visible = true;
+                //NewMenuItem("itemMachineState", "기계상태확인", CheckMachineState_Click);
             }
             else if ((authority & 0b0001) == 0b0001) // 일반 사용자 권한
             {
+                // 화면 Visible설정
                 worksToolStripMenuItem.Visible = false;
                 panForDefectAlarm.Visible = false;
                 panForWork.Visible = true;
+                employeesToolStripMenuItem.Visible = false;
+
+                // 그리드뷰 세팅
+                GlobalUsage.SetDataGridView(dgvTodo);
+                // 칼럼 넣기
+                DataGridViewAddColumns.DataGridViewAddColumns addcol = new DataGridViewAddColumns.DataGridViewAddColumns();
+                addcol.AddNewColumnToDataGridView("코드", "TodoCode", dgvTodo, typeof(int), 25);
+                addcol.AddNewColumnToDataGridView("기계ID", "MachineID", dgvTodo, typeof(string), 60);
+                addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvTodo, typeof(string), 60);
+                addcol.AddNewColumnToDataGridView("갯수", "TotalAmount", dgvTodo, typeof(int), 100, null, true, DataGridViewContentAlignment.MiddleLeft);
+                addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodo, typeof(string), 60);
+                btnRun.PerformClick(); // 데이터를 로드하는 버튼
             }
             //-------------------------------------------------------------
 
@@ -141,6 +159,7 @@ namespace MachineProject
                 else
                 {
                     (item.Tag as Control).Controls.RemoveByKey(item.Text);
+                    (machinesToolStripMenuItem.DropDownItems.Find("itemTotalSelect", false)[0] as ToolStripMenuItem).Checked = false; // 체크가 풀릴시 전체선택을 취소함
                 }
             }
         }
@@ -157,13 +176,13 @@ namespace MachineProject
                 }
             }
         }
-        // 기계 상태확인 열기 메소드
-        private void CheckMachineState_Click(object sender, EventArgs e)
-        {
-            MachineStateForm frm = new MachineStateForm();
-            frm.ShowDialog();
-        }
-        //
+        //// 기계 상태확인 열기 메소드
+        //private void CheckMachineState_Click(object sender, EventArgs e)
+        //{
+        //    MachineStateForm frm = new MachineStateForm();
+        //    frm.ShowDialog();
+        //}
+        ////
 
         // 기계 패널 생성 유저컨트롤을 가져옴
         private void NewMachineItem(string machineName, Control container)
@@ -178,14 +197,6 @@ namespace MachineProject
         // 기계 패널을 더블클릭했을 때
         private void MachinePanel_doubleClick(object sender, MachinePanel.MachineStringsEventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(e.ReturnValues.MachineName.ToString());
-            sb.AppendLine(e.ReturnValues.TotalAmount.ToString());
-            sb.AppendLine(e.ReturnValues.DefectAmount.ToString());
-            sb.AppendLine(e.ReturnValues.DefectRate.ToString());
-            sb.AppendLine(e.ReturnValues.DefectRateAlarm.ToString());
-            MessageBox.Show(sb.ToString());
-
             lblMachineName.Text = e.ReturnValues.MachineName;
             lblOldDefectRateAlarm.Text = string.Format("{0}",e.ReturnValues.DefectRateAlarm);
             nudNewDefectRateAlarm.Value = Convert.ToDecimal(e.ReturnValues.DefectRateAlarm);
@@ -258,6 +269,31 @@ namespace MachineProject
         {
             MyInfoForm frm = new MyInfoForm();
             frm.ShowDialog();
+        }
+
+        private void ShowEmployeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EmployeeToManagerForm frm = new EmployeeToManagerForm();
+            frm.Show();
+        }
+
+        private void 기계상태ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnRun_Click(object sender, EventArgs e)
+        {
+            if((GlobalUsage.MyInfo.Authority | 0b0001) == 0b0001) // 권한이 only 직원일 경우에만
+            {
+                // 작업자에 따른 Todo가져오기
+                TodoService tdService = new TodoService();
+                ds.Tables.Add(tdService.SelectAll());
+                tdService.Dispose();
+                DataView dv = new DataView(ds.Tables["TODO"]);
+                dv.RowFilter = string.Format("EmployeeID = {0}", GlobalUsage.MyInfo.EmployeeID);
+                dgvTodo.DataSource = dv;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using RecursiveForChangeControls_MachineProject;
+﻿using MachineProject.DTO;
+using RecursiveForChangeControls_MachineProject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,18 @@ namespace MachineProject
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            EmployeesService service = new EmployeesService();
+            try
+            {
+                GlobalUsage.MyInfo = service.Login(txtID.Text.Trim(), txtPWD.Text.Trim());
+                service.Dispose();
+                this.DialogResult = DialogResult.OK;
+            }
+            catch(Exception ee)
+            {
+                service.Dispose();
+                MessageBox.Show(ee.Message);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -39,7 +51,26 @@ namespace MachineProject
             SignUpForm frm = new SignUpForm();
             if(frm.ShowDialog() == DialogResult.OK)
             {
+                txtID.Text = frm.Email;
+                txtPWD.Text = frm.Password;
+                btnLogin.PerformClick();
+            }
+        }
 
+        private void LnkIDPWDSearch_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            IdPwdSearchForm frm = new IdPwdSearchForm();
+            if(frm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void TxtPWD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+                btnLogin.PerformClick();
             }
         }
     }

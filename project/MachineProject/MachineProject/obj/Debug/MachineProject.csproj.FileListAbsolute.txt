@@ -46,6 +46,10 @@ D:\AIclass\project\MachineProject\MachineProject\bin\Debug\Google.Protobuf.xml
 D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MySql.Data.xml
 D:\AIclass\project\MachineProject\MachineProject\bin\Debug\Renci.SshNet.xml
 D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MachineStateForm.resources
-D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MachineStateContextForm.resources
 D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MyInfoForm.resources
 D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MyUserControls_1023.dll
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.IdPwdSearchForm.resources
+D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MyRegexClass_MachineProject.dll
+D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MyRegexClass_MachineProject.pdb
+D:\AIclass\project\MachineProject\MachineProject\bin\Debug\DataGridViewAddColumns_1023.dll
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.EmployeeToManagerForm.resources

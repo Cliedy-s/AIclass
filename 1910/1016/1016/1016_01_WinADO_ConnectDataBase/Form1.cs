@@ -24,12 +24,10 @@ namespace _1016_01_WinADO_ConnectDataBase
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             connectionString = ConfigurationManager.ConnectionStrings["LocalConnectionString"].ConnectionString;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             MySqlConnection connection = null;
@@ -58,8 +56,6 @@ namespace _1016_01_WinADO_ConnectDataBase
         /// <summary>
         /// 문제가 되는 부분
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             cmbDepartments.SelectedIndexChanged -= cmbDepartments_SelectedIndexChanged;
@@ -88,8 +84,8 @@ namespace _1016_01_WinADO_ConnectDataBase
                         list.Add(item);
                     }
                 }
-                
-                cmbDepartments.DisplayMember = "Text"; 
+
+                cmbDepartments.DisplayMember = "Text";
                 cmbDepartments.ValueMember = "Code";
                 cmbDepartments.DataSource = list;
             }
@@ -127,12 +123,9 @@ namespace _1016_01_WinADO_ConnectDataBase
             */
             cmbDepartments.SelectedIndexChanged += cmbDepartments_SelectedIndexChanged;
         }
-
         /// <summary>
         /// 문제가 되는 부분
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void cmbDepartments_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -187,50 +180,50 @@ namespace _1016_01_WinADO_ConnectDataBase
             }
 
         }
-            private void button5_Click(object sender, EventArgs e)
-            {
-                // DataAdapter
-                MySqlConnection connection = new MySqlConnection(connectionString);
-                string commandstr = "select dept_no, dept_name from departments;";
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(commandstr, connection);
-                DataSet ds = new DataSet();
-                connection.Open();
-                dataAdapter.Fill(ds);
-                connection.Close();
-
-                comboBox1.DataSource = ds.Tables[0];
-                comboBox1.DisplayMember = "dept_name";
-                comboBox1.ValueMember = "dept_no";
-            }
-            private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                MySqlConnection connection = null;
-                using (connection = new MySqlConnection(connectionString))
-                {
-                    StringBuilder strCommnad = new StringBuilder();
-                    strCommnad.Append("select concat(first_name, ' ', last_name) as emp_name, de.dept_no ");
-                    strCommnad.Append("from employees e ");
-                    strCommnad.Append("     inner join ( select emp_no, dept_no from dept_emp where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no ");
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(strCommnad.ToString(), connection);
-                    connection.Open();
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds, "MyEmployee");
-                    dataGridView2.DataSource = ds.Tables["MyEmployee"];
-                }
-            }
-        }
-        public class ComboData
+        private void button5_Click(object sender, EventArgs e)
         {
-            public string Code { get; set; }
-            public string Text { get; set; }
+            // DataAdapter
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            string commandstr = "select dept_no, dept_name from departments;";
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(commandstr, connection);
+            DataSet ds = new DataSet();
+            connection.Open();
+            dataAdapter.Fill(ds);
+            connection.Close();
 
-            public ComboData(string code, string text)
+            comboBox1.DataSource = ds.Tables[0];
+            comboBox1.DisplayMember = "dept_name";
+            comboBox1.ValueMember = "dept_no";
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MySqlConnection connection = null;
+            using (connection = new MySqlConnection(connectionString))
             {
-                Code = code;
-                Text = text;
-            }
+                StringBuilder strCommnad = new StringBuilder();
+                strCommnad.Append("select concat(first_name, ' ', last_name) as emp_name, de.dept_no ");
+                strCommnad.Append("from employees e ");
+                strCommnad.Append("     inner join ( select emp_no, dept_no from dept_emp where dept_no = '" + comboBox1.SelectedValue.ToString() + "' and to_date = '9999-01-01' ) de on de.emp_no = e.emp_no ");
 
-            public ComboData() { }
+                MySqlDataAdapter adapter = new MySqlDataAdapter(strCommnad.ToString(), connection);
+                connection.Open();
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, "MyEmployee");
+                dataGridView2.DataSource = ds.Tables["MyEmployee"];
+            }
         }
     }
+    public class ComboData
+    {
+        public string Code { get; set; }
+        public string Text { get; set; }
+
+        public ComboData(string code, string text)
+        {
+            Code = code;
+            Text = text;
+        }
+
+        public ComboData() { }
+    }
+}

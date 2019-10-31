@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.machinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.worksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TodoSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showEmployeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showMyInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -46,10 +47,8 @@
             this.nudNewDefectRateAlarm = new System.Windows.Forms.NumericUpDown();
             this.btnSet = new System.Windows.Forms.Button();
             this.panForWork = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.기계상태ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRun = new System.Windows.Forms.Button();
+            this.dgvTodo = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -58,7 +57,7 @@
             this.panForDefectAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNewDefectRateAlarm)).BeginInit();
             this.panForWork.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTodo)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -67,10 +66,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.machinesToolStripMenuItem,
             this.worksToolStripMenuItem,
+            this.employeesToolStripMenuItem,
             this.myInfoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(825, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1022, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -95,6 +95,21 @@
             this.TodoSetToolStripMenuItem.Text = "TodoSet";
             this.TodoSetToolStripMenuItem.Click += new System.EventHandler(this.TodoSetToolStripMenuItem_Click);
             // 
+            // employeesToolStripMenuItem
+            // 
+            this.employeesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showEmployeesToolStripMenuItem});
+            this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.employeesToolStripMenuItem.Text = "Employees";
+            // 
+            // showEmployeesToolStripMenuItem
+            // 
+            this.showEmployeesToolStripMenuItem.Name = "showEmployeesToolStripMenuItem";
+            this.showEmployeesToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.showEmployeesToolStripMenuItem.Text = "EmployeeToManager";
+            this.showEmployeesToolStripMenuItem.Click += new System.EventHandler(this.ShowEmployeesToolStripMenuItem_Click);
+            // 
             // myInfoToolStripMenuItem
             // 
             this.myInfoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -106,7 +121,7 @@
             // showMyInfoToolStripMenuItem
             // 
             this.showMyInfoToolStripMenuItem.Name = "showMyInfoToolStripMenuItem";
-            this.showMyInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showMyInfoToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.showMyInfoToolStripMenuItem.Text = "ShowMyInfo";
             this.showMyInfoToolStripMenuItem.Click += new System.EventHandler(this.ShowMyInfoToolStripMenuItem_Click);
             // 
@@ -128,8 +143,8 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.Panel2.Controls.Add(this.panForDefectAlarm);
             this.splitContainer1.Panel2.Controls.Add(this.panForWork);
-            this.splitContainer1.Size = new System.Drawing.Size(825, 501);
-            this.splitContainer1.SplitterDistance = 520;
+            this.splitContainer1.Size = new System.Drawing.Size(1022, 501);
+            this.splitContainer1.SplitterDistance = 408;
             this.splitContainer1.TabIndex = 2;
             // 
             // flpBase
@@ -137,7 +152,7 @@
             this.flpBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpBase.Location = new System.Drawing.Point(0, 0);
             this.flpBase.Name = "flpBase";
-            this.flpBase.Size = new System.Drawing.Size(520, 501);
+            this.flpBase.Size = new System.Drawing.Size(408, 501);
             this.flpBase.TabIndex = 0;
             // 
             // panForDefectAlarm
@@ -149,8 +164,7 @@
             this.panForDefectAlarm.Controls.Add(this.lblMachineName);
             this.panForDefectAlarm.Controls.Add(this.nudNewDefectRateAlarm);
             this.panForDefectAlarm.Controls.Add(this.btnSet);
-            this.panForDefectAlarm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panForDefectAlarm.Location = new System.Drawing.Point(0, 0);
+            this.panForDefectAlarm.Location = new System.Drawing.Point(304, 0);
             this.panForDefectAlarm.Name = "panForDefectAlarm";
             this.panForDefectAlarm.Size = new System.Drawing.Size(301, 501);
             this.panForDefectAlarm.TabIndex = 3;
@@ -231,55 +245,38 @@
             // 
             // panForWork
             // 
-            this.panForWork.Controls.Add(this.button2);
-            this.panForWork.Controls.Add(this.listView1);
-            this.panForWork.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panForWork.Controls.Add(this.dgvTodo);
+            this.panForWork.Controls.Add(this.btnRun);
             this.panForWork.Location = new System.Drawing.Point(0, 0);
             this.panForWork.Name = "panForWork";
             this.panForWork.Size = new System.Drawing.Size(301, 501);
             this.panForWork.TabIndex = 18;
             // 
-            // button2
+            // btnRun
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(219, 469);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "실행";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRun.Location = new System.Drawing.Point(219, 469);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 23);
+            this.btnRun.TabIndex = 1;
+            this.btnRun.Text = "실행";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
-            // listView1
+            // dgvTodo
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(295, 460);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.기계상태ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 26);
-            // 
-            // 기계상태ToolStripMenuItem
-            // 
-            this.기계상태ToolStripMenuItem.Name = "기계상태ToolStripMenuItem";
-            this.기계상태ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.기계상태ToolStripMenuItem.Text = "기계 상태";
+            this.dgvTodo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTodo.Location = new System.Drawing.Point(3, 3);
+            this.dgvTodo.Name = "dgvTodo";
+            this.dgvTodo.RowTemplate.Height = 23;
+            this.dgvTodo.Size = new System.Drawing.Size(295, 460);
+            this.dgvTodo.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 525);
+            this.ClientSize = new System.Drawing.Size(1022, 525);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -296,7 +293,7 @@
             this.panForDefectAlarm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNewDefectRateAlarm)).EndInit();
             this.panForWork.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTodo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,13 +315,13 @@
         private System.Windows.Forms.NumericUpDown nudNewDefectRateAlarm;
         private System.Windows.Forms.Button btnSet;
         private System.Windows.Forms.Panel panForWork;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 기계상태ToolStripMenuItem;
+        private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.ToolStripMenuItem TodoSetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem myInfoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showMyInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showEmployeesToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dgvTodo;
     }
 }
 

@@ -43,7 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.address = new MyUserControls.AddressUserControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDomainByUser = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.txtEmployeeID.Location = new System.Drawing.Point(171, 284);
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(100, 21);
-            this.txtEmployeeID.TabIndex = 0;
+            this.txtEmployeeID.TabIndex = 7;
             // 
             // label1
             // 
@@ -84,7 +84,7 @@
             this.txtName.Location = new System.Drawing.Point(171, 244);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 21);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 6;
             // 
             // label3
             // 
@@ -102,7 +102,7 @@
             this.txtEmail.Location = new System.Drawing.Point(171, 42);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 21);
-            this.txtEmail.TabIndex = 6;
+            this.txtEmail.TabIndex = 0;
             // 
             // label4
             // 
@@ -129,8 +129,9 @@
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassword.Location = new System.Drawing.Point(171, 75);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(183, 21);
-            this.txtPassword.TabIndex = 12;
+            this.txtPassword.TabIndex = 3;
             // 
             // btnSubmit
             // 
@@ -138,7 +139,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(418, 334);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 14;
+            this.btnSubmit.TabIndex = 8;
             this.btnSubmit.Text = "가입";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
@@ -149,9 +150,10 @@
             this.button2.Location = new System.Drawing.Point(517, 334);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 15;
+            this.button2.TabIndex = 9;
             this.button2.Text = "취소";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // cmbEmailDomain
             // 
@@ -160,7 +162,8 @@
             this.cmbEmailDomain.Location = new System.Drawing.Point(293, 42);
             this.cmbEmailDomain.Name = "cmbEmailDomain";
             this.cmbEmailDomain.Size = new System.Drawing.Size(121, 20);
-            this.cmbEmailDomain.TabIndex = 16;
+            this.cmbEmailDomain.TabIndex = 1;
+            this.cmbEmailDomain.SelectedIndexChanged += new System.EventHandler(this.CmbEmailDomain_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -179,7 +182,7 @@
             this.txtPhone.Mask = "000-9000-0000";
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(127, 21);
-            this.txtPhone.TabIndex = 21;
+            this.txtPhone.TabIndex = 5;
             // 
             // address
             // 
@@ -189,16 +192,16 @@
             this.address.Location = new System.Drawing.Point(33, 107);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(566, 97);
-            this.address.TabIndex = 22;
+            this.address.TabIndex = 4;
             this.address.Zip = "";
             // 
-            // textBox1
+            // txtDomainByUser
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(420, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(113, 21);
-            this.textBox1.TabIndex = 23;
+            this.txtDomainByUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtDomainByUser.Location = new System.Drawing.Point(420, 42);
+            this.txtDomainByUser.Name = "txtDomainByUser";
+            this.txtDomainByUser.Size = new System.Drawing.Size(113, 21);
+            this.txtDomainByUser.TabIndex = 2;
             // 
             // label7
             // 
@@ -249,7 +252,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDomainByUser);
             this.Controls.Add(this.address);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.label5);
@@ -289,7 +292,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox txtPhone;
         private MyUserControls.AddressUserControl address;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDomainByUser;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;

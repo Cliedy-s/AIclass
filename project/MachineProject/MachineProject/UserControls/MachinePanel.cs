@@ -16,7 +16,25 @@ namespace MachineProject
         {
             InitializeComponent();
         }
-
+        bool machineState = false;
+        public bool MachineState
+        {
+            get { return machineState; }
+            set
+            {
+                machineState = value;
+                if (value)
+                {
+                    picGreenLight.Image = imageList1.Images[1]; // 켜진 그린라이트
+                    picRedLight.Image = imageList1.Images[2]; // 꺼진 레드라이트
+                }
+                else
+                {
+                    picGreenLight.Image = imageList1.Images[0]; // 꺼진 그린라이트
+                    picRedLight.Image = imageList1.Images[3]; // 켜진 레드라이트
+                }
+            }
+        }
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public string MachineName { get => lblMahineName.Text; set => lblMahineName.Text = value; }
         [Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
@@ -30,6 +48,8 @@ namespace MachineProject
 
         private void MachinePanel_Load(object sender, EventArgs e)
         {
+            // TODO - 기계 테이블에서 갖고오게 변경하기
+            MachineState = false;
             panel1.BorderStyle = BorderStyle.FixedSingle;
 
             panel1.DoubleClick += All_DoubleClick;
@@ -70,6 +90,27 @@ namespace MachineProject
                 DefectRate = defectRate;
                 DefectRateAlarm = defectRateAlarm;
             }
+        }
+
+        private void RunMachine()
+        {
+            this.MachineState = true;
+            // TODO - 기계 시작하기
+        }
+        private void StopMachine()
+        {
+            this.MachineState = false;
+            // TODO - 기계 중지하기
+        }
+
+        private void 재시작ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunMachine();
+        }
+
+        private void 일시중지ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StopMachine();
         }
     }
 

@@ -4,8 +4,10 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MachineProject
@@ -16,12 +18,11 @@ namespace MachineProject
         EmployeesDAC dac;
         public EmployeesService()
         {
-            string sqlconn = ConfigurationManager.ConnectionStrings["memberInfo"].ConnectionString;
+            string sqlconn = ConfigurationManager.ConnectionStrings["MachineProjectConnStr"].ConnectionString;
             conn = new MySqlConnection(sqlconn);
             conn.Open();
             dac = new EmployeesDAC(conn);
         }
-
         public void Insert(EmployeeDTO item)
         {
             if (dac.IsValid(item.EmployeeID))
@@ -31,7 +32,6 @@ namespace MachineProject
 
             dac.Insert(item);
         }
-
         public void Update(EmployeeDTO item)
         {
             if (!dac.IsValid(item.EmployeeID))
@@ -39,7 +39,6 @@ namespace MachineProject
 
             dac.Update(item);
         }
-
         public void Delete(EmployeeDTO item)
         {
             if (!dac.IsValid(item.EmployeeID))
@@ -47,7 +46,10 @@ namespace MachineProject
 
             dac.Delete(item);
         }
-
+        public DataTable SelectAll()
+        {
+            return dac.SelectAll();
+        }
         public EmployeeDTO SearchEmployee(string employeeID)
         {
             if (dac.IsValid(employeeID))
@@ -55,10 +57,20 @@ namespace MachineProject
 
             return dac.SearchEmployee(employeeID);
         }
-
-        public List<EmployeeDTO> SelectAll()
+        public void UpdateAuthority(string employeeID, int authority)
         {
-            return dac.SelectAll();
+            if(!dac.IsValid(employeeID))
+                throw new Exception(Properties.Resources.Error_EmpIDNotExist_msg);
+            dac.UpdateAuthority(employeeID, authority);
+        }
+        public EmployeeDTO Login(string email, string pwd)
+        {
+            if (!dac.IsEmailExist(email))
+                throw new Exception(Properties.Resources.Error_EmpEmailNotExist_msg);
+            if (!dac.IsPwdCollect(email, pwd))
+                throw new Exception(Properties.Resources.Error_EmpWrongPwd_msg);
+
+            return dac.SearchEmployeeByEmail(email);
         }
 
         public void Dispose()

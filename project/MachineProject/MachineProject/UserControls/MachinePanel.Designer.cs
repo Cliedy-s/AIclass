@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MachinePanel));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.중지ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.picRedLight = new System.Windows.Forms.PictureBox();
+            this.picGreenLight = new System.Windows.Forms.PictureBox();
             this.lblDefectRateAlarm_V = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblDefectRate_V = new System.Windows.Forms.Label();
@@ -44,14 +49,20 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.재시작ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRedLight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGreenLight)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel1.Controls.Add(this.picRedLight);
+            this.panel1.Controls.Add(this.picGreenLight);
             this.panel1.Controls.Add(this.lblDefectRateAlarm_V);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.lblDefectRate_V);
@@ -71,13 +82,38 @@
             this.panel1.Size = new System.Drawing.Size(213, 364);
             this.panel1.TabIndex = 9;
             // 
-            // pictureBox1
+            // contextMenuStrip1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(205, 69);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.중지ToolStripMenuItem,
+            this.재시작ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // 중지ToolStripMenuItem
+            // 
+            this.중지ToolStripMenuItem.Name = "중지ToolStripMenuItem";
+            this.중지ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.중지ToolStripMenuItem.Text = "일시중지";
+            this.중지ToolStripMenuItem.Click += new System.EventHandler(this.일시중지ToolStripMenuItem_Click);
+            // 
+            // picRedLight
+            // 
+            this.picRedLight.Location = new System.Drawing.Point(110, 6);
+            this.picRedLight.Name = "picRedLight";
+            this.picRedLight.Size = new System.Drawing.Size(66, 66);
+            this.picRedLight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picRedLight.TabIndex = 20;
+            this.picRedLight.TabStop = false;
+            // 
+            // picGreenLight
+            // 
+            this.picGreenLight.Location = new System.Drawing.Point(38, 6);
+            this.picGreenLight.Name = "picGreenLight";
+            this.picGreenLight.Size = new System.Drawing.Size(66, 66);
+            this.picGreenLight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picGreenLight.TabIndex = 19;
+            this.picGreenLight.TabStop = false;
             // 
             // lblDefectRateAlarm_V
             // 
@@ -227,6 +263,22 @@
             this.listBox1.Size = new System.Drawing.Size(206, 169);
             this.listBox1.TabIndex = 0;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Led_Green_Dark.png");
+            this.imageList1.Images.SetKeyName(1, "Led_Green_Light.png");
+            this.imageList1.Images.SetKeyName(2, "Led_Red_Dark.png");
+            this.imageList1.Images.SetKeyName(3, "Led_Red_Light.png");
+            // 
+            // 재시작ToolStripMenuItem
+            // 
+            this.재시작ToolStripMenuItem.Name = "재시작ToolStripMenuItem";
+            this.재시작ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.재시작ToolStripMenuItem.Text = "재시작";
+            this.재시작ToolStripMenuItem.Click += new System.EventHandler(this.재시작ToolStripMenuItem_Click);
+            // 
             // MachinePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -237,7 +289,9 @@
             this.Load += new System.EventHandler(this.MachinePanel_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picRedLight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picGreenLight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,6 +313,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picGreenLight;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.PictureBox picRedLight;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 중지ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 재시작ToolStripMenuItem;
     }
 }

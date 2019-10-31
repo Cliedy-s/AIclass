@@ -13,6 +13,5 @@ namespace MachineProject.DTO
         public string ProductionID{ get; set; }
         public string EmployeeID { get; set; }
         public int TotalAmount{ get; set; }
-        public DateTime EndExpected{ get; set; }
     }
 }

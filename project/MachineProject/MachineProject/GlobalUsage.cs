@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MachineProject.DTO;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,13 +11,21 @@ namespace MachineProject
 {
     static class GlobalUsage
     {
-
+        static public EmployeeDTO MyInfo;
 
         // for recursiveForChangeControls
         static public void ChangeFont(Control control)
         {
             Font font = control.Font;
             control.Font = new Font("나눔고딕", font.Size, font.Style);
+        }
+        static public void SetDataGridView(DataGridView dv)
+        {
+            dv.AutoGenerateColumns = false;
+            dv.AllowUserToAddRows = false;
+            dv.MultiSelect = false;
+            dv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dv.RowHeadersVisible = false;
         }
     }
 }

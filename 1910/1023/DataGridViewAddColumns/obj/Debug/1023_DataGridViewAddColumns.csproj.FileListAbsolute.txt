@@ -3,3 +3,4 @@ D:\AIclass\1910\1023\DataGridViewAddColumns\bin\Debug\1023_DataGridViewAddColumn
 D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\1023_DataGridViewAddColumns.csproj.CoreCompileInputs.cache
 D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\1023_DataGridViewAddColumns.dll
 D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\1023_DataGridViewAddColumns.pdb
+D:\AIclass\1910\1023\DataGridViewAddColumns\obj\Debug\1023_DataGridViewAddColumns.csprojAssemblyReference.cache
