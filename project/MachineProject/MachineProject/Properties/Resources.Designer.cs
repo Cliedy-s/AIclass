@@ -160,6 +160,24 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
+        ///   ^1[0-9]{4}$과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_empidEx {
+            get {
+                return ResourceManager.GetString("Regex_empidEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   직원 아이디는 1로 시작하는 5자리여야 합니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Regex_empidEx_msp {
+            get {
+                return ResourceManager.GetString("Regex_empidEx_msp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   ^[a-zA-Z0-9_-]{5,20}$과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Regex_idEx {

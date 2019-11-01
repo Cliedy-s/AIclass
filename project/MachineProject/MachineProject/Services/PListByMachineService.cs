@@ -1,4 +1,5 @@
 ﻿using MachineProject.DAC;
+using MachineProject.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,10 @@ namespace MachineProject.Services
             conn.Open();
             dac = new PListByMachineDAC(conn);
         }
-        
-        public DataTable SelectAll()
+        public List<PListByMachineDTO> SelectAll()
         {
             return dac.SelectAll();
         }
-
 
         public void Dispose()
         {

@@ -1,28 +1,27 @@
-﻿using MachineProject.DAC;
-using MachineProject.DTO;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace MachineProject.Services
+namespace TempData
 {
-    class ProductionPlanService
+    public class EmployeesService : IDisposable
     {
         MySqlConnection conn;
-        ProductionPlanDAC dac;
-        public ProductionPlanService()
+        EmployeesDAC dac;
+        public EmployeesService()
         {
             string sqlconn = ConfigurationManager.ConnectionStrings["MachineProjectConnStr"].ConnectionString;
             conn = new MySqlConnection(sqlconn);
             conn.Open();
-            dac = new ProductionPlanDAC(conn);
+            dac = new EmployeesDAC(conn);
         }
-        public List<ProductionPlanDTO> SelectAll()
+        public List<EmployeeDTO> SelectAll()
         {
             return dac.SelectAll();
         }

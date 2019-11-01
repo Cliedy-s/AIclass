@@ -40,18 +40,15 @@ namespace MachineProject
             rcontrols.ChangeControls(this.Controls, GlobalUsage.ChangeFont);
 
             // 콤보박스 데이터 설정
-            EmailDomainService service = new EmailDomainService();
-            DataTable dt = service.SelectAll();
+            EmailDomainService edService = new EmailDomainService();
+            List<EmailDomainDTO> edbindlist = edService.SelectAll();
 
             // 직접입력 삽입
-            DataRow row = dt.NewRow();
-            row["DomainCode"] = 0;
-            row["Domain"] = Properties.Resources.ComboBox_DomainUserBy;
-            dt.Rows.InsertAt(row, 0);
+            edbindlist.Insert(0, new EmailDomainDTO() { Domain = Properties.Resources.ComboBox_DomainUserBy, DomainCode = 0 });
             //
 
-            cmbEmailDomain.DataSource = dt;
-            service.Dispose();
+            cmbEmailDomain.DataSource = new BindingList<EmailDomainDTO>();
+            edService.Dispose();
             cmbEmailDomain.DisplayMember = "Domain";
             cmbEmailDomain.ValueMember = "DomainCode";
             
@@ -95,7 +92,7 @@ namespace MachineProject
 
         public void CheckEmployeeDTO(EmployeeDTO item)
         {
-            Regex idEx = new Regex(Properties.Resources.Regex_idEx);
+            Regex idEx = new Regex(Properties.Resources.Regex_idEx); // ID는 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.
             Regex pwdEx = new Regex(Properties.Resources.Regex_pwdEx); // 숫자1이상, 영문자1이상, 특수문자 1이상, 최대글자수 9자리 이상
             Regex phoneEx = new Regex(Properties.Resources.Regex_phoneEx); // 000(2~3)-0000(3~4)-0000
             Regex nameEx = new Regex(Properties.Resources.Regex_nameEx); // 영대소문만 | 한글만

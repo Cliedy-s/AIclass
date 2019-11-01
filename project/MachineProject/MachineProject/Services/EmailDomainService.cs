@@ -1,4 +1,5 @@
 ﻿using MachineProject.DAC;
+using MachineProject.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,11 @@ namespace MachineProject.Services
             dac = new EmailDomainDAC(conn);
         }
 
-        public DataTable SelectAll()
+        public List<EmailDomainDTO> SelectAll()
         {
             return dac.SelectAll();
         }
+
         public void Dispose()
         {
             conn.Close();

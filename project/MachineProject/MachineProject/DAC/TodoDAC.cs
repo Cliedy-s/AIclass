@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MachineProject.DTO;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,15 +17,43 @@ namespace MachineProject.DAC
             this.conn = conn;
         }
 
-        public DataTable SelectAll()
+        public List<TodoDTO> SelectAll()
         {
-            string sql = "SELECT TodoCode, MachineID, ProductionID, EmployeeID, TotalAmount FROM TODO; ";
+            List<TodoDTO> list = new List<TodoDTO>();
+            string sql = "SELECT TodoCode, MachineID, ProductionID, EmployeeID, Amount, Complete, CompleteDate FROM TODO; ";
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            dt.TableName = "TODO";
-            return dt;
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = comm.ExecuteReader();
+
+            TodoDTO dto;
+            while (reader.Read())
+            {
+                dto = new TodoDTO()
+                {
+                    TodoCode = Convert.ToInt32(reader["TodoCode"]),
+                    MachineID = reader["MachineID"].ToString(),
+                    ProductionID = reader["ProductionID"].ToString(),
+                    EmployeeID = reader["EmployeeID"].ToString(),
+                    Amount = Convert.ToInt32(reader["Amount"]),
+                    Complete = Convert.ToChar(reader["Complete"]),
+                    CompleteDate = Convert.ToDateTime(reader["CompleteDate"])
+                };
+                list.Add(dto);
+            }
+            return list;
         }
+
+        //public DataTable SelectAll(bool getByReader)
+        //{
+        //    DataTable data = new DataTable();
+        //    data.TableName = "TODO";
+
+        //    string sql = "SELECT TodoCode, MachineID, ProductionID, EmployeeID, TotalAmount FROM TODO; ";
+
+        //    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+        //    adapter.Fill(data);
+        //    return data;
+
+        //}
     }
 }

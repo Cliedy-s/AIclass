@@ -28,8 +28,7 @@ namespace MachineProject.Services
             if (dac.IsValid(machineID))
                 dac.UpdateRunState(machineID, isRunning);
         }
-
-        public DataTable SelectAll()
+        public List<MachineDTO> SelectAll()
         {
             return dac.SelectAll();
         }

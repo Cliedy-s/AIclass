@@ -13,11 +13,12 @@ SELECT MachineID, isRunning FROM MACHINE;
 SELECT MachineID, ProductionID, AmountPerDay FROM PLISTBYMACHINE;
 SELECT TodoCode, MachineID, ProductionID, EmployeeID, TotalAmount FROM TODO;
 SELECT ProductionPlanCode, ProductionID, TotalAmount FROM PRODUCTIONPLAN;
+SELECT MachineID, ProductionID, AmountPerDay FROM PLISTBYMACHINE; 
 
 SELECT  EmployeeID, Email, Password, Name, Phone, ZipCode, Addr1, Addr2, Authority FROM EMPLOYEES;
 SELECT MachineID, isRunning FROM MACHINE;
 SELECT ProductionID, ProductionName FROM PRODUCTION;
-
+SELECT MachineID, ProductionID, IFNULL(AmountPerDay, 0) as AmountPerDay FROM PLISTBYMACHINE; 
 SELECT * FROM TODO;
 # Insert문
 # 사용자 : 10000대

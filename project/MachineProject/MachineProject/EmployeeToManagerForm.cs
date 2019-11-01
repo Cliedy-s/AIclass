@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MachineProject.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,6 @@ namespace MachineProject
             DataGridViewAddColumns.DataGridViewAddColumns addcol = new DataGridViewAddColumns.DataGridViewAddColumns();
             addcol.AddNewColumnToDataGridView("직원코드", "EmployeeID", dgvETM, typeof(string));
             addcol.AddNewColumnToDataGridView("이메일", "Email", dgvETM, typeof(string));
-            addcol.AddNewColumnToDataGridView("비밀번호", "Password", dgvETM, typeof(string));
             addcol.AddNewColumnToDataGridView("이름", "Name", dgvETM, typeof(string));
             addcol.AddNewColumnToDataGridView("휴대폰", "Phone", dgvETM, typeof(string));
             addcol.AddNewColumnToDataGridView("권한", "Authority", dgvETM, typeof(string));
@@ -52,10 +52,10 @@ namespace MachineProject
         }
         private void LoadData()
         {
-            EmployeesService service = new EmployeesService();
-            DataTable dt = service.SelectAll();
-            service.Dispose();
-            dgvETM.DataSource = dt;
+            EmployeesService eService = new EmployeesService();
+            BindingList<EmployeeDTO> ebindlist = new BindingList<EmployeeDTO>(eService.SelectAll());
+            eService.Dispose();
+            dgvETM.DataSource = ebindlist;
             dgvETM.ClearSelection();
         }
 

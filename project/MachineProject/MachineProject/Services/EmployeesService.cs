@@ -46,7 +46,8 @@ namespace MachineProject
 
             dac.Delete(item);
         }
-        public DataTable SelectAll()
+
+        public List<EmployeeDTO> SelectAll()
         {
             return dac.SelectAll();
         }

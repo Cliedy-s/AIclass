@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MachineProject.DTO;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,15 +16,37 @@ namespace MachineProject.DAC
         {
             this.conn = conn;
         }
-        public DataTable SelectAll()
+        public List<ProductionPlanDTO> SelectAll()
         {
+            List<ProductionPlanDTO> list = new List<ProductionPlanDTO>();
             string sql = "SELECT ProductionPlanCode, ProductionID, TotalAmount FROM PRODUCTIONPLAN; ";
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            dt.TableName = "PRODUCTIONPLAN";
-            return dt;
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = comm.ExecuteReader();
+
+            ProductionPlanDTO dto;
+            while (reader.Read())
+            {
+                dto = new ProductionPlanDTO()
+                {
+                    ProductionPlanCode = Convert.ToInt32(reader["ProductionPlanCode"]),
+                    ProductionID = reader["ProductionID"].ToString(),
+                    TotalAmount = Convert.ToInt32(reader["TotalAmount"])
+                };
+                list.Add(dto);
+            }
+            return list;
         }
+
+        //public DataTable SelectAll()
+        //{
+        //    DataTable data = new DataTable();
+        //    data.TableName = "PRODUCTIONPLAN";
+        //        string sql = "SELECT ProductionPlanCode, ProductionID, TotalAmount FROM PRODUCTIONPLAN;";
+
+        //        MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+        //        adapter.Fill(data);
+        //        return data;
+        //}
     }
 }

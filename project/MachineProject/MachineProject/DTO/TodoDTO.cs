@@ -8,10 +8,12 @@ namespace MachineProject.DTO
 {
     public class TodoDTO
     {
-        public int ProductionCode { get; set; }
+        public int TodoCode { get; set; }
         public string MachineID { get; set; }
-        public string ProductionID{ get; set; }
+        public string ProductionID { get; set; }
         public string EmployeeID { get; set; }
-        public int TotalAmount{ get; set; }
+        public int Amount { get; set; }
+        public char Complete { get; set; }
+        public DateTime CompleteDate{ get; set; }
     }
 }

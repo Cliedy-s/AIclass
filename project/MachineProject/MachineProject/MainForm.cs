@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RecursiveForChangeControls_MachineProject;
 using MachineProject.Services;
+using MachineProject.DTO;
 
 namespace MachineProject
 {
@@ -17,16 +18,13 @@ namespace MachineProject
     {
         int authority = 0b0001;
         List<string> alamList;
-        DControls dcontrols;
         public MainForm()
         {
             InitializeComponent();
         }
 
-        DataSet ds;
         private void Form1_Load(object sender, EventArgs e)
         {
-            ds = new DataSet();
             // 로그인폼
             LoginForm login = new LoginForm();
             if(!(login.ShowDialog() == DialogResult.OK))
@@ -44,16 +42,6 @@ namespace MachineProject
             splitContainer1.SplitterDistance = this.ClientSize.Width - 301; // 스플릿 거리 
             nudNewDefectRateAlarm.DecimalPlaces = 2; // 누메릭업다운 소수점 설정
 
-
-            // TODO - 지우기 : 메뉴를 임시로 생성함.
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    NewMenuItem("2000" + i, flpBase);
-            //}
-            NewMenuItem("20001", flpBase);
-            NewMenuItem("itemTotalSelect", "전체선택", Total_CheckedChanged, true);
-            //
-
             // 권한에 따라 다른 폼을 보여주는 부분----------------
             panForWork.Dock = DockStyle.Fill;
             panForDefectAlarm.Dock = DockStyle.Fill;
@@ -64,6 +52,8 @@ namespace MachineProject
                 panForWork.Visible = false;
                 employeesToolStripMenuItem.Visible = true;
                 //NewMenuItem("itemMachineState", "기계상태확인", CheckMachineState_Click);
+
+                // 메뉴 생성
             }
             else if ((authority & 0b0001) == 0b0001) // 일반 사용자 권한
             {
@@ -80,11 +70,30 @@ namespace MachineProject
                 addcol.AddNewColumnToDataGridView("코드", "TodoCode", dgvTodo, typeof(int), 25);
                 addcol.AddNewColumnToDataGridView("기계ID", "MachineID", dgvTodo, typeof(string), 60);
                 addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvTodo, typeof(string), 60);
-                addcol.AddNewColumnToDataGridView("갯수", "TotalAmount", dgvTodo, typeof(int), 100, null, true, DataGridViewContentAlignment.MiddleLeft);
+                addcol.AddNewColumnToDataGridView("완료", "Complete", dgvTodo, typeof(char), 10);
+                addcol.AddNewColumnToDataGridView("갯수", "Amount", dgvTodo, typeof(int), 90, null, true, DataGridViewContentAlignment.MiddleLeft);
+                addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodo, typeof(DateTime), 50);
                 addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodo, typeof(string), 60);
-                btnRun.PerformClick(); // 데이터를 로드하는 버튼
+                LoadEmpDgv(); // 데이터 로드
+
+                //메뉴 생성
+                //var groups = ds.Tables["TODO"].AsEnumerable().GroupBy(r => r.Field<string>("MachineID"));
+                //foreach (var item in groups)
+                //{
+                //    //groups.
+                //}
+                //for (int i = 0; i < 11; i++)
+                //{
+                //    NewMenuItem("2000" + i, flpBase);
+                //}
+                NewMenuItem("20001", flpBase);
+                // TODO - 메뉴 생성
             }
             //-------------------------------------------------------------
+
+            // 공통 메뉴
+            NewMenuItem("itemTotalSelect", "전체선택", Total_CheckedChanged, true);
+            //
 
             // 알람 리스트
             alamList = new List<string>();
@@ -93,7 +102,6 @@ namespace MachineProject
             RecursiveForChangeControls rcontrols = new RecursiveForChangeControls();
             rcontrols.ChangeControls(this.Controls, GlobalUsage.ChangeFont);
         }
-
 
         // 메뉴 아이템 생성 모듈 => 머신 메뉴를 위함
         /// <summary>
@@ -282,18 +290,21 @@ namespace MachineProject
 
         }
 
-        private void BtnRun_Click(object sender, EventArgs e)
+        private void LoadEmpDgv()
         {
-            if((GlobalUsage.MyInfo.Authority | 0b0001) == 0b0001) // 권한이 only 직원일 경우에만
+            if ((GlobalUsage.MyInfo.Authority | 0b0001) == 0b0001) // 권한이 only 직원일 경우
             {
                 // 작업자에 따른 Todo가져오기
                 TodoService tdService = new TodoService();
-                ds.Tables.Add(tdService.SelectAll());
+                BindingList<TodoDTO> tdbindlist = new BindingList<TodoDTO>(tdService.SelectAll().Where((elem) => elem.EmployeeID == GlobalUsage.MyInfo.EmployeeID).ToList());
                 tdService.Dispose();
-                DataView dv = new DataView(ds.Tables["TODO"]);
-                dv.RowFilter = string.Format("EmployeeID = {0}", GlobalUsage.MyInfo.EmployeeID);
-                dgvTodo.DataSource = dv;
+                dgvTodo.DataSource = tdbindlist;
+                dgvTodo.ClearSelection();
             }
+        }
+
+        private void BtnRun_Click(object sender, EventArgs e)
+        {
         }
     }
 }
