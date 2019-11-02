@@ -27,6 +27,19 @@ namespace MachineProject.Services
             return dac.SelectAll();
         }
 
+        public void InsertNUpdateProductionPlan(TodoDTO item, int productionPlanCode, int planingAmount)
+        {
+            ProductionListDAC pldac = new ProductionListDAC(conn);
+            if (!pldac.IsValid(item.ProductionID, item.MachineID))
+                throw new Exception(Properties.Resources.Error_NoProductable_msg);
+
+            ProductionPlanDAC ppdac = new ProductionPlanDAC(conn);
+            if (!ppdac.IsAddable(productionPlanCode, planingAmount))
+                throw new Exception(Properties.Resources.Error_ProductionPlanNotAddable_msg);
+
+            dac.InsertNUpdateProductionPlan(item, productionPlanCode, planingAmount);
+        }
+
         public void Dispose()
         {
             conn.Close();

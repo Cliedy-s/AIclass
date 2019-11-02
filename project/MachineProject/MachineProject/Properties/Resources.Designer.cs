@@ -115,6 +115,33 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
+        ///   유효한 기계코드인지 확인해주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_MachineNotValid_msg {
+            get {
+                return ResourceManager.GetString("Error_MachineNotValid_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   해당 기계로 생산 불가능한 제품입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_NoProductable_msg {
+            get {
+                return ResourceManager.GetString("Error_NoProductable_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   남은 개수를 확인해주세요과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_ProductionPlanNotAddable_msg {
+            get {
+                return ResourceManager.GetString("Error_ProductionPlanNotAddable_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   고장과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MachineState_Crash {
@@ -133,29 +160,11 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
-        ///   실행중과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MachineState_Running {
-            get {
-                return ResourceManager.GetString("MachineState_Running", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   중지과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string MachineState_Stop {
             get {
                 return ResourceManager.GetString("MachineState_Stop", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   중지중과(와) 유사한 지역화된 문자열을 찾습니다.
-        /// </summary>
-        internal static string MachineState_Stopping {
-            get {
-                return ResourceManager.GetString("MachineState_Stopping", resourceCulture);
             }
         }
         

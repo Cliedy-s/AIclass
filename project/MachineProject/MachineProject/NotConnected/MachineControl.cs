@@ -26,14 +26,8 @@ namespace MachineProject
                     case eMachineState.Run:
                         MachineStateText = Properties.Resources.MachineState_Run;
                         break;
-                    case eMachineState.Running:
-                        MachineStateText = Properties.Resources.MachineState_Running;
-                        break;
                     case eMachineState.Stop:
                         MachineStateText = Properties.Resources.MachineState_Stop;
-                        break;
-                    case eMachineState.Stopping:
-                        MachineStateText = Properties.Resources.MachineState_Stopping;
                         break;
                     case eMachineState.Crash:
                         MachineStateText = Properties.Resources.MachineState_Crash;

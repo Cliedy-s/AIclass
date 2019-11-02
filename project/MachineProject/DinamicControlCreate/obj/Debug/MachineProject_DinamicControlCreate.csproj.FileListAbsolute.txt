@@ -3,3 +3,9 @@ D:\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\MachineProject_
 D:\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\MachineProject_DinamicControlCreate.pdb
 D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.dll
 D:\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.pdb
+D:\2019\SecondSemester\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\MachineProject_DinamicControlCreate.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\DinamicControlCreate\bin\Debug\MachineProject_DinamicControlCreate.pdb
+D:\2019\SecondSemester\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.csprojAssemblyReference.cache
+D:\2019\SecondSemester\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.csproj.CoreCompileInputs.cache
+D:\2019\SecondSemester\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\DinamicControlCreate\obj\Debug\MachineProject_DinamicControlCreate.pdb

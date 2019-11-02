@@ -13,13 +13,15 @@ SELECT MachineID, isRunning FROM MACHINE;
 SELECT MachineID, ProductionID, AmountPerDay FROM PLISTBYMACHINE;
 SELECT TodoCode, MachineID, ProductionID, EmployeeID, TotalAmount FROM TODO;
 SELECT ProductionPlanCode, ProductionID, TotalAmount FROM PRODUCTIONPLAN;
-SELECT MachineID, ProductionID, AmountPerDay FROM PLISTBYMACHINE; 
+SELECT MachineID, ProductionID, AmountPerDay FROM PLISTBYMACHINE WHERE MachineID='20001' AND ProductionID = '30001'; 
+SELECT ProductionPlanCode, ProductionID, TotalAmount, (TotalAmount - PlanedAmount) as LeftAmount, PlanedAmount FROM PRODUCTIONPLAN; 
 
 SELECT  EmployeeID, Email, Password, Name, Phone, ZipCode, Addr1, Addr2, Authority FROM EMPLOYEES;
 SELECT MachineID, isRunning FROM MACHINE;
 SELECT ProductionID, ProductionName FROM PRODUCTION;
 SELECT MachineID, ProductionID, IFNULL(AmountPerDay, 0) as AmountPerDay FROM PLISTBYMACHINE; 
 SELECT * FROM TODO;
+SELECT ProductionPlanCode, ProductionID, TotalAmount, PlanedAmount FROM PRODUCTIONPLAN;
 # Insert문
 # 사용자 : 10000대
 # 기계 : 20000대
@@ -70,7 +72,8 @@ INSERT INTO PRODUCTIONPLAN(ProductionID, TotalAmount) VALUES('30002',2000);
 INSERT INTO PRODUCTIONPLAN(ProductionID, TotalAmount) VALUES('30003',50000);
 INSERT INTO PRODUCTIONPLAN(ProductionID, TotalAmount) VALUES('30002',1000);
 
-INSERT INTO TODO(MachineID, ProductionID, EmployeeID, TotalAmount) VALUES('20001','30001','00002', 3000);
+INSERT INTO TODO(MachineID, ProductionID, EmployeeID, Amount) VALUES('20001','30001','00002', 3000);
+INSERT INTO TODO(MachineID, ProductionID, EmployeeID, Amount) VALUES('20001','30001','00002', 3000);
 
 # Delete문
 DELETE FROM EMPLOYEES WHERE EmployeeID = '신소연';
@@ -80,6 +83,8 @@ DELETE FROM TODO WHERE TodoCode = 1;
 # Update문
 -- UPDATE EMPLOYEES SET `Password` = , `Name`, Phone = , Addr1 = , Addr2 =  WHERE EmployeeID = 10001;
 UPDATE EMPLOYEES SET Authority = b'0010'  WHERE EmployeeID = 10001;
+UPDATE PRODUCTIONPLAN SET PlanedAmount = 300 WHERE ProductionPlanCode = 1;
+UPDATE TODO SET CompleteDate = now(), Complete = 'Y' WHERE TodoCode = 1;
 
 -- auto_increment 초기화
 ALTER TABLE TODO AUTO_INCREMENT=1;
