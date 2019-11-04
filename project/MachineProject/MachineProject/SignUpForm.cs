@@ -42,13 +42,12 @@ namespace MachineProject
             // 콤보박스 데이터 설정
             EmailDomainService edService = new EmailDomainService();
             List<EmailDomainDTO> edbindlist = edService.SelectAll();
+            edService.Dispose();
 
             // 직접입력 삽입
             edbindlist.Insert(0, new EmailDomainDTO() { Domain = Properties.Resources.ComboBox_DomainUserBy, DomainCode = 0 });
             //
-
-            cmbEmailDomain.DataSource = new BindingList<EmailDomainDTO>();
-            edService.Dispose();
+            cmbEmailDomain.DataSource = new BindingList<EmailDomainDTO>(edbindlist);
             cmbEmailDomain.DisplayMember = "Domain";
             cmbEmailDomain.ValueMember = "DomainCode";
             

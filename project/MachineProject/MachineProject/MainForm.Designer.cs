@@ -47,8 +47,8 @@
             this.nudNewDefectRateAlarm = new System.Windows.Forms.NumericUpDown();
             this.btnSet = new System.Windows.Forms.Button();
             this.panForWork = new System.Windows.Forms.Panel();
-            this.btnRun = new System.Windows.Forms.Button();
             this.dgvTodo = new System.Windows.Forms.DataGridView();
+            this.btnRun = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -252,6 +252,18 @@
             this.panForWork.Size = new System.Drawing.Size(301, 501);
             this.panForWork.TabIndex = 18;
             // 
+            // dgvTodo
+            // 
+            this.dgvTodo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTodo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTodo.Location = new System.Drawing.Point(3, 3);
+            this.dgvTodo.Name = "dgvTodo";
+            this.dgvTodo.RowTemplate.Height = 23;
+            this.dgvTodo.Size = new System.Drawing.Size(295, 460);
+            this.dgvTodo.TabIndex = 2;
+            // 
             // btnRun
             // 
             this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -262,15 +274,6 @@
             this.btnRun.Text = "실행";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
-            // 
-            // dgvTodo
-            // 
-            this.dgvTodo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTodo.Location = new System.Drawing.Point(3, 3);
-            this.dgvTodo.Name = "dgvTodo";
-            this.dgvTodo.RowTemplate.Height = 23;
-            this.dgvTodo.Size = new System.Drawing.Size(295, 460);
-            this.dgvTodo.TabIndex = 2;
             // 
             // MainForm
             // 

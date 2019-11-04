@@ -70,22 +70,13 @@ namespace MachineProject
                 addcol.AddNewColumnToDataGridView("코드", "TodoCode", dgvTodo, typeof(int), 25);
                 addcol.AddNewColumnToDataGridView("기계ID", "MachineID", dgvTodo, typeof(string), 60);
                 addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvTodo, typeof(string), 60);
-                addcol.AddNewColumnToDataGridView("완료", "Complete", dgvTodo, typeof(char), 10);
-                addcol.AddNewColumnToDataGridView("갯수", "Amount", dgvTodo, typeof(int), 90, null, true, DataGridViewContentAlignment.MiddleLeft);
-                addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodo, typeof(DateTime), 50);
+                addcol.AddNewColumnToDataGridView("완료", "Complete", dgvTodo, typeof(char), 25);
+                addcol.AddNewColumnToDataGridView("갯수", "Amount", dgvTodo, typeof(int), 60, null, true, DataGridViewContentAlignment.MiddleLeft);
+                addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodo, typeof(DateTime), 100);
                 addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodo, typeof(string), 60);
-                LoadEmpDgv(); // 데이터 로드
+                LoadEmpDgv(); // 데이터 로드 및 쌍이되는 메뉴 생성
 
                 //메뉴 생성
-                //var groups = ds.Tables["TODO"].AsEnumerable().GroupBy(r => r.Field<string>("MachineID"));
-                //foreach (var item in groups)
-                //{
-                //    //groups.
-                //}
-                //for (int i = 0; i < 11; i++)
-                //{
-                //    NewMenuItem("2000" + i, flpBase);
-                //}
                 NewMenuItem("20001", flpBase);
                 // TODO - 메뉴 생성
             }
@@ -296,11 +287,15 @@ namespace MachineProject
             {
                 // 작업자에 따른 Todo가져오기
                 TodoService tdService = new TodoService();
-                BindingList<TodoDTO> tdbindlist = new BindingList<TodoDTO>(tdService.SelectAll().Where((elem) => elem.EmployeeID == GlobalUsage.MyInfo.EmployeeID).ToList());
+                List<TodoDTO> byEmp = tdService.SelectAll().Where((elem) => elem.EmployeeID == GlobalUsage.MyInfo.EmployeeID).ToList();
                 tdService.Dispose();
-                dgvTodo.DataSource = tdbindlist;
                 dgvTodo.ClearSelection();
+                dgvTodo.DataSource = new BindingList<TodoDTO>(byEmp);
+
             }
+
+
+
         }
 
         private void BtnRun_Click(object sender, EventArgs e)
