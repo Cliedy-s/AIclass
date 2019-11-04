@@ -43,17 +43,49 @@ namespace MachineProject.DAC
             return list;
         }
 
-        //public DataTable SelectAll(bool getByReader)
-        //{
-        //    DataTable data = new DataTable();
-        //    data.TableName = "TODO";
-
-        //    string sql = "SELECT TodoCode, MachineID, ProductionID, EmployeeID, TotalAmount FROM TODO; ";
-
-        //    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
-        //    adapter.Fill(data);
-        //    return data;
-
+        //public void Insert(TodoDTO item) {
         //}
+
+        public void InsertNUpdateProductionPlan(TodoDTO item, int productionPlanCode, int planedAmount)
+        {
+            MySqlTransaction transaction = conn.BeginTransaction();
+
+            try
+            {
+                // insert
+                string insertsql = "INSERT INTO TODO(MachineID, ProductionID, EmployeeID, Amount) VALUES(@MachineID, @ProductionID, @EmployeeID, @Amount);";
+                MySqlCommand insertcomm = new MySqlCommand(insertsql, conn);
+                insertcomm.Transaction = transaction;
+                FillParameters(insertcomm, item);
+                insertcomm.ExecuteNonQuery();
+                //
+
+                //update
+                string updatesql = "UPDATE PRODUCTIONPLAN SET PlanedAmount = PlanedAmount + @PlanedAmount WHERE ProductionPlanCode = @ProductionPlanCode; ";
+                MySqlCommand updatecomm = new MySqlCommand(updatesql, conn);
+                updatecomm.Transaction = transaction;
+                updatecomm.Parameters.AddWithValue("@ProductionPlanCode", productionPlanCode);
+                updatecomm.Parameters.AddWithValue("@PlanedAmount", planedAmount);
+                updatecomm.ExecuteNonQuery();
+                //
+
+                transaction.Commit();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+
+        }
+
+        public void FillParameters(MySqlCommand comm, TodoDTO item)
+        {
+            comm.Parameters.AddWithValue("@MachineID", item.MachineID);
+            comm.Parameters.AddWithValue("@ProductionID", item.ProductionID);
+            comm.Parameters.AddWithValue("@EmployeeID", item.EmployeeID);
+            comm.Parameters.AddWithValue("@Amount", item.Amount);
+        }
+
+
     }
 }

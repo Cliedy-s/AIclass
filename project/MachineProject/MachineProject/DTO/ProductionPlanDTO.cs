@@ -11,5 +11,7 @@ namespace MachineProject.DTO
         public int ProductionPlanCode { get; set; }
         public string ProductionID { get; set; }
         public int TotalAmount { get; set; }
+        public int LeftAmount { get; set; }
+        public int PlanedAmount { get; set; }
     }
 }

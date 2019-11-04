@@ -26,7 +26,6 @@ D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\M
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\RecursiveForChangeControls_MachineProject.pdb
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.csprojAssemblyReference.cache
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.LoginForm.resources
-D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MachineState.resources
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MainForm.resources
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.SignUpForm.resources
 D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MachinePanel.resources
@@ -53,3 +52,17 @@ D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MyRegexClass_MachineP
 D:\AIclass\project\MachineProject\MachineProject\bin\Debug\MyRegexClass_MachineProject.pdb
 D:\AIclass\project\MachineProject\MachineProject\bin\Debug\DataGridViewAddColumns_1023.dll
 D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.EmployeeToManagerForm.resources
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\BouncyCastle.Crypto.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\DataGridViewAddColumns_1023.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\Google.Protobuf.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\MyRegexClass_MachineProject.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\MySql.Data.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\MyUserControls_1023.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\Renci.SshNet.dll
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\MyRegexClass_MachineProject.pdb
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\bin\Debug\MySql.Data.xml
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.EmployeeToManagerForm.resources
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.IdPwdSearchForm.resources
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MyInfoForm.resources
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MachineControl.resources
+D:\2019\SecondSemester\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.MachineStateForm.resources

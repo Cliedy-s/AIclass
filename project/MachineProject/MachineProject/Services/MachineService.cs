@@ -25,8 +25,11 @@ namespace MachineProject.Services
 
         public void UpdateRunState(string machineID, bool isRunning)
         {
-            if (dac.IsValid(machineID))
-                dac.UpdateRunState(machineID, isRunning);
+            if (!dac.IsValid(machineID))
+                throw new Exception("기계아이디를 확인해주세요.");
+
+            dac.UpdateRunState(machineID, isRunning);
+                
         }
         public List<MachineDTO> SelectAll()
         {

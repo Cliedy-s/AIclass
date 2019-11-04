@@ -126,8 +126,8 @@ namespace MachineProject.DAC
                         Name = reader["Name"].ToString(),
                         Phone = reader["Phone"].ToString(),
                         ZipCode = reader["ZipCode"].ToString(),
-                        Addr1 = reader["Addr1"].ToString() ,
-                        Addr2 = reader["Addr2"].ToString() ,
+                        Addr1 = reader["Addr1"].ToString(),
+                        Addr2 = reader["Addr2"].ToString(),
                         Authority = Convert.ToInt32(reader["Authority"])
                     };
                 }
@@ -195,54 +195,33 @@ namespace MachineProject.DAC
             }
             return list;
         }
-        //public DataTable SelectAllEmployeeIDAndName()
-        //    {
-        //        DataTable data = new DataTable();
-        //        data.TableName = "EMPLOYEESIDANDNAME";
-        //        if (getByReader) // reader로 받고자 할 때
-        //        {
-        //            string sql = "";
 
-        //            MySqlCommand comm = new MySqlCommand(sql, conn);
-        //            MySqlDataReader reader = comm.ExecuteReader();
-        //            data.Load(reader);
-        //            return data;
-        //        }
-        //        else // 메모리에 올리고자 할 때
-        //        {
-        //            string sql = "SELECT EmployeeID, Name FROM EMPLOYEES; ";
+        private void FillParameters(MySqlCommand comm, EmployeeDTO item)
+        {
+            comm.Parameters.Add("@EmployeeID", MySqlDbType.VarChar, 5);
+            comm.Parameters["@EmployeeID"].Value = item.EmployeeID;
+            //comm.Parameters.AddWithValue("@EmployeeID", item.EmployeeID);
 
-        //            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
-        //            adapter.Fill(data);
-        //            return data;
-        //        }
-        //    }
+            comm.Parameters.Add("@Email", MySqlDbType.VarChar, 30);
+            comm.Parameters["@Email"].Value = item.Email;
 
-            private void FillParameters(MySqlCommand comm, EmployeeDTO item)
-            {
-                comm.Parameters.Add("@EmployeeID", MySqlDbType.VarChar, 5);
-                comm.Parameters["@EmployeeID"].Value = item.EmployeeID;
+            comm.Parameters.Add("@Password", MySqlDbType.VarChar, 20);
+            comm.Parameters["@Password"].Value = item.Password;
 
-                comm.Parameters.Add("@Email", MySqlDbType.VarChar, 30);
-                comm.Parameters["@Email"].Value = item.Email;
+            comm.Parameters.Add("@Name", MySqlDbType.VarChar, 30);
+            comm.Parameters["@Name"].Value = item.Name;
 
-                comm.Parameters.Add("@Password", MySqlDbType.VarChar, 20);
-                comm.Parameters["@Password"].Value = item.Password;
+            comm.Parameters.Add("@Phone", MySqlDbType.VarChar, 14);
+            comm.Parameters["@Phone"].Value = string.IsNullOrEmpty(item.Phone) ? null : item.Phone;
 
-                comm.Parameters.Add("@Name", MySqlDbType.VarChar, 30);
-                comm.Parameters["@Name"].Value = item.Name;
+            comm.Parameters.Add("@ZipCode", MySqlDbType.VarChar, 5);
+            comm.Parameters["@ZipCode"].Value = string.IsNullOrEmpty(item.ZipCode) ? null : item.ZipCode;
 
-                comm.Parameters.Add("@Phone", MySqlDbType.VarChar, 14);
-                comm.Parameters["@Phone"].Value = string.IsNullOrEmpty(item.Phone) ? null : item.Phone;
+            comm.Parameters.Add("@Addr1", MySqlDbType.VarChar, 50);
+            comm.Parameters["@Addr1"].Value = string.IsNullOrEmpty(item.Addr1) ? null : item.Addr1;
 
-                comm.Parameters.Add("@ZipCode", MySqlDbType.VarChar, 5);
-                comm.Parameters["@ZipCode"].Value = string.IsNullOrEmpty(item.ZipCode) ? null : item.ZipCode;
-
-                comm.Parameters.Add("@Addr1", MySqlDbType.VarChar, 50);
-                comm.Parameters["@Addr1"].Value = string.IsNullOrEmpty(item.Addr1) ? null : item.Addr1;
-
-                comm.Parameters.Add("@Addr2", MySqlDbType.VarChar, 50);
-                comm.Parameters["@Addr2"].Value = string.IsNullOrEmpty(item.Addr2) ? null : item.Addr2;
-            }
+            comm.Parameters.Add("@Addr2", MySqlDbType.VarChar, 50);
+            comm.Parameters["@Addr2"].Value = string.IsNullOrEmpty(item.Addr2) ? null : item.Addr2;
         }
     }
+}

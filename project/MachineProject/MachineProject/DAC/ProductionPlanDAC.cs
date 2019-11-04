@@ -16,10 +16,21 @@ namespace MachineProject.DAC
         {
             this.conn = conn;
         }
+        public bool IsAddable(int productionPlanCode, int Amount)
+        {
+            string sql = "SELECT (TotalAmount - PlanedAmount) as LeftAmount FROM PRODUCTIONPLAN WHERE ProductionPlanCode = @ProductionPlanCode; ";
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            comm.Parameters.AddWithValue("@ProductionPlanCode", productionPlanCode);
+            
+            if(Convert.ToInt32(comm.ExecuteScalar()) <= Amount)
+                return true;
+            return true;
+        }
+
         public List<ProductionPlanDTO> SelectAll()
         {
             List<ProductionPlanDTO> list = new List<ProductionPlanDTO>();
-            string sql = "SELECT ProductionPlanCode, ProductionID, TotalAmount FROM PRODUCTIONPLAN; ";
+            string sql = "SELECT ProductionPlanCode, ProductionID, TotalAmount, (TotalAmount - PlanedAmount) as LeftAmount, PlanedAmount FROM PRODUCTIONPLAN; ";
 
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataReader reader = comm.ExecuteReader();
@@ -31,22 +42,13 @@ namespace MachineProject.DAC
                 {
                     ProductionPlanCode = Convert.ToInt32(reader["ProductionPlanCode"]),
                     ProductionID = reader["ProductionID"].ToString(),
-                    TotalAmount = Convert.ToInt32(reader["TotalAmount"])
+                    TotalAmount = Convert.ToInt32(reader["TotalAmount"]),
+                    LeftAmount = Convert.ToInt32(reader["LeftAmount"]),
+                    PlanedAmount = Convert.ToInt32(reader["PlanedAmount"])
                 };
                 list.Add(dto);
             }
             return list;
         }
-
-        //public DataTable SelectAll()
-        //{
-        //    DataTable data = new DataTable();
-        //    data.TableName = "PRODUCTIONPLAN";
-        //        string sql = "SELECT ProductionPlanCode, ProductionID, TotalAmount FROM PRODUCTIONPLAN;";
-
-        //        MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
-        //        adapter.Fill(data);
-        //        return data;
-        //}
     }
 }
