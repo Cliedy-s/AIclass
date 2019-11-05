@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace MachineProject.DTO
 {
-    public class MachineDTO
+    public class MachineDTO : Machine
+    {
+        public int IsRunning { get; set; } // 1: 실행중 0: 중지
+       // public string MachineID { get; set; }
+    }
+
+    public class Machine
     {
         public string MachineID { get; set; }
-        public bool IsRunning { get; set; }
     }
 }

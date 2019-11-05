@@ -17,11 +17,18 @@ SELECT MachineID, ProductionID, AmountPerDay FROM PLISTBYMACHINE WHERE MachineID
 SELECT ProductionPlanCode, ProductionID, TotalAmount, (TotalAmount - PlanedAmount) as LeftAmount, PlanedAmount FROM PRODUCTIONPLAN; 
 
 SELECT  EmployeeID, Email, Password, Name, Phone, ZipCode, Addr1, Addr2, Authority FROM EMPLOYEES;
-SELECT MachineID, isRunning FROM MACHINE;
+
 SELECT ProductionID, ProductionName FROM PRODUCTION;
 SELECT MachineID, ProductionID, IFNULL(AmountPerDay, 0) as AmountPerDay FROM PLISTBYMACHINE; 
 SELECT * FROM TODO;
 SELECT ProductionPlanCode, ProductionID, TotalAmount, PlanedAmount FROM PRODUCTIONPLAN;
+SELECT (TotalAmount - PlanedAmount) as LeftAmount FROM PRODUCTIONPLAN; 
+SELECT isRunning FROM MACHINE WHERE MachineID = 20001;
+SELECT isRunning FROM MACHINE;
+SELECT MachineID, isRunning FROM MACHINE WHERE isRunning =1;
+
+SELECT * FROM PRODUCTIONLIST;
+SELECT * FROM TODO;
 # Insert문
 # 사용자 : 10000대
 # 기계 : 20000대
@@ -29,6 +36,7 @@ SELECT ProductionPlanCode, ProductionID, TotalAmount, PlanedAmount FROM PRODUCTI
 INSERT INTO EMPLOYEES(EmployeeID, Email, Password, Name, Phone, ZipCode, Addr1, Addr2) VALUES('10001', 'bhb0047@gmail.com','tlsth9189', '신소연','01063055237','k0001','세웅빌딩','409호');
 INSERT INTO EMPLOYEES(EmployeeID, Email, Password, Name, Phone, Authority) VALUES('00001', 'admin','1234', '관리자','00000000000', b'0010');
 INSERT INTO EMPLOYEES(EmployeeID, Email, Password, Name, Phone, Authority) VALUES('00002', 'emp','1234', '사용자','00000000000', b'0001');
+INSERT INTO EMPLOYEES(EmployeeID, Email, Password, Name, Phone, Authority) VALUES('00003', 'emp2','1234', '사용자','00000000000', b'0001'); commit;
 INSERT INTO EMAILDOMAINS( DomainCode,Domain) VALUES(0, '직접입력');
 INSERT INTO EMAILDOMAINS( DomainCode, Domain) VALUES(1, 'naver.com');
 INSERT INTO EMAILDOMAINS( Domain) VALUES('gmail.com');
@@ -80,11 +88,14 @@ DELETE FROM EMPLOYEES WHERE EmployeeID = '신소연';
 DELETE FROM EMPLOYEES WHERE EmployeeID = '10001';
 DELETE FROM EMAILDOMAINS WHERE DomainCode = 1;
 DELETE FROM TODO WHERE TodoCode = 1;
+TRUNCATE TABLE TODO;
+TRUNCATE TABLE PRODUCTIONPLAN;
 # Update문
 -- UPDATE EMPLOYEES SET `Password` = , `Name`, Phone = , Addr1 = , Addr2 =  WHERE EmployeeID = 10001;
 UPDATE EMPLOYEES SET Authority = b'0010'  WHERE EmployeeID = 10001;
 UPDATE PRODUCTIONPLAN SET PlanedAmount = 300 WHERE ProductionPlanCode = 1;
 UPDATE TODO SET CompleteDate = now(), Complete = 'Y' WHERE TodoCode = 1;
+UPDATE MACHINE SET isRunning = 0; commit;
 
 -- auto_increment 초기화
 ALTER TABLE TODO AUTO_INCREMENT=1;

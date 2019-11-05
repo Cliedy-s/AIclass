@@ -29,11 +29,19 @@ namespace MachineProject.Services
                 throw new Exception("기계아이디를 확인해주세요.");
 
             dac.UpdateRunState(machineID, isRunning);
-                
+
         }
         public List<MachineDTO> SelectAll()
         {
             return dac.SelectAll();
+        }
+        public List<MachineDTO> SelectAll(string machineIDs)
+        {
+            return dac.SelectAll(machineIDs);
+        }
+        public bool GetRunState(string machineID)
+        {
+            return dac.GetRunState(machineID);
         }
 
         public void Dispose()

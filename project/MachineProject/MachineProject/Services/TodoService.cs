@@ -27,17 +27,30 @@ namespace MachineProject.Services
             return dac.SelectAll();
         }
 
-        public void InsertNUpdateProductionPlan(TodoDTO item, int productionPlanCode, int planingAmount)
+        public void InsertNUpdateProductionPlan(TodoDTO item, int planingAmount)
         {
             ProductionListDAC pldac = new ProductionListDAC(conn);
             if (!pldac.IsValid(item.ProductionID, item.MachineID))
                 throw new Exception(Properties.Resources.Error_NoProductable_msg);
 
             ProductionPlanDAC ppdac = new ProductionPlanDAC(conn);
-            if (!ppdac.IsAddable(productionPlanCode, planingAmount))
+            if (!ppdac.IsAddable(item.ProductionPlanCode, planingAmount))
                 throw new Exception(Properties.Resources.Error_ProductionPlanNotAddable_msg);
 
-            dac.InsertNUpdateProductionPlan(item, productionPlanCode, planingAmount);
+            dac.InsertNUpdateProductionPlan(item, item.ProductionPlanCode, planingAmount);
+        }
+
+        public void revertNUpdateProductionPlan(TodoDTO item)
+        {
+            ProductionListDAC pldac = new ProductionListDAC(conn);
+            if (!pldac.IsValid(item.ProductionID, item.MachineID))
+                throw new Exception(Properties.Resources.Error_NoProductable_msg);
+
+            ProductionPlanDAC ppdac = new ProductionPlanDAC(conn);
+            if (!ppdac.IsReturnable(item.ProductionPlanCode, item.Amount))
+                throw new Exception(Properties.Resources.Error_ProductionPlanCantReturnable_msg);
+
+            dac.revertNUpdateProductionPlan(item);
         }
 
         public void Dispose()

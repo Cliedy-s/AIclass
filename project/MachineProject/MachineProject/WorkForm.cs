@@ -38,19 +38,27 @@ namespace MachineProject
             addcol.AddNewColumnToDataGridView("개수", "TotalAmount", dgvProductionPlans, typeof(int), 65, null, true, DataGridViewContentAlignment.MiddleLeft);
             addcol.AddNewColumnToDataGridView("남은개수", "LeftAmount", dgvProductionPlans, typeof(int), 80, null, true, DataGridViewContentAlignment.MiddleLeft);
             addcol.AddNewColumnToDataGridView("할당된개수", "PlanedAmount", dgvProductionPlans, typeof(int), 100, null, true, DataGridViewContentAlignment.MiddleLeft);
+            dgvProductionPlans.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvProductionPlans.ColumnHeadersHeight = 35;
             // 생산 가능 제품
+            GlobalUsage.SetDataGridView(dgvProductionable);
             addcol.AddNewColumnToDataGridView("기계ID", "MachineID", dgvProductionable, typeof(string), 60);
             addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvProductionable, typeof(string), 60);
             addcol.AddNewColumnToDataGridView("하루생산", "AmountPerDay", dgvProductionable, typeof(int), 100, null, true, DataGridViewContentAlignment.MiddleLeft);
-            GlobalUsage.SetDataGridView(dgvProductionable);
             // TODO테이블
-            addcol.AddNewColumnToDataGridView("코드", "TodoCode", dgvTodo, typeof(int), 25);
-            addcol.AddNewColumnToDataGridView("기계ID", "MachineID", dgvTodo, typeof(string), 70);
-            addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvTodo, typeof(string), 70);
-            addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodo, typeof(string), 70);
-            addcol.AddNewColumnToDataGridView("개수", "Amount", dgvTodo, typeof(int), 100, null, true, DataGridViewContentAlignment.MiddleLeft);
             GlobalUsage.SetDataGridView(dgvTodo);
+            addcol.AddNewColumnToDataGridView("코드", "TodoCode", dgvTodo, typeof(int), 25);
+            addcol.AddNewColumnToDataGridView("계획", "ProductionPlanCode", dgvTodo, typeof(int), 25);
+            addcol.AddNewColumnToDataGridView("개수", "Amount", dgvTodo, typeof(int), 50, null, true, DataGridViewContentAlignment.MiddleLeft);
+            addcol.AddNewColumnToDataGridView("기계ID", "MachineID", dgvTodo, typeof(string), 65);
+            addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvTodo, typeof(string), 65);
+            addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodo, typeof(string), 65);
+            addcol.AddNewColumnToDataGridView("완료", "Complete", dgvTodo, typeof(char), 25);
+            addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodo, typeof(DateTime), 100);
+            dgvTodo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvTodo.ColumnHeadersHeight = 35;
             // 담당 작업
+            GlobalUsage.SetDataGridView(dgvTodoListPerEmployee);
             addcol.AddNewColumnToDataGridView("코드", "TodoCode", dgvTodoListPerEmployee, typeof(int), 25);
             addcol.AddNewColumnToDataGridView("기계ID", "MachineID", dgvTodoListPerEmployee, typeof(string), 60);
             addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvTodoListPerEmployee, typeof(string), 60);
@@ -58,7 +66,6 @@ namespace MachineProject
             addcol.AddNewColumnToDataGridView("개수", "Amount", dgvTodoListPerEmployee, typeof(int), 90, null, true, DataGridViewContentAlignment.MiddleLeft);
             addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodoListPerEmployee, typeof(DateTime), 100);
             addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodoListPerEmployee, typeof(string), 60);
-            GlobalUsage.SetDataGridView(dgvTodoListPerEmployee);
             // cmb 설정
             cmbMachines.ValueMember = "MachineID";
             cmbMachines.DisplayMember = "MachineID";
@@ -134,35 +141,60 @@ namespace MachineProject
 
         private void BtnAddTodo_Click(object sender, EventArgs e)
         {
+            // 작업 할당 버튼
             try
             {
+                // txt값 가져오기
                 int addAmount;
                 bool isAddable = int.TryParse(txtAmount.Text.Trim(), out addAmount);
                 if (!isAddable) throw new Exception("개수를 다시 입력해주세요.");
 
+                // 입력 시도
                 TodoService service = new TodoService();
-                service.InsertNUpdateProductionPlan(new TodoDTO() // TODO - 더 많은 값을 넣어도 업데이트됨 ㅡㅡ
+                service.InsertNUpdateProductionPlan(new TodoDTO()
                 {
                     ProductionID = dgvProductionPlans.SelectedRows[0].Cells["ProductionID"].Value.ToString(),
                     MachineID = cmbMachines.SelectedValue.ToString(),
                     EmployeeID = cmbEmployees.SelectedValue.ToString(),
+                    ProductionPlanCode = Convert.ToInt32(dgvProductionPlans.SelectedRows[0].Cells["ProductionPlanCode"].Value),
                     Amount = addAmount
-                },
-                Convert.ToInt32(dgvProductionPlans.SelectedRows[0].Cells["ProductionPlanCode"].Value),
-                addAmount
-                );
+                }, addAmount);
                 service.Dispose();
             }
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message);
             }
+            // 재로드
             LoadDgvs();
         }
 
         private void BtnRemoveTodo_Click(object sender, EventArgs e)
         {
-
+            // 작업 취소 버튼
+            try
+            {
+                
+                TodoDTO dto = new TodoDTO() {  };
+                // 취소 시도
+                TodoService service = new TodoService();
+                service.revertNUpdateProductionPlan(new TodoDTO()
+                {
+                    TodoCode = Convert.ToInt32(dgvTodo.SelectedRows[0].Cells["TodoCode"].Value),
+                    ProductionID = dgvTodo.SelectedRows[0].Cells["ProductionID"].Value.ToString(),
+                    MachineID = dgvTodo.SelectedRows[0].Cells["MachineID"].Value.ToString(),
+                    EmployeeID = dgvTodo.SelectedRows[0].Cells["EmployeeID"].Value.ToString(),
+                    ProductionPlanCode = Convert.ToInt32(dgvTodo.SelectedRows[0].Cells["ProductionPlanCode"].Value),
+                    Amount = Convert.ToInt32(dgvTodo.SelectedRows[0].Cells["Amount"].Value)
+                });
+                service.Dispose();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+            // 재로드
+            LoadDgvs();
         }
     }
 }

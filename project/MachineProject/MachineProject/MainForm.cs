@@ -16,18 +16,18 @@ namespace MachineProject
 {
     public partial class MainForm : Form
     {
-        int authority = 0b0001;
+        int authority = 0b0001; // 권한
         List<string> alamList;
         public MainForm()
         {
             InitializeComponent();
-        }
+        } //생성자
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             // 로그인폼
             LoginForm login = new LoginForm();
-            if(!(login.ShowDialog() == DialogResult.OK))
+            if (!(login.ShowDialog() == DialogResult.OK))
             {
                 Environment.Exit(0);
             }
@@ -47,13 +47,13 @@ namespace MachineProject
             panForDefectAlarm.Dock = DockStyle.Fill;
             if ((authority & 0b0010) == 0b0010) // 관리자 권한
             {
+                // 화면 Visible설정
                 worksToolStripMenuItem.Visible = true;
                 panForDefectAlarm.Visible = true;
                 panForWork.Visible = false;
                 employeesToolStripMenuItem.Visible = true;
-                //NewMenuItem("itemMachineState", "기계상태확인", CheckMachineState_Click);
 
-                // 메뉴 생성
+                LoadEmpDgv(); // 데이터 로드 및 쌍이되는 메뉴 생성
             }
             else if ((authority & 0b0001) == 0b0001) // 일반 사용자 권한
             {
@@ -74,17 +74,14 @@ namespace MachineProject
                 addcol.AddNewColumnToDataGridView("갯수", "Amount", dgvTodo, typeof(int), 60, null, true, DataGridViewContentAlignment.MiddleLeft);
                 addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodo, typeof(DateTime), 100);
                 addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodo, typeof(string), 60);
-                LoadEmpDgv(); // 데이터 로드 및 쌍이되는 메뉴 생성
+                addcol.AddNewColumnToDataGridView("계획", "ProductionPlanCode", dgvTodo, typeof(int), 25);
 
                 //메뉴 생성
-                NewMenuItem("20001", flpBase);
-                // TODO - 메뉴 생성
+                LoadEmpDgv(); // 데이터 로드 및 쌍이되는 메뉴 생성
             }
-            //-------------------------------------------------------------
-
             // 공통 메뉴
             NewMenuItem("itemTotalSelect", "전체선택", Total_CheckedChanged, true);
-            //
+            //-------------------------------------------------------------
 
             // 알람 리스트
             alamList = new List<string>();
@@ -92,12 +89,7 @@ namespace MachineProject
             // 자식까지 폰트를 바꿈..
             RecursiveForChangeControls rcontrols = new RecursiveForChangeControls();
             rcontrols.ChangeControls(this.Controls, GlobalUsage.ChangeFont);
-        }
-
-        // 메뉴 아이템 생성 모듈 => 머신 메뉴를 위함
-        /// <summary>
-        /// 머신메뉴 생성
-        /// </summary>
+        } // 폼 로드
         private void NewMenuItem(string machineName, Control chileToContainer)
         {
             ToolStripMenuItem Machine = new ToolStripMenuItem();
@@ -110,11 +102,7 @@ namespace MachineProject
             Machine.Tag = chileToContainer;
 
             machinesToolStripMenuItem.DropDownItems.Add(Machine);
-        }
-        // 전체 머신 메뉴 선택
-        /// <summary>
-        /// 전체 머신메뉴 선택 아이템
-        /// </summary>
+        } // 메뉴 아이템 생성 => 머신 메뉴를 위함
         private void NewMenuItem(string menuName, string itemText, EventHandler method, bool checkOnClick)
         {
             ToolStripMenuItem item = new ToolStripMenuItem();
@@ -126,12 +114,7 @@ namespace MachineProject
             item.CheckedChanged += method;
 
             machinesToolStripMenuItem.DropDownItems.Add(item);
-        }
-
-        // 메뉴 아이템 생성 모듈 => 일반 메뉴
-        /// <summary>
-        /// 일반 메뉴 생성
-        /// </summary>
+        } // 전체 머신 메뉴 선택
         private void NewMenuItem(string menuName, string itemText, EventHandler method)
         {
             ToolStripMenuItem item = new ToolStripMenuItem();
@@ -142,10 +125,17 @@ namespace MachineProject
             item.Tag = "nomalMenu";
 
             machinesToolStripMenuItem.DropDownItems.Add(item);
-        }
+        } // 메뉴 아이템 생성 => 일반 메뉴
+        private void NewMachineItem(string machineName, Control container)
+        {
+            MachinePanel machinePanel = new MachinePanel();
+            machinePanel.Name = machineName;
+            machinePanel.MachineName = machineName;
+            machinePanel.doubleClick += MachinePanel_doubleClick; // 더블클릭 이벤트 핸들러 => 더블클릭시 실행
+            machinePanel.setDgvBackground += SetDGVBackColor;
+            container.Controls.Add(machinePanel);
+        } // 기계 패널 생성 유저컨트롤을 가져옴
 
-        // 머신 메뉴 아이템을 체크할 때
-        // => 머신 불량률 패널 생성(flpBase)
         private void Machines_CheckedChanged(object sender, EventArgs e)
         {
             if (sender is ToolStripMenuItem)
@@ -153,16 +143,33 @@ namespace MachineProject
                 ToolStripMenuItem item = sender as ToolStripMenuItem;
                 if (item.Checked)
                 {
-                    NewMachineItem(item.Text, item.Tag as Control);
+                    if (flpBase.Controls.Find(item.Text, false).Length > 1) return; // 패널이 있으면 리턴
+                    NewMachineItem(item.Text, flpBase);
                 }
                 else
                 {
-                    (item.Tag as Control).Controls.RemoveByKey(item.Text);
-                    (machinesToolStripMenuItem.DropDownItems.Find("itemTotalSelect", false)[0] as ToolStripMenuItem).Checked = false; // 체크가 풀릴시 전체선택을 취소함
+                    if (flpBase.Controls.Find(item.Text, false).Length < 1) return; // 패널이 없을 때 리턴
+                    MachinePanel childPanel = flpBase.Controls.Find(item.Text, false)[0] as MachinePanel;
+                    if (childPanel.MachineState == 1) // 실행중일 때
+                    {
+                        MessageBox.Show(Properties.Resources.Error_MachineRunning_msg);
+                        item.CheckedChanged -= Machines_CheckedChanged;
+                        item.Checked = true;
+                        item.CheckedChanged += Machines_CheckedChanged;
+                        return;
+                    }
+
+                    SetDGVBackColor(childPanel.MachineName, Color.White);
+
+                    (item.Tag as Control).Controls.RemoveByKey(item.Text); // 컨트롤 제거
+                    ToolStripMenuItem totalitem = machinesToolStripMenuItem.DropDownItems.Find("itemTotalSelect", false)[0] as ToolStripMenuItem; // 전체선택 메뉴
+                    totalitem.CheckedChanged -= Total_CheckedChanged;
+                    totalitem.Checked = false; // 체크가 풀릴시 전체선택을 취소함
+                    totalitem.CheckedChanged += Total_CheckedChanged;
                 }
+                //MessageBox.Show((flpBase.Controls.Find(item.Text, false)[0] as MachinePanel).MachineState.ToString());
             }
-        }
-        // 전체 기계 메뉴 체크
+        } // 머신 메뉴 아이템을 체크할 때 => 머신 불량률 패널 생성(flpBase) <=> 체크를 풀 때 제거
         private void Total_CheckedChanged(object sender, EventArgs e)
         {
             if (sender is ToolStripMenuItem)
@@ -171,38 +178,16 @@ namespace MachineProject
                 foreach (ToolStripMenuItem item in machinesToolStripMenuItem.DropDownItems)
                 {
                     // 아이템을 생성할 때 머신메뉴의 태그에만 컨트롤을 삽입함
-                    if (item.Tag is Control) item.Checked = me.Checked; 
+                    if (item.Tag is Control) item.Checked = me.Checked;
                 }
             }
-        }
-        //// 기계 상태확인 열기 메소드
-        //private void CheckMachineState_Click(object sender, EventArgs e)
-        //{
-        //    MachineStateForm frm = new MachineStateForm();
-        //    frm.ShowDialog();
-        //}
-        ////
-
-        // 기계 패널 생성 유저컨트롤을 가져옴
-        private void NewMachineItem(string machineName, Control container)
-        {
-            MachinePanel machinePanel = new MachinePanel();
-            machinePanel.Name = machineName;
-            machinePanel.MachineName = machineName;
-            machinePanel.doubleClick += MachinePanel_doubleClick; // 더블클릭 이벤트 핸들러 => 더블클릭시 실행
-            container.Controls.Add(machinePanel);
-        }
-
-        // 기계 패널을 더블클릭했을 때
+        } // 전체 기계 메뉴 체크
         private void MachinePanel_doubleClick(object sender, MachinePanel.MachineStringsEventArgs e)
         {
             lblMachineName.Text = e.ReturnValues.MachineName;
-            lblOldDefectRateAlarm.Text = string.Format("{0}",e.ReturnValues.DefectRateAlarm);
+            lblOldDefectRateAlarm.Text = string.Format("{0}", e.ReturnValues.DefectRateAlarm);
             nudNewDefectRateAlarm.Value = Convert.ToDecimal(e.ReturnValues.DefectRateAlarm);
-        }
-        //
-
-
+        } // 기계 패널을 더블클릭했을 때
         #region Test
         // 머신 불량률 패널 생성
         //private void NewMachineItem(string machineName, Control container)
@@ -257,49 +242,148 @@ namespace MachineProject
         //    }
         //}
         #endregion
-
         private void TodoSetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             WorkForm frm = new WorkForm();
             frm.ShowDialog();
-        }
-
+        } // 일 폼
         private void ShowMyInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MyInfoForm frm = new MyInfoForm();
             frm.ShowDialog();
-        }
-
+        } // 내 정보 폼
         private void ShowEmployeesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EmployeeToManagerForm frm = new EmployeeToManagerForm();
             frm.Show();
-        }
-
-        private void 기계상태ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        } // 권한 부여 폼
         private void LoadEmpDgv()
         {
+            // 값 읽어오기
             if ((GlobalUsage.MyInfo.Authority | 0b0001) == 0b0001) // 권한이 only 직원일 경우
             {
-                // 작업자에 따른 Todo가져오기
-                TodoService tdService = new TodoService();
-                List<TodoDTO> byEmp = tdService.SelectAll().Where((elem) => elem.EmployeeID == GlobalUsage.MyInfo.EmployeeID).ToList();
+                List<TodoDTO> todos;
+                TodoService tdService = new TodoService(); // Todo에서 가져오기
+                todos = tdService.SelectAll().Where((elem) => elem.EmployeeID == GlobalUsage.MyInfo.EmployeeID).ToList();
                 tdService.Dispose();
-                dgvTodo.ClearSelection();
-                dgvTodo.DataSource = new BindingList<TodoDTO>(byEmp);
 
+                // 데이터 세팅
+                dgvTodo.ClearSelection();
+                dgvTodo.DataSource = new BindingList<TodoDTO>(todos);
+                MakeItemGroupByMID(todos);
+            }
+            else if ((GlobalUsage.MyInfo.Authority | 0b0010) == 0b0010) // 관리자 일 경우
+            {
+                List<MachineDTO> todos;
+                MachineService mService = new MachineService(); // Machine에서 가져오기
+                todos = mService.SelectAll();
+                mService.Dispose();
+
+                // 데이터 세팅
+                dgvTodo.ClearSelection();
+                dgvTodo.DataSource = new BindingList<MachineDTO>(todos);
+                MakeItemGroupByMID(todos);
             }
 
-
-
-        }
-
+        }// dgv읽고 item 생성
+        private void MakeItemGroupByMID<T>(List<T> list) where T : Machine
+        {
+            var byEmpMachines = list.GroupBy((elem) => elem.MachineID, (baseMID) => new { Key = baseMID }).ToList();
+            foreach (var item in byEmpMachines)
+            {
+                NewMenuItem(item.Key, flpBase); // child 둘 곳도 설정
+            }
+        }// 메뉴 생성하기
         private void BtnRun_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // MachineID 가져오기
+                string machindID = dgvTodo.SelectedRows[0].Cells["MachineID"].Value.ToString();
+
+                // 이미 생산중인 기계인지?
+                MachineService service = new MachineService();
+                bool isRunning = service.GetRunState(machindID);
+                service.Dispose();
+                if (isRunning) // 실행중인지?
+                    throw new Exception(Properties.Resources.Error_MachineAlreadyRun_msg);
+                //
+
+                // 컨트롤 선택
+                ToolStripMenuItem parentItem = machinesToolStripMenuItem.DropDownItems.Find(machindID, false)[0] as ToolStripMenuItem;
+                parentItem.Checked = true; // childPanel 보이게 하기
+                MachinePanel childPanel = flpBase.Controls.Find(machindID, false)[0] as MachinePanel;
+
+                // 컨트롤 선택 확인
+                if (parentItem == null || childPanel == null) // 컨트롤이 선택되지 않았을 때
+                {
+                    MessageBox.Show(Properties.Resources.Error_MachineNotValid_msg);
+                    return;
+                }
+
+                // 실행
+                TodoDTO todo = new TodoDTO()
+                {
+                    TodoCode = Convert.ToInt32(dgvTodo.SelectedRows[0].Cells["TodoCode"].Value),
+                    ProductionID = dgvTodo.SelectedRows[0].Cells["ProductionID"].Value.ToString(),
+                    MachineID = dgvTodo.SelectedRows[0].Cells["MachineID"].Value.ToString(),
+                    EmployeeID = dgvTodo.SelectedRows[0].Cells["EmployeeID"].Value.ToString(),
+                    ProductionPlanCode = Convert.ToInt32(dgvTodo.SelectedRows[0].Cells["ProductionPlanCode"].Value),
+                    Amount = Convert.ToInt32(dgvTodo.SelectedRows[0].Cells["Amount"].Value)
+                };
+                childPanel.SetWork(todo);
+                childPanel.RunMachine();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        }// 실행 버튼
+        private void SetDGVBackColor(string machineID, Color color)
+        {
+            foreach (DataGridViewRow item in dgvTodo.Rows)
+            {
+                if (item.Cells["MachineID"].Value.ToString() == machineID)
+                    item.DefaultCellStyle.BackColor = color;
+            }
         }
+        private void MachineTimer_Tick(object sender, EventArgs e)
+        {
+            // LoadEmpDgv(); // 혹시 작업이 생기거나 없어 질 수 있으니 실시간으로 갱신함
+            // TODO - 실시간 작업 갱신?
+            // TODO - 중지시킬시 빈백그라운드로 하기
+
+            // 실시간 기계 상태 확인
+            //StringBuilder sb = new StringBuilder();
+            //foreach (var item in flpBase.Controls)
+            //{
+            //    if (item is MachinePanel)
+            //    {
+            //        MachinePanel machine = item as MachinePanel;
+            //        sb.Append(" OR MachindID = " + machine.MachineName);
+            //    }
+            //}
+            //MachineService service = new MachineService();
+            //List<MachineDTO> machines = service.SelectAll(sb.ToString());
+            //service.Dispose();
+            //foreach (var item in machines)
+            //{
+            //    MachinePanel machine = flpBase.Controls.Find(item.MachineID,false)[0] as MachinePanel;
+            //    machine.SetMachineState(item.IsRunning);
+            //}
+        } // 타이머
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (var item in flpBase.Controls)
+            {
+                if (item is MachinePanel)
+                {
+                    MachinePanel machine = item as MachinePanel;
+                    if (machine.MachineState == 1)
+                        machine.StopMachine();
+                }
+            }
+        } // 폼이 꺼질 때 기계 전체 중지
     }
 }

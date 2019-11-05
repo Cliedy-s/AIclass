@@ -33,6 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.중지ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.재시작ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblRunningDTO = new System.Windows.Forms.Label();
             this.picRedLight = new System.Windows.Forms.PictureBox();
             this.picGreenLight = new System.Windows.Forms.PictureBox();
             this.lblDefectRateAlarm_V = new System.Windows.Forms.Label();
@@ -41,7 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblDefectAmount_V = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblTotalAmount_V = new System.Windows.Forms.Label();
+            this.lblNomalAmount_V = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblMahineName = new System.Windows.Forms.Label();
@@ -50,7 +52,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.재시작ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblTotalAmount_V = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRedLight)).BeginInit();
@@ -61,6 +66,10 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.ContextMenuStrip = this.contextMenuStrip1;
+            this.panel1.Controls.Add(this.lblTotalAmount_V);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblRunningDTO);
             this.panel1.Controls.Add(this.picRedLight);
             this.panel1.Controls.Add(this.picGreenLight);
             this.panel1.Controls.Add(this.lblDefectRateAlarm_V);
@@ -69,7 +78,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.lblDefectAmount_V);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.lblTotalAmount_V);
+            this.panel1.Controls.Add(this.lblNomalAmount_V);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblMahineName);
@@ -88,14 +97,30 @@
             this.중지ToolStripMenuItem,
             this.재시작ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 48);
             // 
             // 중지ToolStripMenuItem
             // 
             this.중지ToolStripMenuItem.Name = "중지ToolStripMenuItem";
-            this.중지ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.중지ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.중지ToolStripMenuItem.Text = "일시중지";
             this.중지ToolStripMenuItem.Click += new System.EventHandler(this.일시중지ToolStripMenuItem_Click);
+            // 
+            // 재시작ToolStripMenuItem
+            // 
+            this.재시작ToolStripMenuItem.Name = "재시작ToolStripMenuItem";
+            this.재시작ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.재시작ToolStripMenuItem.Text = "재시작";
+            this.재시작ToolStripMenuItem.Click += new System.EventHandler(this.재시작ToolStripMenuItem_Click);
+            // 
+            // lblRunningDTO
+            // 
+            this.lblRunningDTO.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRunningDTO.Location = new System.Drawing.Point(178, 248);
+            this.lblRunningDTO.Name = "lblRunningDTO";
+            this.lblRunningDTO.Size = new System.Drawing.Size(30, 23);
+            this.lblRunningDTO.TabIndex = 10;
+            this.lblRunningDTO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // picRedLight
             // 
@@ -118,7 +143,7 @@
             // lblDefectRateAlarm_V
             // 
             this.lblDefectRateAlarm_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblDefectRateAlarm_V.Location = new System.Drawing.Point(127, 336);
+            this.lblDefectRateAlarm_V.Location = new System.Drawing.Point(127, 337);
             this.lblDefectRateAlarm_V.Name = "lblDefectRateAlarm_V";
             this.lblDefectRateAlarm_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDefectRateAlarm_V.Size = new System.Drawing.Size(62, 19);
@@ -129,7 +154,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(175, 336);
+            this.label7.Location = new System.Drawing.Point(175, 337);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label7.Size = new System.Drawing.Size(33, 19);
@@ -140,7 +165,7 @@
             // lblDefectRate_V
             // 
             this.lblDefectRate_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblDefectRate_V.Location = new System.Drawing.Point(127, 316);
+            this.lblDefectRate_V.Location = new System.Drawing.Point(127, 321);
             this.lblDefectRate_V.Name = "lblDefectRate_V";
             this.lblDefectRate_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDefectRate_V.Size = new System.Drawing.Size(62, 19);
@@ -151,7 +176,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(175, 316);
+            this.label5.Location = new System.Drawing.Point(175, 321);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label5.Size = new System.Drawing.Size(33, 19);
@@ -162,7 +187,7 @@
             // lblDefectAmount_V
             // 
             this.lblDefectAmount_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblDefectAmount_V.Location = new System.Drawing.Point(127, 293);
+            this.lblDefectAmount_V.Location = new System.Drawing.Point(127, 299);
             this.lblDefectAmount_V.Name = "lblDefectAmount_V";
             this.lblDefectAmount_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDefectAmount_V.Size = new System.Drawing.Size(62, 19);
@@ -173,7 +198,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(175, 293);
+            this.label3.Location = new System.Drawing.Point(175, 299);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label3.Size = new System.Drawing.Size(33, 19);
@@ -181,21 +206,21 @@
             this.label3.Text = "개";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblTotalAmount_V
+            // lblNomalAmount_V
             // 
-            this.lblTotalAmount_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblTotalAmount_V.Location = new System.Drawing.Point(127, 274);
-            this.lblTotalAmount_V.Name = "lblTotalAmount_V";
-            this.lblTotalAmount_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTotalAmount_V.Size = new System.Drawing.Size(62, 19);
-            this.lblTotalAmount_V.TabIndex = 4;
-            this.lblTotalAmount_V.Text = "0";
-            this.lblTotalAmount_V.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNomalAmount_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblNomalAmount_V.Location = new System.Drawing.Point(127, 284);
+            this.lblNomalAmount_V.Name = "lblNomalAmount_V";
+            this.lblNomalAmount_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblNomalAmount_V.Size = new System.Drawing.Size(62, 19);
+            this.lblNomalAmount_V.TabIndex = 4;
+            this.lblNomalAmount_V.Text = "0";
+            this.lblNomalAmount_V.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(175, 274);
+            this.label6.Location = new System.Drawing.Point(175, 284);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label6.Size = new System.Drawing.Size(33, 19);
@@ -207,7 +232,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(5, 338);
+            this.label8.Location = new System.Drawing.Point(5, 339);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 15);
             this.label8.TabIndex = 10;
@@ -227,7 +252,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(5, 318);
+            this.label10.Location = new System.Drawing.Point(5, 323);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 15);
             this.label10.TabIndex = 7;
@@ -237,7 +262,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(5, 295);
+            this.label11.Location = new System.Drawing.Point(5, 301);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 15);
             this.label11.TabIndex = 5;
@@ -247,11 +272,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(5, 276);
+            this.label12.Location = new System.Drawing.Point(5, 286);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 15);
             this.label12.TabIndex = 3;
-            this.label12.Text = "전체 상품 수";
+            this.label12.Text = "정상 상품 수";
             // 
             // listBox1
             // 
@@ -272,12 +297,42 @@
             this.imageList1.Images.SetKeyName(2, "Led_Red_Dark.png");
             this.imageList1.Images.SetKeyName(3, "Led_Red_Light.png");
             // 
-            // 재시작ToolStripMenuItem
+            // runTimer
             // 
-            this.재시작ToolStripMenuItem.Name = "재시작ToolStripMenuItem";
-            this.재시작ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.재시작ToolStripMenuItem.Text = "재시작";
-            this.재시작ToolStripMenuItem.Click += new System.EventHandler(this.재시작ToolStripMenuItem_Click);
+            this.runTimer.Interval = 1000;
+            this.runTimer.Tick += new System.EventHandler(this.RunTimer_Tick);
+            // 
+            // lblTotalAmount_V
+            // 
+            this.lblTotalAmount_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblTotalAmount_V.Location = new System.Drawing.Point(127, 269);
+            this.lblTotalAmount_V.Name = "lblTotalAmount_V";
+            this.lblTotalAmount_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTotalAmount_V.Size = new System.Drawing.Size(62, 19);
+            this.lblTotalAmount_V.TabIndex = 22;
+            this.lblTotalAmount_V.Text = "0";
+            this.lblTotalAmount_V.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(175, 269);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label2.Size = new System.Drawing.Size(33, 19);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "개";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(5, 271);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 15);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "전체 상품 수";
             // 
             // MachinePanel
             // 
@@ -305,7 +360,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblDefectAmount_V;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblTotalAmount_V;
+        private System.Windows.Forms.Label lblNomalAmount_V;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblMahineName;
@@ -319,5 +374,10 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 중지ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 재시작ToolStripMenuItem;
+        private System.Windows.Forms.Timer runTimer;
+        private System.Windows.Forms.Label lblRunningDTO;
+        private System.Windows.Forms.Label lblTotalAmount_V;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
     }
 }

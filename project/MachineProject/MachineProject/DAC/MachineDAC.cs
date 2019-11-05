@@ -24,11 +24,9 @@ namespace MachineProject.DAC
             comm.Parameters.AddWithValue("@isRunning", isRunning ? 1 : 0);
             comm.ExecuteNonQuery();
         }
-
-
         public bool IsValid(string machineID)
         {
-            string sql = string.Format("SELECT count(*) FROM EMPLOYEES WHERE MachineID = @MachineID; ");
+            string sql = string.Format("SELECT count(*) FROM MACHINE WHERE MachineID = @MachineID; ");
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@MachineID", machineID);
 
@@ -36,7 +34,6 @@ namespace MachineProject.DAC
                 return false;
             return true;
         }
-
         public List<MachineDTO> SelectAll()
         {
             List<MachineDTO> list = new List<MachineDTO>();
@@ -51,22 +48,40 @@ namespace MachineProject.DAC
                 dto = new MachineDTO()
                 {
                     MachineID = reader["MachineID"].ToString(),
-                    IsRunning = Convert.ToBoolean(reader["isRunning"])
+                    IsRunning = Convert.ToInt32(reader["isRunning"])
                 };
                 list.Add(dto);
             }
             return list;
         }
-        //public DataTable SelectAll()
-        //{
-        //    DataTable data = new DataTable();
-        //    data.TableName = "MACHINE";
-        //    string sql = "SELECT MachineID, isRunning FROM MACHINE; ";
+        public List<MachineDTO> SelectAll(string machindIDs)
+        {
+            List<MachineDTO> list = new List<MachineDTO>();
+            string sql = string.Format("SELECT MachineID, isRunning FROM MACHINE WHERE 1=0 {0}; ", machindIDs );
 
-        //    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
-        //    DataTable dt = new DataTable();
-        //    adapter.Fill(dt);
-        //    return dt;
-        //}
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = comm.ExecuteReader();
+
+            MachineDTO dto;
+            while (reader.Read())
+            {
+                dto = new MachineDTO()
+                {
+                    MachineID = reader["MachineID"].ToString(),
+                    IsRunning = Convert.ToInt32(reader["isRunning"])
+                };
+                list.Add(dto);
+            }
+            return list;
+        }
+        public bool GetRunState(string machineID)
+        {
+            string sql = "SELECT isRunning FROM MACHINE WHERE MachineID = @MachineID ";
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            comm.Parameters.AddWithValue("@MachineID", machineID);
+            if (Convert.ToInt32(comm.ExecuteScalar()) == 1)
+                return true;
+            return false;
+        }
     }
 }

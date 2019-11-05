@@ -135,11 +135,23 @@
   <data name="Error_EmpWrongPwd_msg" xml:space="preserve">
     <value>비밀번호가 틀렸습니다.</value>
   </data>
+  <data name="Error_MachineAlreadyRun_msg" xml:space="preserve">
+    <value>이미 생산중인 기계입니다.</value>
+  </data>
+  <data name="Error_MachineNotSetedWork_msg" xml:space="preserve">
+    <value>설정된 일이 없습니다.</value>
+  </data>
   <data name="Error_MachineNotValid_msg" xml:space="preserve">
     <value>유효한 기계코드인지 확인해주세요</value>
   </data>
+  <data name="Error_MachineRunning_msg" xml:space="preserve">
+    <value>실행중인 기계는 안보이게 할 수 없습니다.</value>
+  </data>
   <data name="Error_NoProductable_msg" xml:space="preserve">
     <value>해당 기계로 생산 불가능한 제품입니다.</value>
+  </data>
+  <data name="Error_ProductionPlanCantReturnable_msg" xml:space="preserve">
+    <value>계획된 개수를 다시 확인해주세요.</value>
   </data>
   <data name="Error_ProductionPlanNotAddable_msg" xml:space="preserve">
     <value>남은 개수를 확인해주세요</value>

@@ -20,7 +20,7 @@ namespace MachineProject.DAC
         public List<TodoDTO> SelectAll()
         {
             List<TodoDTO> list = new List<TodoDTO>();
-            string sql = "SELECT TodoCode, MachineID, ProductionID, EmployeeID, Amount, Complete, CompleteDate FROM TODO; ";
+            string sql = "SELECT TodoCode, MachineID, ProductionID, EmployeeID, ProductionPlanCode, Amount, Complete, CompleteDate FROM TODO; ";
 
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataReader reader = comm.ExecuteReader();
@@ -34,6 +34,7 @@ namespace MachineProject.DAC
                     MachineID = reader["MachineID"].ToString(),
                     ProductionID = reader["ProductionID"].ToString(),
                     EmployeeID = reader["EmployeeID"].ToString(),
+                    ProductionPlanCode = Convert.ToInt32(reader["ProductionPlanCode"]),
                     Amount = Convert.ToInt32(reader["Amount"]),
                     Complete = Convert.ToChar(reader["Complete"]),
                     CompleteDate = Convert.ToDateTime(reader["CompleteDate"])
@@ -53,13 +54,12 @@ namespace MachineProject.DAC
             try
             {
                 // insert
-                string insertsql = "INSERT INTO TODO(MachineID, ProductionID, EmployeeID, Amount) VALUES(@MachineID, @ProductionID, @EmployeeID, @Amount);";
+                string insertsql = "INSERT INTO TODO(MachineID, ProductionID, EmployeeID, ProductionPlanCode, Amount) VALUES(@MachineID, @ProductionID, @EmployeeID, @ProductionPlanCode, @Amount);";
                 MySqlCommand insertcomm = new MySqlCommand(insertsql, conn);
                 insertcomm.Transaction = transaction;
                 FillParameters(insertcomm, item);
                 insertcomm.ExecuteNonQuery();
                 //
-
                 //update
                 string updatesql = "UPDATE PRODUCTIONPLAN SET PlanedAmount = PlanedAmount + @PlanedAmount WHERE ProductionPlanCode = @ProductionPlanCode; ";
                 MySqlCommand updatecomm = new MySqlCommand(updatesql, conn);
@@ -68,22 +68,51 @@ namespace MachineProject.DAC
                 updatecomm.Parameters.AddWithValue("@PlanedAmount", planedAmount);
                 updatecomm.ExecuteNonQuery();
                 //
-
                 transaction.Commit();
             }
             catch (Exception)
             {
                 transaction.Rollback();
             }
+        }
+        public void revertNUpdateProductionPlan(TodoDTO item)
+        {
+            MySqlTransaction transaction = conn.BeginTransaction();
 
+            try
+            {
+                // delete
+                string insertsql = "DELETE FROM TODO WHERE TodoCode = @TodoCode; ";
+                MySqlCommand insertcomm = new MySqlCommand(insertsql, conn);
+                insertcomm.Transaction = transaction;
+                FillParameters(insertcomm, item);
+                insertcomm.ExecuteNonQuery();
+                //
+                //update
+                string updatesql = "UPDATE PRODUCTIONPLAN SET PlanedAmount = PlanedAmount - @PlanedAmount WHERE ProductionPlanCode = @ProductionPlanCode; ";
+                MySqlCommand updatecomm = new MySqlCommand(updatesql, conn);
+                updatecomm.Transaction = transaction;
+                updatecomm.Parameters.AddWithValue("@ProductionPlanCode", item.ProductionPlanCode);
+                updatecomm.Parameters.AddWithValue("@PlanedAmount", item.Amount);
+                updatecomm.ExecuteNonQuery();
+                //
+                transaction.Commit();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
         }
 
         public void FillParameters(MySqlCommand comm, TodoDTO item)
         {
+            comm.Parameters.AddWithValue("@Todocode", item.TodoCode);
             comm.Parameters.AddWithValue("@MachineID", item.MachineID);
             comm.Parameters.AddWithValue("@ProductionID", item.ProductionID);
             comm.Parameters.AddWithValue("@EmployeeID", item.EmployeeID);
+            comm.Parameters.AddWithValue("@productionPlanCode", item.ProductionPlanCode);
             comm.Parameters.AddWithValue("@Amount", item.Amount);
+
         }
 
 

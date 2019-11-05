@@ -46,26 +46,6 @@ namespace _0926_02_WindowsServiceLibrary
                 sw.Flush();
                 Thread.Sleep(1000);
             }
-            #region foreach
-            /*
-           foreach (var item in loop())
-            {
-                curTime = DateTime.Now.ToString();
-                sw.WriteLine("{0} : {1} : {2} ", curTime , "Running Service", item);
-                Thread.Sleep(1000);
-            }
-            */
-            #endregion
         }
-        /*
-        public IEnumerable<int> loop()
-        {
-            int i = 0;
-            while (true)
-            {
-                yield return i++;
-            }
-        }
-        */
     }
 }

@@ -23,8 +23,7 @@ namespace MachineProject
         {
             RecursiveForChangeControls rcontrols = new RecursiveForChangeControls();
             rcontrols.ChangeControls(this.Controls, GlobalUsage.ChangeFont);
-        }
-
+        } // 폼 로드
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             EmployeesService service = new EmployeesService();
@@ -39,13 +38,11 @@ namespace MachineProject
                 service.Dispose();
                 MessageBox.Show(ee.Message);
             }
-        }
-
+        } // 로그인 버튼 클릭
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
+        } // 취소 버튼
         private void LnkSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             SignUpForm frm = new SignUpForm();
@@ -55,23 +52,13 @@ namespace MachineProject
                 txtPWD.Text = frm.Password;
                 btnLogin.PerformClick();
             }
-        }
-
-        private void LnkIDPWDSearch_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            IdPwdSearchForm frm = new IdPwdSearchForm();
-            if(frm.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-        }
-
+        } // 회원가입 폼 띄우기
         private void TxtPWD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == 13)
             {
                 btnLogin.PerformClick();
             }
-        }
+        } // pwd에서 엔터 누를 시 
     }
 }

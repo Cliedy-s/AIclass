@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.machinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.worksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +50,8 @@
             this.panForWork = new System.Windows.Forms.Panel();
             this.dgvTodo = new System.Windows.Forms.DataGridView();
             this.btnRun = new System.Windows.Forms.Button();
+            this.MachineStateTimer = new System.Windows.Forms.Timer(this.components);
+            this.ReadListTimer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -275,6 +278,11 @@
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
+            // MachineStateTimer
+            // 
+            this.MachineStateTimer.Interval = 1000;
+            this.MachineStateTimer.Tick += new System.EventHandler(this.MachineTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -285,7 +293,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MachineProject";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -325,6 +334,8 @@
         private System.Windows.Forms.ToolStripMenuItem employeesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showEmployeesToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvTodo;
+        private System.Windows.Forms.Timer MachineStateTimer;
+        private System.Windows.Forms.Timer ReadListTimer;
     }
 }
 

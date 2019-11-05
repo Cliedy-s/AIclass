@@ -16,5 +16,4 @@ D:\AIclass\1910\1024\1024_01_ImageToDB\bin\Debug\MySql.Data.xml
 D:\AIclass\1910\1024\1024_01_ImageToDB\bin\Debug\Renci.SshNet.xml
 D:\AIclass\1910\1024\1024_01_ImageToDB\obj\Debug\_1024_01_ImageToDB.AddImageForm.resources
 D:\AIclass\1910\1024\1024_01_ImageToDB\obj\Debug\1024_01_ImageToDB.csproj.CopyComplete
-D:\AIclass\1910\1024\1024_01_ImageToDB\bin\Debug\DataGridViewAddColumns.dll
 D:\AIclass\1910\1024\1024_01_ImageToDB\obj\Debug\1024_01_ImageToDB.csprojAssemblyReference.cache

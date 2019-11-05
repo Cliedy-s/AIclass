@@ -213,6 +213,23 @@ namespace LendingDBClass
 
             return ds;
         }
+        public DataSet GetLog()
+        {
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataSet ds = new DataSet();
+
+            adapter.SelectCommand =new MySqlCommand("select lendingid, l.studentid, lenddate, studentname from student s inner join lending l on s.studentid = l.studentid; ");
+            adapter.SelectCommand.Connection = conn;
+            adapter.Fill(ds, "lending");
+
+            adapter.SelectCommand = new MySqlCommand("select lendingid, bookitem, b.bookid, bookname, returndate from book b inner join lendingitem li on b.bookid = li.bookid; ");
+            adapter.SelectCommand.Connection = conn;
+            adapter.Fill(ds, "lendingitem");
+
+            ds.Relations.Add("lendingrel", ds.Tables["lending"].Columns["lendingid"], ds.Tables["lendingitem"].Columns["lendingid"]);
+
+            return ds;
+        }
         public void Dispose()
         {
             conn.Close();

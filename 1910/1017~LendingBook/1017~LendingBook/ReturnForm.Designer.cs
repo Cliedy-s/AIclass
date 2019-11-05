@@ -36,6 +36,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLendable = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnlendable)).BeginInit();
@@ -72,6 +73,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.btnReturn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -143,6 +145,16 @@
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 7;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(262, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "학생별 대여현황보기";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // ReturnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -175,5 +187,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvLendable;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button button1;
     }
 }

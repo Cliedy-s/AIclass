@@ -58,5 +58,20 @@ namespace _1017_LendingBook
             }
             LoadData();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            // 학생별 대여현황
+            DataSet data = new DataSet();
+            LendingDB db = new LendingDB();
+            data = db.GetLog();
+            db.Dispose();
+
+            dgvLendable.DataSource = data;
+            dgvLendable.DataMember = "lending";
+            dgvUnlendable.DataSource = data;
+            dgvUnlendable.DataMember = "lending.lendingrel";
+
+        }
     }
 }

@@ -31,7 +31,6 @@ namespace MachineProject
             lblEmail.Text = myinfo.Email;
             lblEmployeeID.Text = myinfo.EmployeeID;
             txtName.Text = myinfo.Name;
-            txtPassword.Text = myinfo.Password;
             txtPhone.Text = myinfo.Phone;
             addressControl.Zip = myinfo.ZipCode;
             addressControl.Addr1 = myinfo.Addr1;

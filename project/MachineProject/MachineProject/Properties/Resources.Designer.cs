@@ -115,6 +115,24 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
+        ///   이미 생산중인 기계입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_MachineAlreadyRun_msg {
+            get {
+                return ResourceManager.GetString("Error_MachineAlreadyRun_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   설정된 일이 없습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_MachineNotSetedWork_msg {
+            get {
+                return ResourceManager.GetString("Error_MachineNotSetedWork_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   유효한 기계코드인지 확인해주세요과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Error_MachineNotValid_msg {
@@ -124,11 +142,29 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
+        ///   실행중인 기계는 안보이게 할 수 없습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_MachineRunning_msg {
+            get {
+                return ResourceManager.GetString("Error_MachineRunning_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   해당 기계로 생산 불가능한 제품입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Error_NoProductable_msg {
             get {
                 return ResourceManager.GetString("Error_NoProductable_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   계획된 개수를 다시 확인해주세요.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_ProductionPlanCantReturnable_msg {
+            get {
+                return ResourceManager.GetString("Error_ProductionPlanCantReturnable_msg", resourceCulture);
             }
         }
         

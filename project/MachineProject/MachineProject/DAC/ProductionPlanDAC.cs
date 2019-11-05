@@ -22,9 +22,19 @@ namespace MachineProject.DAC
             MySqlCommand comm = new MySqlCommand(sql, conn);
             comm.Parameters.AddWithValue("@ProductionPlanCode", productionPlanCode);
             
-            if(Convert.ToInt32(comm.ExecuteScalar()) <= Amount)
+            if(Convert.ToInt32(comm.ExecuteScalar()) >= Amount)
                 return true;
-            return true;
+            return false;
+        }
+        public bool IsReturnable(int productionPlanCode, int Amount)
+        {
+            string sql = "SELECT PlanedAmount FROM PRODUCTIONPLAN WHERE ProductionPlanCode = @ProductionPlanCode; ";
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            comm.Parameters.AddWithValue("@ProductionPlanCode", productionPlanCode);
+
+            if (Convert.ToInt32(comm.ExecuteScalar()) >= Amount)
+                return true;
+            return false;
         }
 
         public List<ProductionPlanDTO> SelectAll()

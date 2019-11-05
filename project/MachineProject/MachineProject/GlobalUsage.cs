@@ -9,10 +9,9 @@ using System.Windows.Forms;
 
 namespace MachineProject
 {
-    static class GlobalUsage
+    class GlobalUsage
     {
         static public EmployeeDTO MyInfo;
-
         // for recursiveForChangeControls
         static public void ChangeFont(Control control)
         {

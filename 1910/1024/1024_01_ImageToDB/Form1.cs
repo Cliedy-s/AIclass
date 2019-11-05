@@ -41,7 +41,6 @@ namespace _1024_01_ImageToDB
 
         private void DataRetrieve()
         {
-
             dataSet = new DataSet();
             MySqlConnection conn = new MySqlConnection(connstr);
 
@@ -144,12 +143,14 @@ namespace _1024_01_ImageToDB
             {
                 string filePath = listBox1.SelectedItem.ToString();
 
+                // blob로 주기
                 if(filePath.Equals("BLOB이미지") || filePath.Length < 1)
                 {
                     LoadBLOBImage();
                     return;
                 }
 
+                // path로 주기
                 // 1. 메모리로 이미지 주기
                 //MemoryStream ms = new MemoryStream(File.ReadAllBytes(Application.StartupPath + "/" + filePath));
                 //pictureBox1.Image = Image.FromStream(ms);

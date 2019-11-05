@@ -9,3 +9,4 @@ D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\DBClass.csproj.CoreCompileInpu
 D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\DBClass.csproj.CopyComplete
 D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\DBClass.dll
 D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\DBClass.pdb
+D:\AIclass\1910\1017~LendingBook\BookDB\obj\Debug\DBClass.csprojAssemblyReference.cache
