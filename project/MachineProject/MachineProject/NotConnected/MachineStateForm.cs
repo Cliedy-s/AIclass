@@ -24,7 +24,7 @@ namespace MachineProject
             // flowlayoutpanel 스크롤 생성
             flpBase.AutoScroll = true;
             
-            //TODO - 임시 생성 개발 완료 후 삭제
+            // - 임시 생성 개발 완료 후 삭제
             for (int i = 0; i < 10; i++)
             {
                 MachineControl control = new MachineControl();

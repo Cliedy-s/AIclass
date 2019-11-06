@@ -1,29 +1,29 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MachineProject.DAC;
+using MachineProject.DTO;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace TempData
+namespace MachineProject.Services
 {
-    public class EmployeesService : IDisposable
+    class ProductionListService
     {
         MySqlConnection conn;
-        EmployeesDAC dac;
-        public EmployeesService()
+        ProductionListDAC dac;
+        public ProductionListService()
         {
             string sqlconn = ConfigurationManager.ConnectionStrings["MachineProjectConnStr"].ConnectionString;
             conn = new MySqlConnection(sqlconn);
             conn.Open();
-            dac = new EmployeesDAC(conn);
+            dac = new ProductionListDAC(conn);
         }
-        public List<EmployeeDTO> SelectAll()
+        public string SelectAll(string[,] machineAndTodo) //TODO - 되는지 확인하기
         {
-            return dac.SelectAll();
+            return dac.SelectAll(machineAndTodo);
         }
 
         public void Dispose()

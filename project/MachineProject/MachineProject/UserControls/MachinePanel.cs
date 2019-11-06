@@ -59,8 +59,13 @@ namespace MachineProject
             // get App.Settings
             fileWriteinterval = Convert.ToInt32(ConfigurationManager.AppSettings["fileCreateInterval"]);
             runTimer.Interval = Convert.ToInt32(ConfigurationManager.AppSettings["fileWriteInterval"]);
-            // TODO - 기계 테이블에서 갖고오게 변경하기
-            MachineState = 0; // 현재 꺼져있음
+
+            // 로드 될 때 기계 테이블에서 실행 중인지 여부 가져오기
+            MachineService service = new MachineService();
+            bool isRunning = service.GetRunState(MachineName);
+            service.Dispose();
+            MachineState = isRunning ? 1 : 0;
+
             panel1.BorderStyle = BorderStyle.FixedSingle; // 바깥 테두리 주기
 
             // 더블클릭 이벤트 설정
@@ -148,20 +153,27 @@ namespace MachineProject
                 // 타이머 멈추기
                 runTimer.Stop();
                 // 쓰는 파일 멈추기
-                writer.Flush();
-                writer.Close();
+                if (writer != null)
+                {
+                    writer.Flush();
+                    writer.Close();
+                    writer = null;
+                }
             }
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message);
             }
         } // 기계 멈추기
+
+        StreamWriter writer;
         private void FileCreate()
         {
             if(writer != null)
             {
                 writer.Flush();
                 writer.Close();
+                writer = null;
             }
             // 폴더 없을 경우 생성
             string dPath = string.Format("Productions/Running/{0}/", MachineName);
@@ -174,7 +186,7 @@ namespace MachineProject
                 File.Create(fPath).Close();
 
             filePath = Environment.CurrentDirectory + "\\" + fPath;
-            writer = new StreamWriter(filePath, true, Encoding.UTF8);
+            writer = new StreamWriter(filePath, true, new UTF8Encoding(false)); // UTF-8 (BOM) x=> UTF-8
         } // 호출 시 마다 해당 기계와 현재 시간을 갖고와서 폴더와 파일을 만든다. 
 
         private void 재시작ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -185,6 +197,7 @@ namespace MachineProject
                 MachineService service = new MachineService();
                 bool isRunning = service.GetRunState(MachineName);
                 service.Dispose();
+                MachineState = isRunning ? 1 : 0;
                 if (isRunning)
                     throw new Exception(Properties.Resources.Error_MachineAlreadyRun_msg);
                 //
@@ -203,9 +216,10 @@ namespace MachineProject
         Random rand; // load에서 생성함
         int intervalCount = 0;
         int fileWriteinterval;
-        StreamWriter writer;
         private void RunTimer_Tick(object sender, EventArgs e)
         {
+            if (NomalAmount >= RunningTODO.Amount) //해당 작업량을 끝마쳤을 경우 생산하지 못하게함.
+                StopMachine();
             try
             {
                 int totalAmount = 0;
@@ -234,7 +248,7 @@ namespace MachineProject
                 StopMachine();
                 MessageBox.Show(ee.Message);
             }
-        }
+        } // 생산 타이머
     }
 
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TempData
+namespace _1106_01_LINQ
 {
     static class Program
     {

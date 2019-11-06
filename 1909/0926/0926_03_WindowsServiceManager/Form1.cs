@@ -24,9 +24,7 @@ namespace _0926_03_WindowsServiceManager
         {
             btnServiceStart.Enabled = false;
             btnServiceStop.Enabled = false;
-
         }
-
         private void SetTexts(ServiceController myService)
         {
             txtServiceName.Text = myService.ServiceName;
@@ -66,20 +64,17 @@ namespace _0926_03_WindowsServiceManager
                 txtServiceState.Text = myService.Status.ToString();
             }
         }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Visible = false;
             this.notifyIcon1.Visible = true;
             e.Cancel = true;
         }
-
         private void 시작ToolStripMenuItem_Click(object sender, EventArgs e)
         { // 프로그램 보이기
             this.Visible = true;
 
         }
-
         private void 중지ToolStripMenuItem_Click(object sender, EventArgs e)
         { //프로그램 종료
             this.notifyIcon1.Visible = false;
@@ -87,7 +82,6 @@ namespace _0926_03_WindowsServiceManager
             Application.Exit(); // 왠지.. 안됨
             Environment.Exit(0); // 종료 ㅇ
         }
-
         private void Form1_Activated(object sender, EventArgs e)
         {
             bool bFlag = false;

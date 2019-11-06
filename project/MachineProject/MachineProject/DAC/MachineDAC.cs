@@ -57,7 +57,7 @@ namespace MachineProject.DAC
         public List<MachineDTO> SelectAll(string machindIDs)
         {
             List<MachineDTO> list = new List<MachineDTO>();
-            string sql = string.Format("SELECT MachineID, isRunning FROM MACHINE WHERE 1=0 {0}; ", machindIDs );
+            string sql = string.Format("SELECT MachineID, isRunning FROM MACHINE WHERE 1=0 {0}; ", machindIDs);
 
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataReader reader = comm.ExecuteReader();
@@ -82,6 +82,12 @@ namespace MachineProject.DAC
             if (Convert.ToInt32(comm.ExecuteScalar()) == 1)
                 return true;
             return false;
+        }
+        public int IsSomeMachineRunning()
+        {
+            string sql = "SELECT Count(*) FROM MACHINE WHERE isRunning = 1; ";
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            return Convert.ToInt32(comm.ExecuteScalar());
         }
     }
 }

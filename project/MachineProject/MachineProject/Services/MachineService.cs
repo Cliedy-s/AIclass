@@ -43,6 +43,10 @@ namespace MachineProject.Services
         {
             return dac.GetRunState(machineID);
         }
+        public int IsSomeMachineRunning()
+        {
+            return dac.IsSomeMachineRunning();
+        }
 
         public void Dispose()
         {

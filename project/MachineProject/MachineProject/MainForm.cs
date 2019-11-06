@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using RecursiveForChangeControls_MachineProject;
 using MachineProject.Services;
 using MachineProject.DTO;
+using System.ServiceProcess;
 
 namespace MachineProject
 {
@@ -57,6 +58,7 @@ namespace MachineProject
             }
             else if ((authority & 0b0001) == 0b0001) // 일반 사용자 권한
             {
+                picServiceStatus.Image = imageList1.Images[0];
                 // 화면 Visible설정
                 worksToolStripMenuItem.Visible = false;
                 panForDefectAlarm.Visible = false;
@@ -89,6 +91,17 @@ namespace MachineProject
             // 자식까지 폰트를 바꿈..
             RecursiveForChangeControls rcontrols = new RecursiveForChangeControls();
             rcontrols.ChangeControls(this.Controls, GlobalUsage.ChangeFont);
+
+            // 서비스 갖고오기
+            GetService("MachineService");
+
+            // 서비스 시작 => 실행하지 않았을 경우
+            if(machineService != null && machineService.Status == ServiceControllerStatus.Stopped)
+            {
+                machineService.Start();
+                machineService.WaitForStatus(ServiceControllerStatus.Running);
+            }
+            StatusCheck();
         } // 폼 로드
         private void NewMenuItem(string machineName, Control chileToContainer)
         {
@@ -347,34 +360,62 @@ namespace MachineProject
                     item.DefaultCellStyle.BackColor = color;
             }
         }
-        private void MachineTimer_Tick(object sender, EventArgs e)
-        {
-            // LoadEmpDgv(); // 혹시 작업이 생기거나 없어 질 수 있으니 실시간으로 갱신함
-            // TODO - 실시간 작업 갱신?
-            // TODO - 중지시킬시 빈백그라운드로 하기
 
-            // 실시간 기계 상태 확인
-            //StringBuilder sb = new StringBuilder();
-            //foreach (var item in flpBase.Controls)
-            //{
-            //    if (item is MachinePanel)
-            //    {
-            //        MachinePanel machine = item as MachinePanel;
-            //        sb.Append(" OR MachindID = " + machine.MachineName);
-            //    }
-            //}
-            //MachineService service = new MachineService();
-            //List<MachineDTO> machines = service.SelectAll(sb.ToString());
-            //service.Dispose();
-            //foreach (var item in machines)
-            //{
-            //    MachinePanel machine = flpBase.Controls.Find(item.MachineID,false)[0] as MachinePanel;
-            //    machine.SetMachineState(item.IsRunning);
-            //}
-        } // 타이머
+        private void MachineStateTimer_Tick(object sender, EventArgs e)
+        {
+
+        } // ?
+        private void ReadProductionListTimer_Tick(object sender, EventArgs e)
+        {
+
+        } // db에서 작업리스트 읽어오는 타이머
+        private void LoadProductionList()
+        {
+
+        }
+
+        ServiceController[] services;
+        ServiceController machineService = null;
+        private void GetService(string seviceDisplayName)
+        {
+            services = ServiceController.GetServices();
+
+            foreach (var item in services)
+            {
+                if (item.DisplayName == seviceDisplayName)
+                {
+                    MessageBox.Show(item.DisplayName);
+                    machineService = item;
+                    StatusCheck(); // 상태 체크
+                    break;
+                }
+            }
+        }
+        private void StatusCheck()
+        {
+            if (machineService != null)
+            { // 서비스가 존재 할 경우
+                switch (machineService.Status)
+                {
+                    case ServiceControllerStatus.Stopped:
+                        picServiceStatus.Image = imageList1.Images[0];
+                        break;
+                    case ServiceControllerStatus.Running:
+                        picServiceStatus.Image = imageList1.Images[1];
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else // 서비스가 존재하지 않을 경우
+            {
+                picServiceStatus.Image = imageList1.Images[2];
+            }
+        } // 서비스가 있을 경우 상태 체크
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // 해당 클라이언트에서 실행중인 모든 기계 종료
             foreach (var item in flpBase.Controls)
             {
                 if (item is MachinePanel)
@@ -384,6 +425,21 @@ namespace MachineProject
                         machine.StopMachine();
                 }
             }
+
+            // 서비스 끄기
+            // 기계가 다른 클라이언트에서 실행중인지?
+            MachineService service = new MachineService();
+            int runMachineCount = service.IsSomeMachineRunning();
+            service.Dispose();
+            if(machineService != null &&runMachineCount < 1)
+            {
+                //종료
+                machineService.Stop();
+                machineService.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
+
+
         } // 폼이 꺼질 때 기계 전체 중지
+
     }
 }

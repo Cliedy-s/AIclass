@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TempData.Properties
+namespace _1106_01_LINQ.Properties
 {
 
 

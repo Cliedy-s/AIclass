@@ -1,0 +1,8 @@
+등록
+installutil exe파일경로
+삭제
+installutil -u exe파일경로
+강제 삭제
+net stop 서비스명
+taskkill -f -im mmc.exe
+sc delete 서비스명

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.machinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.worksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,10 +49,13 @@
             this.nudNewDefectRateAlarm = new System.Windows.Forms.NumericUpDown();
             this.btnSet = new System.Windows.Forms.Button();
             this.panForWork = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.picServiceStatus = new System.Windows.Forms.PictureBox();
             this.dgvTodo = new System.Windows.Forms.DataGridView();
             this.btnRun = new System.Windows.Forms.Button();
             this.MachineStateTimer = new System.Windows.Forms.Timer(this.components);
-            this.ReadListTimer = new System.Windows.Forms.Timer(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.ReadProductionListTimer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -60,6 +64,7 @@
             this.panForDefectAlarm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNewDefectRateAlarm)).BeginInit();
             this.panForWork.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picServiceStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,12 +253,33 @@
             // 
             // panForWork
             // 
+            this.panForWork.Controls.Add(this.label1);
+            this.panForWork.Controls.Add(this.picServiceStatus);
             this.panForWork.Controls.Add(this.dgvTodo);
             this.panForWork.Controls.Add(this.btnRun);
             this.panForWork.Location = new System.Drawing.Point(0, 0);
             this.panForWork.Name = "panForWork";
             this.panForWork.Size = new System.Drawing.Size(301, 501);
             this.panForWork.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Location = new System.Drawing.Point(36, 482);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 14);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "ReaderState";
+            // 
+            // picServiceStatus
+            // 
+            this.picServiceStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.picServiceStatus.Location = new System.Drawing.Point(3, 467);
+            this.picServiceStatus.Name = "picServiceStatus";
+            this.picServiceStatus.Size = new System.Drawing.Size(32, 32);
+            this.picServiceStatus.TabIndex = 18;
+            this.picServiceStatus.TabStop = false;
             // 
             // dgvTodo
             // 
@@ -281,7 +307,20 @@
             // MachineStateTimer
             // 
             this.MachineStateTimer.Interval = 1000;
-            this.MachineStateTimer.Tick += new System.EventHandler(this.MachineTimer_Tick);
+            this.MachineStateTimer.Tick += new System.EventHandler(this.MachineStateTimer_Tick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Led_Green_Dark.png");
+            this.imageList1.Images.SetKeyName(1, "Led_Green_Light.png");
+            this.imageList1.Images.SetKeyName(2, "Led_Red_Dark.png");
+            this.imageList1.Images.SetKeyName(3, "Led_Red_Light.png");
+            // 
+            // ReadProductionListTimer
+            // 
+            this.ReadProductionListTimer.Tick += new System.EventHandler(this.ReadProductionListTimer_Tick);
             // 
             // MainForm
             // 
@@ -305,6 +344,8 @@
             this.panForDefectAlarm.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNewDefectRateAlarm)).EndInit();
             this.panForWork.ResumeLayout(false);
+            this.panForWork.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picServiceStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -335,7 +376,10 @@
         private System.Windows.Forms.ToolStripMenuItem showEmployeesToolStripMenuItem;
         private System.Windows.Forms.DataGridView dgvTodo;
         private System.Windows.Forms.Timer MachineStateTimer;
-        private System.Windows.Forms.Timer ReadListTimer;
+        private System.Windows.Forms.PictureBox picServiceStatus;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer ReadProductionListTimer;
     }
 }
 

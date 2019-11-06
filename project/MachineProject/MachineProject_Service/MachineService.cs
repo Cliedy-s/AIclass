@@ -17,12 +17,16 @@ namespace MachineProject_Service
             InitializeComponent();
         }
 
+        MachineProject_ServiceLibrary.MachineService windowsService;
         protected override void OnStart(string[] args)
         {
+            windowsService = new MachineProject_ServiceLibrary.MachineService();
+            windowsService.Start(args[0]);
         }
 
         protected override void OnStop()
         {
+            windowsService.Stop();
         }
     }
 }

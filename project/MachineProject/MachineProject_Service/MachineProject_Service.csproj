@@ -69,5 +69,11 @@
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MachineProject_ServiceLibrary\MachineProject_ServiceLibrary.csproj">
+      <Project>{89d2a10d-9971-4373-a21e-6ba2721f1079}</Project>
+      <Name>MachineProject_ServiceLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

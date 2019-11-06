@@ -28,29 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
-            this.serviceInstaller1 = new System.ServiceProcess.ServiceInstaller();
+            this.MachineServiceProcessInstraller = new System.ServiceProcess.ServiceProcessInstaller();
+            this.MachineServiceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
-            // serviceProcessInstaller1
+            // MachineServiceProcessInstraller
             // 
-            this.serviceProcessInstaller1.Password = null;
-            this.serviceProcessInstaller1.Username = null;
+            this.MachineServiceProcessInstraller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.MachineServiceProcessInstraller.Password = null;
+            this.MachineServiceProcessInstraller.Username = null;
             // 
-            // serviceInstaller1
+            // MachineServiceInstaller
             // 
-            this.serviceInstaller1.ServiceName = "Service1";
+            this.MachineServiceInstaller.Description = "MachineService";
+            this.MachineServiceInstaller.DisplayName = "MachineService";
+            this.MachineServiceInstaller.ServiceName = "MachineService";
             // 
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
-            this.serviceInstaller1});
+            this.MachineServiceProcessInstraller,
+            this.MachineServiceInstaller});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
-        private System.ServiceProcess.ServiceInstaller serviceInstaller1;
+        private System.ServiceProcess.ServiceProcessInstaller MachineServiceProcessInstraller;
+        private System.ServiceProcess.ServiceInstaller MachineServiceInstaller;
     }
 }
