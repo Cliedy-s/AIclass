@@ -30,6 +30,31 @@ SELECT MachineID, isRunning FROM MACHINE WHERE isRunning =1;
 SELECT * FROM PRODUCTIONLIST;
 SELECT * FROM PRODUCTIONLIST;
 SELECT * FROM TODO;
+
+SELECT MachineID, TodoCode, SUM(NormalAmount), SUM(DefectAmount) FROM PRODUCTIONLIST WHERE 1=0 
+OR (MachineID = '20003' AND TodoCode = 6)
+OR (MachineID = '20001' AND TodoCode = 3)
+GROUP BY MachineID, TodoCode;
+
+SELECT ProductionCode, MachineID, ProductionID, TodoCode, EmployeeID, NormalAmount, DefectAmount, ProductionDate FROM PRODUCTIONLIST WHERE 1=0 OR ( MachineID = '20001' AND TodoCode = 3)  GROUP BY MachineID, TodoCode ; 
+SELECT MachineID, TodoCode, SUM(NormalAmount), SUM(DefectAmount) FROM PRODUCTIONLIST WHERE 1=0 OR ( MachineID = '20001' AND TodoCode = 3)  GROUP BY MachineID, TodoCode ; 
+SELECT MachineID, TodoCode, SUM(NormalAmount), SUM(DefectAmount) FROM PRODUCTIONLIST WHERE 1=0 OR ( MachineID = '20001' AND TodoCode = 3)  GROUP BY MachineID, TodoCode ; 
+
+
+SELECT MachineID, TodoCode, SUM(NormalAmount) TotalNomalAmount, SUM(DefectAmount) TotalDefectAmount, SUM(NormalAmount)+ SUM(DefectAmount) TotalAmount, SUM(DefectAmount)/(SUM(NormalAmount)+ SUM(DefectAmount)) AS DefectRate
+FROM PRODUCTIONLIST WHERE 1=0 OR ( MachineID = '20001' AND TodoCode = 3) OR ( MachineID = '20003' AND TodoCode = 6)  GROUP BY MachineID, TodoCode;
+
+SELECT stable.MachineID, stable.TodoCode, stable.TotalNomalAmount, stable.TotalDefectAmount, stable.TotalAmount, stable.TotalDefectAmount/  stable.TotalAmount as DefectRate
+FROM (
+SELECT MachineID, TodoCode, SUM(NormalAmount) TotalNomalAmount, SUM(DefectAmount) TotalDefectAmount, SUM(NormalAmount)+ SUM(DefectAmount) TotalAmount
+FROM PRODUCTIONLIST WHERE 1=0 OR ( MachineID = '20001' AND TodoCode = 3) OR ( MachineID = '20003' AND TodoCode = 6)  GROUP BY MachineID, TodoCode 
+) AS stable;
+
+SELECT MachineID, TodoCode, SUM(NormalAmount), SUM(DefectAmount) FROM PRODUCTIONLIST WHERE 1=0 OR ( MachineID = '20001' AND TodoCode = 3) OR ( MachineID = '20003' AND TodoCode = 6)  GROUP BY MachineID, TodoCode ; 
+SELECT MachineID, isRunning FROM MACHINE WHERE 1=1 AND MachineID = '20001' AND MachineID = '20002' AND MachineID = '20003' AND MachineID = '20004' AND MachineID = '20005' ; 
+SELECT MachineID, isRunning, ifnull(runningTodo, ' ') runningTodo FROM MACHINE;
+SELECT * FROM TODO;
+UPDATE TODO SET Complete = 'Y', CompleteDate = now() WHERE TodoCode = 3; ROLLBACK;
 # Insert문
 # 사용자 : 10000대
 # 기계 : 20000대
@@ -98,7 +123,7 @@ DELETE FROM TODO WHERE TodoCode = 1;
 UPDATE EMPLOYEES SET Authority = b'0010'  WHERE EmployeeID = 10001;
 UPDATE PRODUCTIONPLAN SET PlanedAmount = 300 WHERE ProductionPlanCode = 1;
 UPDATE TODO SET CompleteDate = now(), Complete = 'Y' WHERE TodoCode = 1;
-UPDATE MACHINE SET isRunning = 0; commit;
+UPDATE MACHINE SET isRunning = 0; commit; SELECT * FROM MACHINE;
 
 -- auto_increment 초기화
 ALTER TABLE TODO AUTO_INCREMENT=1;

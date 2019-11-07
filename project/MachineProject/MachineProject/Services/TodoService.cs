@@ -26,7 +26,6 @@ namespace MachineProject.Services
         {
             return dac.SelectAll();
         }
-
         public void InsertNUpdateProductionPlan(TodoDTO item, int planingAmount)
         {
             ProductionListDAC pldac = new ProductionListDAC(conn);
@@ -39,7 +38,6 @@ namespace MachineProject.Services
 
             dac.InsertNUpdateProductionPlan(item, item.ProductionPlanCode, planingAmount);
         }
-
         public void revertNUpdateProductionPlan(TodoDTO item)
         {
             ProductionListDAC pldac = new ProductionListDAC(conn);
@@ -51,6 +49,10 @@ namespace MachineProject.Services
                 throw new Exception(Properties.Resources.Error_ProductionPlanCantReturnable_msg);
 
             dac.revertNUpdateProductionPlan(item);
+        }
+        public void CompleteTodo(int todocode)
+        {
+            dac.CompleteTodo(todocode);
         }
 
         public void Dispose()

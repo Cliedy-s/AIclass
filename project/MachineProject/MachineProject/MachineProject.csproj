@@ -85,6 +85,7 @@
     <Compile Include="DTO\EmailDomainDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\MachineDTO.cs" />
+    <Compile Include="DTO\MachineValuesDTO.cs" />
     <Compile Include="DTO\PListByMachineDTO.cs" />
     <Compile Include="DTO\ProductionDTO.cs" />
     <Compile Include="DTO\ProductionListDTO.cs" />
@@ -228,6 +229,20 @@
       <Name>MyRegexClass_MachineProject</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AlarmMusic\preview.mp3" />
+    <None Include="Resources\Led_Yellow_Light.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

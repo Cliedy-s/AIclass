@@ -66,3 +66,5 @@ D:\AIclass\project\MachineProject\MachineProject\bin\Debug\Renci.SshNet.xml
 D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.csproj.CopyComplete
 D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.exe
 D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.pdb
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\Interop.WMPLib.dll
+D:\AIclass\project\MachineProject\MachineProject\obj\Debug\MachineProject.csproj.ResolveComReference.cache

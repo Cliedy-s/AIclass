@@ -42,6 +42,7 @@
             this.flpBase = new System.Windows.Forms.FlowLayoutPanel();
             this.panForDefectAlarm = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.picServiceState02 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblOldDefectRateAlarm = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,19 +50,21 @@
             this.nudNewDefectRateAlarm = new System.Windows.Forms.NumericUpDown();
             this.btnSet = new System.Windows.Forms.Button();
             this.panForWork = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.picServiceStatus = new System.Windows.Forms.PictureBox();
             this.dgvTodo = new System.Windows.Forms.DataGridView();
             this.btnRun = new System.Windows.Forms.Button();
             this.MachineStateTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ReadProductionListTimer = new System.Windows.Forms.Timer(this.components);
+            this.chkAlarmAdmin = new System.Windows.Forms.CheckBox();
+            this.chkAlarmEmp = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panForDefectAlarm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picServiceState02)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNewDefectRateAlarm)).BeginInit();
             this.panForWork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picServiceStatus)).BeginInit();
@@ -165,7 +168,9 @@
             // 
             // panForDefectAlarm
             // 
+            this.panForDefectAlarm.Controls.Add(this.chkAlarmAdmin);
             this.panForDefectAlarm.Controls.Add(this.label6);
+            this.panForDefectAlarm.Controls.Add(this.picServiceState02);
             this.panForDefectAlarm.Controls.Add(this.label5);
             this.panForDefectAlarm.Controls.Add(this.lblOldDefectRateAlarm);
             this.panForDefectAlarm.Controls.Add(this.label3);
@@ -179,7 +184,6 @@
             // 
             // label6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(42, 149);
             this.label6.Name = "label6";
@@ -187,9 +191,17 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "저장할 불량률 마지노선";
             // 
+            // picServiceState02
+            // 
+            this.picServiceState02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.picServiceState02.Location = new System.Drawing.Point(3, 467);
+            this.picServiceState02.Name = "picServiceState02";
+            this.picServiceState02.Size = new System.Drawing.Size(32, 32);
+            this.picServiceState02.TabIndex = 20;
+            this.picServiceState02.TabStop = false;
+            // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(181, 88);
             this.label5.Name = "label5";
@@ -199,7 +211,6 @@
             // 
             // lblOldDefectRateAlarm
             // 
-            this.lblOldDefectRateAlarm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblOldDefectRateAlarm.Location = new System.Drawing.Point(124, 83);
             this.lblOldDefectRateAlarm.Name = "lblOldDefectRateAlarm";
             this.lblOldDefectRateAlarm.Size = new System.Drawing.Size(51, 23);
@@ -209,7 +220,6 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(42, 59);
             this.label3.Name = "label3";
@@ -219,7 +229,6 @@
             // 
             // lblMachineName
             // 
-            this.lblMachineName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMachineName.AutoSize = true;
             this.lblMachineName.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblMachineName.Location = new System.Drawing.Point(39, 25);
@@ -230,7 +239,6 @@
             // 
             // nudNewDefectRateAlarm
             // 
-            this.nudNewDefectRateAlarm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nudNewDefectRateAlarm.Increment = new decimal(new int[] {
             150,
             0,
@@ -243,17 +251,17 @@
             // 
             // btnSet
             // 
-            this.btnSet.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSet.Location = new System.Drawing.Point(183, 206);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 11;
             this.btnSet.Text = "설정";
             this.btnSet.UseVisualStyleBackColor = true;
+            this.btnSet.Click += new System.EventHandler(this.BtnSet_Click);
             // 
             // panForWork
             // 
-            this.panForWork.Controls.Add(this.label1);
+            this.panForWork.Controls.Add(this.chkAlarmEmp);
             this.panForWork.Controls.Add(this.picServiceStatus);
             this.panForWork.Controls.Add(this.dgvTodo);
             this.panForWork.Controls.Add(this.btnRun);
@@ -262,19 +270,9 @@
             this.panForWork.Size = new System.Drawing.Size(301, 501);
             this.panForWork.TabIndex = 18;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(36, 482);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 14);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "ReaderState";
-            // 
             // picServiceStatus
             // 
-            this.picServiceStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.picServiceStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.picServiceStatus.Location = new System.Drawing.Point(3, 467);
             this.picServiceStatus.Name = "picServiceStatus";
             this.picServiceStatus.Size = new System.Drawing.Size(32, 32);
@@ -322,6 +320,32 @@
             // 
             this.ReadProductionListTimer.Tick += new System.EventHandler(this.ReadProductionListTimer_Tick);
             // 
+            // chkAlarmAdmin
+            // 
+            this.chkAlarmAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkAlarmAdmin.AutoSize = true;
+            this.chkAlarmAdmin.Checked = true;
+            this.chkAlarmAdmin.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAlarmAdmin.Location = new System.Drawing.Point(41, 482);
+            this.chkAlarmAdmin.Name = "chkAlarmAdmin";
+            this.chkAlarmAdmin.Size = new System.Drawing.Size(48, 16);
+            this.chkAlarmAdmin.TabIndex = 21;
+            this.chkAlarmAdmin.Text = "알람";
+            this.chkAlarmAdmin.UseVisualStyleBackColor = true;
+            // 
+            // chkAlarmEmp
+            // 
+            this.chkAlarmEmp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkAlarmEmp.AutoSize = true;
+            this.chkAlarmEmp.Checked = true;
+            this.chkAlarmEmp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAlarmEmp.Location = new System.Drawing.Point(41, 482);
+            this.chkAlarmEmp.Name = "chkAlarmEmp";
+            this.chkAlarmEmp.Size = new System.Drawing.Size(48, 16);
+            this.chkAlarmEmp.TabIndex = 22;
+            this.chkAlarmEmp.Text = "알람";
+            this.chkAlarmEmp.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -342,6 +366,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.panForDefectAlarm.ResumeLayout(false);
             this.panForDefectAlarm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picServiceState02)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNewDefectRateAlarm)).EndInit();
             this.panForWork.ResumeLayout(false);
             this.panForWork.PerformLayout();
@@ -378,8 +403,10 @@
         private System.Windows.Forms.Timer MachineStateTimer;
         private System.Windows.Forms.PictureBox picServiceStatus;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer ReadProductionListTimer;
+        private System.Windows.Forms.PictureBox picServiceState02;
+        private System.Windows.Forms.CheckBox chkAlarmAdmin;
+        private System.Windows.Forms.CheckBox chkAlarmEmp;
     }
 }
 

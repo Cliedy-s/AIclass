@@ -23,19 +23,26 @@ namespace MachineProject.Services
             dac = new MachineDAC(conn);
         }
 
-        public void UpdateRunState(string machineID, bool isRunning)
+        public void UpdateRunState(string machineID, bool isRunning, int? TodoCode) // null o
         {
             if (!dac.IsValid(machineID))
                 throw new Exception("기계아이디를 확인해주세요.");
 
-            dac.UpdateRunState(machineID, isRunning);
+            dac.UpdateRunState(machineID, isRunning, TodoCode);
 
+        }
+        public void UpdateDefectRateAlarm(string machineID, double defectRateAlarm)
+        {
+            if (!dac.IsValid(machineID))
+                throw new Exception("기계아이디를 확인해주세요.");
+
+            dac.UpdateDefectRateAlarm(machineID, defectRateAlarm);
         }
         public List<MachineDTO> SelectAll()
         {
             return dac.SelectAll();
         }
-        public List<MachineDTO> SelectAll(string machineIDs)
+        public List<MachineDTO> SelectAll(List<string> machineIDs)
         {
             return dac.SelectAll(machineIDs);
         }

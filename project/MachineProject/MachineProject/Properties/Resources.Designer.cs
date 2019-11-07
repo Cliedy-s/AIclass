@@ -124,6 +124,15 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
+        ///   관리자는 기계를 실행할 수 없습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_MachineCantRun_msg {
+            get {
+                return ResourceManager.GetString("Error_MachineCantRun_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   설정된 일이 없습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Error_MachineNotSetedWork_msg {
@@ -174,6 +183,16 @@ namespace MachineProject.Properties {
         internal static string Error_ProductionPlanNotAddable_msg {
             get {
                 return ResourceManager.GetString("Error_ProductionPlanNotAddable_msg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Led_Yellow_Light {
+            get {
+                object obj = ResourceManager.GetObject("Led_Yellow_Light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

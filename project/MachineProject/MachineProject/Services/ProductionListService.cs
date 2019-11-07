@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MachineProject.Services
 {
-    class ProductionListService
+    class ProductionListService : IDisposable
     {
         MySqlConnection conn;
         ProductionListDAC dac;
@@ -21,11 +21,10 @@ namespace MachineProject.Services
             conn.Open();
             dac = new ProductionListDAC(conn);
         }
-        public string SelectAll(string[,] machineAndTodo) //TODO - 되는지 확인하기
+        public List<MachineValuesDTO> SelectAll(Dictionary<string, int> machineAndTodo)
         {
             return dac.SelectAll(machineAndTodo);
         }
-
         public void Dispose()
         {
             conn.Close();

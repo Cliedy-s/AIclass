@@ -26,20 +26,37 @@ namespace MachineProject.DAC
                 return false;
             return true;
         }
-        public string SelectAll(string[,] machineAndTodo)
+        public List<MachineValuesDTO> SelectAll(Dictionary<string, int> machineAndTodo)
         {
+            List<MachineValuesDTO> list = new List<MachineValuesDTO>();
             // sql 문
             StringBuilder sb = new StringBuilder();
             StringBuilder sbValues = new StringBuilder();
-            sb.Append("SELECT ProductionCode, MachineID, ProductionID, TodoCode, EmployeeID, NormalAmount, DefectAmount, ProductionDate FROM PRODUCTIONLIST WHERE 1=0 ");
-
-            for (int i = 0; i < machineAndTodo.GetLength(0); i++)
+            sb.Append("SELECT MachineID, TodoCode, SUM(NormalAmount) TotalNomalAmount, SUM(DefectAmount) TotalDefectAmount, SUM(NormalAmount)+ SUM(DefectAmount) TotalAmount, SUM(DefectAmount)/(SUM(NormalAmount)+ SUM(DefectAmount)) AS DefectRate FROM PRODUCTIONLIST WHERE 1=0 ");
+            foreach (var item in machineAndTodo)
             {
-                sbValues.Append(string.Format(" OR (MachineID = '{0}' AND TodoCode = {1}) ", machineAndTodo[i, 0], machineAndTodo[i, 1]));
+                sbValues.Append(string.Format("OR ( MachineID = '{0}' AND TodoCode = {1}) ", item.Key, item.Value));
             }
-            sb.Append(sbValues.ToString() + "; ");
+            sb.Append(sbValues.ToString() + " GROUP BY MachineID, TodoCode; ");
 
-            return sb.ToString();
+            MySqlCommand comm = new MySqlCommand(sb.ToString(), conn);
+            MySqlDataReader reader = comm.ExecuteReader();
+            // 읽기
+            MachineValuesDTO dto;
+            while (reader.Read())
+            {
+                dto = new MachineValuesDTO()
+                {
+                    MachineID = reader["MachineID"].ToString(),
+                    TodoCode = Convert.ToInt32(reader["TodoCode"]),
+                    TotalNomalAmount = Convert.ToInt32(reader["TotalNomalAmount"]),
+                    TotalDefectAmount = Convert.ToInt32(reader["TotalDefectAmount"]),
+                    TotalAmount = Convert.ToInt32(reader["TotalAmount"]),
+                    DefectRate = Convert.ToDouble(reader["DefectRate"])
+                };
+                list.Add(dto);
+            }
+            return list;
         }
         private void FillParameters(MySqlCommand comm, ProductionListDTO item)
         {

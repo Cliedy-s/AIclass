@@ -16,12 +16,21 @@ namespace MachineProject.DAC
         {
             this.conn = conn;
         }
-        public void UpdateRunState(string machineID, bool isRunning)
+        public void UpdateRunState(string machineID, bool isRunning, int? todoCode) // null가능
         {
-            string sql = "UPDATE MACHINE SET isRunning = @isRunning WHERE MachineID = @MachineID;";
+            string sql = "UPDATE MACHINE SET isRunning = @isRunning, runningTodo = @todoCode WHERE MachineID = @MachineID;";
             MySqlCommand comm = new MySqlCommand(sql, conn);
             comm.Parameters.AddWithValue("@MachineID", machineID);
             comm.Parameters.AddWithValue("@isRunning", isRunning ? 1 : 0);
+            comm.Parameters.AddWithValue("@todoCode", todoCode); // null 가능
+            comm.ExecuteNonQuery();
+        }
+        public void UpdateDefectRateAlarm(string machineID, double defectRateAlarm)
+        {
+            string sql = "UPDATE MACHINE SET defectRateAlarm = @defectRateAlarm WHERE MachineID = @MachineID;";
+            MySqlCommand comm = new MySqlCommand(sql, conn);
+            comm.Parameters.AddWithValue("@MachineID", machineID);
+            comm.Parameters.AddWithValue("@defectRateAlarm", defectRateAlarm);
             comm.ExecuteNonQuery();
         }
         public bool IsValid(string machineID)
@@ -37,7 +46,7 @@ namespace MachineProject.DAC
         public List<MachineDTO> SelectAll()
         {
             List<MachineDTO> list = new List<MachineDTO>();
-            string sql = "SELECT MachineID, isRunning FROM MACHINE; ";
+            string sql = "SELECT MachineID, isRunning, ifnull(runningTodo, 0) runningTodo, ifnull(defectRateAlarm, 0) defectRateAlarm FROM MACHINE; ";
 
             MySqlCommand comm = new MySqlCommand(sql, conn);
             MySqlDataReader reader = comm.ExecuteReader();
@@ -48,18 +57,29 @@ namespace MachineProject.DAC
                 dto = new MachineDTO()
                 {
                     MachineID = reader["MachineID"].ToString(),
-                    IsRunning = Convert.ToInt32(reader["isRunning"])
+                    IsRunning = Convert.ToInt32(reader["isRunning"]),
+                    RunningTodo = Convert.ToInt32(reader["runningTodo"]),
+                    defectRateAlarm = Convert.ToInt32(reader["defectRateAlarm"])
                 };
                 list.Add(dto);
             }
             return list;
         }
-        public List<MachineDTO> SelectAll(string machindIDs)
+        public List<MachineDTO> SelectAll(List<string> machindIDs)
         {
             List<MachineDTO> list = new List<MachineDTO>();
-            string sql = string.Format("SELECT MachineID, isRunning FROM MACHINE WHERE 1=0 {0}; ", machindIDs);
+            // 매개변수 생성
+            StringBuilder sbValues = new StringBuilder();
+            foreach (string item in machindIDs)
+            {
+                sbValues.Append(string.Format("OR MachineID = '{0}' ", item));
+            }
 
-            MySqlCommand comm = new MySqlCommand(sql, conn);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT MachineID, isRunning, ifnull(runningTodo, 0) runningTodo,  ifnull(defectRateAlarm, 0) defectRateAlarm FROM MACHINE WHERE 1=0 ");
+            sb.Append(sbValues.ToString() + "; ");
+
+            MySqlCommand comm = new MySqlCommand(sb.ToString(), conn);
             MySqlDataReader reader = comm.ExecuteReader();
 
             MachineDTO dto;
@@ -68,7 +88,9 @@ namespace MachineProject.DAC
                 dto = new MachineDTO()
                 {
                     MachineID = reader["MachineID"].ToString(),
-                    IsRunning = Convert.ToInt32(reader["isRunning"])
+                    IsRunning = Convert.ToInt32(reader["isRunning"]),
+                    RunningTodo = Convert.ToInt32(reader["runningTodo"]),
+                    defectRateAlarm = Convert.ToDouble(reader["defectRateAlarm"])
                 };
                 list.Add(dto);
             }

@@ -81,6 +81,12 @@ ALTER TABLE `MachineProject`.`TODO`
 ADD COLUMN `ProductionPlanCode` VARCHAR(45) NOT NULL AFTER `Complete`;
 ALTER TABLE `MachineProject`.`PRODUCTIONLIST` 
 CHANGE COLUMN `ProductionCode` `ProductionCode` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `MachineProject`.`MACHINE` 
+ADD COLUMN `runningTodo` INT NULL AFTER `isRunning`;
+ALTER TABLE `MachineProject`.`MACHINE` 
+ADD COLUMN `defectRateAlarm` DOUBLE NULL AFTER `runningTodo`;
+
+
 
 
 #NOTNULL 

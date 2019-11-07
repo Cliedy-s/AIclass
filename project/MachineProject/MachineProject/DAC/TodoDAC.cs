@@ -103,6 +103,12 @@ namespace MachineProject.DAC
                 transaction.Rollback();
             }
         }
+        public void CompleteTodo(int todocode) {
+            string sql = "UPDATE TODO SET Complete = 'Y', CompleteDate = now() WHERE TodoCode = @TodoCode; ";
+             MySqlCommand comm = new MySqlCommand(sql, conn);
+            comm.Parameters.AddWithValue("@TodoCode", todocode);
+            comm.ExecuteNonQuery();
+        }
 
         public void FillParameters(MySqlCommand comm, TodoDTO item)
         {
