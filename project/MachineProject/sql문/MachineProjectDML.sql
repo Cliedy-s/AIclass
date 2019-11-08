@@ -3,6 +3,17 @@ USE MachineProject;
 Commit;
 Rollback;
 # Select문
+SELECT * FROM EMPLOYEES;
+SELECT * FROM EMAILDOMAINS;
+SELECT * FROM MACHINE;
+SELECT * FROM PLISTBYMACHINE;
+SELECT * FROM PRODUCTION;
+SELECT * FROM PRODUCTIONLIST;
+SELECT * FROM PRODUCTIONPLAN;
+SELECT * FROM TODO;
+
+COMMIT;
+
 SELECT  EmployeeID, Email, Password, Name, Phone, ZipCode, Addr1, Addr2, Authority FROM EMPLOYEES;
 SELECT  EmployeeID, Email, Password, Name, Phone, ZipCode, Addr1, Addr2, Authority FROM EMPLOYEES WHERE EmployeeID='10001';
 SELECT EmployeeID, Email, Password, Name, Phone, ZipCode, Addr1, Addr2, Authority FROM EMPLOYEES WHERE Email='bhb0047@naver.co.kr'; 
@@ -124,6 +135,10 @@ UPDATE EMPLOYEES SET Authority = b'0010'  WHERE EmployeeID = 10001;
 UPDATE PRODUCTIONPLAN SET PlanedAmount = 300 WHERE ProductionPlanCode = 1;
 UPDATE TODO SET CompleteDate = now(), Complete = 'Y' WHERE TodoCode = 1;
 UPDATE MACHINE SET isRunning = 0; commit; SELECT * FROM MACHINE;
+
+UPDATE PLISTBYMACHINE SET AmountPerDay =330 WHERE ProductionID = 30003;
+UPDATE PLISTBYMACHINE SET AmountPerDay =250 WHERE MachineID = '20003';
+select * from PLISTBYMACHINE;
 
 -- auto_increment 초기화
 ALTER TABLE TODO AUTO_INCREMENT=1;

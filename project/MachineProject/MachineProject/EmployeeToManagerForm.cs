@@ -62,13 +62,13 @@ namespace MachineProject
 
         private void DgvETM_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.ColumnIndex == 6 || e.ColumnIndex == 7) && e.RowIndex >0 )
+            if ((e.ColumnIndex == 5 || e.ColumnIndex == 6) && e.RowIndex >0 )
             {
                 try
                 {
                     DataGridViewRow gvr = dgvETM.Rows[e.RowIndex];
                     EmployeesService service = new EmployeesService();
-                    service.UpdateAuthority(gvr.Cells["EmployeeID"].Value.ToString(), 8-e.ColumnIndex);
+                    service.UpdateAuthority(gvr.Cells["EmployeeID"].Value.ToString(), 7-e.ColumnIndex);
                     service.Dispose();
 
                     LoadData();

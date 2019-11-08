@@ -1,6 +1,7 @@
 installutil D:\AIclass\project\MachineProject\MachineProject_Service\bin\Debug\MachineProject_Service.exe
 installutil -u D:\AIclass\project\MachineProject\MachineProject_Service\bin\Debug\MachineProject_Service.exe
 
+//강제 중지
 net stop MachineService
 taskkill -f -im MachineService
 sc delete MachineService

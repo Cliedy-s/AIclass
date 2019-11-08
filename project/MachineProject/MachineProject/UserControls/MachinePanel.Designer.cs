@@ -51,6 +51,8 @@
             this.lblDefectRateAlarm_V = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDefectRate_V = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.picGreenLight = new System.Windows.Forms.PictureBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -126,6 +128,8 @@
             this.panel2.Controls.Add(this.lblDefectRateAlarm_V);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.lblDefectRate_V);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(6, 248);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(213, 106);
@@ -258,12 +262,12 @@
             // lblDefectRateAlarm_V
             // 
             this.lblDefectRateAlarm_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblDefectRateAlarm_V.Location = new System.Drawing.Point(148, 87);
+            this.lblDefectRateAlarm_V.Location = new System.Drawing.Point(128, 87);
             this.lblDefectRateAlarm_V.Name = "lblDefectRateAlarm_V";
             this.lblDefectRateAlarm_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDefectRateAlarm_V.Size = new System.Drawing.Size(62, 19);
             this.lblDefectRateAlarm_V.TabIndex = 17;
-            this.lblDefectRateAlarm_V.Text = "0";
+            this.lblDefectRateAlarm_V.Text = "100";
             this.lblDefectRateAlarm_V.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
@@ -280,13 +284,35 @@
             // lblDefectRate_V
             // 
             this.lblDefectRate_V.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblDefectRate_V.Location = new System.Drawing.Point(148, 71);
+            this.lblDefectRate_V.Location = new System.Drawing.Point(128, 71);
             this.lblDefectRate_V.Name = "lblDefectRate_V";
             this.lblDefectRate_V.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDefectRate_V.Size = new System.Drawing.Size(62, 19);
             this.lblDefectRate_V.TabIndex = 15;
             this.lblDefectRate_V.Text = "0";
             this.lblDefectRate_V.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(176, 71);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(33, 19);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "%";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("나눔고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(176, 86);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(33, 19);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "%";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // picGreenLight
             // 
@@ -379,5 +405,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -224,10 +224,6 @@
       <Project>{cbcbd4d4-68c7-46be-adf3-028b2bb253ff}</Project>
       <Name>RecursiveForChangeControls_MachineProject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RegexClass\MyRegexClass_MachineProject.csproj">
-      <Project>{17E2FBCC-46D5-44D8-8C42-2EAD8B0170FE}</Project>
-      <Name>MyRegexClass_MachineProject</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="WMPLib">

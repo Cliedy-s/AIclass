@@ -139,6 +139,7 @@ namespace MachineProject
         public event SetBackGroundHandler setDgvBackground;
         public event SetRunningMachine setRunningMachine;
         public event MachineEventHandler doubleClick;
+        public event Action reloadDataGridView;
         public class MachineStringsEventArgs : EventArgs
         {
             public values ReturnValues { get; set; }
@@ -309,9 +310,11 @@ namespace MachineProject
                     TodoService service = new TodoService();
                     service.CompleteTodo(RunningTODO.TodoCode);
                     service.Dispose();
+                    // 메인 폼 업데이트
+                    reloadDataGridView?.Invoke();
                     // 기계 종료
                     StopMachine();
-                    throw new Exception("작업이 끝났습니다.");
+                    throw new Exception(Properties.Resources.Error_MachineAlreadyDone_mag);
                 }
                 // 연산부
                 int totalAmount = 0;

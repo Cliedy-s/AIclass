@@ -89,7 +89,7 @@ namespace MachineProject
                 addcol.AddNewColumnToDataGridView("제품ID", "ProductionID", dgvTodo, typeof(string), 60);
                 addcol.AddNewColumnToDataGridView("완료", "Complete", dgvTodo, typeof(char), 25);
                 addcol.AddNewColumnToDataGridView("갯수", "Amount", dgvTodo, typeof(int), 60, null, true, DataGridViewContentAlignment.MiddleLeft);
-                addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodo, typeof(DateTime), 100);
+                addcol.AddNewColumnToDataGridView("완료날짜", "CompleteDate", dgvTodo, typeof(string), 100);
                 addcol.AddNewColumnToDataGridView("직원ID", "EmployeeID", dgvTodo, typeof(string), 60);
                 addcol.AddNewColumnToDataGridView("계획", "ProductionPlanCode", dgvTodo, typeof(int), 25);
 
@@ -155,6 +155,7 @@ namespace MachineProject
             machinePanel.doubleClick += MachinePanel_doubleClick; // 더블클릭 이벤트 핸들러 => 더블클릭시 실행
             machinePanel.setDgvBackground += SetDGVBackColor;
             machinePanel.setRunningMachine += SetRunningMachine;
+            machinePanel.reloadDataGridView += LoadEmpDgv;
             container.Controls.Add(machinePanel);
             machinePanels.Add(machineName, machinePanel);
             LoadProductionListAndRunAlarm(); // 바로 해당 기계의 로그를 가져옴
@@ -220,7 +221,7 @@ namespace MachineProject
             {
                 //업데이트
                 MachineService service = new MachineService();
-                service.UpdateDefectRateAlarm(lblMachineName.Text, Convert.ToDouble(nudNewDefectRateAlarm.Value));
+                service.UpdateDefectRateAlarm(lblMachineName.Text, Convert.ToDouble(nudNewDefectRateAlarm.Value/100m));
                 service.Dispose();
 
                 lblOldDefectRateAlarm.Text = nudNewDefectRateAlarm.Value.ToString();
@@ -302,6 +303,8 @@ namespace MachineProject
                 service.Dispose();
                 if (isRunning) // 실행중인지?
                     throw new Exception(Properties.Resources.Error_MachineAlreadyRun_msg);
+                if (dgvTodo.SelectedRows[0].Cells["Complete"].Value.ToString() == "Y")
+                    throw new Exception(Properties.Resources.Error_MachineAlreadyDone_mag);
                 //
 
                 // 컨트롤 선택
@@ -387,8 +390,8 @@ namespace MachineProject
                     machinePanels[item.MachineID].NomalAmount = item.TotalNomalAmount;
                     machinePanels[item.MachineID].DefectAmount = item.TotalDefectAmount;
                     machinePanels[item.MachineID].TotalAmount = item.TotalAmount;
-                    machinePanels[item.MachineID].DefectRate = item.DefectRate;
-                    if(machinePanels[item.MachineID].DefectRateAlarm <= item.DefectRate)
+                    machinePanels[item.MachineID].DefectRate = item.DefectRate * 100.0;
+                    if(machinePanels[item.MachineID].DefectRateAlarm <= item.DefectRate * 100)
                     {
                         if(chkAlarmAdmin.Checked&& chkAlarmEmp.Checked)
                         {
@@ -417,7 +420,7 @@ namespace MachineProject
                         machinePanels[item.MachineID].SetTodoCode(item.RunningTodo);
                     }
                     machinePanels[item.MachineID].MachineState = item.IsRunning;
-                    machinePanels[item.MachineID].DefectRateAlarm = item.defectRateAlarm;
+                    machinePanels[item.MachineID].DefectRateAlarm = item.defectRateAlarm*100.0;
                 }
             }
         } // 기계 상태 및 설정된 불량률 가져오기

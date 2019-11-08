@@ -202,4 +202,7 @@
   <data name="Error_MachineCantRun_msg" xml:space="preserve">
     <value>관리자는 기계를 실행할 수 없습니다.</value>
   </data>
+  <data name="Error_MachineAlreadyDone_mag" xml:space="preserve">
+    <value>작업이 끝났습니다.</value>
+  </data>
 </root>

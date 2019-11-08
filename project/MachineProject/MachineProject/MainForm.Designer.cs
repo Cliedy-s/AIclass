@@ -41,6 +41,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flpBase = new System.Windows.Forms.FlowLayoutPanel();
             this.panForDefectAlarm = new System.Windows.Forms.Panel();
+            this.chkAlarmAdmin = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.picServiceState02 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,14 +51,14 @@
             this.nudNewDefectRateAlarm = new System.Windows.Forms.NumericUpDown();
             this.btnSet = new System.Windows.Forms.Button();
             this.panForWork = new System.Windows.Forms.Panel();
+            this.chkAlarmEmp = new System.Windows.Forms.CheckBox();
             this.picServiceStatus = new System.Windows.Forms.PictureBox();
             this.dgvTodo = new System.Windows.Forms.DataGridView();
             this.btnRun = new System.Windows.Forms.Button();
             this.MachineStateTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.ReadProductionListTimer = new System.Windows.Forms.Timer(this.components);
-            this.chkAlarmAdmin = new System.Windows.Forms.CheckBox();
-            this.chkAlarmEmp = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -168,6 +169,7 @@
             // 
             // panForDefectAlarm
             // 
+            this.panForDefectAlarm.Controls.Add(this.label1);
             this.panForDefectAlarm.Controls.Add(this.chkAlarmAdmin);
             this.panForDefectAlarm.Controls.Add(this.label6);
             this.panForDefectAlarm.Controls.Add(this.picServiceState02);
@@ -181,6 +183,19 @@
             this.panForDefectAlarm.Name = "panForDefectAlarm";
             this.panForDefectAlarm.Size = new System.Drawing.Size(301, 501);
             this.panForDefectAlarm.TabIndex = 3;
+            // 
+            // chkAlarmAdmin
+            // 
+            this.chkAlarmAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkAlarmAdmin.AutoSize = true;
+            this.chkAlarmAdmin.Checked = true;
+            this.chkAlarmAdmin.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAlarmAdmin.Location = new System.Drawing.Point(41, 482);
+            this.chkAlarmAdmin.Name = "chkAlarmAdmin";
+            this.chkAlarmAdmin.Size = new System.Drawing.Size(48, 16);
+            this.chkAlarmAdmin.TabIndex = 21;
+            this.chkAlarmAdmin.Text = "알람";
+            this.chkAlarmAdmin.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -270,6 +285,19 @@
             this.panForWork.Size = new System.Drawing.Size(301, 501);
             this.panForWork.TabIndex = 18;
             // 
+            // chkAlarmEmp
+            // 
+            this.chkAlarmEmp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkAlarmEmp.AutoSize = true;
+            this.chkAlarmEmp.Checked = true;
+            this.chkAlarmEmp.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAlarmEmp.Location = new System.Drawing.Point(41, 482);
+            this.chkAlarmEmp.Name = "chkAlarmEmp";
+            this.chkAlarmEmp.Size = new System.Drawing.Size(48, 16);
+            this.chkAlarmEmp.TabIndex = 22;
+            this.chkAlarmEmp.Text = "알람";
+            this.chkAlarmEmp.UseVisualStyleBackColor = true;
+            // 
             // picServiceStatus
             // 
             this.picServiceStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -320,31 +348,14 @@
             // 
             this.ReadProductionListTimer.Tick += new System.EventHandler(this.ReadProductionListTimer_Tick);
             // 
-            // chkAlarmAdmin
+            // label1
             // 
-            this.chkAlarmAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkAlarmAdmin.AutoSize = true;
-            this.chkAlarmAdmin.Checked = true;
-            this.chkAlarmAdmin.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAlarmAdmin.Location = new System.Drawing.Point(41, 482);
-            this.chkAlarmAdmin.Name = "chkAlarmAdmin";
-            this.chkAlarmAdmin.Size = new System.Drawing.Size(48, 16);
-            this.chkAlarmAdmin.TabIndex = 21;
-            this.chkAlarmAdmin.Text = "알람";
-            this.chkAlarmAdmin.UseVisualStyleBackColor = true;
-            // 
-            // chkAlarmEmp
-            // 
-            this.chkAlarmEmp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkAlarmEmp.AutoSize = true;
-            this.chkAlarmEmp.Checked = true;
-            this.chkAlarmEmp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAlarmEmp.Location = new System.Drawing.Point(41, 482);
-            this.chkAlarmEmp.Name = "chkAlarmEmp";
-            this.chkAlarmEmp.Size = new System.Drawing.Size(48, 16);
-            this.chkAlarmEmp.TabIndex = 22;
-            this.chkAlarmEmp.Text = "알람";
-            this.chkAlarmEmp.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(197, 175);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 12);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "%";
             // 
             // MainForm
             // 
@@ -407,6 +418,7 @@
         private System.Windows.Forms.PictureBox picServiceState02;
         private System.Windows.Forms.CheckBox chkAlarmAdmin;
         private System.Windows.Forms.CheckBox chkAlarmEmp;
+        private System.Windows.Forms.Label label1;
     }
 }
 

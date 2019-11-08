@@ -115,6 +115,15 @@ namespace MachineProject.Properties {
         }
         
         /// <summary>
+        ///   작업이 끝났습니다.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        internal static string Error_MachineAlreadyDone_mag {
+            get {
+                return ResourceManager.GetString("Error_MachineAlreadyDone_mag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   이미 생산중인 기계입니다.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string Error_MachineAlreadyRun_msg {
