@@ -14,19 +14,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        FileStream fs = new FileStream(@"C:\windows\system32\drivers\etc\HOSTS", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        FileStream fs = new FileStream(@"C:\windows\system32\drivers\etc\HOSTS", FileMode.Open, FileAccess.Read, FileShare.Write);
 
         FileState state = new FileState();
         state.Buffer = new byte[fs.Length];
         state.File = fs;
 
         fs.BeginRead(state.Buffer, 0, state.Buffer.Length, readCompleted, state);
+
         // BeginRead 비동기 메서드 호출은 스레드로 곧바로 제어를 반환하기 때문에
         // 이곳에서 자유롭게 다른 연산을 동시에 진행할 수 있다.
 
         Console.ReadLine();
-
         fs.Close();
+
     }
 
     // 읽기 작업이 완료되면 메서드가 호출된다.
@@ -36,6 +37,8 @@ class Program
         state.File.EndRead(ar);
         string txt = Encoding.UTF8.GetString(state.Buffer);
         Console.WriteLine(txt);
+
+        //state.File.Close();
     }
 }
 

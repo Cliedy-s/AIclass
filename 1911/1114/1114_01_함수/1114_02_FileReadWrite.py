@@ -45,6 +45,10 @@ while True:
         break
     print(line, end='')
 f.close()
+        # readline => string (2)
+with open('data/test.txt','r',encoding= 'utf-8') as f :
+    for word in f:
+        print(word.strip())
 
         # read => big string
 print()

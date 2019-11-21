@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "1119_01_DBConnect_SQLlite", "1119\1119_01_DBConnect_SQLlite.pyproj", "{BCB53E07-5C1C-4611-8B80-AF3C02F28929}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "_1119_TypingGame", "_1119_TypingGame\_1119_TypingGame.pyproj", "{690FF047-5ED2-4F34-AA6D-0EA79ED680CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCB53E07-5C1C-4611-8B80-AF3C02F28929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB53E07-5C1C-4611-8B80-AF3C02F28929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690FF047-5ED2-4F34-AA6D-0EA79ED680CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690FF047-5ED2-4F34-AA6D-0EA79ED680CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7BACE18-0D58-4CED-B9BA-A575AC77911C}
+	EndGlobalSection
+EndGlobal

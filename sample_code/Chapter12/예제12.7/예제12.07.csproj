@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>예제12._7</RootNamespace>
     <AssemblyName>예제12.7</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
