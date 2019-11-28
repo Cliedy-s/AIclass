@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>IceCreamManager.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMain.Designer.cs">
+      <DependentUpon>AdminMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="BOM\BOM_Amount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,11 +86,11 @@
     <Compile Include="BOM\BOM_Insert.Designer.cs">
       <DependentUpon>BOM_Insert.cs</DependentUpon>
     </Compile>
-    <Compile Include="BOM\BOM_main.cs">
+    <Compile Include="BOM\BOM_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BOM\BOM_main.Designer.cs">
-      <DependentUpon>BOM_main.cs</DependentUpon>
+    <Compile Include="BOM\BOM_Main.Designer.cs">
+      <DependentUpon>BOM_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="BOM\BOM_Search.cs">
       <SubType>Form</SubType>
@@ -89,20 +98,82 @@
     <Compile Include="BOM\BOM_Search.Designer.cs">
       <DependentUpon>BOM_Search.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserMain1.cs">
+    <Compile Include="BOM\BOM_SearchUP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserMain1.Designer.cs">
-      <DependentUpon>UserMain1.cs</DependentUpon>
+    <Compile Include="BOM\BOM_SearchUP.Designer.cs">
+      <DependentUpon>BOM_SearchUP.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserMain2.cs">
+    <Compile Include="DAC\BOMDAC.cs" />
+    <Compile Include="DAC\DACParent.cs" />
+    <Compile Include="DAC\Helper.cs" />
+    <Compile Include="offerer\OffererDialogue_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserMain2.Designer.cs">
-      <DependentUpon>UserMain2.cs</DependentUpon>
+    <Compile Include="offerer\OffererDialogue_Form.Designer.cs">
+      <DependentUpon>OffererDialogue_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="offerer\OffererProductDialogue_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="offerer\OffererProductDialogue_Form.Designer.cs">
+      <DependentUpon>OffererProductDialogue_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="offerer\Offerer_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="offerer\Offerer_Form.Designer.cs">
+      <DependentUpon>Offerer_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="product\Product_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="product\Product_Form.Designer.cs">
+      <DependentUpon>Product_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserMain\PlaceHolderTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserMain\PlaceHolderTextBox.Designer.cs">
+      <DependentUpon>PlaceHolderTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\UserIDPWDSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMain\UserIDPWDSearch.Designer.cs">
+      <DependentUpon>UserIDPWDSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\UserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMain\UserLogin.Designer.cs">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\UserMain1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMain\UserMain1.Designer.cs">
+      <DependentUpon>UserMain1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\UserMain2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMain\UserMain2.Designer.cs">
+      <DependentUpon>UserMain2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\UserMain3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMain\UserMain3.Designer.cs">
+      <DependentUpon>UserMain3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VO\BOMVO.cs" />
+    <Compile Include="VO\VOParent.cs" />
+    <EmbeddedResource Include="AdminMain.resx">
+      <DependentUpon>AdminMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BOM\BOM_Amount.resx">
       <DependentUpon>BOM_Amount.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,17 +189,23 @@
     <EmbeddedResource Include="BOM\BOM_Insert.resx">
       <DependentUpon>BOM_Insert.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BOM\BOM_main.resx">
-      <DependentUpon>BOM_main.cs</DependentUpon>
+    <EmbeddedResource Include="BOM\BOM_Main.resx">
+      <DependentUpon>BOM_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BOM\BOM_Search.resx">
       <DependentUpon>BOM_Search.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserMain1.resx">
-      <DependentUpon>UserMain1.cs</DependentUpon>
+    <EmbeddedResource Include="BOM\BOM_SearchUP.resx">
+      <DependentUpon>BOM_SearchUP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserMain2.resx">
-      <DependentUpon>UserMain2.cs</DependentUpon>
+    <EmbeddedResource Include="offerer\OffererDialogue_Form.resx">
+      <DependentUpon>OffererDialogue_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="offerer\OffererProductDialogue_Form.resx">
+      <DependentUpon>OffererProductDialogue_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="offerer\Offerer_Form.resx">
+      <DependentUpon>Offerer_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -140,6 +217,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserMain\UserIDPWDSearch.resx">
+      <DependentUpon>UserIDPWDSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\UserLogin.resx">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\UserMain1.resx">
+      <DependentUpon>UserMain1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\UserMain2.resx">
+      <DependentUpon>UserMain2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\UserMain3.resx">
+      <DependentUpon>UserMain3.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="IceCreamManagercsproj" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -154,12 +247,49 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAC\" />
-    <Folder Include="Service\" />
-    <Folder Include="VO\" />
+    <Content Include="DAC\Team4Connect_DEV.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\KakaoTalk_20191126_161303923.png" />
+    <Content Include="Image\pic1.png" />
+    <Content Include="Image\pic1_.png" />
+    <Content Include="Image\pic2.png" />
+    <Content Include="Image\pic2_.png" />
+    <Content Include="Image\pic3.png" />
+    <Content Include="Image\pic3_.png" />
+    <Content Include="Image\pic4.png" />
+    <Content Include="Image\pic4_.png" />
+    <Content Include="Resources\KakaoTalk_20191126_161303923.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\house.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

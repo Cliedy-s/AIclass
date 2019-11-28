@@ -13,7 +13,7 @@ namespace _1121_02_Asynchronous
         {
             // 스레드
             // --동기 호출
-            Console.WriteLine(ParamSum(new MyParam() {fromval=0, toval=10}));
+            Console.WriteLine(ParamSum(new MyParam() { fromval = 0, toval = 10 }));
             // ----동기지만 비동기처럼 사용 ( 스레드 )
             Thread thread = new Thread(Run);
             thread.Start(null);
@@ -21,7 +21,7 @@ namespace _1121_02_Asynchronous
             // ------ 스레드풀 방법
             ThreadPool.QueueUserWorkItem(Run); // ParameterizedThreadStart == WaitCallback
 
-            Task t2 = new Task(Run, null); 
+            Task t2 = new Task(Run, null);
             t2.Start();
 
             // --비동기 호출

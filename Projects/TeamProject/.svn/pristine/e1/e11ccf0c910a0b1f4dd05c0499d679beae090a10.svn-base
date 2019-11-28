@@ -1,0 +1,148 @@
+﻿namespace IceCreamManager
+{
+    partial class BOM_main
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.dgvMain = new System.Windows.Forms.DataGridView();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.tbcMain = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
+            this.tbcMain.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dgvMain
+            // 
+            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMain.Location = new System.Drawing.Point(14, 67);
+            this.dgvMain.Name = "dgvMain";
+            this.dgvMain.RowTemplate.Height = 23;
+            this.dgvMain.Size = new System.Drawing.Size(663, 311);
+            this.dgvMain.TabIndex = 0;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(588, 15);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(87, 26);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "검색";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtName
+            // 
+            this.txtName.Font = new System.Drawing.Font("굴림", 11F);
+            this.txtName.Location = new System.Drawing.Point(423, 15);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(159, 24);
+            this.txtName.TabIndex = 2;
+            // 
+            // tbcMain
+            // 
+            this.tbcMain.Controls.Add(this.tabPage1);
+            this.tbcMain.Controls.Add(this.tabPage2);
+            this.tbcMain.Controls.Add(this.tabPage3);
+            this.tbcMain.Controls.Add(this.tabPage4);
+            this.tbcMain.Location = new System.Drawing.Point(14, 45);
+            this.tbcMain.Name = "tbcMain";
+            this.tbcMain.SelectedIndex = 0;
+            this.tbcMain.Size = new System.Drawing.Size(663, 22);
+            this.tbcMain.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(655, 0);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "전체";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(655, 0);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "완제품";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(655, 0);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "반제품";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(655, 0);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "재료";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // BOM_main
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(689, 397);
+            this.Controls.Add(this.tbcMain);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.dgvMain);
+            this.Name = "BOM_main";
+            this.Text = "BOM_main";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
+            this.tbcMain.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView dgvMain;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TabControl tbcMain;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+    }
+}
