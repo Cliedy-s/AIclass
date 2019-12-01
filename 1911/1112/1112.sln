@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "1112_01_몸풀기", "1112_01_몸풀기\1112_01_몸풀기.pyproj", "{94F32A75-4B29-46B8-8F0D-80E38E5F08D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94F32A75-4B29-46B8-8F0D-80E38E5F08D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F32A75-4B29-46B8-8F0D-80E38E5F08D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54CB0D86-FE7A-4D1C-83FB-AF4DF3EEA1D0}
+	EndGlobalSection
+EndGlobal

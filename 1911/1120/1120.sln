@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1120_01_Thread", "1120_01_Thread\1120_01_Thread.csproj", "{9441BB6F-128F-4649-87EE-CAF95ED24F14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1120_02_MainThread", "1120_02_MainThread\1120_02_MainThread.csproj", "{37A29D3F-9F30-4B17-B54D-FEBD425F510D}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "1120_Address", "1120\1120_Address.pyproj", "{84F90FC6-192E-430F-8922-B3CFC3B8E1F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9441BB6F-128F-4649-87EE-CAF95ED24F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9441BB6F-128F-4649-87EE-CAF95ED24F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9441BB6F-128F-4649-87EE-CAF95ED24F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9441BB6F-128F-4649-87EE-CAF95ED24F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A29D3F-9F30-4B17-B54D-FEBD425F510D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A29D3F-9F30-4B17-B54D-FEBD425F510D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A29D3F-9F30-4B17-B54D-FEBD425F510D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A29D3F-9F30-4B17-B54D-FEBD425F510D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F90FC6-192E-430F-8922-B3CFC3B8E1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F90FC6-192E-430F-8922-B3CFC3B8E1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1084DD89-1EC2-4630-9897-443AA7038EEC}
+	EndGlobalSection
+EndGlobal

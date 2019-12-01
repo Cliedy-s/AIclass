@@ -358,3 +358,8 @@ MigrationBackup/
 *.exe.config/
 App.config/
 *.config
+*.exe
+*.sln
+Projects/MachineProject/MachineProject/MachineProject.sln
+Projects/MachineProject/MachineProject/MachineProject.sln
+*.sln

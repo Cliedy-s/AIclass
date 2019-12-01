@@ -1,0 +1,29 @@
+﻿using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IceCreamManager.DAC
+{
+    class BOMDAC
+    {
+        public List<BOMVO> SelectAll()
+        {
+            throw new NotImplementedException();
+        }
+        public int Insert()
+        {
+            throw new NotImplementedException();
+        }
+        public int update()
+        {
+            throw new NotImplementedException();
+        }
+        public int delete()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
