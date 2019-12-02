@@ -9,22 +9,45 @@ namespace _1128_01_MessengerServer
 {
     public class UserInfoList
     {
-        private static Hashtable clientTable;
-        private static Dictionary<string, User> clientobject;
-        public UserInfoList()
-        {
-            clientTable = new Hashtable();
-        }
+        private static Hashtable clientTable = new Hashtable();
+        private static Dictionary<string, User> clientobject = new Dictionary<string, User>();
         public static bool AddClient(string username, string usergid, User user)
         {
-            if (clientTable.ContainsValue(username))
-                return false;
+            lock (clientTable)
+            {
+                if (clientTable.ContainsValue(username))
+                    return false;
 
-            clientTable.Add(usergid, username);
-            clientobject.Add(usergid, user);
-            return true;
+                clientTable.Add(usergid, username);
+                clientobject.Add(usergid, user);
+                return true;
+            }
         }
-        public static string GetAllUsers()
+        public static bool RemoveClient(User user)
+        {
+            lock (clientTable)
+            {
+                if (clientTable.ContainsKey(user.GUID))
+                {
+                    clientTable.Remove(user.GUID);
+                    clientobject.Remove(user.GUID);
+                    return true;
+                }
+                else
+                {
+                    clientTable.Add(user.GUID, user.Username);
+                    clientobject.Add(user.GUID, user);
+                    return false;
+                }
+                
+
+            }
+        }
+        public static bool IsContains(string userid)
+        {
+            return clientTable.ContainsKey(userid);
+        }
+        public static string GetAllUsersToString()
         {
             StringBuilder users = new StringBuilder();
             //foreach (KeyValuePair<string, string> item in clientTable)
@@ -36,7 +59,7 @@ namespace _1128_01_MessengerServer
 
             return users.ToString();
         }
-        public static Dictionary<string, User> GetAllUserOjbects()
+        public static Dictionary<string, User> GetAllUserObjects()
         {
             return clientobject;
         }

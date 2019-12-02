@@ -32,8 +32,10 @@
             this.txtSendBox = new System.Windows.Forms.TextBox();
             this.lstUserListBox = new System.Windows.Forms.ListBox();
             this.grpUserID = new System.Windows.Forms.GroupBox();
-            this.txtUserNameBox = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
+            this.txtUserNameBox = new System.Windows.Forms.TextBox();
+            this.txtIP = new System.Windows.Forms.TextBox();
+            this.txtPort = new System.Windows.Forms.TextBox();
             this.grpUserID.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,10 +56,12 @@
             // 
             this.txtSendBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSendBox.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txtSendBox.Location = new System.Drawing.Point(12, 375);
             this.txtSendBox.Name = "txtSendBox";
             this.txtSendBox.Size = new System.Drawing.Size(391, 21);
             this.txtSendBox.TabIndex = 1;
+            this.txtSendBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSendBox_KeyPress);
             // 
             // lstUserListBox
             // 
@@ -67,7 +71,7 @@
             this.lstUserListBox.ItemHeight = 12;
             this.lstUserListBox.Location = new System.Drawing.Point(409, 12);
             this.lstUserListBox.Name = "lstUserListBox";
-            this.lstUserListBox.Size = new System.Drawing.Size(231, 292);
+            this.lstUserListBox.Size = new System.Drawing.Size(231, 268);
             this.lstUserListBox.TabIndex = 2;
             // 
             // grpUserID
@@ -81,13 +85,6 @@
             this.grpUserID.TabIndex = 3;
             this.grpUserID.TabStop = false;
             // 
-            // txtUserNameBox
-            // 
-            this.txtUserNameBox.Location = new System.Drawing.Point(6, 20);
-            this.txtUserNameBox.Name = "txtUserNameBox";
-            this.txtUserNameBox.Size = new System.Drawing.Size(219, 21);
-            this.txtUserNameBox.TabIndex = 4;
-            // 
             // btnConnect
             // 
             this.btnConnect.Location = new System.Drawing.Point(6, 47);
@@ -96,12 +93,39 @@
             this.btnConnect.TabIndex = 5;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // txtUserNameBox
+            // 
+            this.txtUserNameBox.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+            this.txtUserNameBox.Location = new System.Drawing.Point(6, 20);
+            this.txtUserNameBox.Name = "txtUserNameBox";
+            this.txtUserNameBox.Size = new System.Drawing.Size(219, 21);
+            this.txtUserNameBox.TabIndex = 4;
+            // 
+            // txtIP
+            // 
+            this.txtIP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIP.Location = new System.Drawing.Point(409, 286);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(167, 21);
+            this.txtIP.TabIndex = 4;
+            // 
+            // txtPort
+            // 
+            this.txtPort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPort.Location = new System.Drawing.Point(582, 286);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(58, 21);
+            this.txtPort.TabIndex = 5;
             // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 408);
+            this.Controls.Add(this.txtPort);
+            this.Controls.Add(this.txtIP);
             this.Controls.Add(this.grpUserID);
             this.Controls.Add(this.lstUserListBox);
             this.Controls.Add(this.txtSendBox);
@@ -109,6 +133,7 @@
             this.MinimumSize = new System.Drawing.Size(410, 223);
             this.Name = "ClientForm";
             this.Text = "ClientForm";
+            this.Load += new System.EventHandler(this.ClientForm_Load);
             this.grpUserID.ResumeLayout(false);
             this.grpUserID.PerformLayout();
             this.ResumeLayout(false);
@@ -124,6 +149,8 @@
         private System.Windows.Forms.GroupBox grpUserID;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.TextBox txtUserNameBox;
+        private System.Windows.Forms.TextBox txtIP;
+        private System.Windows.Forms.TextBox txtPort;
     }
 }
 

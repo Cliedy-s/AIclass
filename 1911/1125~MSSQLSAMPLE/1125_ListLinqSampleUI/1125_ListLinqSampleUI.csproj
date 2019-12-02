@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Util\CommonUtil.cs" />
+    <Compile Include="Servcie\CommonService.cs" />
     <Compile Include="frmEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,7 +65,7 @@
     <Compile Include="frmOrder.Designer.cs">
       <DependentUpon>frmOrder.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageConverterHelper.cs" />
+    <Compile Include="Helper\ImageConverterHelper.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

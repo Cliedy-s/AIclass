@@ -74,9 +74,7 @@
     <Compile Include="BOM\BOM_Forecast.Designer.cs">
       <DependentUpon>BOM_Forecast.cs</DependentUpon>
     </Compile>
-    <Compile Include="BOM\BOM_InSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="BOM\BOM_InSearch.cs" />
     <Compile Include="BOM\BOM_InSearch.Designer.cs">
       <DependentUpon>BOM_InSearch.cs</DependentUpon>
     </Compile>
@@ -107,6 +105,7 @@
     <Compile Include="DAC\BOMDAC.cs" />
     <Compile Include="DAC\DACParent.cs" />
     <Compile Include="DAC\Helper.cs" />
+    <Compile Include="Helper\DatagridviewDeignes.cs" />
     <Compile Include="offerer\OffererDialogue_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +124,24 @@
     <Compile Include="offerer\Offerer_Form.Designer.cs">
       <DependentUpon>Offerer_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order\OffererOderDialogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OffererOderDialogue.Designer.cs">
+      <DependentUpon>OffererOderDialogue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OffererOder_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OffererOder_Form.Designer.cs">
+      <DependentUpon>OffererOder_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="product\ProductDialog_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="product\ProductDialog_Form.designer.cs">
+      <DependentUpon>ProductDialog_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="product\Product_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +150,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sales\Salescheck_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales\Salescheck_Form.Designer.cs">
+      <DependentUpon>Salescheck_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\AddressSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControl\AddressSearchForm.Designer.cs">
+      <DependentUpon>AddressSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\AddressUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\AddressUserControl.Designer.cs">
+      <DependentUpon>AddressUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\AddressUserControl.cs" />
+    <Compile Include="UserMain\AddressUserControl.Designer.cs">
+      <DependentUpon>AddressUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\DataGridViewAddColumns.cs" />
     <Compile Include="UserMain\PlaceHolderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -144,6 +184,12 @@
     </Compile>
     <Compile Include="UserMain\UserIDPWDSearch.Designer.cs">
       <DependentUpon>UserIDPWDSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\UserJoin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMain\UserJoin.Designer.cs">
+      <DependentUpon>UserJoin.cs</DependentUpon>
     </Compile>
     <Compile Include="UserMain\UserLogin.cs">
       <SubType>Form</SubType>
@@ -207,6 +253,15 @@
     <EmbeddedResource Include="offerer\Offerer_Form.resx">
       <DependentUpon>Offerer_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Order\OffererOderDialogue.resx">
+      <DependentUpon>OffererOderDialogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OffererOder_Form.resx">
+      <DependentUpon>OffererOder_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="product\ProductDialog_Form.resx">
+      <DependentUpon>ProductDialog_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -217,8 +272,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Sales\Salescheck_Form.resx">
+      <DependentUpon>Salescheck_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\AddressSearchForm.resx">
+      <DependentUpon>AddressSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\AddressUserControl.resx">
+      <DependentUpon>AddressUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\AddressUserControl.resx">
+      <DependentUpon>AddressUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserMain\UserIDPWDSearch.resx">
       <DependentUpon>UserIDPWDSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\UserJoin.resx">
+      <DependentUpon>UserJoin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserMain\UserLogin.resx">
       <DependentUpon>UserLogin.cs</DependentUpon>
@@ -250,6 +320,7 @@
     <Content Include="DAC\Team4Connect_DEV.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="dlls\MyUserControls_1023.dll" />
     <Content Include="Image\KakaoTalk_20191126_161303923.png" />
     <Content Include="Image\pic1.png" />
     <Content Include="Image\pic1_.png" />
@@ -259,6 +330,36 @@
     <Content Include="Image\pic3_.png" />
     <Content Include="Image\pic4.png" />
     <Content Include="Image\pic4_.png" />
+    <Content Include="Image\그린티.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\뉴욕 치즈케이크.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\레인보우 샤베트.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\민트 초콜릿 칩.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\바닐라.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\슈팅스타.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\자모카 아몬드 훠지.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\체리쥬빌레.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\초콜릿 무스.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Image\초콜릿.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\KakaoTalk_20191126_161303923.png" />
   </ItemGroup>
   <ItemGroup>

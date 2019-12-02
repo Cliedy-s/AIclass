@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonDAC.cs" />
     <Compile Include="ConnectionAccess.cs" />
     <Compile Include="EmployeeDAC.cs" />
     <Compile Include="Helper.cs" />
