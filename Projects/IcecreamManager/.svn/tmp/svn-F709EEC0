@@ -1,0 +1,39 @@
+﻿using IceCreamManager.DAC;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+
+namespace IceCreamManager.Service
+{
+    public class BOMService
+    {
+        public List<MaterialsVO> SelectAll()
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.SelectAll();
+        }
+        public List<MaterialsVO> SelectAllBOMExistingList()
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.SelectAllBOMExistingList();
+        }
+
+        public List<BOMVO> SelectBomAll()
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.SelectBomAll();
+        }
+
+        public bool Insert(BOMVO item)
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.Insert(item);
+        }
+
+        public List<MaterialsVO> SelectAllChilds(List<int> parentValues)
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.SelectAllChilds(parentValues);
+        }
+    }
+}

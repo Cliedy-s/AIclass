@@ -48,6 +48,7 @@
     <Compile Include="ConnectionAccess.cs" />
     <Compile Include="EmployeeDAC.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="OrderDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <settings>
+    <add key ="Team4DB"><![CDATA[Data Source=whyfi8888.ddns.net,11433;Initial Catalog=TEAM4;User ID=team4;Password=1234]]></add> <!--어떤 문자열이 있던지 파싱 안함. 깨지지 않음-->
+  </settings>
+</configuration>
+
+<!--copy $(TargetDir)Sample_DEV.xml $(SolutionDir)1125_ListLinqSampleUI\bin\Debug-->

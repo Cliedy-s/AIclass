@@ -5,7 +5,7 @@
     <ProjectGuid>cc6c6452-5963-4cef-b2ce-f5b287004805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>_1118_06_RegularExpressions.py</StartupFile>
+    <StartupFile>_1118_04_csvReadWrite.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

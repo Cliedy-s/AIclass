@@ -13,7 +13,11 @@ namespace _1125_ListLinqSampleVO
         public string PCode { get; set; }
         public string CodeType { get; set; }
 
-        public ComboItemVO() {}
+        public ComboItemVO()
+        {
+
+        }
+
         public ComboItemVO(string blankText)
         {
             CodeNm = blankText;

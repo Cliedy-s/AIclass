@@ -16,7 +16,7 @@ namespace _1125_ListLinqSampleUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmOrder());
+            Application.Run(new LoginForm());
         }
     }
 }

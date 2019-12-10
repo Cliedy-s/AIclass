@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
+using IceCreamManager.VO;
+
+namespace IceCreamManager.DAC
+{
+   public class MaterialsDAC : DACParent
+    {
+        public List<MaterialsVO> SelectAll(){
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "GetAllMaterials";
+                comm.CommandType = CommandType.StoredProcedure;
+
+                comm.Connection.Open();
+                SqlDataReader read = comm.ExecuteReader();
+                List<MaterialsVO> list = Helper.DataReaderMapToList<MaterialsVO>(read);
+                comm.Connection.Close();
+
+                return list;
+            }
+        }
+
+        public bool Insert(MaterialsVO list)
+        {
+
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(Connstr);
+                cmd.CommandText = "MaterialsInsert";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@mat_No", list.mat_No);
+                cmd.Parameters.AddWithValue("@mtt_No", list.mtt_No);
+                cmd.Parameters.AddWithValue("@off_No", list.off_No);
+                cmd.Parameters.AddWithValue("@mat_Name", list.mat_Name);
+                cmd.Parameters.AddWithValue("@mat_Cost", list.mat_Cost);
+                cmd.Parameters.AddWithValue("@mat_Each", list.mat_Each);
+                cmd.Parameters.AddWithValue("@mat_MinSize", list.mat_MinSize);
+                cmd.Parameters.AddWithValue("@mat_Unit", list.mat_Unit);
+
+                cmd.Connection.Open();
+                var rowsAffected = cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+                return rowsAffected > 0;
+            }
+        }
+
+
+    }
+}

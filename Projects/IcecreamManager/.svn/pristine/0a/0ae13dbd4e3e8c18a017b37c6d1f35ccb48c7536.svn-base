@@ -1,0 +1,38 @@
+﻿using System;
+using IceCreamManager.DAC;
+using IceCreamManager.VO;
+
+namespace IceCreamManager.Service
+{
+    class UserService
+    {
+        public bool UserSiginUp(UserInfoVO emp)
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserSiginUp(emp);
+        }
+        public bool UserIDCheck(UserInfoVO emp)
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserIDCheck(emp);
+        }
+
+        public string UserIDSearch(UserInfoVO uvo)
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserIDSearch(uvo);
+        }
+
+        public bool UserEmailCheck(UserInfoVO emp)
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserEmailCheck(emp);
+        }
+    
+        public int UserPWDUpdate(UserInfoVO uvo)
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserPWDUpdate(uvo);
+        }
+    }
+}

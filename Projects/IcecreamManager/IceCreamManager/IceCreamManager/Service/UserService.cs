@@ -1,0 +1,50 @@
+﻿using System;
+using IceCreamManager.DAC;
+using IceCreamManager.VO;
+
+namespace IceCreamManager.Service
+{
+    class UserService
+    {
+        public bool UserSiginUp(UserInfoVO emp)
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserSiginUp(emp);
+        }
+        public bool UserIDCheck(UserInfoVO emp) // 아이디 중복확인
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserIDCheck(emp);
+        }
+
+        public string UserIDSearch(UserInfoVO uvo) // 아이디 있는 없는지 확인 있으면 그 아이디를 가지고온다
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserIDSearch(uvo);
+        }
+
+        public string UserName(UserInfoVO uvo) // 아이디 있는 없는지 확인 있으면 그 아이디를 가지고온다
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserName(uvo);
+        }
+
+        public bool UserEmailCheck(UserInfoVO emp) // 아이디 찾기
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserEmailCheck(emp);
+        }
+    
+        public int UserPWDUpdate(UserInfoVO uvo) //패스워드 찾기
+        {
+            UserDAC dac = new UserDAC();
+            return dac.UserPWDUpdate(uvo);
+        }
+
+        public bool? ManagerCheck(UserInfoVO emp)
+        {
+            UserDAC dac = new UserDAC();
+            return dac.ManagerCheck(emp);
+        }
+    }
+}

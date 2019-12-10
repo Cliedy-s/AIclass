@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using IceCreamManager.VO;
+
+namespace IceCreamManager.DAC
+{
+    public class BOMDAC : DACParent
+    {
+
+        public List<MaterialsVO> SelectAll()
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "GetAllMaterials";
+                comm.CommandType = CommandType.StoredProcedure;
+
+                comm.Connection.Open();
+                SqlDataReader reader = comm.ExecuteReader();
+                List<MaterialsVO> allList = Helper.DataReaderMapToList<MaterialsVO>(reader);
+                comm.Connection.Close();
+
+                return allList;
+            }
+        }
+
+        public List<MaterialsVO> SelectAllBOMExistingList()
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "GetAllBOMExistMaterialList";
+                comm.CommandType = CommandType.StoredProcedure;
+
+                comm.Connection.Open();
+                SqlDataReader reader = comm.ExecuteReader();
+                List<MaterialsVO> allList = Helper.DataReaderMapToList<MaterialsVO>(reader);
+                comm.Connection.Close();
+
+                return allList;
+            }
+        }
+        public List<BOMVO> SelectBomAll()
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "GetAllMaterials";
+                comm.CommandType = CommandType.StoredProcedure;
+
+                comm.Connection.Open();
+                SqlDataReader reader = comm.ExecuteReader();
+                List<BOMVO> bomList = Helper.DataReaderMapToList<BOMVO>(reader);
+                comm.Connection.Close();
+
+                //TODO - 수정 : 프로시저 이름 입력 후 return bomlist
+                //throw new NotImplementedException();
+                return bomList;
+            }
+        }
+        public bool Insert(BOMVO item)
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "InsertBOM";
+                comm.CommandType = CommandType.StoredProcedure;
+                comm.Parameters.AddWithValue("@mat_ParentNo", item.mat_ParentNo);
+                comm.Parameters.AddWithValue("@mat_ChildNo", item.mat_ChildNo);
+                comm.Parameters.AddWithValue("@bom_ChildEach", item.bom_ChildEach);
+
+                comm.Connection.Open();
+                var rowsAffected = comm.ExecuteNonQuery();
+                comm.Connection.Close();
+                return rowsAffected > 0;
+
+            }
+            throw new NotImplementedException();
+        }
+
+        public int Delete(int id)
+        {
+            return Delete(id);
+        }
+
+        public bool IsIDValid(int no)
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "SELECT count(*) FROM Materials WHERE mat_No = @mat_No";
+                comm.CommandType = CommandType.Text;
+
+                comm.Parameters.AddWithValue("@mat_No", no);
+
+                comm.Connection.Open();
+                int result = Convert.ToInt32(comm.ExecuteScalar());
+                comm.Connection.Close();
+
+                if (result > 0)
+                    return true;
+                return false;
+            }
+        }
+
+        public int Update(BOMVO item)
+        {
+            return Update(item);
+        }
+    }
+}

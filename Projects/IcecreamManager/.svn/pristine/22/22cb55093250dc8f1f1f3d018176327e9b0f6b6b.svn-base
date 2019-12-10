@@ -1,0 +1,23 @@
+﻿using IceCreamManager.VO;
+namespace IceCreamManager.VO
+{
+    public class OffererVO 
+    {
+        public int off_No { get; set; } //제조사번호
+        public string off_Name { get; set; }//제조사이름
+        public string off_OwnerName { get; set; }//대표이름
+        public string off_OwnerMobile { get; set; }//대표번호
+        public string off_Manager { get; set; }//담당자이름
+        public string off_ManagerMobile { get; set; }//담당자번호
+        public string off_Addr { get; set; }//제조사주소
+    }
+
+    public class COffererVO // TODO - 지우기 : Join할 경우 다른 VO쓰시고 같은 테이블을 바라보는 VO는 같은 VO를 써주세요
+    {
+        public int off_No { get; set; } //제조사번호
+        public string off_Name { get; set; }//제조사이름
+      
+
+    }
+
+}

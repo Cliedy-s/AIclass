@@ -1,0 +1,290 @@
+﻿namespace IceCreamManager
+{
+    partial class UserMain1
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.picMain = new System.Windows.Forms.PictureBox();
+            this.picblack4 = new System.Windows.Forms.PictureBox();
+            this.picblack3 = new System.Windows.Forms.PictureBox();
+            this.picblack1 = new System.Windows.Forms.PictureBox();
+            this.picblack2 = new System.Windows.Forms.PictureBox();
+            this.picWhite4 = new System.Windows.Forms.PictureBox();
+            this.picWhite3 = new System.Windows.Forms.PictureBox();
+            this.picWhite1 = new System.Windows.Forms.PictureBox();
+            this.picWhite2 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labName = new System.Windows.Forms.Label();
+            this.btnOrderDetails = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnlogout = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite2)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.picMain);
+            this.panel1.Controls.Add(this.picblack4);
+            this.panel1.Controls.Add(this.picblack3);
+            this.panel1.Controls.Add(this.picblack1);
+            this.panel1.Controls.Add(this.picblack2);
+            this.panel1.Controls.Add(this.picWhite4);
+            this.panel1.Controls.Add(this.picWhite3);
+            this.panel1.Controls.Add(this.picWhite1);
+            this.panel1.Controls.Add(this.picWhite2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(162, 709);
+            this.panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(48, 139);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "메인으로";
+            // 
+            // picMain
+            // 
+            this.picMain.BackgroundImage = global::IceCreamManager.Properties.Resources.KakaoTalk_20191126_161303923;
+            this.picMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picMain.Location = new System.Drawing.Point(25, 49);
+            this.picMain.Name = "picMain";
+            this.picMain.Size = new System.Drawing.Size(100, 87);
+            this.picMain.TabIndex = 8;
+            this.picMain.TabStop = false;
+            this.picMain.Click += new System.EventHandler(this.PictureBox1_Click);
+            // 
+            // picblack4
+            // 
+            this.picblack4.BackgroundImage = global::IceCreamManager.Properties.Resources.pic4;
+            this.picblack4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picblack4.Location = new System.Drawing.Point(25, 567);
+            this.picblack4.Name = "picblack4";
+            this.picblack4.Size = new System.Drawing.Size(100, 87);
+            this.picblack4.TabIndex = 3;
+            this.picblack4.TabStop = false;
+            this.picblack4.Visible = false;
+            // 
+            // picblack3
+            // 
+            this.picblack3.BackgroundImage = global::IceCreamManager.Properties.Resources.pic3;
+            this.picblack3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picblack3.Location = new System.Drawing.Point(25, 445);
+            this.picblack3.Name = "picblack3";
+            this.picblack3.Size = new System.Drawing.Size(100, 87);
+            this.picblack3.TabIndex = 4;
+            this.picblack3.TabStop = false;
+            this.picblack3.Visible = false;
+            // 
+            // picblack1
+            // 
+            this.picblack1.BackgroundImage = global::IceCreamManager.Properties.Resources.pic1;
+            this.picblack1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picblack1.Location = new System.Drawing.Point(25, 202);
+            this.picblack1.Name = "picblack1";
+            this.picblack1.Size = new System.Drawing.Size(100, 87);
+            this.picblack1.TabIndex = 5;
+            this.picblack1.TabStop = false;
+            this.picblack1.Visible = false;
+            // 
+            // picblack2
+            // 
+            this.picblack2.BackgroundImage = global::IceCreamManager.Properties.Resources.pic2;
+            this.picblack2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picblack2.Location = new System.Drawing.Point(25, 324);
+            this.picblack2.Name = "picblack2";
+            this.picblack2.Size = new System.Drawing.Size(100, 87);
+            this.picblack2.TabIndex = 6;
+            this.picblack2.TabStop = false;
+            this.picblack2.Visible = false;
+            // 
+            // picWhite4
+            // 
+            this.picWhite4.BackgroundImage = global::IceCreamManager.Properties.Resources.pic4_;
+            this.picWhite4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picWhite4.Location = new System.Drawing.Point(25, 567);
+            this.picWhite4.Name = "picWhite4";
+            this.picWhite4.Size = new System.Drawing.Size(100, 87);
+            this.picWhite4.TabIndex = 2;
+            this.picWhite4.TabStop = false;
+            // 
+            // picWhite3
+            // 
+            this.picWhite3.BackgroundImage = global::IceCreamManager.Properties.Resources.pic3_;
+            this.picWhite3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picWhite3.Location = new System.Drawing.Point(25, 445);
+            this.picWhite3.Name = "picWhite3";
+            this.picWhite3.Size = new System.Drawing.Size(100, 87);
+            this.picWhite3.TabIndex = 2;
+            this.picWhite3.TabStop = false;
+            // 
+            // picWhite1
+            // 
+            this.picWhite1.BackgroundImage = global::IceCreamManager.Properties.Resources.pic1_;
+            this.picWhite1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picWhite1.Location = new System.Drawing.Point(25, 202);
+            this.picWhite1.Name = "picWhite1";
+            this.picWhite1.Size = new System.Drawing.Size(100, 87);
+            this.picWhite1.TabIndex = 2;
+            this.picWhite1.TabStop = false;
+            // 
+            // picWhite2
+            // 
+            this.picWhite2.BackgroundImage = global::IceCreamManager.Properties.Resources.pic2_;
+            this.picWhite2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picWhite2.Location = new System.Drawing.Point(25, 324);
+            this.picWhite2.Name = "picWhite2";
+            this.picWhite2.Size = new System.Drawing.Size(100, 87);
+            this.picWhite2.TabIndex = 2;
+            this.picWhite2.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel2.Controls.Add(this.labName);
+            this.panel2.Controls.Add(this.btnOrderDetails);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.btnlogout);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(162, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1171, 41);
+            this.panel2.TabIndex = 2;
+            // 
+            // labName
+            // 
+            this.labName.AutoSize = true;
+            this.labName.Location = new System.Drawing.Point(921, 14);
+            this.labName.Name = "labName";
+            this.labName.Size = new System.Drawing.Size(41, 12);
+            this.labName.TabIndex = 3;
+            this.labName.Text = "오휘석";
+            this.labName.Visible = false;
+            // 
+            // btnOrderDetails
+            // 
+            this.btnOrderDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnOrderDetails.ForeColor = System.Drawing.Color.Black;
+            this.btnOrderDetails.Location = new System.Drawing.Point(841, 9);
+            this.btnOrderDetails.Name = "btnOrderDetails";
+            this.btnOrderDetails.Size = new System.Drawing.Size(75, 23);
+            this.btnOrderDetails.TabIndex = 2;
+            this.btnOrderDetails.Text = "주문내역";
+            this.btnOrderDetails.UseVisualStyleBackColor = false;
+            this.btnOrderDetails.Visible = false;
+            this.btnOrderDetails.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(972, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "님 환영합니다";
+            this.label2.Visible = false;
+            // 
+            // btnlogout
+            // 
+            this.btnlogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnlogout.ForeColor = System.Drawing.Color.Black;
+            this.btnlogout.Location = new System.Drawing.Point(1067, 9);
+            this.btnlogout.Name = "btnlogout";
+            this.btnlogout.Size = new System.Drawing.Size(75, 23);
+            this.btnlogout.TabIndex = 0;
+            this.btnlogout.Text = "로그아웃";
+            this.btnlogout.UseVisualStyleBackColor = false;
+            this.btnlogout.Visible = false;
+            this.btnlogout.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // UserMain1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1333, 709);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.IsMdiContainer = true;
+            this.Name = "UserMain1";
+            this.Text = "Main1";
+            this.Load += new System.EventHandler(this.UserMain1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picblack2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picWhite2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.PictureBox picblack4;
+        public System.Windows.Forms.PictureBox picblack3;
+        public System.Windows.Forms.PictureBox picblack1;
+        public System.Windows.Forms.PictureBox picblack2;
+        public System.Windows.Forms.PictureBox picWhite4;
+        public System.Windows.Forms.PictureBox picWhite3;
+        public System.Windows.Forms.PictureBox picWhite1;
+        public System.Windows.Forms.PictureBox picWhite2;
+        public System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox picMain;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Button btnlogout;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label labName;
+        public System.Windows.Forms.Button btnOrderDetails;
+    }
+}

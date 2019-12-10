@@ -1,0 +1,22 @@
+﻿using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class BOM_Amount : Form
+    {
+        // 엑셀 제일 윗줄 완제품, 아래는 재료들
+        public BOM_Amount()
+        {
+            InitializeComponent();
+        }
+
+        private void BtnFind_Click(object sender, System.EventArgs e)
+        {
+            BOM_AmountSearch frm = new BOM_AmountSearch();
+            if(frm.ShowDialog()== DialogResult.OK)
+            {
+
+            }
+        }
+    }
+}

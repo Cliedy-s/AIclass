@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,37 +22,14 @@ namespace _1125_ListLinqSampleUI
 
         private void 사원관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Form item in Application.OpenForms)  // 현재 열린 모든 폼
-            {
-                if (item.GetType() == typeof(frmEmployee))
-                {
-                    item.Activate(); // 폼 활성화
-                    return;
-                }
-            }
-            frmEmployee frm = new frmEmployee();
-            frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
-            //frm.ControlBox = false; // 아이콘과 최소화 최대화 엑스 버튼을 없애줌
-            frm.Show();
+            //CommonUtil.FormOpenByString("_1125_ListLinqSampleUI.frmEmployee", this);
         }
 
         private void 주문관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Form item in Application.OpenForms)  // 현재 열린 모든 폼
-            {
-                if (item.GetType() == typeof(frmOrder))
-                {
-                    item.Activate();
-                    return;
-                }
-            }
-            frmOrder frm = new frmOrder();
-            frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Show();
+            //CommonUtil.FormOpen<Type.GetType("_1125_ListLinqSampleUI.frmOrder")> (this);
+            CommonUtil.FormOpen("frmOrder", this);
         }
-
         // toolbar merge
         public bool AppendToolStrip(ToolStrip source)
         {
@@ -69,17 +48,24 @@ namespace _1125_ListLinqSampleUI
                 e.Item.Visible = false;
             }
         }
-
         private void 창ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(MdiLayout.Cascade);
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            Debug.WriteLine("Current Doamin Name : " + currentDomain.FriendlyName);
+            foreach (Assembly asm in currentDomain.GetAssemblies())
+            {
+                Debug.WriteLine("  " + asm.FullName);
+                foreach (Module module in asm.GetModules())
+                {
+                    Debug.WriteLine("    " + module.FullyQualifiedName);
+                }
+            }
 
         }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Save?.Invoke(this, null);

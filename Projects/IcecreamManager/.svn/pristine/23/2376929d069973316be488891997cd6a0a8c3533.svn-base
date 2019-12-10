@@ -1,0 +1,116 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public static class Helper
+    {
+        public static void ComboBinding<T>(ComboBox combo, List<T> list, string Code, string CodeNm)
+        {
+            if (list == null)
+                list = new List<T>();
+            combo.DataSource = list;
+            combo.DisplayMember = CodeNm;
+            combo.ValueMember = Code;
+        }
+        /// <summary>
+        ///  CodeNm : value가 설정될 프로퍼티명
+        /// </summary>
+        public static void ComboBinding<T>(ComboBox combo, List<T> list, string Code, string CodeNm, string blankText) where T : class, new()
+        {
+            if (list == null)
+                list = new List<T>();
+            T blankItem = new T();
+            blankItem.GetType().GetProperty(CodeNm).SetValue(blankItem, blankText);
+            list.Insert(0, blankItem);
+            combo.DataSource = list;
+            combo.DisplayMember = CodeNm;
+            combo.ValueMember = Code;
+        }
+        /// <summary>
+        /// MdiParent에 폼 열기
+        /// </summary>
+        /// <typeparam name="T">where T : Form, new()</typeparam>
+        public static void FormOpen<T>(Form MdiParent) where T : Form, new()
+        {
+            foreach (Form childForm in Application.OpenForms)
+            {
+                if (childForm is T)
+                {
+                    childForm.Activate();
+                    return;
+                }
+            }
+            T myform = new T();
+            myform.MdiParent = MdiParent;
+            myform.WindowState = FormWindowState.Maximized;
+            myform.Show();
+        }
+
+        /// <summary>
+        /// Reader => List T
+        /// </summary>
+        public static List<T> DataReaderMapToList<T>(IDataReader dr)
+        {
+            try
+            {
+                List<T> list = new List<T>();
+                T obj = default(T);
+                while (dr.Read())
+                {
+                    obj = Activator.CreateInstance<T>(); // 객체 생성
+                    foreach (PropertyInfo prop in obj.GetType().GetProperties()) // 프로퍼티명과 타입을 찾아서 넣기
+                    {
+                        if (!object.Equals(dr[prop.Name], DBNull.Value))
+                        {
+                            prop.SetValue(obj, dr[prop.Name], null);
+                        }
+                    }
+                    list.Add(obj);
+                }
+                return list;
+            }
+            catch (Exception err)
+            {
+                string message = err.Message;
+                return null;
+            }
+        }
+        /// <summary>
+        /// DataTable => List T
+        /// </summary>
+        public static List<T> ConvertDataTableToList<T>(DataTable table) where T : class, new()
+        {
+            try
+            {
+                List<T> list = new List<T>();
+                foreach (var row in table.AsEnumerable())
+                {
+                    T obj = new T();
+                    foreach (var prop in obj.GetType().GetProperties())
+                    {
+                        try
+                        {
+                            PropertyInfo propertyInfo = obj.GetType().GetProperty(prop.Name);
+                            propertyInfo.SetValue(obj, Convert.ChangeType(row[prop.Name], propertyInfo.PropertyType), null);
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+                    list.Add(obj);
+                }
+                return list;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
+}

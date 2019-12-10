@@ -1,0 +1,5 @@
+copy $(ProjectDir)DAC\Team4Connect_DEV.xml $(TargetDir)Team4Connect_DEV.xml
+copy $(ProjectDir)Image\*.* $(TargetDir)Image\$(TargetDir) /e /h /k
+
+
+-> 해당 코드를 프로젝트속성 - 빌드 이벤트 - 빌드 후에 넣으시오

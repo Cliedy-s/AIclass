@@ -1,0 +1,6 @@
+./data/movielens-1m/ratings.dat 파일을 읽고 데이터 분석하기
+
+
+- 전체 평균 평점 계산하기
+- 각 사용자 별 평균 평점 계산하기
+- ./myfile/mean_rating_by_user.csv 파일에 저장하기

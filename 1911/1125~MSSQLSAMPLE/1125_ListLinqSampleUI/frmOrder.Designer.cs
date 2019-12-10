@@ -32,9 +32,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvCart = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnCartAdd = new System.Windows.Forms.Button();
-            this.numQuantity = new System.Windows.Forms.NumericUpDown();
             this.btnCartDel = new System.Windows.Forms.Button();
+            this.numQuantity = new System.Windows.Forms.NumericUpDown();
+            this.btnCartAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUnitPrice = new System.Windows.Forms.TextBox();
             this.cboProducts = new System.Windows.Forms.ComboBox();
@@ -53,17 +53,18 @@
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblOrderID = new System.Windows.Forms.Label();
             this.txtFreight = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblOrderedDate = new System.Windows.Forms.Label();
+            this.lblRequiredDate = new System.Windows.Forms.Label();
+            this.lblCompanyName = new System.Windows.Forms.Label();
+            this.lblEmployeeName = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnShip = new System.Windows.Forms.Button();
             this.dgvOrderDetail = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.cboShippers = new System.Windows.Forms.ComboBox();
@@ -76,8 +77,8 @@
             this.dgvOrder = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.cboCustomers2 = new System.Windows.Forms.ComboBox();
             this.cboEmployees2 = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -101,7 +102,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(857, 565);
+            this.tabControl1.Size = new System.Drawing.Size(988, 572);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -121,7 +122,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(849, 539);
+            this.tabPage1.Size = new System.Drawing.Size(980, 546);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "주문 신규등록";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -137,9 +138,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnCartAdd);
-            this.groupBox2.Controls.Add(this.numQuantity);
             this.groupBox2.Controls.Add(this.btnCartDel);
+            this.groupBox2.Controls.Add(this.numQuantity);
+            this.groupBox2.Controls.Add(this.btnCartAdd);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtUnitPrice);
             this.groupBox2.Controls.Add(this.cboProducts);
@@ -154,40 +155,46 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Order Item";
             // 
-            // btnCartAdd
+            // btnCartDel
             // 
-            this.btnCartAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCartAdd.Location = new System.Drawing.Point(468, 63);
-            this.btnCartAdd.Name = "btnCartAdd";
-            this.btnCartAdd.Size = new System.Drawing.Size(100, 26);
-            this.btnCartAdd.TabIndex = 82;
-            this.btnCartAdd.Text = "장바구니 추가";
-            this.btnCartAdd.UseVisualStyleBackColor = true;
+            this.btnCartDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCartDel.Location = new System.Drawing.Point(577, 64);
+            this.btnCartDel.Name = "btnCartDel";
+            this.btnCartDel.Size = new System.Drawing.Size(97, 26);
+            this.btnCartDel.TabIndex = 82;
+            this.btnCartDel.Text = "장바구니 삭제";
+            this.btnCartDel.UseVisualStyleBackColor = true;
+            this.btnCartDel.Click += new System.EventHandler(this.btnCartDel_Click);
             // 
             // numQuantity
             // 
-            this.numQuantity.Location = new System.Drawing.Point(191, 64);
+            this.numQuantity.Location = new System.Drawing.Point(147, 64);
+            this.numQuantity.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numQuantity.Name = "numQuantity";
             this.numQuantity.Size = new System.Drawing.Size(79, 21);
             this.numQuantity.TabIndex = 81;
             // 
-            // btnCartDel
+            // btnCartAdd
             // 
-            this.btnCartDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCartDel.Location = new System.Drawing.Point(574, 63);
-            this.btnCartDel.Name = "btnCartDel";
-            this.btnCartDel.Size = new System.Drawing.Size(100, 26);
-            this.btnCartDel.TabIndex = 80;
-            this.btnCartDel.Text = "장바구니 삭제";
-            this.btnCartDel.UseVisualStyleBackColor = true;
-            this.btnCartDel.Click += new System.EventHandler(this.button1_Click);
+            this.btnCartAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCartAdd.Location = new System.Drawing.Point(474, 64);
+            this.btnCartAdd.Name = "btnCartAdd";
+            this.btnCartAdd.Size = new System.Drawing.Size(97, 26);
+            this.btnCartAdd.TabIndex = 80;
+            this.btnCartAdd.Text = "장바구니 추가";
+            this.btnCartAdd.UseVisualStyleBackColor = true;
+            this.btnCartAdd.Click += new System.EventHandler(this.btnCartAdd_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(132, 69);
+            this.label1.Location = new System.Drawing.Point(88, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 25);
             this.label1.TabIndex = 79;
@@ -195,26 +202,27 @@
             // 
             // txtUnitPrice
             // 
-            this.txtUnitPrice.Location = new System.Drawing.Point(574, 31);
+            this.txtUnitPrice.Location = new System.Drawing.Point(577, 31);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.ReadOnly = true;
-            this.txtUnitPrice.Size = new System.Drawing.Size(100, 21);
+            this.txtUnitPrice.Size = new System.Drawing.Size(97, 21);
             this.txtUnitPrice.TabIndex = 77;
             // 
             // cboProducts
             // 
             this.cboProducts.FormattingEnabled = true;
-            this.cboProducts.Location = new System.Drawing.Point(306, 32);
+            this.cboProducts.Location = new System.Drawing.Point(299, 32);
             this.cboProducts.Name = "cboProducts";
-            this.cboProducts.Size = new System.Drawing.Size(262, 20);
+            this.cboProducts.Size = new System.Drawing.Size(272, 20);
             this.cboProducts.TabIndex = 76;
+            this.cboProducts.SelectedIndexChanged += new System.EventHandler(this.cboProducts_SelectedIndexChanged);
             // 
             // cboCategories
             // 
             this.cboCategories.FormattingEnabled = true;
-            this.cboCategories.Location = new System.Drawing.Point(191, 32);
+            this.cboCategories.Location = new System.Drawing.Point(147, 32);
             this.cboCategories.Name = "cboCategories";
-            this.cboCategories.Size = new System.Drawing.Size(109, 20);
+            this.cboCategories.Size = new System.Drawing.Size(146, 20);
             this.cboCategories.TabIndex = 75;
             this.cboCategories.SelectedIndexChanged += new System.EventHandler(this.cboCategories_SelectedIndexChanged);
             // 
@@ -223,7 +231,7 @@
             this.lblOccupationRequired.AutoSize = true;
             this.lblOccupationRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOccupationRequired.ForeColor = System.Drawing.Color.Red;
-            this.lblOccupationRequired.Location = new System.Drawing.Point(132, 33);
+            this.lblOccupationRequired.Location = new System.Drawing.Point(88, 32);
             this.lblOccupationRequired.Name = "lblOccupationRequired";
             this.lblOccupationRequired.Size = new System.Drawing.Size(21, 25);
             this.lblOccupationRequired.TabIndex = 74;
@@ -232,7 +240,7 @@
             // lblSalary
             // 
             this.lblSalary.AutoSize = true;
-            this.lblSalary.Location = new System.Drawing.Point(42, 70);
+            this.lblSalary.Location = new System.Drawing.Point(31, 69);
             this.lblSalary.Name = "lblSalary";
             this.lblSalary.Size = new System.Drawing.Size(51, 12);
             this.lblSalary.TabIndex = 73;
@@ -241,7 +249,7 @@
             // lblOccupation
             // 
             this.lblOccupation.AutoSize = true;
-            this.lblOccupation.Location = new System.Drawing.Point(42, 35);
+            this.lblOccupation.Location = new System.Drawing.Point(31, 34);
             this.lblOccupation.Name = "lblOccupation";
             this.lblOccupation.Size = new System.Drawing.Size(48, 12);
             this.lblOccupation.TabIndex = 72;
@@ -266,13 +274,13 @@
             // btnOrder
             // 
             this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.Location = new System.Drawing.Point(630, 466);
+            this.btnOrder.Location = new System.Drawing.Point(630, 461);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Size = new System.Drawing.Size(123, 32);
             this.btnOrder.TabIndex = 64;
             this.btnOrder.Text = "주문하기";
             this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.button2_Click);
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // dtpRequiredDate
             // 
@@ -344,17 +352,18 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblOrderID);
             this.tabPage2.Controls.Add(this.txtFreight);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.lblOrderedDate);
+            this.tabPage2.Controls.Add(this.lblRequiredDate);
+            this.tabPage2.Controls.Add(this.lblCompanyName);
+            this.tabPage2.Controls.Add(this.lblEmployeeName);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.btnDel);
+            this.tabPage2.Controls.Add(this.btnShip);
             this.tabPage2.Controls.Add(this.dgvOrderDetail);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.cboShippers);
@@ -369,58 +378,62 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(849, 539);
+            this.tabPage2.Size = new System.Drawing.Size(980, 546);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "주문 조회/관리";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblOrderID
+            // 
+            this.lblOrderID.AutoSize = true;
+            this.lblOrderID.Location = new System.Drawing.Point(693, 101);
+            this.lblOrderID.Name = "lblOrderID";
+            this.lblOrderID.Size = new System.Drawing.Size(0, 12);
+            this.lblOrderID.TabIndex = 107;
+            // 
             // txtFreight
             // 
-            this.txtFreight.Location = new System.Drawing.Point(657, 426);
+            this.txtFreight.Location = new System.Drawing.Point(797, 422);
             this.txtFreight.Name = "txtFreight";
             this.txtFreight.Size = new System.Drawing.Size(100, 21);
             this.txtFreight.TabIndex = 106;
             // 
-            // label13
+            // lblOrderedDate
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(655, 221);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(79, 12);
-            this.label13.TabIndex = 105;
-            this.label13.Text = "Ordered Date";
+            this.lblOrderedDate.AutoSize = true;
+            this.lblOrderedDate.Location = new System.Drawing.Point(795, 218);
+            this.lblOrderedDate.Name = "lblOrderedDate";
+            this.lblOrderedDate.Size = new System.Drawing.Size(0, 12);
+            this.lblOrderedDate.TabIndex = 105;
             // 
-            // label14
+            // lblRequiredDate
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(655, 268);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 12);
-            this.label14.TabIndex = 104;
-            this.label14.Text = "Required Date";
+            this.lblRequiredDate.AutoSize = true;
+            this.lblRequiredDate.Location = new System.Drawing.Point(795, 265);
+            this.lblRequiredDate.Name = "lblRequiredDate";
+            this.lblRequiredDate.Size = new System.Drawing.Size(0, 12);
+            this.lblRequiredDate.TabIndex = 104;
             // 
-            // label15
+            // lblCompanyName
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(655, 175);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 12);
-            this.label15.TabIndex = 103;
-            this.label15.Text = "Customer";
+            this.lblCompanyName.AutoSize = true;
+            this.lblCompanyName.Location = new System.Drawing.Point(795, 172);
+            this.lblCompanyName.Name = "lblCompanyName";
+            this.lblCompanyName.Size = new System.Drawing.Size(0, 12);
+            this.lblCompanyName.TabIndex = 103;
             // 
-            // label16
+            // lblEmployeeName
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(655, 128);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 12);
-            this.label16.TabIndex = 102;
-            this.label16.Text = "Employee";
+            this.lblEmployeeName.AutoSize = true;
+            this.lblEmployeeName.Location = new System.Drawing.Point(795, 125);
+            this.lblEmployeeName.Name = "lblEmployeeName";
+            this.lblEmployeeName.Size = new System.Drawing.Size(0, 12);
+            this.lblEmployeeName.TabIndex = 102;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(543, 221);
+            this.label12.Location = new System.Drawing.Point(683, 218);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 12);
             this.label12.TabIndex = 101;
@@ -429,7 +442,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(543, 268);
+            this.label5.Location = new System.Drawing.Point(683, 265);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 12);
             this.label5.TabIndex = 100;
@@ -438,7 +451,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(543, 175);
+            this.label7.Location = new System.Drawing.Point(683, 172);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 12);
             this.label7.TabIndex = 99;
@@ -447,46 +460,49 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(543, 128);
+            this.label11.Location = new System.Drawing.Point(683, 125);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(62, 12);
             this.label11.TabIndex = 98;
             this.label11.Text = "Employee";
             // 
-            // button4
+            // btnDel
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(683, 479);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(123, 32);
-            this.button4.TabIndex = 97;
-            this.button4.Text = "삭제하기";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDel.Location = new System.Drawing.Point(823, 476);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(123, 32);
+            this.btnDel.TabIndex = 97;
+            this.btnDel.Text = "삭제하기";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
-            // button3
+            // btnShip
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(547, 479);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 32);
-            this.button3.TabIndex = 96;
-            this.button3.Text = "배송처리";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnShip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShip.Location = new System.Drawing.Point(687, 476);
+            this.btnShip.Name = "btnShip";
+            this.btnShip.Size = new System.Drawing.Size(123, 32);
+            this.btnShip.TabIndex = 96;
+            this.btnShip.Text = "배송처리";
+            this.btnShip.UseVisualStyleBackColor = true;
+            this.btnShip.Click += new System.EventHandler(this.btnShip_Click);
             // 
             // dgvOrderDetail
             // 
             this.dgvOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderDetail.Location = new System.Drawing.Point(24, 321);
+            this.dgvOrderDetail.Location = new System.Drawing.Point(7, 321);
             this.dgvOrderDetail.Name = "dgvOrderDetail";
             this.dgvOrderDetail.RowTemplate.Height = 23;
             this.dgvOrderDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrderDetail.Size = new System.Drawing.Size(481, 201);
+            this.dgvOrderDetail.Size = new System.Drawing.Size(656, 201);
             this.dgvOrderDetail.TabIndex = 95;
+            this.dgvOrderDetail.SelectionChanged += new System.EventHandler(this.dgvOrderDetail_SelectionChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(543, 352);
+            this.label2.Location = new System.Drawing.Point(683, 349);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 12);
             this.label2.TabIndex = 94;
@@ -495,7 +511,7 @@
             // cboShippers
             // 
             this.cboShippers.FormattingEnabled = true;
-            this.cboShippers.Location = new System.Drawing.Point(657, 347);
+            this.cboShippers.Location = new System.Drawing.Point(797, 344);
             this.cboShippers.Name = "cboShippers";
             this.cboShippers.Size = new System.Drawing.Size(147, 20);
             this.cboShippers.TabIndex = 93;
@@ -503,7 +519,7 @@
             // dtpShippedDate
             // 
             this.dtpShippedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpShippedDate.Location = new System.Drawing.Point(657, 386);
+            this.dtpShippedDate.Location = new System.Drawing.Point(797, 383);
             this.dtpShippedDate.Name = "dtpShippedDate";
             this.dtpShippedDate.Size = new System.Drawing.Size(100, 21);
             this.dtpShippedDate.TabIndex = 81;
@@ -513,7 +529,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(633, 426);
+            this.label3.Location = new System.Drawing.Point(773, 423);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 25);
             this.label3.TabIndex = 79;
@@ -522,7 +538,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(543, 429);
+            this.label6.Location = new System.Drawing.Point(683, 426);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 12);
             this.label6.TabIndex = 76;
@@ -533,7 +549,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(633, 386);
+            this.label8.Location = new System.Drawing.Point(773, 383);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(21, 25);
             this.label8.TabIndex = 74;
@@ -544,7 +560,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(633, 347);
+            this.label9.Location = new System.Drawing.Point(773, 344);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(21, 25);
             this.label9.TabIndex = 73;
@@ -553,7 +569,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(543, 390);
+            this.label10.Location = new System.Drawing.Point(683, 387);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 12);
             this.label10.TabIndex = 72;
@@ -562,59 +578,61 @@
             // dgvOrder
             // 
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrder.Location = new System.Drawing.Point(25, 101);
+            this.dgvOrder.Location = new System.Drawing.Point(8, 101);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.RowTemplate.Height = 23;
             this.dgvOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrder.Size = new System.Drawing.Size(480, 201);
+            this.dgvOrder.Size = new System.Drawing.Size(655, 201);
             this.dgvOrder.TabIndex = 68;
+            this.dgvOrder.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellContentClick);
+            this.dgvOrder.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellDoubleClick);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtpTo);
+            this.groupBox1.Controls.Add(this.dtpFrom);
             this.groupBox1.Controls.Add(this.cboCustomers2);
             this.groupBox1.Controls.Add(this.cboEmployees2);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.btnExport);
             this.groupBox1.Location = new System.Drawing.Point(8, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(820, 61);
+            this.groupBox1.Size = new System.Drawing.Size(964, 61);
             this.groupBox1.TabIndex = 67;
             this.groupBox1.TabStop = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(481, 25);
+            this.label4.Location = new System.Drawing.Point(567, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(14, 12);
             this.label4.TabIndex = 96;
             this.label4.Text = "~";
             // 
-            // dateTimePicker2
+            // dtpTo
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(499, 20);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(100, 21);
-            this.dateTimePicker2.TabIndex = 60;
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(585, 20);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(100, 21);
+            this.dtpTo.TabIndex = 60;
             // 
-            // dateTimePicker1
+            // dtpFrom
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(377, 20);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 21);
-            this.dateTimePicker1.TabIndex = 59;
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(463, 20);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(100, 21);
+            this.dtpFrom.TabIndex = 59;
             // 
             // cboCustomers2
             // 
             this.cboCustomers2.FormattingEnabled = true;
             this.cboCustomers2.Location = new System.Drawing.Point(170, 20);
             this.cboCustomers2.Name = "cboCustomers2";
-            this.cboCustomers2.Size = new System.Drawing.Size(201, 20);
+            this.cboCustomers2.Size = new System.Drawing.Size(287, 20);
             this.cboCustomers2.TabIndex = 17;
             // 
             // cboEmployees2
@@ -627,27 +645,29 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(602, 18);
+            this.btnSearch.Location = new System.Drawing.Point(756, 18);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(91, 26);
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(707, 18);
+            this.btnExport.Location = new System.Drawing.Point(861, 18);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(91, 26);
             this.btnExport.TabIndex = 12;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // frmOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 565);
+            this.ClientSize = new System.Drawing.Size(988, 572);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmOrder";
             this.Text = "주문관리";
@@ -687,7 +707,7 @@
         private System.Windows.Forms.DataGridView dgvCart;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown numQuantity;
-        private System.Windows.Forms.Button btnCartDel;
+        private System.Windows.Forms.Button btnCartAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUnitPrice;
         private System.Windows.Forms.ComboBox cboProducts;
@@ -706,24 +726,25 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvOrder;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.ComboBox cboCustomers2;
         private System.Windows.Forms.ComboBox cboEmployees2;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblOrderedDate;
+        private System.Windows.Forms.Label lblRequiredDate;
+        private System.Windows.Forms.Label lblCompanyName;
+        private System.Windows.Forms.Label lblEmployeeName;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Button btnShip;
         private System.Windows.Forms.TextBox txtFreight;
-        private System.Windows.Forms.Button btnCartAdd;
+        private System.Windows.Forms.Button btnCartDel;
+        private System.Windows.Forms.Label lblOrderID;
     }
 }

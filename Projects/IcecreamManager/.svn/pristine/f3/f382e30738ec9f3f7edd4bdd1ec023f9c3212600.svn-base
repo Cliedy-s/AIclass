@@ -1,0 +1,43 @@
+﻿using IceCreamManager.Service;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class Product_Form : Form
+    {
+
+        List<ProductVO> Plist;
+        public Product_Form()
+        {
+            InitializeComponent();
+        }
+
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            ProductDialog_Form frm = new ProductDialog_Form();
+            frm.ShowDialog();
+        }
+
+        private void Product_Form_Load(object sender, EventArgs e)
+        {
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProduct, "상품코드", "pro_No", true, 60); //제조사주소
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProduct, "상품이름", "pro_Name", true, 60); //제조사주소
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProduct, "상품개수", "", true, 150); //제조사주소
+
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProduct, "자재타입", "", true, 150); //제조사주소
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProduct, "상품가격", "pro_Price", true, 150); //제조사주소
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProduct, "이미지", "", true, 150); //제조사주소   
+            DataLoad();
+        }
+        private void DataLoad()
+        {
+            ProductService service = new ProductService();
+            Plist= service.SelectAll();
+            dgvProduct.DataSource = Plist;
+        }
+    }
+}
