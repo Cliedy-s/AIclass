@@ -1,0 +1,59 @@
+﻿using IceCreamManager.Service;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class BOM_AmountSearch : Form
+    {
+        // 완제품 목록이 뜸 
+        // 완제품 목록 선택 => 적용 => Amount 위에 완제품 아래는 재료들 보여줌
+
+        public BOM_AmountSearch()
+        {
+            InitializeComponent();
+        }
+
+        List<MaterialsBOMConnectVO> allExistingList;
+        public List<int> SelectedValues { get; set; }
+
+        private void BOM_AmountSearch_Load(object sender, System.EventArgs e)
+        {
+            InitControl();
+
+            SelectedValues = new List<int>();
+            BOMService service = new BOMService();
+            allExistingList = service.SelectAllBOMExistingList();
+            dgvAmountSearch.DataSource = allExistingList;
+        }
+
+        private void InitControl()
+        { // m.mat_No, m.off_No, m.mat_Name, m.mat_Cost, m.mat_Each, m.mat_MinSize,m.mtt_No, mt.mtt_Name,m.mat_Unit
+            DatagridviewDeigns.SetDesign(dgvAmountSearch);
+            dgvAmountSearch.MultiSelect = true;
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvAmountSearch, "자재번호", "mat_No", true, 100);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvAmountSearch, "자재명", "mat_Name", true, 210, default, true);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvAmountSearch, "자재단계", "mtt_Name", true, 80);
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            if(dgvAmountSearch.SelectedRows.Count > 0) // 선택 안됐을 때 조건
+            {
+                foreach (DataGridViewRow item in dgvAmountSearch.SelectedRows)
+                {
+                    // 선택된 mat_No를 allExistingList(BOM에 존재하는 완제품 목록)에서 찾아서
+                    // 해당 VO를 건내줄 List에 넣는다.
+                    SelectedValues.Add(Convert.ToInt32(item.Cells[0].Value));
+                }
+                this.DialogResult = DialogResult.OK; 
+            }
+            else
+            {
+                MessageBox.Show("선택된 값이 없습니다.");
+            }
+        }
+    }
+}

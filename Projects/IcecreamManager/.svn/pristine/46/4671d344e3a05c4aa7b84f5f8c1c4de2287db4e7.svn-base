@@ -1,0 +1,74 @@
+﻿using IceCreamManager.DAC;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IceCreamManager.Service
+{
+   public class MaterialsService
+    {
+
+        #region offerer
+        public List<MaterialsVO> SelectAll()
+        {
+            MaterialsDAC dac = new MaterialsDAC();
+            return dac.SelectAll();
+        }
+        public bool Insert(MaterialsVO list)
+        {
+            MaterialsDAC dac = new MaterialsDAC();
+            return dac.Insert(list);
+        }
+        /// <summary>
+        /// 자제타입을가져온다
+        /// </summary>
+        public List<MaterialsVO> SelectAllBOMExistingList()
+        {
+            MaterialsDAC dac = new MaterialsDAC();
+            return dac.SelectAllBOMExistingList();
+        }
+        public List<MaterialsTypVO> Materials_Type()
+        {
+            MaterialsDAC dac = new MaterialsDAC();
+
+            return dac.Materials_Type();
+        }
+
+        /// <summary>
+        /// 자제 삭제
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool Delete(int id)
+        {
+
+            MaterialsDAC dac = new MaterialsDAC();
+
+            return dac.Delete(id);
+
+        }
+        #endregion
+
+
+
+
+
+        #region BOM
+        public List<MaterialsBOMConnectVO> SelectAllChilds(List<int> parentValues)
+        {
+            MaterialsDAC dac = new MaterialsDAC();
+            return dac.SelectAllChilds(parentValues);
+        }
+
+        internal List<MaterialsVO> SelectAllByIDsList(List<int> selectedValues)
+        {
+            MaterialsDAC dac = new MaterialsDAC();
+            return dac.SelectAllByIDsList(selectedValues);
+        }
+
+        #endregion
+    }
+}

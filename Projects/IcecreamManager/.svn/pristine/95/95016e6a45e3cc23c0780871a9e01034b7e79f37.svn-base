@@ -1,0 +1,17 @@
+﻿namespace IceCreamManager.VO
+{
+    public class BOMVO 
+    {
+        public int mat_ParentNo { get; set; } //부모번호   
+        public int mat_ChildNo { get; set; } //자식번호
+        public int bom_ChildEach { get; set; } //자식개수
+    }
+
+    public class BOMupdateVO
+    {
+        public int mat_ParentNo { get; set; } //부모번호
+        public int mat_No { get; set; } //자재코드
+        public string mat_Name { get; set; } //이름
+        public int bom_ChildEach { get; set; } //자식개수
+    }
+}

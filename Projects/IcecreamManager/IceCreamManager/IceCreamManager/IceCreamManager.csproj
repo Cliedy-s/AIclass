@@ -92,6 +92,12 @@
     <Compile Include="BOM\BOM_Main.Designer.cs">
       <DependentUpon>BOM_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="BOM\BOM_Paste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BOM\BOM_Paste.Designer.cs">
+      <DependentUpon>BOM_Paste.cs</DependentUpon>
+    </Compile>
     <Compile Include="BOM\BOM_SearchUP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,13 +105,24 @@
       <DependentUpon>BOM_SearchUP.cs</DependentUpon>
     </Compile>
     <Compile Include="DAC\BOMDAC.cs" />
+    <Compile Include="DAC\CompleteTypeDAC.cs" />
+    <Compile Include="DAC\CustomerOrderDAC.cs" />
+    <Compile Include="DAC\CustomerOrderDetailDAC.cs" />
     <Compile Include="DAC\DACParent.cs" />
     <Compile Include="DAC\MaterialsDAC.cs" />
+    <Compile Include="DAC\MaterialTypeDAC.cs" />
     <Compile Include="DAC\OffererDAC.cs" />
+    <Compile Include="DAC\OrderDAC.cs" />
     <Compile Include="DAC\ProductDAC.cs" />
-    <Compile Include="DAC\SampleDAC.cs" />
+    <Compile Include="DAC\SalescheckDAC.cs" />
     <Compile Include="DAC\UserDAC.cs" />
-    <Compile Include="offerer\MaterialsVO.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="offerer\MaterialsSearch_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="offerer\MaterialsSearch_Form.Designer.cs">
+      <DependentUpon>MaterialsSearch_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="offerer\OffererDialogue_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +153,12 @@
     <Compile Include="Order\OffererOder_Form.Designer.cs">
       <DependentUpon>OffererOder_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order\Orderdocument_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\Orderdocument_Form.Designer.cs">
+      <DependentUpon>Orderdocument_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="product\ProductDialog_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,10 +178,15 @@
       <DependentUpon>Salescheck_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Service\BOMService.cs" />
+    <Compile Include="Service\CompleteTypeService.cs" />
+    <Compile Include="Service\CustomerOrderDetailService.cs" />
+    <Compile Include="Service\CustomerOrderService.cs" />
     <Compile Include="Service\MaterialsService.cs" />
+    <Compile Include="Service\MaterialTypeService.cs" />
+    <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\OffererService.cs" />
     <Compile Include="Service\ProductService.cs" />
-    <Compile Include="Service\SampleService.cs" />
+    <Compile Include="Service\SalescheckService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="UserControl\AddressSearchForm.cs">
       <SubType>Form</SubType>
@@ -174,11 +202,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserMain\Global.cs" />
     <Compile Include="UserMain\PlaceHolderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserMain\PlaceHolderTextBox.Designer.cs">
       <DependentUpon>PlaceHolderTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMain\ProductListUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserMain\ProductListUserControl.Designer.cs">
+      <DependentUpon>ProductListUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserMain\UserIDPWDSearch.cs">
       <SubType>Form</SubType>
@@ -234,13 +269,26 @@
     <Compile Include="UserMain\UserOrderDetails.Designer.cs">
       <DependentUpon>UserOrderDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util\DatagridviewDeigns.cs" />
+    <Compile Include="UserMain\UserPasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserMain\UserPasswordChange.Designer.cs">
+      <DependentUpon>UserPasswordChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\DatagridviewDesigns.cs" />
     <Compile Include="Util\Helper.cs" />
     <Compile Include="VO\BOMVO.cs" />
+    <Compile Include="VO\CompleteTypeVO.cs" />
+    <Compile Include="VO\CustomerOrderVO.cs" />
+    <Compile Include="VO\MaterialsBOMConnectVO.cs" />
     <Compile Include="VO\MaterialsVO.cs" />
+    <Compile Include="VO\MaterialTypeVO.cs" />
     <Compile Include="VO\OffererVO.cs" />
+    <Compile Include="VO\CustomerOrderDetailVO.cs" />
+    <Compile Include="VO\OrderVO.cs" />
+    <Compile Include="VO\ProductMaterialConnectVO.cs" />
     <Compile Include="VO\ProductVO.cs" />
-    <Compile Include="VO\SampleVO.cs" />
+    <Compile Include="VO\SalescheckVO.cs" />
     <Compile Include="VO\UserInfoVO.cs" />
     <EmbeddedResource Include="AdminMain.resx">
       <DependentUpon>AdminMain.cs</DependentUpon>
@@ -260,8 +308,14 @@
     <EmbeddedResource Include="BOM\BOM_Main.resx">
       <DependentUpon>BOM_Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BOM\BOM_Paste.resx">
+      <DependentUpon>BOM_Paste.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BOM\BOM_SearchUP.resx">
       <DependentUpon>BOM_SearchUP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="offerer\MaterialsSearch_Form.resx">
+      <DependentUpon>MaterialsSearch_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="offerer\OffererDialogue_Form.resx">
       <DependentUpon>OffererDialogue_Form.cs</DependentUpon>
@@ -277,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Order\OffererOder_Form.resx">
       <DependentUpon>OffererOder_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\Orderdocument_Form.resx">
+      <DependentUpon>Orderdocument_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="product\ProductDialog_Form.resx">
       <DependentUpon>ProductDialog_Form.cs</DependentUpon>
@@ -303,6 +360,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserMain\ProductListUserControl.resx">
+      <DependentUpon>ProductListUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserMain\UserIDPWDSearch.resx">
       <DependentUpon>UserIDPWDSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -330,6 +390,9 @@
     <EmbeddedResource Include="UserMain\UserOrderDetails.resx">
       <DependentUpon>UserOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserMain\UserPasswordChange.resx">
+      <DependentUpon>UserPasswordChange.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -349,9 +412,12 @@
     <Content Include="Image\6.png" />
     <Content Include="Image\Back.png" />
     <Content Include="Image\ck.png" />
+    <Content Include="Image\Corn.png" />
     <Content Include="Image\Default.png" />
     <Content Include="Image\Front.png" />
+    <Content Include="Image\Junior.png" />
     <Content Include="Image\KakaoTalk_20191126_161303923.png" />
+    <Content Include="Image\King.png" />
     <Content Include="Image\MoreOrder.png" />
     <Content Include="Image\next.png" />
     <Content Include="Image\pic1.png" />
@@ -362,6 +428,7 @@
     <Content Include="Image\pic3_.png" />
     <Content Include="Image\pic4.png" />
     <Content Include="Image\pic4_.png" />
+    <Content Include="Image\Regular.png" />
     <Content Include="Image\그린티.png" />
     <Content Include="Image\뉴욕 치즈케이크.png" />
     <Content Include="Image\레인보우 샤베트.png" />

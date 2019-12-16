@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using IceCreamManager.VO;
+
+namespace IceCreamManager.DAC
+{
+    public class ProductDAC : DACParent
+    {
+        public List<ProductVO> SelectAll()
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "GetAllProduct";
+                comm.CommandType = CommandType.StoredProcedure;
+
+                comm.Connection.Open();
+                SqlDataReader read = comm.ExecuteReader();
+                List<ProductVO> list = Helper.DataReaderMapToList<ProductVO>(read);
+
+                return list;
+            }
+        }
+        public List<ProductMaterialConnectVO> SelectAllProductMaterialConnect()
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "GetAllProductMaterialConnect";
+                comm.CommandType = CommandType.StoredProcedure;
+
+                comm.Connection.Open();
+                SqlDataReader read = comm.ExecuteReader();
+                List<ProductMaterialConnectVO> list = Helper.DataReaderMapToList<ProductMaterialConnectVO>(read);
+                return list;
+            }
+        }
+        public bool Insert(ProductVO productVO)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(Connstr);
+                cmd.CommandText = "INSERT INTO Product ( pro_Name, mat_No, pro_Price, pro_Img ) VALUES ( @pro_Name, @mat_No, @pro_Price, @pro_Img)";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@pro_Name", productVO.pro_Name);
+                cmd.Parameters.AddWithValue("@mat_No", productVO.mat_No);
+                cmd.Parameters.AddWithValue("@pro_Price", productVO.pro_Price);
+                cmd.Parameters.AddWithValue("@pro_Img", productVO.pro_Img);
+
+                cmd.Connection.Open();
+                var rowsAffected = cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                return rowsAffected > 0;
+            }
+        }
+        public bool IsExist(int matNo)
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "SELECT count(pro_No) FROM Product WHERE mat_No = @mat_No";
+                comm.CommandType = CommandType.Text;
+
+                comm.Parameters.AddWithValue("@mat_No", matNo);
+
+                comm.Connection.Open();
+                int read = Convert.ToInt32(comm.ExecuteScalar());
+                comm.Connection.Close();
+
+                return read > 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,195 @@
+﻿using IceCreamManager.Service;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class BOM_Insert : Form
+    {
+        List<MaterialsVO> allList;
+        List<BOMVO> bomtree = new List<BOMVO>();
+        TreeNode node;
+        bool cFlag = false;
+
+        public BOM_Insert()
+        {
+            InitializeComponent();
+        }
+
+        private void BOM_Insert_Load(object sender, EventArgs e)
+        {
+            MaterialsService service = new MaterialsService();
+            allList = service.SelectAll();
+            InitControl();
+        }
+
+        private void MbtnFind_Click(object sender, EventArgs e)
+        {
+            List<MaterialsVO> parentList = (from item in allList
+                                            where item.mtt_No != 3
+                                            select item).ToList();
+            dgvInsert.DataSource = parentList;
+            cFlag = false;
+        }
+
+        private void BtnFind_Click(object sender, EventArgs e)
+        {
+            List<MaterialsVO> childList = (from item in allList
+                                           where item.mtt_No != 1
+                                           select item).ToList();
+            dgvInsert.DataSource = childList;
+            cFlag = true;
+        }
+
+        private void DgvInsert_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvInsert.SelectedRows.Count < 1)
+            {
+                return;
+            }
+            int matNo = Convert.ToInt32(dgvInsert.SelectedRows[0].Cells[0].Value);
+            MaterialsVO matFind = allList.Find(p => p.mat_No == matNo);
+
+            if (!cFlag)
+            {
+                if (matFind != null)
+                {
+                    mtxtNumber.Text = matFind.mat_No.ToString();
+                    mtxtName.Text = matFind.mat_Name;
+                    mtxtLevel.Text = matFind.mtt_Name;
+                }
+            }
+            else
+            {
+                if (matFind != null)
+                {
+                    txtNumber.Text = matFind.mat_No.ToString();
+                    txtName.Text = matFind.mat_Name;
+                    txtLevel.Text = matFind.mtt_Name;
+                }
+            }
+        }
+
+        private void InitControl()
+        {
+            DatagridviewDeigns.SetDesign(dgvInsert);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재번호", "mat_No", true, 120);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재명", "mat_Name", true, 210, default, true);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재단계", "mtt_Name", true, 110);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재량", "mat_Each", true, 100, default, true);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재단위", "mat_Unit", true, 100);
+        }
+
+        private void MbtnApply_Click(object sender, EventArgs e)
+        {
+            bomtree.Clear();
+            TreeNode parentNode = new TreeNode();
+            parentNode.Name = "BOMparent";
+            parentNode.Text = mtxtName.Text;
+            this.tvInsert.Nodes.Add(parentNode);
+        }
+
+        private void BtnApply_Click(object sender, EventArgs e)
+        {
+            if (!rdoEA.Checked && !rdog.Checked && !rdoml.Checked)
+            {
+                MessageBox.Show("단위를 선택해 주세요.", "BOM 관리", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string rdoname = string.Empty;
+            foreach (var item in this.panel1.Controls)
+            {
+                if (item is RadioButton)
+                {
+                    RadioButton rdo = item as RadioButton;
+                    if(rdo.Checked)
+                    {
+                        rdoname = rdo.Text;
+                    }
+                }
+            }
+
+            TreeNode childNode = new TreeNode();
+            childNode.Name = "BOMchild";
+            childNode.Text = txtName.Text;
+            this.tvInsert.TopNode.Nodes.Add(childNode);
+            BOMVO bom = new BOMVO
+            {
+                mat_ParentNo = Convert.ToInt32(mtxtNumber.Text),
+                mat_ChildNo = Convert.ToInt32(txtNumber.Text),
+                bom_ChildEach = Convert.ToInt32(txtQuantity.Text),
+                bom_ChildUnit = rdoname
+            };
+            bomtree.Add(bom);
+            tvInsert.TopNode.ExpandAll();
+            txtQuantity.Text = "";
+        }
+
+        private void 모든목록삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tvInsert.Nodes.Clear();
+            bomtree.Clear();
+        }
+
+        private void 선택목록삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tvInsert.SelectedNode.Remove();
+            bomtree.RemoveAt(node.Index);
+        }
+
+        private void TvInsert_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            node = e.Node;
+        }
+
+        private void BtnInsert_Click(object sender, EventArgs e)
+        {
+            if (tvInsert.Nodes.Count < 1)
+                return;
+
+            try
+            {
+                BOMService service = new BOMService();
+                bool bFlag = service.Insert(bomtree);
+                if (bFlag)
+                {
+                    MessageBox.Show("BOM 등록 완료", "BOM 관리", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("BOM 등록 실패", "BOM 관리", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void BtnPaste_Click(object sender, EventArgs e)
+        {
+            BOM_Paste frm = new BOM_Paste();
+            if (frm.ShowDialog() ==DialogResult.OK)
+            {
+                int parentNo = 0;
+                int childNo = 0;
+                int quantity = 0;
+                string unit = string.Empty;
+                foreach (var item in frm.TreeList)
+                {
+                    bomtree.Add(item);
+                    parentNo = item.mat_ParentNo;
+                    childNo = item.mat_ChildNo;
+                    quantity = item.bom_ChildEach;
+                    unit = item.bom_ChildUnit;
+                }
+            }
+        }
+    }
+}

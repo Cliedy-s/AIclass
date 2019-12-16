@@ -1,0 +1,289 @@
+﻿using IceCreamManager.DAC;
+using IceCreamManager.Service;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class BOM_Insert : Form
+    {
+        List<MaterialsVO> allList;
+        List<BOMVO> bomtree = new List<BOMVO>();
+        bool cFlag = false;
+        bool isParentNewMaterial=false;
+        int parentNo = 0;
+        public BOM_Insert()
+        {
+            InitializeComponent();
+        }
+        private void BOM_Insert_Load(object sender, EventArgs e)
+        {
+            MaterialsService service = new MaterialsService();
+            allList = service.SelectAll();
+            InitControl();
+            LoadComboData();
+        } // 로드 
+        private void MbtnFind_Click(object sender, EventArgs e)
+        {
+            List<MaterialsVO> parentList = (from item in allList
+                                            where item.mtt_No != 3
+                                            select item).ToList();
+            dgvInsert.DataSource = parentList;
+            cFlag = false;
+        } // 모품목 찾기
+        private void BtnFind_Click(object sender, EventArgs e)
+        {
+            List<MaterialsVO> childList = (from item in allList
+                                           where item.mtt_No != 1
+                                           select item).ToList();
+            dgvInsert.DataSource = childList;
+            cFlag = true;
+        } // 자품목 찾기
+        private void DgvInsert_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvInsert.SelectedRows.Count < 1)
+            {
+                return;
+            }
+            int matNo = Convert.ToInt32(dgvInsert.SelectedRows[0].Cells[0].Value);
+            MaterialsVO matFind = allList.Find(p => p.mat_No == matNo);
+
+            if (!cFlag)
+            {
+                if (matFind != null)
+                {
+                    mtxtName.Text = matFind.mat_Name;
+                    cbomLevel.Text = matFind.mtt_Name;
+                    mlblNumber.Text = matFind.mat_No.ToString();
+                    foreach (var item in this.panel2.Controls)
+                    {
+                        if (item is RadioButton rdo)
+                        {
+                            if (rdo.Text == matFind.mat_Unit)
+                            {
+                                rdo.Checked = true;
+                            }
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                if (matFind != null)
+                {
+                    txtName.Text = matFind.mat_Name;
+                    cboLevel.Text = matFind.mtt_Name;
+                    lblNumber.Text = matFind.mat_No.ToString();
+                    foreach (var item in this.panel1.Controls)
+                    {
+                        if (item is RadioButton rdo)
+                        {
+                            if (rdo.Text == matFind.mat_Unit)
+                            {
+                                rdo.Checked = true;
+                            }
+                        }
+                    }
+                }
+            }
+        } // 모품목이거나 자품목을 찾기했을 때 위 그룹박스에 보여줌
+        private void LoadData()
+        {
+        }
+        private void LoadComboData()
+        {
+            MaterialTypeService service = new MaterialTypeService();
+            List<MaterialsTypeVO> typelist = service.Materials_Type();
+
+            cbomLevel.DataSource = (
+                from type in typelist
+                where type.mtt_No != 3
+                select type).ToList();
+            cbomLevel.DisplayMember = "mtt_Name";
+            cbomLevel.ValueMember = "mtt_No";
+            cboLevel.DataSource = (
+                from type in typelist
+                where type.mtt_No != 1
+                select type).ToList();
+            cboLevel.DisplayMember = "mtt_Name";
+            cboLevel.ValueMember = "mtt_No";
+        }
+        private void InitControl()
+        {
+            DatagridviewDeigns.SetDesign(dgvInsert);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재번호", "mat_No", true, 120);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재명", "mat_Name", true, 210, default, true);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재단계", "mtt_Name", true, 110);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재량", "mat_Each", true, 100, default, true);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvInsert, "자재단위", "mat_Unit", true, 100);
+        } // 컨트롤 설정
+        private void MbtnApply_Click(object sender, EventArgs e)
+        {
+            isParentNewMaterial = false;
+            bomtree.Clear();
+            TreeNode parentNode = new TreeNode();
+            parentNode.Name = "BOMparent";
+            parentNode.Text = mtxtName.Text;
+            this.tvInsert.Nodes.Add(parentNode);
+            mbtnApply.Enabled = false;
+
+            string rdoname = string.Empty;
+            foreach (var item in this.panel1.Controls)
+            {
+                if (item is RadioButton)
+                {
+                    RadioButton rdo = item as RadioButton;
+                    if (rdo.Checked)
+                    {
+                        rdoname = rdo.Text;
+                    }
+                }
+            }
+
+            if (mlblNumber.Text == "")
+            {
+                MaterialsService service = new MaterialsService();
+                MaterialsVO vo = new MaterialsVO();
+
+                vo.mat_Name = mtxtName.Text; //이름
+                vo.mtt_No = Convert.ToInt32(cbomLevel.SelectedValue);  //자제타입      
+                vo.mat_Unit = rdoname;
+
+                mlblNumber.Text = service.Insert_Update_GetID(vo).ToString();
+                isParentNewMaterial = true;
+            }
+            parentNo = Convert.ToInt32(mlblNumber.Text);
+        } // 모품목을 트리에 추가하는 버튼
+        private void BtnApply_Click(object sender, EventArgs e)
+        {
+            if (!rdoEA.Checked && !rdog.Checked && !rdoml.Checked)
+            {
+                MessageBox.Show("단위를 선택해 주세요.", "BOM 관리", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string rdoname = string.Empty;
+            foreach (var item in this.panel1.Controls)
+            {
+                if (item is RadioButton)
+                {
+                    RadioButton rdo = item as RadioButton;
+                    if(rdo.Checked)
+                    {
+                        rdoname = rdo.Text;
+                    }
+                }
+            }
+
+            TreeNode childNode = new TreeNode();
+            childNode.Name = "BOMchild";
+            childNode.Text = txtName.Text;
+            this.tvInsert.TopNode.Nodes.Add(childNode);
+            BOMVO bom = new BOMVO
+            {
+                mat_ParentNo = parentNo,
+                mat_ChildNo = Convert.ToInt32(lblNumber.Text),
+                bom_ChildEach = Convert.ToInt32(txtQuantity.Text),
+                bom_ChildUnit = rdoname
+            };
+            bomtree.Add(bom);
+            tvInsert.TopNode.ExpandAll();
+            txtQuantity.Text = "";
+        } // 자품목을 트리에 추가 + 리스트에 추가
+        private void 모든목록삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tvInsert.Nodes.Clear();
+            bomtree.Clear();
+            // 부모가 새로 만들어진 자재일 경우 db에서 제거한다.
+            if (isParentNewMaterial)
+            {
+                ProductDAC dac = new ProductDAC();
+                dac.delete(parentNo);
+            }
+        } // 트리의 모든 노드 삭제
+        private void 선택목록삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO - service.Insert_Update_GetID후 트리뷰에서 완제품을 제거할때 Delete하는 부분이 부족함
+            if (tvInsert.SelectedNode.Index == 0)
+            {
+                tvInsert.SelectedNode.Remove();
+                parentNo = 0;
+                mbtnApply.Enabled = true;
+            }
+            else
+            {
+                bomtree.RemoveAt(tvInsert.SelectedNode.Index);
+                tvInsert.SelectedNode.Remove();
+            }
+            // 부모가 새로 만들어진 자재일 경우 db에서 제거한다.
+            if (isParentNewMaterial)
+            {
+                ProductDAC dac = new ProductDAC();
+                dac.delete(parentNo);
+            }
+        } // 선택된 노드 삭제
+        private void BtnInsert_Click(object sender, EventArgs e)
+        {
+            if (tvInsert.Nodes.Count < 1)
+                return;
+
+            try
+            {
+                BOMService service = new BOMService();
+                if (service.Insert(bomtree))
+                {
+                    MessageBox.Show("BOM 등록 완료", "BOM 관리", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("BOM 등록 실패", "BOM 관리", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+        private void BtnPaste_Click(object sender, EventArgs e)
+        {
+            tvInsert.Nodes.Clear();
+            BOM_Paste frm = new BOM_Paste();
+            if (frm.ShowDialog() ==DialogResult.OK)
+            {
+                
+                foreach (var item in frm.TreeList)
+                {
+                    bomtree.Add(item);
+                }
+                foreach (var item in frm.TreeBOM)
+                {
+                    if(tvInsert.Nodes.Count < 1)
+                    {
+                        tvInsert.Nodes.Add(item.Text);
+                        parentNo = Convert.ToInt32(item.Tag);
+                    }
+                    else
+                    {
+                        tvInsert.TopNode.Nodes.Add(item.Text);
+                    }
+                    tvInsert.TopNode.ExpandAll();
+                }
+            }
+        }
+
+        private void mtxtName_TextChanged(object sender, EventArgs e)
+        {
+            mlblNumber.Text = "";
+        }
+        private void cbomLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mlblNumber.Text = "";
+        }
+    }
+}

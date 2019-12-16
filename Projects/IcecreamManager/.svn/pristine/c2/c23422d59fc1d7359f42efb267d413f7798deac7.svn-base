@@ -1,0 +1,146 @@
+﻿using IceCreamManager.Service;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class ProductDialog_Form : Form
+    {
+        public ProductDialog_Form()
+        {
+            InitializeComponent();
+        }
+
+
+        private void btnFindImg_Click(object sender, System.EventArgs e)
+        {
+            // 이미지 등록
+            ofdFindImg.RestoreDirectory = true;
+            if (ofdFindImg.ShowDialog() == DialogResult.OK)
+            {
+                ptbProduct.ImageLocation = ofdFindImg.FileName;
+            }
+        }
+        private void ProductDialog_Form_Load(object sender, System.EventArgs e)
+        {
+            InitialControls();
+            LoadData();
+        }
+        private void LoadData()
+        {
+            List<MaterialsVO> parentList;
+            List<ProductVO> productList;
+            // 등록안된 자재만 가져온다.
+            MaterialsService service = new MaterialsService();
+            parentList = service.SelectAllMaterialsNotExistInProduct();
+            dgvBOMParentList.DataSource = parentList;
+
+            // 모든 상품을 가져온다.
+            ProductService pservice = new ProductService();
+            productList = pservice.GetAllProductData();
+            dgvProductList.DataSource = productList;
+        }
+        private void InitialControls()
+        {
+            lblMatNo.Text = "";
+
+            DatagridviewDeigns.SetDesign(dgvBOMParentList);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvBOMParentList, "자재코드", "mat_No", false, 60, default, true); // 안보이는 칼럼
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvBOMParentList, "자재이름", "mat_Name", true, 60, default, true);
+
+            DatagridviewDeigns.SetDesign(dgvProductList);
+            dgvProductList.MultiSelect = true;
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProductList, "상품코드", "pro_No", true, 60, default, true); //x
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProductList, "상품이름", "pro_Name", true, 60, default, true);
+        }
+        private void dgvBOMParentList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Product로 설정하기 위해 설정패널에 Show하는 부분
+            if (e.RowIndex >= 0 && e.RowIndex < dgvBOMParentList.Rows.Count)
+            {
+                lblMaterialName.Text = dgvBOMParentList.SelectedRows[0].Cells[1].Value.ToString();
+                lblMatNo.Text = dgvBOMParentList.SelectedRows[0].Cells[0].Value.ToString();
+            }
+        }
+        private void btnInsertProduct_Click(object sender, System.EventArgs e)
+        {
+            if (string.IsNullOrEmpty(lblMatNo.Text))
+            {
+                MessageBox.Show(Properties.Resources.msg_err_SelectMaterial);
+                return;
+            }
+            try
+            {
+                FileStream fs = new FileStream(ptbProduct.ImageLocation, FileMode.Open, FileAccess.Read);
+                byte[] bImage = new byte[fs.Length];
+                fs.Read(bImage, 0, (int)fs.Length);
+
+                ProductService dac = new ProductService();
+                if (!dac.Insert(new ProductVO()
+                {
+                    mat_No = Convert.ToInt32(lblMatNo.Text),
+                    pro_Img = bImage,
+                    pro_Name = lblMaterialName.Text,
+                    pro_Price = Convert.ToInt32(npdProductPrice.Value)
+                }))
+                { MessageBox.Show(Properties.Resources.msg_err_FailInsert); }
+                LoadData();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        } // 추가
+        private void btnDeleteProduct_Click(object sender, System.EventArgs e)
+        {
+            if (dgvProductList.SelectedRows.Count < 1)
+            {
+                MessageBox.Show(Properties.Resources.msg_err_SelectMaterial);
+                return;
+            }
+            try
+            {
+                ProductService dac = new ProductService();
+                if (!dac.delete(Convert.ToInt32(dgvProductList.SelectedRows[0].Cells[0].Value)))
+                {
+                    MessageBox.Show(Properties.Resources.msg_err_FailDelete);
+                }
+                LoadData();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        } // 제거
+        private void btnDeleteProducts_Click(object sender, System.EventArgs e)
+        {
+            if (dgvProductList.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("제품을 선택해주세요");
+                return;
+            }
+            try
+            {
+                List<int> idlist = new List<int>();
+                foreach (DataGridViewRow item in dgvProductList.SelectedRows)
+                {
+                    idlist.Add(Convert.ToInt32(item.Cells[0].Value));
+                }
+                ProductService dac = new ProductService();
+                if(!dac.delete(idlist))
+                {
+                    MessageBox.Show(Properties.Resources.msg_err_FailDelete);
+                }
+                LoadData();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
+        } // 제거 여러개
+    }
+}

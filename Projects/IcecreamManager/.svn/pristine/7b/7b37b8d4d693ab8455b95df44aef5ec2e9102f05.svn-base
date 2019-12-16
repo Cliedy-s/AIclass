@@ -1,0 +1,36 @@
+﻿using IceCreamManager.Service;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class ProductDialog_Form : Form
+    {
+        public ProductDialog_Form()
+        {
+            InitializeComponent();
+        }
+
+
+        private void btnFindImg_Click(object sender, System.EventArgs e)
+        {
+            ofdFindImg.RestoreDirectory = true;
+            if (ofdFindImg.ShowDialog() == DialogResult.OK)
+            {
+                ptbProduct.ImageLocation = ofdFindImg.FileName;
+            }
+        }
+
+
+        private void ProductDialog_Form_Load(object sender, System.EventArgs e)
+        {
+            MaterialsService service = new MaterialsService();
+            service.SelectAllBOMExistingList();
+            //dgvBOMParentList.DataSource =
+        }
+        private void InitialControls()
+        {
+
+        }
+    }
+}

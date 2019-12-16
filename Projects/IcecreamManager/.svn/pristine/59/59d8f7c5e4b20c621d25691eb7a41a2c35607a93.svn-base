@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using IceCreamManager.VO;
+using System.Data.SqlClient;
+using System.Data;
+namespace IceCreamManager.DAC
+{
+    public class OrderDAC : DACParent
+    {
+        public (List<OrderVO>,List<OrderSubVO>) SelectAll()
+        {
+            using (SqlCommand comm = new SqlCommand())
+            {
+
+                comm.Connection = new SqlConnection(Connstr);
+                comm.CommandText = "GetAllOrder";
+                comm.CommandType = CommandType.StoredProcedure;
+                comm.Connection.Open();
+
+                SqlDataReader orderread = comm.ExecuteReader();
+                List<OrderVO> orderlist = Helper.DataReaderMapToList<OrderVO>(orderread);
+                orderread.Close();
+
+                comm.CommandText = "GetAllSubOrder";
+                comm.CommandType = CommandType.StoredProcedure;
+              
+
+                SqlDataReader subread = comm.ExecuteReader();
+                List<OrderSubVO> sublist = Helper.DataReaderMapToList<OrderSubVO>(subread);
+
+                comm.Connection.Close();
+
+                return (orderlist,sublist);
+            }
+
+
+
+
+        }
+    }
+    }

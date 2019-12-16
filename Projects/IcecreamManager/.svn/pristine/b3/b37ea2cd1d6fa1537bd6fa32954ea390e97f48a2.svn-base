@@ -1,0 +1,41 @@
+﻿using IceCreamManager.DAC;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IceCreamManager.Service
+{
+    public class ProductService 
+    {
+        public List<ProductVO> GetAllProductData()
+        {
+            ProductDAC dac = new ProductDAC();
+            return dac.SelectAll();
+        }
+
+        public List<ProductMaterialConnectVO> SelectAllProductMaterialConnect()
+        {
+            ProductDAC dac = new ProductDAC();
+            return dac.SelectAllProductMaterialConnect();
+        }
+
+        public void Insert(ProductVO productVO)
+        {
+            ProductDAC dac = new ProductDAC();
+            if (dac.IsExist(productVO.mat_No))
+                throw new Exception(Properties.Resources.msg_err_AlreadyInsertedMaterial);
+            dac.Insert(productVO);
+        }
+
+        public bool delete(int proid)
+        {
+            ProductDAC dac = new ProductDAC();
+            if (!dac.IsExist(proid))
+                throw new Exception(Properties.Resources.msg_err_NotExsistProduct);
+            return dac.delete(proid);
+        }
+    }
+}

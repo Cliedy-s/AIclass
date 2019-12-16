@@ -1,0 +1,108 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using System.Data;
+using System.Collections;
+using System;
+using IceCreamManager.VO;
+using IceCreamManager.Service;
+
+namespace IceCreamManager
+{
+    public partial class ProductDialogue_Form : Form
+    {
+        MaterialsService Mservice = new MaterialsService();
+
+        List<OffererVO> offerlist;
+        List<MaterialsTypVO> Matertypelist;
+        List<MaterialsVO> Materlist;
+  
+        public ProductDialogue_Form()
+        {
+            InitializeComponent();
+
+            OffererService Oservice = new OffererService();
+            offerlist = Oservice.GetAllOffereData();
+       
+            Materlist = Mservice.SelectAll();
+            Matertypelist = Mservice.Materials_Type();   
+            
+
+            //거래처명
+            if (offerlist.Count > 1)
+            {
+                List<string> offerNameList = (from item in offerlist
+                                              select item.off_Name).ToList();
+                ComboBinding(cbbOffereName, offerNameList);
+            }
+
+            // 자제 번호
+            int maxcode = (from item in Materlist
+
+                           select item.mat_No).Max();
+
+            lblProductCode.Text=(maxcode+1).ToString();
+
+            if (Matertypelist.Count > 1)
+            {
+                cbbProductType.DataSource = Matertypelist;
+                cbbProductType.ValueMember = "mtt_No";
+                cbbProductType.DisplayMember = "mtt_Name";
+            }
+        }
+
+        
+        public static void ComboBinding(ComboBox combo, List<string> list)
+        {
+       
+            combo.ValueMember = "Code";
+            combo.DisplayMember = "CodeNm";
+            combo.DataSource = list;
+        }
+
+        /// <summary>
+        /// 리터 개수 단위
+        /// </summary>
+        private void rdbL_CheckedChanged(object sender, System.EventArgs e)
+        { // TODO - 저희 우유같은 액체도 g으로 표시할래요?
+            if (rdbL.Text == "리터")
+            {
+                lblType.Text = "L";
+                return;
+            }
+            else if (rdbg.Text == "개수")
+            {
+                lblType.Text = "g";
+            }
+        }
+
+        private void btnSave_Click(object sender, System.EventArgs e)
+        {
+            MaterialsVO vo = new MaterialsVO();
+       
+          
+            var ofno = offerlist.Find(p => p.off_Name.Contains(cbbOffereName.Text));
+            vo.off_No = Convert.ToInt32(ofno.off_No); //제조사번호
+            vo.mat_Name = txtProductName.Text; //이름
+            vo.mat_Cost = int.Parse(txtProductSum.Text); //가격
+            vo.mat_Each = Convert.ToInt32(nudProductNum.Value);//개수
+            vo.mtt_No = int.Parse(cbbProductType.SelectedValue.ToString());  //자제타입
+            if (rdbL.Text == "리터")
+            {
+                // TODO - 제품마다로 수정?
+                vo.mat_MinSize = 1000; //마지노선
+                
+            }
+            else
+            {
+                vo.mat_MinSize = 100; //마지노선
+            }
+            vo.mat_Unit = lblType.Text; //리터 개수
+
+       
+            Mservice.Insert(vo);
+
+
+        }
+    }
+}

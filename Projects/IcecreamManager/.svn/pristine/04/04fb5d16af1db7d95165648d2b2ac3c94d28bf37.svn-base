@@ -1,0 +1,42 @@
+﻿using IceCreamManager.DAC;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class UserOrderDetails : Form
+    {
+        public UserOrderDetails()
+        {
+            InitializeComponent();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void UserOrderDetails_Load(object sender, EventArgs e)
+        {
+            InitControls();
+            DataLoad();
+        }
+        private void InitControls()
+        {
+            dtpTo.Value = DateTime.Now;
+            dtpFrom.Value = DateTime.Now.AddDays(-7);
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void DataLoad()
+        {
+            CustomerOrderDetailDAC coddac = new CustomerOrderDetailDAC();
+            CustomerOrderDAC codac = new CustomerOrderDAC();
+            dgvCustomerOrder.DataSource = codac.SelectAll(Global.Cus_No, dtpFrom.Value, dtpTo.Value);
+        }
+    }
+}

@@ -1,0 +1,117 @@
+﻿using System;
+using System.Windows.Forms;
+using IceCreamManager.VO;
+using IceCreamManager.Service;
+using System.Collections.Generic;
+
+namespace IceCreamManager
+{
+    public partial class OffererOder_Form : Form
+    {
+        List<OrderVO> Orderlist;
+        List<OrderVO> Filterlist = new List<OrderVO>(); //입고되지않은 자제들만
+        public OffererOder_Form()
+        {
+            InitializeComponent();
+        } 
+
+        private void OffererOder_Form_Load(object sender, EventArgs e)
+        {
+
+            datagridview();
+
+            DataLoad();
+        }
+        private void datagridview()
+        {
+            dgvOrder.Rows.Clear();
+            DatagridviewDeigns.SetDesign(dgvOrder);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "발주번호", "ofo_No", true, 100); //발주코드      
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "발주개수", "ofo_Each", true, 100); //발주개수      
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "자재번호", "mat_No", true, 100); //자재번호
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "제조사번호", "off_No", true, 100); //제조사번호        
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "총금액", "ofo_Price", true, 100); //총금액         
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "발주날짜", "ofo_Date", true, 100); //발주날짜
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "주문 상태번호", "cmt_No", true, 100); //주문상태번호
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "주문 상태", "cmt_Type", true, 100); //주문상태번호
+
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.HeaderText = "발주관리";
+            btn.Text = "확인";
+            btn.Name = "btn";
+            btn.Width = 100;
+            btn.UseColumnTextForButtonValue = true;
+            dgvOrder.Columns.Add(btn);
+        }
+
+        private void DataLoad()
+        {
+            OrderService service = new OrderService();
+
+            (Orderlist,_) = service.SelectAll();
+
+            Filterlist = new List<OrderVO>(); //입고가되지않은 제품들만
+            Filterlist = Orderlist.FindAll(item => item.cmt_No != 4);
+
+            dgvOrder.DataSource = Filterlist;
+
+        }
+
+        /// <summary>
+        /// 발주버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            OffererOderDialogue frm = new OffererOderDialogue();
+           if(frm.ShowDialog() == DialogResult.OK)
+            {
+                DataLoad();
+            }
+        }
+
+        private void dgvOrder_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            OrderService service = new OrderService();
+            if(e.ColumnIndex == dgvOrder.Columns["btn"].Index)
+            {
+                if (Convert.ToInt32(dgvOrder.SelectedRows[0].Cells[6].Value) == 3)//만약 발주상태가 배송완료라면
+                {
+
+                    int count = 0;
+                    foreach (var item in Filterlist)
+                    {
+                        count++;
+                       if ( item.ofo_No == Convert.ToInt32(dgvOrder.SelectedRows[0].Cells[0].Value))
+                        {
+                            Filterlist.Remove(item);
+                            break;
+                        }
+                    }
+                    service.Update(Convert.ToInt32(dgvOrder.SelectedRows[0].Cells[0].Value), 4);
+
+               //     dgvOrder.Rows.Clear();
+                    dgvOrder.DataSource = Filterlist;
+                    //제고량 늘리고             
+                    MessageBox.Show("자재창고에 입고되었습니다."); //거래처명세서를 볼수 있다!
+                }
+                else
+                {
+                    MessageBox.Show("자재가 배송되지 않았습니다.");
+                }
+                
+            }
+
+        }
+
+        private void btnOrdertxt_Click(object sender, EventArgs e)
+        {
+            Orderdocument_Form frm = new Orderdocument_Form();
+
+            List<OrderVO> Filterlist = new List<OrderVO>(); 
+            Filterlist = Orderlist.FindAll(item => item.cmt_No == 4); //입고가완료된제품들만
+            frm.ShowDialog();
+        }
+    }
+}

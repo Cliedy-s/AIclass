@@ -1,0 +1,55 @@
+﻿using System;
+using System.Windows.Forms;
+using IceCreamManager.VO;
+using IceCreamManager.Service;
+using System.Collections.Generic;
+
+namespace IceCreamManager
+{
+    public partial class OffererOder_Form : Form
+    {
+        List<OrderVO> Orderlist;
+        public OffererOder_Form()
+        {
+            InitializeComponent();
+        } 
+
+        private void OffererOder_Form_Load(object sender, EventArgs e)
+        {
+         
+            DatagridviewDeigns.SetDesign(dgvOrder);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "코드", "ofo_No", true, 150); //발주코드      
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "발주개수", "ofo_Each", true, 150); //발주개수      
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "자재번호", "mat_No", true, 150); //자재번호
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "제조사번호", "off_No", true, 150); //제조사번호        
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "총금액", "ofo_Price", true, 150); //총금액         
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "발주날짜", "ofo_Date", true, 150); //발주날짜
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "주문 상태번호", "cmt_No", true, 150); //주문상태번호
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvOrder, "주문 상태", "cmt_Type", true, 150); //주문상태번호
+
+
+            DataLoad();
+        }
+
+        private void DataLoad()
+        {
+            OderService service = new OderService();
+
+            (Orderlist,_) = service.SelectAll();
+
+            dgvOrder.DataSource = Orderlist;
+
+        }
+
+        /// <summary>
+        /// 발주버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            OffererOderDialogue frm = new OffererOderDialogue();
+            frm.ShowDialog();
+        }
+    }
+}

@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IceCreamManager.VO
+{
+    public class OrderDetailVO
+
+    {
+        public string pro_Name { get; set; }
+        public int pro_Size { get; set; }
+        public int cod_Each { get; set; }
+        public int cod_Price { get; set; }         
+  
+    }
+}

@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IceCreamManager
+{
+    class Global
+    {
+        public static int cus_No1 = 0;
+        public static int cus_No { get { return cus_No1; } set { cus_No1 = value; } }
+
+        public static string cus_Id1 = string.Empty;
+        public static string cus_Id { get { return cus_Id1; } set { cus_Id1 = value; } }
+
+        public static string cus_Password1 = string.Empty;
+        public static string cus_Password { get { return cus_Password1; } set { cus_Password1 = value; } }
+
+        public static string cus_Name1 = string.Empty;
+        public static string cus_Name { get { return cus_Name1; } set { cus_Name1 = value; } }
+
+       
+    }
+}

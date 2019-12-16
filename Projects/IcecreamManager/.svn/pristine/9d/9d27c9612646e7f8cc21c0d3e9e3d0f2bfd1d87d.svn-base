@@ -1,0 +1,178 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using System.Data;
+using System.Collections;
+using System;
+using IceCreamManager.VO;
+using IceCreamManager.Service;
+using System.Text;
+
+namespace IceCreamManager
+{
+    public partial class ProductDialogue_Form : Form
+    {
+        MaterialsService Mservice = new MaterialsService();
+        List<OffererVO> offerlist;
+        List<MaterialsTypVO> Matertypelist;
+        List<MaterialsVO> Materlist;
+
+        string off_Name;
+        int mat_No; //제품코드
+        string mat_Name; //이름
+        int mat_Cost;//가격
+        int mat_Each;//개수
+        int mat_MinSize;//마지노선
+        string mtt_Name; //자제타입
+        string mat_Unit;//리터 개수      
+
+        public string Off_Name { get => off_Name; set => off_Name = value; } //제조사 이름
+        public int Mat_no { get => mat_No; set => mat_No = value; } // 제품코드
+        public string Mat_Name { get => mat_Name; set => mat_Name = value; } // 제품명
+        public int Mat_Cost { get => mat_Cost; set => mat_Cost = value; }//제품가격
+        public int Mat_Each { get => mat_Each; set => mat_Each = value; }//제품개수
+        public int Mat_MinSize { get => mat_MinSize; set => mat_MinSize = value; }
+        public string Mtt_Name { get => mtt_Name; set => mtt_Name = value; }//자제타입
+        public string Mat_Unit { get => mat_Unit; set => mat_Unit = value; }//리터
+
+        public ProductDialogue_Form()
+        {
+            InitializeComponent();
+
+         
+        }
+        private void ProductDialogue_Form_Load(object sender, EventArgs e)
+        {
+        
+            //insert
+            OffererService Oservice = new OffererService();
+            offerlist = Oservice.GetAllOffereData();
+            Materlist = Mservice.SelectAll();
+            Matertypelist = Mservice.Materials_Type();
+
+            //거래처명
+            if (offerlist.Count > 1)
+            {
+                List<string> offerNameList = (from item in offerlist
+                                              select item.off_Name).ToList();
+                ComboBinding(cbbOffereName, offerNameList);
+            }
+
+            // 자제 번호
+            int maxcode = (from item in Materlist
+
+                           select item.mat_No).Max();
+
+            lblProductCode.Text = (maxcode + 1).ToString();
+
+            if (Matertypelist.Count > 1)
+            {
+                cbbProductType.DataSource = Matertypelist;
+                cbbProductType.ValueMember = "mtt_No";
+                cbbProductType.DisplayMember = "mtt_Name";
+            }
+
+
+            if (!string.IsNullOrEmpty(Mat_Name)) //update
+            {
+
+                if (Off_Name.Length < 1)
+                {
+                    cbbOffereName.Text = string.Empty;
+                    cbbOffereName.Enabled = false;
+                }
+                else
+                {
+                    cbbOffereName.Text = Off_Name.ToString();
+                }
+
+                lblProductCode.Text = Mat_no.ToString(); //제조사번호
+                txtProductName.Text = Mat_Name; //이름
+                txtProductSum.Text = Mat_Cost.ToString(); //가격
+                cbbProductType.Text = Mtt_Name.ToString();//개수
+                nudProductNum.Value = Mat_Each;
+                nudMinSize.Value = Mat_MinSize;
+
+                this.Text = "제품수정";
+                btnSave.Text = "수정";
+
+            }
+
+
+        }
+
+        public static void ComboBinding(ComboBox combo, List<string> list)
+        {
+       
+            combo.ValueMember = "Code";
+            combo.DisplayMember = "CodeNm";
+            combo.DataSource = list;
+        }
+
+        /// <summary>
+        /// 리터 개수 단위
+        /// </summary>
+        private void rdbL_CheckedChanged(object sender, System.EventArgs e)
+        { 
+            if (rdbL.Text == "리터")
+            {
+                lblType.Text = "ml";
+                lblType2.Text = "ml";
+                return;
+            }
+            else if (rdbg.Text == "개수")
+            {
+                lblType.Text = "g";
+                lblType2.Text = "g";
+            }
+        }
+
+
+        private void btnSave_Click(object sender, System.EventArgs e)
+        {
+
+            StringBuilder checkstr = new StringBuilder();
+                    
+
+            if (txtProductSum.Text.Length < 1) //가격
+            {
+                txtProductSum.Focus();
+                checkstr.AppendLine("가격을 입력해주세요.");
+            }
+
+
+            if (txtProductName.Text.Length < 1) //상품명
+            {
+                txtProductName.Focus();
+                checkstr.AppendLine("제품명을 입력해주세요.");
+
+            }
+
+            if (checkstr.Length >0)
+            {
+                MessageBox.Show(checkstr.ToString(),"알림",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                return;
+            }
+
+            MaterialsVO vo = new MaterialsVO();
+
+            var ofno = offerlist.Find(p => p.off_Name.Contains(cbbOffereName.Text));
+
+            vo.mat_No = Convert.ToInt32(lblProductCode.Text);
+            vo.off_No = Convert.ToInt32(ofno.off_No); //제조사번호
+            vo.mat_Name = txtProductName.Text; //이름
+            vo.mat_Cost = int.Parse(txtProductSum.Text); //가격
+            vo.mat_Each = Convert.ToInt32(nudProductNum.Value);//개수
+            vo.mtt_No = int.Parse(cbbProductType.SelectedValue.ToString());  //자제타입      
+            vo.mat_Unit = lblType.Text; //리터 개수     
+            vo.mat_MinSize = Convert.ToInt32(nudMinSize.Value); //마지노선               
+
+            Mservice.Insert_Update(vo);
+ 
+
+        }
+
+      
+    }
+}

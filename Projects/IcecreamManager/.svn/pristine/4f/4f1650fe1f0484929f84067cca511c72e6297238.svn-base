@@ -1,0 +1,81 @@
+﻿using IceCreamManager.Service;
+using IceCreamManager.VO;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace IceCreamManager
+{
+    public partial class ProductDialog_Form : Form
+    {
+        public ProductDialog_Form()
+        {
+            InitializeComponent();
+        }
+
+
+        private void btnFindImg_Click(object sender, System.EventArgs e)
+        {
+            // 이미지 등록
+            ofdFindImg.RestoreDirectory = true;
+            if (ofdFindImg.ShowDialog() == DialogResult.OK)
+            {
+                ptbProduct.ImageLocation = ofdFindImg.FileName;
+            }
+        }
+
+        private void ProductDialog_Form_Load(object sender, System.EventArgs e)
+        {
+            InitialControls();
+            LoadData();
+        }
+        private void LoadData()
+        {
+            List<MaterialsVO> parentList;
+            List<ProductVO> productList;
+            // 등록안된 자재만 가져온다.
+            MaterialsService service = new MaterialsService();
+            parentList = service.SelectAllMaterialsNotExistInProduct();
+            dgvBOMParentList.DataSource = parentList;
+
+            // 모든 상품을 가져온다.
+            ProductService pservice = new ProductService();
+            productList = pservice.GetAllProductData();
+            dgvProductList.DataSource = productList;
+        }
+        private void InitialControls()
+        {
+            DatagridviewDeigns.SetDesign(dgvBOMParentList);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvBOMParentList, "자재번호", "mat_No", false, 60, default, true); // 안보이는 칼럼
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvBOMParentList, "자재이름", "mat_Name", true, 60, default, true);
+
+            DatagridviewDeigns.SetDesign(dgvProductList);
+            DatagridviewDeigns.AddNewColumnToDataGridView(dgvProductList, "상품이름", "pro_Name", true, 60, default, true);
+        }
+
+        private void dgvBOMParentList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Product로 설정하기 위해 설정패널에 Show하는 부분
+            if (e.RowIndex >= 0 && e.RowIndex < dgvBOMParentList.Rows.Count)
+            {
+                lblMaterialName.Text = dgvBOMParentList.SelectedRows[0].Cells[1].Value.ToString();
+                lblMatNo.Text = dgvBOMParentList.SelectedRows[0].Cells[0].Value.ToString();
+            }
+        }
+
+        private void btnInsertProduct_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteProduct_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteProducts_Click(object sender, System.EventArgs e)
+        {
+
+        }
+    }
+}

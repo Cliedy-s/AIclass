@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using IceCreamManager.VO;
+using IceCreamManager.DAC;
+namespace IceCreamManager.Service
+{
+  public  class OderService
+    {
+
+        public (List<OrderVO>, List<OrderSubVO>) SelectAll()
+
+        {
+            OrderDAC dac = new OrderDAC();
+           
+
+            return dac.SelectAll();
+
+        }
+
+
+    }
+}

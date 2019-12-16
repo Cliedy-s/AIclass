@@ -1,0 +1,131 @@
+﻿using IceCreamManager.Service;
+using IceCreamManager.UserMain;
+using IceCreamManager.VO;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using static IceCreamManager.UserMain.ProductListUserControl;
+
+namespace IceCreamManager
+{
+    public partial class UserMain3 : Form
+    {
+        string pName = string.Empty;
+        List<ProductVO> list;
+        public UserMain3()
+        {
+            InitializeComponent();
+        }
+        public string Pro_Size { get; set; }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+            UserMain2 frm = new UserMain2
+            {
+                MdiParent = (UserMain1)this.MdiParent,
+                WindowState = FormWindowState.Maximized
+            };
+            frm.Show();
+            this.Close();
+        }
+
+        private void GetAllProductData()
+        {
+            ProductService service = new ProductService();
+            list = service.GetAllProductData();
+        }
+
+        
+        private void MyUserControl1_OrderClick(object sender, UserOrderEventArgs eArgs)
+        {
+            pName = labMenu.Text;
+
+            if (pName == eArgs.ProductName)
+            {                
+                numericUpDown1.Value += 1;                
+            }
+            else
+            {
+                numericUpDown1.Value = 1;            
+            }
+            int cnt =  Convert.ToInt32(numericUpDown1.Value);
+          
+            labMenu.Text = eArgs.ProductName;
+            picIceCream.Image = eArgs.PImage;
+
+            if (labSize.Text == "주니어")
+            {
+                labPrice.Text = (eArgs.Price * cnt).ToString();
+            }
+            else if (labSize.Text == "레귤러")
+            {
+                labPrice.Text = (eArgs.Price* 2 * cnt).ToString();
+            }
+            else if (labSize.Text == "킹")
+            {
+                labPrice.Text = (eArgs.Price * 3 * cnt).ToString();
+            }
+            else
+            {
+                MessageBox.Show("사이즈를 선택하지 않습니다.","오류");
+            }
+        }
+
+        private void UserMain3_Load(object sender, EventArgs e)
+        {
+            GetAllProductData();
+
+            for (int i = 0; i < list.Count / 4; i++)
+            {
+                for (int k = 0; k < 4; k++)
+                {
+                    ProductListUserControl ctrl = new ProductListUserControl();
+                    ctrl.Name = "btn" + ((i * 3) + k).ToString();
+                    ctrl.Size = new System.Drawing.Size(207, 176);
+                    ctrl.Location = new Point((k * 230) + 30, (i * 200) + 50);
+
+                    ctrl.PID = list[(i * 3) + k].pro_No.ToString();
+                    ctrl.PName = list[(i * 3) + k].pro_Name;
+                    ctrl.Price = list[(i * 3) + k].pro_Price;
+                    if (list[(i * 3) + k].pro_Img != null)
+                    {
+                        TypeConverter tc = TypeDescriptor.GetConverter(typeof(Bitmap));
+                        ctrl.Picture = (Bitmap)(tc.ConvertFrom(list[(i * 3) + k].pro_Img));
+                    }
+                    ctrl.OrderClick += new UserOrderEvent(this.MyUserControl1_OrderClick);
+                    this.panel1.Controls.Add(ctrl);
+                }
+            }
+
+            labSize.Text = Pro_Size;
+
+            ((UserMain1)this.MdiParent).btnlogout.Visible = true;
+            ((UserMain1)this.MdiParent).btnOrderDetails.Visible = true;
+            ((UserMain1)this.MdiParent).label2.Visible = true;
+            ((UserMain1)this.MdiParent).labName.Visible = true;
+        }
+
+        private void PictureBox4_Click(object sender, EventArgs e)
+        {
+            UserMain4 frm = new UserMain4
+            {
+                MdiParent = (UserMain1)this.MdiParent,
+                WindowState = FormWindowState.Maximized
+            };
+            frm.Show();
+            this.Close();
+        }
+
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

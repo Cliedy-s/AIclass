@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IceCreamManager.VO
+{
+  public  class OrderVO
+    {
+        public OrderVO( int ofo_Each, int mat_No, int off_No, int cmt_No, int ofo_Price, string ofo_Date)
+        {
+         
+            this.ofo_Each = ofo_Each;
+            this.mat_No = mat_No;
+            this.off_No = off_No;
+            this.cmt_No = cmt_No;
+            this.ofo_Price = ofo_Price;
+            this.ofo_Date = ofo_Date;
+        }
+
+        public int ofo_No { get; set; }// 발주코드
+        public int ofo_Each { get; set; }//발주갯수
+        public int mat_No { get; set; }//발주자재코드
+        public int off_No { get; set; }//제조사코드
+        public int cmt_No { get; set; }//주문타입코드
+        public int ofo_Price { get; set; }//발주가격
+        public string ofo_Date { get; set; }//날짜
+
+
+
+    }
+
+    public class OrderSubVO
+    {
+        public int mat_No { get; set; } //자재코드
+        public string mat_Name { get; set; } //자재이름
+
+        public int mat_Cost { get; set; } //자재 가격
+        public int off_No { get; set; } //제조사코드
+        public string off_name { get; set; } //제조사이름
+
+       
+    }
+
+
+    public class CompleteTypeVO 
+    {
+        public int off_No { get; set; } //제조사번호
+        public string off_Name { get; set; }//제조사이름
+    }
+
+}
