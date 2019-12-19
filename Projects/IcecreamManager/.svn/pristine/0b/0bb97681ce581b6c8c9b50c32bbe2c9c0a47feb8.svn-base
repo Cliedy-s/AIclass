@@ -1,0 +1,309 @@
+﻿namespace IceCreamManager
+{
+    partial class OffererOderDialogue
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.cbbMaerialsName = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnCancle = new System.Windows.Forms.Button();
+            this.txtMaterialsCode = new System.Windows.Forms.TextBox();
+            this.txtOffererName = new System.Windows.Forms.TextBox();
+            this.nudEach = new System.Windows.Forms.NumericUpDown();
+            this.lblType = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtprice = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.dgvOrder = new System.Windows.Forms.DataGridView();
+            this.lbldata = new System.Windows.Forms.Label();
+            this.lblSumPrice = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // cbbMaerialsName
+            // 
+            this.cbbMaerialsName.FormattingEnabled = true;
+            this.cbbMaerialsName.Location = new System.Drawing.Point(788, 65);
+            this.cbbMaerialsName.Name = "cbbMaerialsName";
+            this.cbbMaerialsName.Size = new System.Drawing.Size(121, 20);
+            this.cbbMaerialsName.TabIndex = 0;
+            this.cbbMaerialsName.SelectedIndexChanged += new System.EventHandler(this.cbbMaerialsName_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(786, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "자재명";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(786, 148);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "제조사";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(786, 205);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "발주개수";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(786, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "자재번호";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnAdd.Location = new System.Drawing.Point(701, 143);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "추가";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnCancle
+            // 
+            this.btnCancle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCancle.Location = new System.Drawing.Point(701, 200);
+            this.btnCancle.Name = "btnCancle";
+            this.btnCancle.Size = new System.Drawing.Size(75, 23);
+            this.btnCancle.TabIndex = 6;
+            this.btnCancle.Text = "삭제";
+            this.btnCancle.UseVisualStyleBackColor = false;
+            // 
+            // txtMaterialsCode
+            // 
+            this.txtMaterialsCode.Enabled = false;
+            this.txtMaterialsCode.Location = new System.Drawing.Point(788, 113);
+            this.txtMaterialsCode.Name = "txtMaterialsCode";
+            this.txtMaterialsCode.Size = new System.Drawing.Size(100, 21);
+            this.txtMaterialsCode.TabIndex = 7;
+            // 
+            // txtOffererName
+            // 
+            this.txtOffererName.Enabled = false;
+            this.txtOffererName.Location = new System.Drawing.Point(788, 172);
+            this.txtOffererName.Name = "txtOffererName";
+            this.txtOffererName.Size = new System.Drawing.Size(100, 21);
+            this.txtOffererName.TabIndex = 8;
+            // 
+            // nudEach
+            // 
+            this.nudEach.Location = new System.Drawing.Point(788, 229);
+            this.nudEach.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudEach.Name = "nudEach";
+            this.nudEach.Size = new System.Drawing.Size(119, 21);
+            this.nudEach.TabIndex = 10;
+            this.nudEach.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudEach.ValueChanged += new System.EventHandler(this.nudEach_ValueChanged);
+            this.nudEach.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nudEach_KeyPress);
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.ForeColor = System.Drawing.Color.White;
+            this.lblType.Location = new System.Drawing.Point(913, 231);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(32, 12);
+            this.lblType.TabIndex = 11;
+            this.lblType.Text = "Litter";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(786, 263);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "금액";
+            // 
+            // txtprice
+            // 
+            this.txtprice.Location = new System.Drawing.Point(788, 278);
+            this.txtprice.Name = "txtprice";
+            this.txtprice.Size = new System.Drawing.Size(100, 21);
+            this.txtprice.TabIndex = 14;
+            this.txtprice.Text = "0";
+            this.txtprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtprice_KeyPress);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSave.Location = new System.Drawing.Point(870, 454);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.Text = "저장";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // dgvOrder
+            // 
+            this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrder.Location = new System.Drawing.Point(12, 32);
+            this.dgvOrder.Name = "dgvOrder";
+            this.dgvOrder.RowTemplate.Height = 23;
+            this.dgvOrder.Size = new System.Drawing.Size(670, 434);
+            this.dgvOrder.TabIndex = 16;
+            // 
+            // lbldata
+            // 
+            this.lbldata.AutoSize = true;
+            this.lbldata.ForeColor = System.Drawing.Color.White;
+            this.lbldata.Location = new System.Drawing.Point(567, 20);
+            this.lbldata.Name = "lbldata";
+            this.lbldata.Size = new System.Drawing.Size(0, 12);
+            this.lbldata.TabIndex = 17;
+            // 
+            // lblSumPrice
+            // 
+            this.lblSumPrice.AutoSize = true;
+            this.lblSumPrice.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSumPrice.ForeColor = System.Drawing.Color.White;
+            this.lblSumPrice.Location = new System.Drawing.Point(822, 406);
+            this.lblSumPrice.Name = "lblSumPrice";
+            this.lblSumPrice.Size = new System.Drawing.Size(28, 27);
+            this.lblSumPrice.TabIndex = 18;
+            this.lblSumPrice.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(707, 406);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 27);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "총금액 : ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(894, 287);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 12);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "원";
+            // 
+            // OffererOderDialogue
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(967, 512);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblSumPrice);
+            this.Controls.Add(this.lbldata);
+            this.Controls.Add(this.dgvOrder);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.txtprice);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblType);
+            this.Controls.Add(this.nudEach);
+            this.Controls.Add(this.txtOffererName);
+            this.Controls.Add(this.txtMaterialsCode);
+            this.Controls.Add(this.btnCancle);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbbMaerialsName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "OffererOderDialogue";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "발주";
+            this.Load += new System.EventHandler(this.OffererOderDialogue_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudEach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.ComboBox cbbMaerialsName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnCancle;
+        private System.Windows.Forms.TextBox txtMaterialsCode;
+        private System.Windows.Forms.TextBox txtOffererName;
+        private System.Windows.Forms.NumericUpDown nudEach;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtprice;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridView dgvOrder;
+        private System.Windows.Forms.Label lbldata;
+        private System.Windows.Forms.Label lblSumPrice;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+    }
+}

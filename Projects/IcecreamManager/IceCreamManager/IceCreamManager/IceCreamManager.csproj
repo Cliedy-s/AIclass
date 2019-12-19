@@ -153,12 +153,6 @@
     <Compile Include="Order\OffererOder_Form.Designer.cs">
       <DependentUpon>OffererOder_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Order\Orderdocument_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Order\Orderdocument_Form.Designer.cs">
-      <DependentUpon>Orderdocument_Form.cs</DependentUpon>
-    </Compile>
     <Compile Include="product\ProductDialog_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +277,7 @@
     <Compile Include="VO\MaterialsBOMConnectVO.cs" />
     <Compile Include="VO\MaterialsVO.cs" />
     <Compile Include="VO\MaterialTypeVO.cs" />
+    <Compile Include="VO\OffererOrderForDgvVO.cs" />
     <Compile Include="VO\OffererVO.cs" />
     <Compile Include="VO\CustomerOrderDetailVO.cs" />
     <Compile Include="VO\OrderVO.cs" />
@@ -331,9 +326,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Order\OffererOder_Form.resx">
       <DependentUpon>OffererOder_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Order\Orderdocument_Form.resx">
-      <DependentUpon>Orderdocument_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="product\ProductDialog_Form.resx">
       <DependentUpon>ProductDialog_Form.cs</DependentUpon>
@@ -393,6 +385,9 @@
     <EmbeddedResource Include="UserMain\UserPasswordChange.resx">
       <DependentUpon>UserPasswordChange.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="order.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -402,6 +397,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Sample\orderxlsx.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -446,6 +442,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(ProjectDir)DAC\Team4Connect_DEV.xml $(TargetDir)Team4Connect_DEV.xml
-xcopy /P $(ProjectDir)Image\*.* $(TargetDir)Image\*.*</PostBuildEvent>
+
+xcopy $(ProjectDir)Image\*.* $(TargetDir)Image\*.*
+copy /Y $(ProjectDir)Image\*.* $(TargetDir)Image\*.*
+xcopy $(ProjectDir)Sample\*.* $(TargetDir)Sample\*.*
+copy /Y $(ProjectDir)Sample\*.* $(TargetDir)Sample\*.*</PostBuildEvent>
   </PropertyGroup>
 </Project>

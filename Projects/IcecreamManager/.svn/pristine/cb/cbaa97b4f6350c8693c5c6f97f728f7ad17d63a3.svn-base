@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using IceCreamManager.Service;
+using IceCreamManager.VO;
+
+namespace IceCreamManager
+{
+    public partial class MaterialsSearch_Form : Form
+    {
+
+        string filter1;
+        string filter2;
+        List<OffererVO> offerlist;
+        List<MaterialsVO> Materlist;
+        List<MaterialsTypeVO> Matertypelist;
+
+        public string Filter1 { get => filter1; set => filter1 = value; }
+        public string Filter2 { get => filter2; set => filter2 = value; }
+
+        public MaterialsSearch_Form()
+        {
+            InitializeComponent();
+        }
+        private void MaterialsSearch_Form_Load(object sender, EventArgs e)
+        {
+            DataLoad();
+            InitControls();
+
+            cbbfilter1.Text = Filter1;
+            cbbfilter2.Text = Filter2;
+        }
+        private void InitControls()
+        {
+            lbltitle.Text = "검색";
+            DatagridviewDesigns.SetDesign(dgvSearch);
+            DatagridviewDesigns.AddNewColumnToDataGridView(dgvSearch, "코드", "mat_No", true, 60); //제조사이름
+            DatagridviewDesigns.AddNewColumnToDataGridView(dgvSearch, "자제명", "mat_Name", true, 200); //제조사전화번호      
+            DatagridviewDesigns.AddNewColumnToDataGridView(dgvSearch, "자제타입", "mtt_Name", true, 80); //제조사주소          
+            DatagridviewDesigns.AddNewColumnToDataGridView(dgvSearch, "가격", "mat_Cost", true, 70); //담당자이름
+            DatagridviewDesigns.AddNewColumnToDataGridView(dgvSearch, "개수", "mat_Each", true, 70); //담당자이름
+            DatagridviewDesigns.AddNewColumnToDataGridView(dgvSearch, "타입", "mat_Unit", true, 60); //담당자이름
+
+            // combo 1
+            Dictionary<string, string> citem = new Dictionary<string, string>();
+            citem.Add("타입", "0");
+            citem.Add("담당자", "1");
+            cbbfilter1.DataSource = new BindingSource(citem, null);
+            cbbfilter1.DisplayMember = "Key";
+            cbbfilter1.ValueMember = "Value";
+        }
+        private void btnSearch2_Click(object sender, EventArgs e)
+        {
+            if (cbbfilter1.SelectedIndex == 0) //타입으로 찾기
+            {
+                Filterlist = (from item in Materlist
+                              where item.mtt_Name == cbbfilter2.Text
+                              select item
+                                           ).ToList();
+            }
+            else // 담당자로 찾기
+            {
+                Filterlist = (from item in Materlist
+                              where item.off_No == Convert.ToInt32(cbbfilter2.SelectedValue)
+                              select item
+                                           ).ToList();
+            }
+            dgvSearch.DataSource = Filterlist;
+        }
+        private void DataLoad()
+        {
+            MaterialsService Mservice = new MaterialsService();
+            Materlist = Mservice.SelectAll();
+
+            MaterialTypeService mtservice = new MaterialTypeService();
+            Matertypelist = mtservice.Materials_Type();
+
+            OffererService Oservice = new OffererService();
+            offerlist = Oservice.GetAllOffereData();
+        }
+        List<MaterialsVO> Filterlist = null;
+        private void cbbfilter1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //cbbfilter2.SelectedIndexChanged -= cbbfilter2_SelectedIndexChanged;
+            if (cbbfilter1.SelectedIndex.ToString() == "0") //타입으로 찾기
+            {
+                //if (Matertypelist.Count > 1)
+                //{
+                    cbbfilter2.DataSource = Matertypelist;
+                    cbbfilter2.ValueMember = "mtt_No";
+                    cbbfilter2.DisplayMember = "mtt_Name";
+                //}
+            }
+            else // 담당자로 찾기
+            {
+                //
+                OffererService Oservice = new OffererService();
+                offerlist = Oservice.GetAllOffereData();
+
+                //담당자가 맡고있는 제조사번호
+                List<int> off_no = (from item in offerlist
+                                    where item.off_Manager == filter2
+                                    select item.off_No).ToList();
+
+                //제조사번호와 일치하는 제품들
+                for (int i = 0; i < off_no.Count; i++)
+                {
+                    Filterlist = Materlist.FindAll(item => item.off_No == off_no[i]);
+
+                }
+                //
+
+                var name = (from item in offerlist
+                                     select new { item.off_No, item.off_Manager}).ToList();
+                cbbfilter2.DataSource = name;
+                cbbfilter2.ValueMember = "off_No";
+                cbbfilter2.DisplayMember = "off_Manager";
+            }
+            //cbbfilter2.SelectedIndexChanged += cbbfilter2_SelectedIndexChanged;
+        }
+    }
+}
