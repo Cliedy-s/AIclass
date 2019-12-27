@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0903
+{
+    public class BankAccount
+    {
+        private static double interest = 0.2;  //이자율
+        private string accNum;          //계좌번호
+        private string name;             //예금주명
+        private int balance = 0;         //잔액        
+
+        public BankAccount()
+        {
+            this.balance = 0;
+        }
+
+        public BankAccount(string acc, string name):this()
+        {
+            this.accNum = acc;
+            this.name = name;
+        }
+
+        //출금
+        public void OutputMoney(int amount)
+        {
+            if (this.balance < amount)
+                Console.WriteLine("잔액이 부족합니다");
+            else
+                this.balance = this.balance - amount;
+        }
+        //예금
+        public void InputMoney(int amount)
+        {
+            //this.balance = this.balance + amount + (int)(amount * BankAccount.interest);
+
+            balance += amount + (int)(amount * BankAccount.interest);
+            // 인스턴스 메소드에서 사용할 수 있는 변수의 종류
+            // 1. 인자 리스트에서 선언되어진 변수
+            // 2. 메소드 내에서 선언한 변수
+            // 3. 객체 멤버 변수
+            // 4. 클래스 멤버 혹은 static 멤버
+        }
+
+        public static void SetInterest(double interest)
+        {
+            BankAccount.interest = interest;
+            // 정적 메소드에서 사용할 수 있는 변수의 종류
+            // 1. 클래스 변수
+            // 2. 인자리스트로 선언된 변수
+            // 3. 메소드 내에서 선언된 변수
+        }
+
+        public int GetBalance()
+        {
+            return balance;
+        }
+
+        public void PrintAccountInfo()
+        {
+            Console.WriteLine("계좌번호:{0} /  이름:{2} / 잔액:{1} / 이자율:{3}", 
+                              accNum, balance, name, BankAccount.interest);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            BankAccount acc1 = new BankAccount("111-1111111-11", "홍길동");
+            Console.Write("입금할 금액:");
+            int money = int.Parse(Console.ReadLine());
+            acc1.InputMoney(money);
+            acc1.PrintAccountInfo();
+
+            Console.Write("출금할 금액:");
+            money = int.Parse(Console.ReadLine());
+            acc1.OutputMoney(money);
+            acc1.PrintAccountInfo();
+
+            Console.WriteLine("잔액: {0}원", acc1.GetBalance());
+
+            BankAccount.SetInterest(10);
+        }
+    }
+}

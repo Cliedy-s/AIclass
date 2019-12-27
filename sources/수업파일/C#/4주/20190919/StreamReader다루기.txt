@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace ConsoleApp0919
+{
+    class StreamReaderHandle
+    {
+        static void Main()
+        {
+            //Stream 객체 생성
+            Stream stream = File.OpenRead(@"C:\Temp\SampleForWrite.txt");
+
+            //StreamReader 객체 생성,인코딩은 시스템 설정 값으로
+            StreamReader streamReader = new StreamReader(stream, Encoding.Default);
+
+            string str;
+            int i = 0;
+
+            //스트림을 다 읽어들이면 null을 반환합니다.
+            while ((str = streamReader.ReadLine()) != null)
+            {
+                i++;
+                Console.WriteLine("Line {0}: {1}", i, str);
+            }
+
+            //스트림의 포지션을 처음으로
+            stream.Position = 0;
+            str = streamReader.ReadLine();
+            Console.WriteLine("Line XX: {0}", str);
+
+            streamReader.Close();
+        }
+    }
+}

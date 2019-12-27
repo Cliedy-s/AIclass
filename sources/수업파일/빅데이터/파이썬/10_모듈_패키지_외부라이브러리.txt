@@ -1,0 +1,8 @@
+C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\Scripts\pip.exe
+ => 패키지 설치 매니저
+
+pip install 외부모듈명 => 인터넷에서 다운 후 설치해줌
+
+
+<=> visual studio tool 설치
+보기 - 다른창 - 파이썬 환경 -  개요>패키지  - 검색 (numpy)

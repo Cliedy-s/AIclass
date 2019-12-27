@@ -1,8 +1,0 @@
-몸풀기예제
-
-20190919 폴더의 'Serializable다루기.txt' 파일을 참조하여,
-List<NameCard> 로 3명 정도를 등록한 후,
-a.dat 파일로 저장한다.
-
-또한 a.dat 파일을 읽어서 다시 List<NameCard>을 생성하여
-콘솔에서 3명의 정보를 출력한다.

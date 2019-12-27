@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0905
+{
+    class MyClass
+    {
+        int number;
+        public int Number
+        {
+            get { return this.number; }
+        }
+
+        public MyClass() { this.number = 0; }
+
+        public void Plus(int val)
+        {
+            this.number += val;
+        }
+
+        public void Minus(int val)
+        {
+            this.number -= val;
+        }
+
+        public static void PrintHello(int val)
+        {
+            for (int i=0; i<val; i++)
+                Console.WriteLine("Hello");
+        }
+
+        public void Add(int num1, int num2)
+        {
+            Console.WriteLine(num1 + num2);
+        }
+    }
+
+    public delegate void Sample(int value);
+
+    class Delegate1
+    {
+        static void Main(string[] args)
+        {
+            MyClass cls = new MyClass();
+
+            //delegate는 호출할 메서드의 복합대입연산이 가능 (+=, -=)
+
+            //Sample d = new Sample(cls.Plus); //C# 1.0
+            Sample d = cls.Plus;   //C# 2.0
+            d(500);   //Plus실행 => 500
+            Console.WriteLine(cls.Number);
+
+            d += new Sample(cls.Minus);
+            d(200);   //Plus, Minus실행 => 500 
+            Console.WriteLine(cls.Number);  //500
+
+            d -= cls.Plus;
+            d(300);   //Minus실행 => 200 
+            Console.WriteLine(cls.Number);  //200
+
+            //delegate는 static, 인스턴스 메서드 모두 호출가능
+            d += new Sample(MyClass.PrintHello);
+            d(3);     //Minus, PrintHello 실행 => 197 
+            Console.WriteLine(cls.Number);
+        }
+    }
+}

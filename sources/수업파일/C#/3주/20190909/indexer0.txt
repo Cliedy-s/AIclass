@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0909
+{
+    class MyClass
+    {
+        private int[] data = new int[10];
+
+        public int[] DataProp
+        {
+            get { return data;  }
+            set { data = value; }
+        }
+
+        public int this[int index]
+        {
+            get { return data[index]; }
+            set { data[index] = value; }
+        }
+    }
+
+    class indexerTest
+    {
+        static void Main(string[] args)
+        {
+            MyClass c1 = new MyClass();
+            //c1.data[0] = 1024;
+            //c1.DataProp = 
+
+            c1[0] = 1024;
+            c1[1] = 512;
+
+            Console.WriteLine("0번째 : {0}, 1번째: {1}", c1[0], c1[1]);
+        }
+    }
+}

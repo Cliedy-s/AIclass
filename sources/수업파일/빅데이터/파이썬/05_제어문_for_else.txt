@@ -1,0 +1,15 @@
+for(i <= 20) :
+
+
+if( i== 21) :
+else ([for_not_breaked]) :
+=> x
+
+
+
+for a in range(0,5):
+    print a
+    if a == 6:
+        break;
+else :
+    print "not_breaked"

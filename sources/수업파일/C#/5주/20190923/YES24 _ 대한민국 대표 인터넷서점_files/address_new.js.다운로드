@@ -1,0 +1,1442 @@
+﻿// PlaceHolder Extends
+(function ($) {
+    $.fn.placeHolder = function () {
+        return this.each(function () {
+            $.placeHolder(this);
+        });
+    }
+
+    $.fn.phVal = function (value) {
+        if (value != undefined || value != null) {
+            $(this).val(value);
+            $.placeHolderSet(this);
+        }
+
+        return $.phVal(this);
+    }
+
+    $.phVal = function (obj) {
+        var text = $(obj).val();
+        var title = $(obj).attr('title');
+
+        if (text == title)
+            return '';
+        else
+            return text;
+    }
+
+    $.placeHolderSet = function (obj) {
+        var text = $(obj).val();
+        var title = $(obj).attr('title');
+
+        if (text != undefined && text == '') {
+            $(obj).val(title);
+        }
+
+        $.placeHolderStyleSet(obj);
+    }
+
+    $.placeHolderStyleSet = function (obj) {
+                var text = $(obj).val();
+                var title = $(obj).attr('title');
+
+                if (text == title) {
+                    $(obj).css('color', '#999999');
+                }
+                else {
+                    $(obj).css('color', '#000000');
+                }
+    }
+
+    $.placeHolder = function (obj) {
+        var setting = function (input) {
+            var text = $(input).val();
+            var title = $(input).attr('title');
+
+            if (text != undefined && text == '')
+                $(input).val(title);
+        }
+        $.placeHolderSet(obj);
+
+        $(obj).bind('blur', function () {
+            $.placeHolderSet(this);
+        });
+
+        $(obj).bind('focus', function () {
+            var text = $(this).val();
+            var title = $(this).attr('title');
+
+            if (text == title) {
+                $(this).val('');
+            }
+            $.placeHolderStyleSet(this);
+        });
+
+    }
+})(jQuery);
+
+// 도로명 사용 변수
+var EventJson = null;
+var _PC_URL = 'http://www.yes24.com';
+var PAYMENT_HTTP_URL = 'https://ssl.yes24.com';
+var PC_HTTPS_URL = 'https://www.yes24.com';
+var isPaymentSite = false;
+var doroCnt = 0;
+var jibunCnt = 0;
+// 도로명 / 지번 주소 선택시 마지막 선택값
+var selectedAddrItem = null;
+
+// 모바일 웹인지 결재웹인지 체크
+var href = document.location.href.toLowerCase();
+
+if (href.indexOf('?') > 0)
+    href = href.substring(0, href.indexOf('?'));
+
+
+if (href.indexOf(PAYMENT_HTTP_URL.replace('http://', '').replace('https://', '').toLowerCase()) > 0
+    || href.indexOf('ssl.yes24.com') > 0) {
+    isPaymentSite = true;
+} // 모바일 모모 웹인지 체크 
+
+if (href.indexOf('https://') >= 0) {
+    _PC_URL = PC_HTTPS_URL;
+}
+
+var isDetailFirstAlert = true;
+var isDoro = false;
+var _useSaseham = true;
+var _isCart = false;
+
+// 상세주소 사서함 문구 체크
+function bindDetailEvent() {
+
+    function check() {
+        if (isDoro) {
+            var value = $(this).val();
+
+            if (isDetailFirstAlert) {
+                if (!validate_saseham(value, true)) {
+                    isDetailFirstAlert = false;
+                }
+            }
+
+            if (value == '') {
+                isDetailFirstAlert = true;
+            }
+        }
+    }
+
+    $('#txtAddAddr').bind('keyup', check);
+}
+
+// 도로명 시/군/구 Ajax값 Display 처리
+function SetSubAdddress(subAddress) {
+    var tarOpt = $('#sAddress2 option').eq(0);
+    $('#sAddress2 option').not(tarOpt).remove();
+
+    if (subAddress == null || (subAddress.length == 1 && ( subAddress[0] == null || subAddress[0] == ""))) {
+        $('<option selected>시/군/구 없음</option>').appendTo('#sAddress2');
+    }
+    else {
+        for (var i = 0; i < subAddress.length; i++) {
+            $('<option>' + subAddress[i] + '</option>').appendTo('#sAddress2');
+        }
+    }
+}
+
+// 레이어 창 띄우기
+function PostalCodeCheckWindow(eventJson, url, obj, useSaseham) {
+
+    if (useSaseham != undefined && useSaseham != null) {
+        _useSaseham = useSaseham
+    }
+
+    // 변수 초기화
+    isDetailFirstAlert = true;
+    isDoro = false;
+
+    EventJson = eventJson;
+    var _url = _PC_URL + '/24/Address/FindAddressV2';
+    //ajaxNoCache();
+    if (url != undefined && url != null) {
+        if (url.indexOf('http') != 0)
+            _url = _PC_URL + '/' + url;
+        else
+            _url = url;
+    }
+
+    // 생성된 창이 잇으면 취소
+    if ($('#dPop_addr').length > 0)
+        return false;
+
+    if (!isPaymentSite || !(url == null || url == undefined || url == '')) {
+        //loadAddressLayerV2(obj, _url, SetAddressUIV2);
+        var addressCss = '';
+
+        if (href.indexOf('https://') >= 0) {
+            addressCss = '<link rel="stylesheet" href="https://secimage.yes24.com/sysimage/yesUI/yesUI.css?ver=161226b" type="text/css" media="all" />';
+        } else {
+            addressCss = '<link rel="stylesheet" href="http://image.yes24.com/sysimage/yesUI/yesUI.css?ver=161226b" type="text/css" media="all" />';
+        }
+        
+        var addressUI = '<div id="dPop_addr" style="display:none"></div>';
+        
+        if (isPaymentSite) {
+            addressUI.appendTo('body');
+        }
+        else {
+            $('#wrapperContent').append(addressCss);
+            $('#wrapperContent').append(addressUI);
+        }
+
+        $.yesPop('dPop_addr', obj, { cock: true, mask: false, pWidth: 478, baseWidth: $('#wrapperContent').width(), ajaxURL: _url });        
+    }
+    else {
+        
+
+        // UI 코드 ssl.yes24.com 에서 사용 되어질 템플릿 html
+        // UI 관리는 PC에서 하기 위해 제공
+        var templateHtml = '';
+
+        templateHtml += '<div id="dPop_addr">';
+        templateHtml += '	<div class="yesPopUp boxing bgWhite">';
+        templateHtml += '       <div class="popYUIArea" style="width:478px">';
+        templateHtml += '       <div class="popYUI_tit">';
+		templateHtml += '		    <h1>주소찾기</h1>';
+		templateHtml += '	    </div>';
+		templateHtml += '       <div class="popYUI_cont">';
+		templateHtml += '		<div id="postPopSch" class="popYUI_schBoxArea">';
+		templateHtml += '			<span class="popYUI_schBox yesIpt ipt_wSizeF">';
+		templateHtml += '				<label for="txtJibunNm">예) 은행로 11, 여의도동 15-15</label>';
+		templateHtml += '				<input id="txtJibunNm" type="text" maxlength="100"/>';
+		templateHtml += '			</span>';
+		templateHtml += '			<a href="javascript:void(0);" onclick="removePostPopSchWord();" id="postPopSchWordDel" class="btn_del" style="display:none"><span class="bgYUI">입력 내용 삭제</span></a>';
+		templateHtml += '			<a href="javascript:void(0);" onclick="addressSearchV2();" class="btnC btn_blue w_50"><span class="bWrap"><em class="txt">검색</em></span></a>';
+		templateHtml += '		</div>';
+        templateHtml += '        <div id="postPopResultTxt" class="postPoptxt mgt16">';				
+		templateHtml += '	    </div>';
+		templateHtml += '		<div id="postPopResult" class="postPopCont mgt14" style="display:none">';		
+		templateHtml += '			<div class="deliLiArea mgt5">';
+		templateHtml += '				<div id="address_list_area" class="deliLiWrap">';
+		templateHtml += '				    <ul id="postNumLi" class="deliLi">';
+		templateHtml += '						<li class="deliHead">';
+		templateHtml += '							<span class="deliNum">우편번호</span>';
+		templateHtml += '							<span class="deliTxt">주소</span>';
+		templateHtml += '						</li>';								
+		templateHtml += '					</ul>';
+		templateHtml += '				</div>';
+		templateHtml += '			</div>';
+		templateHtml += '			<div id="divEtcAddress" class="transTb mgt10" style="display:none">';
+		templateHtml += '				<table width="100%">';
+		templateHtml += '					<caption>나머지 주소</caption>';
+		templateHtml += '					<colgroup>';
+		templateHtml += '						<col width="89"/>';
+		templateHtml += '						<col width="*"/>';
+		templateHtml += '					</colgroup>';
+		templateHtml += '					<tbody>';
+		templateHtml += '					<tr>';
+		templateHtml += '						<th scope="row">도로명주소</th>';
+		templateHtml += '						<td><span id="spanDoro"></span></td>';
+		templateHtml += '					</tr>';
+		templateHtml += '					<tr>';
+		templateHtml += '						<th scope="row">지번주소</th>';
+		templateHtml += '						<td><span id="spanJibun"></span></td>';
+		templateHtml += '					</tr>';
+		templateHtml += '					<tr>';
+		templateHtml += '						<th scope="row">상세주소</th>';
+		templateHtml += '						<td>';
+		templateHtml += '							<span class="yesIpt ipt_wSizeF">';
+		templateHtml += '								<label for="txtAddAddr">예) 층/동/호 입력</label>';
+		templateHtml += '								<input type="text" id="txtAddAddr" title="* 층 / 동 / 호" />';
+		templateHtml += '							</span>';
+		templateHtml += '						</td>';
+		templateHtml += '					</tr>';
+		templateHtml += '					</tbody>';
+		templateHtml += '				</table>';
+		templateHtml += '			</div>';					
+		templateHtml += '			<div class="popYUI_botBtn">';
+		templateHtml += '				<a href="javascript:void(0)" id="addressOK" class="btnC btn_blue w_80"><span class="bWrap"><em class="txt">주소입력</em></span></a>';
+		templateHtml += '			</div>';
+		templateHtml += '		</div>';
+		templateHtml += '		<div id="postPopDes" class="yesFormGrayMulti mgt20">';
+		templateHtml += '			<div class="yesFormGrayMultiCont">';
+		templateHtml += '				<dl class="yesAlertDl">';
+		templateHtml += '					<dt>주소찾기 방법</dt>';
+		templateHtml += '					<dd>';
+		templateHtml += '						<ul class="yesAlertLi">';
+		templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>도로명 + 건물번호 <span class="txC_blue">예) 은행로 11, 강남대로 422</span></li>';
+		templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>지역명(동/리) + 번지 <span class="txC_blue">예) 여의도동 15-15, 역삼동 816</span></li>';
+		templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>지역명(동/리) + 건물명(아파트명) <span class="txC_blue">예) 여의도동 일신빌딩, 하안동 주공</span></li>';
+		templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>사서함명 + 번호 <span class="txC_blue">예) 영등포우체국사서함 399</span></li>';
+		templateHtml += '						</ul>';
+		templateHtml += '					</dd>';
+		templateHtml += '				</dl>';
+		templateHtml += '			</div>';
+		templateHtml += '		</div>';
+        templateHtml += '       <ul class="yesAlertLi mgt10">';
+        templateHtml += '			<li><em class="bl_dot bgYUI">&nbsp;</em>군부대는 우체국 택배로만 배송이 가능합니다. 사서함 주소지가 검색되지 않는 경우 고객센터로 문의 부탁드립니다.</li>';
+		templateHtml += '		</ul>';
+		templateHtml += '	</div>';
+		templateHtml += '	<div class="popYUI_close"><a href="javascript:closeAddressUIV2();"><em class="bgYUI btn_popClose">창 닫기</em></a></div>';
+		templateHtml += '</div>';
+        templateHtml += '<input type="hidden" id="hdPopupZipCD" value=""/>';
+        templateHtml += '<input type="hidden" id="hdPopupZipSEQ" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr1" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr2" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr3" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr4" value="" />';
+	    templateHtml += '</div>'; 
+
+        popupShowByString(templateHtml, obj, SetAddressUIV2)
+    }
+}
+
+// 기본 주소레이어 이벤트 바인딩
+function SetAddressUI() {
+
+    // tab
+    $('#ulTab a').bind('click', function () {
+        $('#ulTab li').attr('class', '');
+        $(this).parent().attr('class', 'on');
+
+        if ($('#ulTab li a').index($(this)) == 0) {
+            $('.jibunMain').css('display', 'none');
+            $('.jibun').css('display', 'none');
+
+            $('.doroMain').css('display', '');
+
+            if ($('#ulAddressList li').length > 0)
+                $('#ulAddressList').css('display', '');
+
+            $('.doro').css('display', '');
+            $('#txtAddAddr').attr('title', '* 층 / 동 / 호');
+            isDoro = true;
+            if (doroCnt == 0) {
+                setEmptyDoro();
+            }
+        }
+        else {
+            $('.doroMain').css('display', 'none');
+            $('.doro').css('display', 'none');
+
+            $('.jibunMain').css('display', '');
+
+            $('.jibun').css('display', '');
+            $('.jibunDetail').css('display', '');
+            $('#txtAddAddr').attr('title', '* 층 / 동 / 호');
+
+            isDoro = false;
+            if (jibunCnt == 0) {
+                setEmptyJibun();
+            }
+        }
+
+        // 선택값 초기화
+        $('#txtDetailDoro').val('');
+        $('#txtDetailJibun').val('');
+        $('#hdPopupZipCD').val('');
+        $('#hdPopupZipSEQ').val('');
+        $('#hdPopupAddr1').val('');
+        $('#hdPopupAddr2').val('');
+        $('#hdPopupAddr3').val('');
+        $('#hdPopupAddr4').val('');
+        $('.txt_wSizeF textarea').val('');
+        $('#txtStNm').phVal('');
+        $('#txtJibunNm').phVal('');
+        $('#stBuMainNo').phVal('');
+        $('#txtAddAddr').phVal('');
+    });
+
+    // doro
+    $('#sAddress1').bind('change', function () {
+        var addr1 = $('#sAddress1').val();
+        $.ajax({
+            url: _PC_URL + '/24/Address/FindSubAddress/?addr1=' + escape(addr1),
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'jsonp',
+            success: function (data, stateus, errorcode) {
+                SetSubAdddress(data);
+            }
+        });
+    });
+
+    $('#aDoroSearch').bind('click', function () {
+        SearchAddress();
+    });
+    $('#txtStNm, #stBuMainNo').bind('keyup', function (e) {
+        if (isEnteryKey(e))
+            SearchAddress();
+    });
+
+    // jibun
+    $('#aJibunSearch').bind('click', function (e) {
+        jibunSearch();
+    });
+    $('#txtJibunNm').bind('keyup', function (e) {
+        if (isEnteryKey(e)) {
+            jibunSearchV2();
+        }
+    });
+
+    // 주소확인
+    $('#aOK').bind('click', function (e) {
+        var detailDoro = $('#txtDetailDoro').val();
+        var detailJibun = $('#txtDetailJibun').val();
+        var zipCd = $('#hdPopupZipCD').val(); //.replace(/-/g, "");
+        var addAddress = $('#txtAddAddr').phVal();
+        var zipSeq = $('#hdPopupZipSEQ').val();
+        var addr1 = $('#hdPopupAddr1').val();
+        var addr2 = $('#hdPopupAddr2').val();
+        var addr3 = $('#hdPopupAddr3').val();
+        var addr4 = $('#hdPopupAddr4').val();
+
+        if (isDoro) {
+            if (detailDoro == '' || detailDoro == '&nbsp;') {
+                alert('검색 후 해당하는 주소를 선택해주세요.');
+                return false;
+            }
+        }
+        else {
+            if (detailJibun == '' || detailJibun == '&nbsp;') {
+                alert('검색 후 해당하는 주소를 선택해주세요.');
+                return false;
+            }
+
+            if (trim(addAddress) == '') {
+                alert('상세주소를 입력 하세요.');
+                return false;
+            }
+        }
+
+        if (EventJson != null && EventJson.AddressOK != undefined)
+            EventJson.AddressOK(zipCd, zipSeq, addr1, addr3, addr4, addAddress, detailJibun, selectedAddrItem, EventJson);
+
+
+        closeAddressUI();
+    });
+
+    $('#addressClose, #btnCancel').bind('click', function () { closeAddressUI(); });
+
+    // 도로명 상세주소 입력시
+    bindDetailEvent();
+
+    // placeholder 값 채우기
+    $('#txtStNm, #txtJibunNm, #stBuMainNo, #txtAddAddr').placeHolder();
+}
+
+// list ui event setting
+function listLiEventSetting() {
+    $('#postNumLi').find('li').bind('mouseover', function () {
+        $(this).css("background-color", "#f8f8f8");
+    });
+
+    $('#postNumLi').find('li').bind('mouseleave', function () {
+        if ($(this).attr("class") != "post_li clkLi") {
+            $(this).css("background-color", "");
+        }
+    });
+
+    $('#postNumLi').find('li').bind('click', function () {
+        $(this).parent().find('li').attr("class", "post_li"); // 초기화
+        $(this).parent().find('li').css("background-color", ""); // 초기화
+
+        $(this).attr("class", "post_li clkLi");
+        $(this).css("background-color", "#f8f8f8");
+    });
+}
+
+// 창닫기
+function closeAddressUI() {
+    $('#addr_plyr').remove();
+}
+
+// 도로명 주소 검색
+function SearchAddress() {
+    var addr1 = $('#sAddress1').val();
+    var addr2 = $('#sAddress2').val();
+    var st_nm = $('#txtStNm').phVal();
+    var bu_main_no = $('#stBuMainNo').phVal();
+    var tmp_bu_nos = bu_main_no.split('-');
+    var bu_sub_no = '';
+
+    if (tmp_bu_nos.length > 1) {
+        bu_main_no = tmp_bu_nos[0];
+        bu_sub_no = tmp_bu_nos[1];
+    }
+    else
+        bu_sub_no = '';
+
+    if ($('#sAddress1 option').index($('#sAddress1 option:selected')) == 0) {
+        alert('\'시/도\'를 선택해주세요.');
+        return false;
+    }
+
+    if ($('#sAddress2 option').index($('#sAddress2 option:selected')) == 0) {
+        alert('\'시/군/구\'를 선택해주세요.');
+        return false;
+    }
+
+    if (st_nm == '') {
+        alert('\'도로명\'을 입력해주세요.');
+        return false;
+    }
+    else if (st_nm.length < 2) {
+        alert('\'도로명\'에는 최소 2글자 이상 입력해주세요.');
+        return false;
+    }
+
+    if (addr1 == '세종특별자치시')
+        addr2 = '';
+
+    $.ajax(
+            {
+                url: _PC_URL + '/24/Address/FindAddressByParams/?addr1=' + escape(addr1) + '&addr2=' + escape(addr2) + '&st_nm=' + escape(st_nm) + '&bu_main_no=' + escape(bu_main_no) + '&bu_sub_no=' + bu_sub_no,
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'jsonp',
+                success: function (data) {
+                    var html = '';
+                    $('#ulAddressList').html('');
+
+                    if (data == null || data == undefined || data.length == 0) {
+                        setEmptyDoro();
+                    }
+                    else {
+                        var ul = getListContainerUlElement();
+
+                        var containerTR = getListContainerElement();
+
+                        if (data.length >= 100) {
+                            //showAddressInfo(treu);
+                            $('#postSchAlert').css('visibility', 'visible');
+                        }
+
+                        for (var i = 0; i < data.length; i++) {
+                            html = '           <li class="post_li" onclick="SetAddress(this, \'' + data[i].ADDR1 + '\',\'' + data[i].ADDR2 + '\',\'' + data[i].ADDR3 + '\',\'' + DoroDongCityCheck(data[i].DONG_NM, scriptStringCheck(data[i].CITY_BU_NM), false) + '\',\'' + data[i].ST_NM + '\',\'' + data[i].ZIP_SEQ + '\',\'' + data[i].ZIP_CD + '\',\'' + scriptStringCheck(GetSimpleDoroName(data[i])) + '\',\'' + scriptStringCheck(GetFullDoroName(data[i])) + '\', \'' + scriptStringCheck(GetJibuName(data[i])) + '\');">';
+                            html += '           	<span class="item_post_poNum">';
+                            html += '                   ' + data[i].ZIP_CD;
+                            html += '               </span>';
+                            html += '           	<span class="item_post_poAddr">';
+                            html += '           		' + GetFullDoroName(data[i]) + '<br>';
+                            html += '           		<em class="poTxtGray">[지번주소] ' + GetJibuName(data[i]) + '</em>';
+                            html += '           	</span>';
+                            html += '           </li>';
+
+                            var li = $(html).data('data', data[i]);
+                            li.appendTo(ul);
+                        }
+
+                        ul.appendTo(containerTR.find('div'));
+                        $('#tbAddressList').empty();
+                        containerTR.appendTo('#tbAddressList');
+
+                        $('.doro').css('display', '');
+
+                        listLiEventSetting();
+                    }
+
+                }
+            }
+        );
+}
+
+/* 화면에 주소명 표시 기능 시작 */
+function ValueCheck(str) {
+    return (str != '' && str != null && str != 'null') ? ' ' + str : '';
+}
+
+function BuNoCheck(str) {
+    return (str == undefined || str == 'null' || str == '' || str == '0') ? '' : '-' + str;
+}
+
+function DoroDongCityCheck(dong, city, isUsePrefix) {
+    var ret = '';
+    var beginPrefix = '(';
+    var endPrefix = ')';
+
+    if (!isUsePrefix) {
+        beginPrefix = '';
+        endPrefix = '';
+    }
+
+    if (( dong == null || dong == '' ) && ( city == null || city == '') )
+        return '';
+    else if (dong == null || dong == '')
+        return beginPrefix + city + endPrefix;
+    else if (city == null || city == '')
+        return beginPrefix + dong + endPrefix;
+    else
+        return beginPrefix + dong + ',' + city + endPrefix;
+}
+
+function GetJihaDesc(gb) {
+    var where = '';
+    //0=지상, 1=지하, 2=공중, 없음=등록안된상태
+    switch (gb) {
+        case '0':
+            where = '';
+            break;
+        case '1':
+            where = '지하';
+            break;
+        case '2':
+            break;
+        default:
+            break;
+    }
+
+    return where;
+}
+
+function GetSimpleDoroName(data) {
+
+    return data.ADDR1 + ValueCheck(data.ADDR2) + ValueCheck(data.ADDR3) + ValueCheck(data.ST_NM) + ValueCheck(GetJihaDesc(data.BF_GB)) + ValueCheck(data.BU_MAIN_NO) + BuNoCheck(data.BU_SUB_NO);
+}
+
+function GetFullDoroName(data, detailAddress) {
+    var tempDetailAddress = '';
+
+    if (detailAddress != undefined)
+        tempDetailAddress = ', ' + detailAddress;
+
+    return GetSimpleDoroName(data) + tempDetailAddress + DoroDongCityCheck(data.DONG_NM, data.CITY_BU_NM, true);
+}
+
+function GetJibuName(data) {
+    return data.ADDR1 + ValueCheck(data.ADDR2) + ValueCheck(data.DONG_NM)
+        + ValueCheck(data.SAN_GB == '0' ? '' : '산') + ValueCheck(data.JIBUN_MAIN_NO) + BuNoCheck(data.JIBUN_SUB_NO) + ValueCheck(data.CITY_BU_NM);
+}
+
+/* 화면에 주소명 표시 기능 끝 */
+
+// 상세주소 사서함 / 우체국 문자 체크
+function validate_saseham(doro, isDetail) {
+
+    if (_useSaseham && (doro.indexOf('사서함') >= 0 || doro.indexOf('우체국') >= 0)) {
+        alertSaseham(isDetail);
+        return false;
+    }
+
+    return true;
+}
+
+function alertSaseham(isDetail) {
+    alert('사서함 및 군부대는 [지번주소로 찾기]를 통해\n사서함 우편번호를 이용해주세요.');
+
+    if (isDetail) {
+        $('#txtAddAddr').focus();
+    }
+}
+
+function SetAddress(obj, addr1, addr2, addr3, addr4, stName, zipSeq, zipcd, simpleDoro, doro, jibun) {
+    if (isDoro)
+        validate_saseham(doro, false);
+
+    var data = $(obj).data('data');
+    selectedAddrItem = data;
+    var tempAddr1 = '';
+
+    // 지번일때 체크
+    if (!isDoro)
+        tempAddr1 = getCityName(data.areaGb);
+
+    if (tempAddr1 != '') {
+        addr1 = tempAddr1;
+    }
+
+    $('#hdPopupZipCD').val(zipcd);
+    $('#hdPopupZipSEQ').val(zipSeq);
+    $('#hdPopupAddr1').val(jibun);
+    $('#hdPopupAddr2').val('');
+    $('#hdPopupAddr3').val(simpleDoro);
+    $('#hdPopupAddr4').val(addr4);
+
+    if (doro != '')
+        $('#txtDetailDoro').val(doro);
+    if (jibun != '')
+        $('#txtDetailJibun').val(jibun);
+
+    if (EventJson != null && EventJson.SetAddress != undefined)
+        EventJson.SetAddress(obj, addr1, addr2, addr3, addr4, stName, zipSeq, zipcd, simpleDoro, doro, jibun, data, EventJson);
+}
+
+function getCityName(code) {
+    var str = '';
+
+    switch (code) {
+        case '01': str = '서울특별시'; break;
+        case '02': str = '부산광역시'; break;
+        case '03': str = '대구광역시'; break;
+        case '04': str = '대전광역시'; break;
+        case '05': str = '인천광역시'; break;
+        case '06': str = '광주광역시'; break;
+        case '07': str = '울산광역시'; break;
+        case '08': str = '경기도'; break;
+        case '09': str = '강원도'; break;
+        case '10': str = '충청북도'; break;
+        case '11': str = '충청남도'; break;
+        case '12': str = '전라북도'; break;
+        case '13': str = '전라남도'; break;
+        case '14': str = '경상북도'; break;
+        case '15': str = '경상남도'; break;
+        case '16': str = '제주특별자치도'; break;
+        case '17': str = '세종특별자치시'; break;
+    }
+    return str;
+}
+
+function jibunSearch() {
+    var addr = $('#txtJibunNm').phVal();
+
+    if (addr.length == 0) {
+        alert('\'동(읍/면/동)\'을 입력해주세요');
+        $("#sch_deliAddr").focus();
+        return false;
+    }
+    else if (addr.length < 2) {
+        alert('\'동(읍/면/동)\'에는 최소 2글자 이상 입력해주세요');
+        $("#sch_deliAddr").focus();
+        return false;
+    }
+
+    var url = _PC_URL + '/24/Address/SearchZipCode?addr=' + escape(addr);
+
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        success: function (data, status, xhr) {
+            var result = '';
+            $('#ulJibunAddressList').empty();
+
+            if (data == undefined || data == null || data.length == 0) {
+                setEmptyJibun();
+            }
+            else {
+                $('#tbAddressList').empty();
+
+                var ul = getListContainerUlElement();
+                var containerTR = getListContainerElement();
+
+                //console.log(data);
+                if (data.length >= 100) {
+                    //console.log(data);
+                    //showAddressInfo(true);
+                    $('#postSchAlert').css('visibility', 'visible');
+                }
+
+                for (var i = 0; i < data.length; i++) {
+                    result = '           <li class="post_li" onclick="SetAddress(this, \'' + data[i].ADDR1 + '\',\'' + data[i].ADDR2 + '\',\'' + data[i].ADDR3 + '\',\'' + DoroDongCityCheck(data[i].DONG_NM, scriptStringCheck(data[i].CITY_BU_NM), false) + '\',\'' + data[i].ST_NM + '\',\'' + data[i].ZIP_SEQ + '\',\'' + data[i].ZIP_CD + '\',\'' + scriptStringCheck(GetSimpleDoroName(data[i])) + '\',\'' + scriptStringCheck(GetFullDoroName(data[i])) + '\', \'' + scriptStringCheck(GetJibuName(data[i])) + '\');">';
+                    result += '           	<span class="item_post_poNum">';
+                    result += '                   ' + data[i].ZIP_CD;
+                    result += '               </span>';
+                    result += '           	<span class="item_post_poAddr">';
+                    result += '           		<em class="poTxtGray">' + GetFullDoroName(data[i]) + '</em><br>';
+                    result += '           		[지번주소] ' + GetJibuName(data[i]) + '';
+                    result += '           	</span>';
+                    result += '           </li>';
+
+                    var li = $(result).data('data', data[i]);
+                    li.appendTo(ul);
+                }
+
+                ul.appendTo(containerTR.find('div'));
+                $('#tbAddressList').empty();
+                containerTR.appendTo('#tbAddressList');
+                //                        $('.jibunDetail').css('display', '');
+                listLiEventSetting();
+            }
+        }
+    });
+}
+
+function getListContainerElement() {
+
+    html = '<tr>';
+    html += '	<td colspan="2" style="padding:0;">';
+    html += '       <div class="ulScrollY" style="width:470px;">';
+    html += '       </div>';
+    html += '   </td>';
+    html += '</tr>';
+
+    return $(html);
+}
+
+function getListContainerUlElement() {
+    return $('<ul id="postNumLi" class="post_l clearfix"></ul>');
+}
+
+function loadAddressLayer(obj, url, afterAction) {
+
+    $.get(url, function (data, textStatus) {
+        popupShowByString(data, obj, afterAction);
+    });
+}
+
+function popupShowByString(data, obj, afterAction) {
+
+    var addressUI = $(data);
+    if (isPaymentSite)
+        addressUI.appendTo('body');
+    else
+        addressUI.appendTo('#wrapperContent');
+
+    addressUI.css('position', 'absolute');
+    addressUI.css('z-index', '9999');
+
+    var targetPosition = $(obj).offset();
+    var targetSize = { Height: $(obj).outerHeight(), Width: $(obj).outerWidth() };
+    var popupSize = { Height: addressUI.find('.yesPopUp').height(), Width: addressUI.find('.yesPopUp').width() };
+
+    var popupTopPosition = (targetPosition.top + targetSize.Height) + 2;
+
+    addressUI.css('left', (targetPosition.left + (targetSize.Width / 2) - (popupSize.Width / 2)) + 'px');
+    addressUI.css('top', popupTopPosition + 'px');
+
+    if (afterAction != undefined && afterAction != null) {
+        afterAction(data);
+    }
+
+    var windowH = $(window).height();
+    var sY = 0;
+
+    try{
+        sY = scrollY;
+    }
+    catch(e){
+        sY = document.documentElement.scrollTop;
+    }
+
+    var postionH = popupTopPosition - (popupSize.Height / 2);
+    scroll(0, postionH);
+}
+
+function setEmptyJibun() {
+    setEmptyDoro();
+}
+
+function setEmptyDoro() {
+    var html = '<tr>';
+    html += '	<td colspan="2" class="noData">';
+    html += '		<strong class="noData_tit">검색된 주소가 없습니다.</strong>';
+    html += '		<p class="noData_cmt">';
+    html += '			도로명주소가 검색되지 않을 경우<br/>';
+    html += '			새주소 안내시스템 (<a href="http://www.epost.go.kr/search.RetrieveIntegrationNewZipCdList.comm" target="_blank">http://www.epost.go.kr/</a>)을<br/>';
+    html += '			통해 정확한 주소를 확인해 주세요.';
+    html += '		</p>';
+    html += '	</td>';
+    html += '</tr>';
+
+    var tr = $(html);
+    $('#tbAddressList').empty();
+    tr.appendTo('#tbAddressList');
+}
+
+
+// 스크립트 문자 체크
+function scriptStringCheck(str) {
+    var replaceStr = str;
+
+    if (str != undefined && str != '' && typeof (str) == 'string') {
+        replaceStr = replaceAll(replaceStr, '\'', '\\\'');
+        replaceStr = replaceAll(replaceStr, '"', '\\"');
+        replaceStr = replaceAll(replaceStr, '\r', '');
+        replaceStr = replaceAll(replaceStr, '\n', '');
+    }
+
+    return replaceStr;
+}
+
+// 전체 텍스에서 일치하는 데이터 변경
+function replaceAll(inputString, target, replacement) {
+    var regE = new RegExp(target, 'g');
+    var ret = inputString.replace(regE, replacement);
+
+    return ret;
+}
+
+
+function compareKey(event, compareKeycode) {
+    var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+
+    if (keyCode == compareKeycode)
+        return true;
+    else
+        return false;
+}
+
+function isEnteryKey(e) {
+    return compareKey(e, 13);
+}
+
+function trim(str) {
+    return str.replace(/(^\s*)|(\s*$)/gi, '');
+}
+
+function showAddressInfo(visible) {
+    if (visible) {
+        $('#postSchAlert').css('visibility', 'visible');
+    } else {
+        $('#postSchAlert').css('visibility', 'hidden');
+    }
+}
+
+function closeAddressUIV2() {
+    $('#dPop_addr').remove();
+}
+
+function SetAddressUIV2() {
+    $('.popYUI_schBox.yesIpt').iptNorBox();
+    $('.transTb .yesIpt').iptNorBox();
+    $('.popYUI_schBox.yesIpt input').bind('focus', function () {
+        $(this).parent().parent().addClass("nowFocus");
+        $("#postPopSchWordDel").show();
+    }).bind('blur', function () {
+        $(this).parent().parent().removeClass("nowFocus");
+        addrSetTime = setTimeout(function () {
+            if (!$("#postPopSch").hasClass("nowFocus")) {
+                $("#postPopSchWordDel").hide();
+            }
+        }, 500);
+    });
+    
+    //주소입력 엔터 이벤트
+    $('#txtJibunNm').bind('keyup', function (e) {
+        if (isEnteryKey(e)) {
+            addressSearchV2();
+        }
+    });
+
+    //스크롤 이벤트
+    $("#address_list_area").scroll(function () {
+
+        
+        if ($("#address_list_area")[0].scrollHeight - $("#address_list_area").height() <= $("#address_list_area").scrollTop()+1) {
+            moreAddressSearchV2();
+        }
+    });
+
+    $('#addressOK').bind('click', function (e) {
+        var detailDoro = $('#spanDoro').text();
+        var detailJibun = $('#spanJibun').text();
+        var zipCd = $('#hdPopupZipCD').val(); //.replace(/-/g, "");
+        var addAddress = $('#txtAddAddr').val();
+        var zipSeq = $('#hdPopupZipSEQ').val();
+        var addr1 = $('#hdPopupAddr1').val();
+        var addr2 = $('#hdPopupAddr2').val();
+        var addr3 = $('#hdPopupAddr3').val();
+        var addr4 = $('#hdPopupAddr4').val();
+
+        if (detailDoro == '' || detailDoro == '&nbsp;') {
+            alert('검색 후 해당하는 주소를 선택해주세요.');
+            return false;
+        }
+        if (detailJibun == '' || detailJibun == '&nbsp;') {
+            alert('검색 후 해당하는 주소를 선택해주세요.');
+            return false;
+        }
+        if (trim(addAddress) == '') {
+            alert('상세주소를 입력 하세요.');
+            return false;
+        }
+
+        if (EventJson != null && EventJson.AddressOK != undefined)
+            EventJson.AddressOK(zipCd, zipSeq, addr1, addr3, addr4, addAddress, detailJibun, selectedAddrItem, EventJson);
+
+        $('#dPop_addr').remove();
+    });
+}
+
+var _pageNo = 1;
+var _addr = '';
+
+//주소 검색
+function addressSearchV2() {
+    var addr = $('#txtJibunNm').val();    
+
+    if (addr.length < 2) {
+        alert('검색어는 최소 2자리 이상 입력해야 합니다');
+        $("#sch_deliAddr").focus();
+        return false;
+    }
+
+//    if (IsValidAddr(addr) == 0) {
+//        alert('검색 결과가 너무 많습니다.\n주소를 상세히 입력해주세요.');
+//        return false;
+//    }
+
+    _addr = $('#txtJibunNm').val();
+
+    var url = _PC_URL + '/24/Address/SearchZipCodeV2?addr=' + escape(addr) + '&stCd=&dongCd=&pageNo=1&fetchSize=100';
+
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        success: function (data, status, xhr) {
+            $("#postPopResultTxt").html('');
+            _pageNo = 1;
+            if (data == undefined || data == null || data.TotalSize == 0) {
+                setDoroMsg(0);
+
+                $("#postPopResult").css('display', 'none');
+                $("#postPopDes").css('display', 'block');
+            } else {
+
+                $("#postNumLi li").not("li.deliHead").remove();
+
+                setDoroMsg(data.TotalSize);
+
+                createHtml(data);
+
+                $("#postPopResult").css('display', 'block');
+                $("#postPopDes").css('display', 'none');
+
+                $("#address_list_area").scrollTop(0);
+            }
+        }
+    });
+}
+
+//스크롤시 추가 조회
+function moreAddressSearchV2() {
+
+    _pageNo = _pageNo + 1;
+
+    var url = _PC_URL + '/24/Address/SearchZipCodeV2?addr=' + escape(_addr) + '&pageNo=' + _pageNo + '&fetchSize=100';
+
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        success: function (data, status, xhr) {
+            createHtml(data);
+        }
+    });
+}
+
+//검색결과 메세지
+function setDoroMsg(val) {
+    $("#postPopResultTxt").html('');
+
+    var html = '';
+
+    if (val == 0) {
+        html += '<p class="fwB">';
+        html += '<em class="txC_blue">‘' + $("#txtJibunNm").val() + '’</em>에 대한 검색결과가 없습니다.';
+        html += '<span class="dp_b txC_gray fwN mgt5">정확한 주소 정보를 확인하시어, 다시한번 검색해주세요. </span>';
+        html += '<span class="dp_b txC_gray fwN mgt5">사서함 주소지가 검색되지 않을 시 고객센터(1544-3800) 또는 일대일 게시판을 통해 안내 받으신 후 이용해 주시기 바랍니다.</span>';
+        html += '<span class="dp_b txC_gray fwN mgt15">우체국 안내 시스템을 통한 정확한 주소지 확인도 가능합니다.';
+        html += '<a href="http://www.epost.go.kr/search.RetrieveIntegrationNewZipCdList.comm" target="_blak" class="btnC s_size mg0 mgt5">';
+        html += '<span class="bWrap"><em class="txt">우체국 주소검색 <u class="bgYUI ico_goS">이동</u></em></span>';
+		html += '</a>';
+        html += '</span>';        
+        html += '</p>';
+    } else if (val > 1000) {
+        html += '<p class="fwB">';
+        html += '<em class="txC_blue">‘' + $("#txtJibunNm").val() + '’</em>에 대한 검색결과는 총 <em class="txC_blue">' + replaceWithComma(val) + '</em>건입니다.';
+        html += '<span class="dp_b txC_gray fwN mgt5">결과가 많습니다. 정확한 검색을 위해 ‘상세주소 및 지역명’을 입력/선택해주세요.</span>';
+        html += '</p>';
+    }
+    else {
+        html += '<p class="fwB">';
+        html += '<em class="txC_blue">‘' + $("#txtJibunNm").val() + '’</em>에 대한 검색결과는 총 <em class="txC_blue">' + replaceWithComma(val) + '</em>건입니다.';
+        html += '</p>';
+    }
+
+    $("#postPopResultTxt").html(html);
+}
+
+//클릭시 주소전달
+function SetAddressV2(obj, addr1, addr2, addr3, addr4, stName, zipSeq, zipcd, simpleDoro, doro, jibun) {
+
+    var data = $(obj).data('data');
+    selectedAddrItem = data;
+    $('#hdPopupZipCD').val(zipcd);
+    $('#hdPopupZipSEQ').val(zipSeq);
+    $('#hdPopupAddr1').val(jibun);
+    $('#hdPopupAddr2').val('');
+    $('#hdPopupAddr3').val(simpleDoro);
+    $('#hdPopupAddr4').val(addr4);
+
+    if (!_isCart) {
+        $('#spanDoro').text(doro);
+        $('#spanJibun').text(jibun);
+        $('#divEtcAddress').css('display', 'block');
+    }
+
+    if (EventJson != null && EventJson.SetAddress != undefined) {
+        EventJson.SetAddress(obj, addr1, addr2, addr3, addr4, stName, zipSeq, zipcd, simpleDoro, doro, jibun, data, EventJson);
+    }
+
+    if (_isCart) {
+        $('#dPop_addr').remove();
+    }
+}
+
+//검색결과
+function createHtml(data) {
+
+    var ul = $("#postNumLi");
+
+    for (var i = 0; i < data.address.length; i++) {
+        html = ' <li onclick="SetAddressV2(this, \'' + data.address[i].ADDR1 + '\',\'' + data.address[i].ADDR2 + '\',\'' + data.address[i].ADDR3 + '\',\'' + DoroDongCityCheck(data.address[i].DONG_NM, scriptStringCheck(data.address[i].CITY_BU_NM), false) + '\',\'' + data.address[i].ST_NM + '\',\'' + data.address[i].ZIP_SEQ + '\',\'' + data.address[i].ZIP_CD + '\',\'' + scriptStringCheck(GetSimpleDoroName(data.address[i])) + '\',\'' + scriptStringCheck(GetFullDoroName(data.address[i])) + '\', \'' + scriptStringCheck(GetJibuName(data.address[i])) + '\');">';
+        html += '   <a href="javascript:void(0)" class="dp_b">';
+        html += '   <span class="postTxt"><em>';
+        html += '   ' + data.address[i].ZIP_CD;
+        html += '   </em></span>';
+        html += '   <span class="deliTxt">';
+        html += '   <span class="dp_b"><em class="iconC"><em class="txt">도로명</em></em>';
+        html += '   ' + GetFullDoroName(data.address[i]);
+        html += '   </span>';
+        html += '   <span class="dp_b mgt5"><em class="iconC"><em class="txt">지번</em></em>';
+        html += '   ' + GetJibuName(data.address[i]);
+        html += '   </span>';
+        html += '   </span>';
+        html += '   </a>';
+        html += '</li>';
+
+        var li = $(html).data('data', data.address[i]);
+        li.appendTo(ul);
+    }
+}
+
+//검색금지어
+function IsValidAddr(addr) {
+    var addrLimit = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "제주",
+        "경기도", "강원도", "충청도", "전라도", "경상도", "제주도",
+        "서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "제주특별자치도",
+        "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도",
+        "충북", "충남", "전북", "전남", "경북", "경남",
+        "경기", "강원", "충청", "전라", "경상",
+        "서울시", "부산시", "대구시", "인천시", "울산시", "광주시", "대전시"];
+
+    return $.inArray(addr, addrLimit);
+}
+
+function PostalCodeCheckWindowV2(eventJson, url, obj, myaddress) {
+
+//    if (useSaseham != undefined && useSaseham != null) {
+//        _useSaseham = useSaseham
+//    }
+
+    // 변수 초기화
+    isDetailFirstAlert = true;
+    isDoro = false;
+
+    if (myaddress != undefined) {
+        _isCart = true;
+    }
+
+    EventJson = eventJson;
+    var _url = _PC_URL + '/24/Address/FindAddressV2';
+    //ajaxNoCache();
+    if (url != undefined && url != null) {
+        if (url.indexOf('http') != 0)
+            _url = _PC_URL + '/' + url;
+        else
+            _url = url;
+    }
+
+    // 생성된 창이 잇으면 취소
+    if ($('#dPop_addr').length > 0)
+        return false;
+
+    if (!isPaymentSite && !(url == null || url == undefined || url == '')) {
+        //loadAddressLayerV2(obj, _url, SetAddressUIV2);
+        var addressCss = '';
+
+        if (href.indexOf('https://') >= 0) {
+            addressCss = '<link rel="stylesheet" href="https://secimage.yes24.com/sysimage/yesUI/yesUI.css?ver=161226b" type="text/css" media="all" />';
+        } else {
+            addressCss = '<link rel="stylesheet" href="http://image.yes24.com/sysimage/yesUI/yesUI.css?ver=161226b" type="text/css" media="all" />';
+        }
+
+        var addressUI = '<div id="dPop_addr" style="display:none"></div>';
+        
+        $('#wrapperContent').append(addressCss);
+        $('#wrapperContent').append(addressUI);
+        
+        $.yesPop('dPop_addr', obj, { cock: true, mask: false, pWidth: 478, baseWidth: $('#wrapperContent').width(), ajaxURL: _url });
+    }
+    else {
+        
+        // UI 코드 ssl.yes24.com 에서 사용 되어질 템플릿 html
+        // UI 관리는 PC에서 하기 위해 제공
+        var templateHtml = '';
+                
+        templateHtml += '<div id="dPop_addr">';
+        templateHtml += '	<div class="yesPopUp boxing bgWhite">';
+        templateHtml += '       <div class="popYUIArea" style="width:478px">';
+        templateHtml += '       <div class="popYUI_tit">';
+
+        if (_isCart) {
+            templateHtml += '		    <h1>배송지역 변경</h1>';
+        } else {
+            templateHtml += '		    <h1>주소찾기</h1>';
+        }
+
+        templateHtml += '	    </div>';
+        templateHtml += '       <div class="popYUI_cont">';
+        templateHtml += '		<div id="postPopSch" class="popYUI_schBoxArea">';
+        templateHtml += '			<span class="popYUI_schBox yesIpt ipt_wSizeF">';
+        templateHtml += '				<label for="txtJibunNm">예) 은행로 11, 여의도동 15-15</label>';
+        templateHtml += '				<input id="txtJibunNm" type="text" maxlength="100"/>';
+        templateHtml += '			</span>';
+        templateHtml += '			<a href="javascript:void(0);" onclick="removePostPopSchWord();" id="postPopSchWordDel" class="btn_del" style="display:none"><span class="bgYUI">입력 내용 삭제</span></a>';
+        templateHtml += '			<a href="javascript:void(0);" onclick="addressSearchV2();" class="btnC btn_blue w_50"><span class="bWrap"><em class="txt">검색</em></span></a>';    
+        templateHtml += '		</div>';
+        templateHtml += '        <div id="postPopResultTxt" class="postPoptxt mgt16">';
+        templateHtml += '	    </div>';
+        templateHtml += '		<div id="postPopResult" class="postPopCont mgt14" style="display:none">';
+        templateHtml += '			<div class="deliLiArea mgt5">';
+        templateHtml += '				<div id="address_list_area" class="deliLiWrap">';
+        templateHtml += '				    <ul id="postNumLi" class="deliLi">';
+        templateHtml += '						<li class="deliHead">';
+        templateHtml += '							<span class="deliNum">우편번호</span>';
+        templateHtml += '							<span class="deliTxt">주소</span>';
+        templateHtml += '						</li>';
+        templateHtml += '					</ul>';
+        templateHtml += '				</div>';
+        templateHtml += '			</div>';
+
+        if (!_isCart) {
+            templateHtml += '			<div id="divEtcAddress" class="transTb mgt10" style="display:none">';
+            templateHtml += '				<table width="100%">';
+            templateHtml += '					<caption>나머지 주소</caption>';
+            templateHtml += '					<colgroup>';
+            templateHtml += '						<col width="89"/>';
+            templateHtml += '						<col width="*"/>';
+            templateHtml += '					</colgroup>';
+            templateHtml += '					<tbody>';
+            templateHtml += '					<tr>';
+            templateHtml += '						<th scope="row">도로명주소</th>';
+            templateHtml += '						<td><span id="spanDoro"></span></td>';
+            templateHtml += '					</tr>';
+            templateHtml += '					<tr>';
+            templateHtml += '						<th scope="row">지번주소</th>';
+            templateHtml += '						<td><span id="spanJibun"></span></td>';
+            templateHtml += '					</tr>';
+            templateHtml += '					<tr>';
+            templateHtml += '						<th scope="row">상세주소</th>';
+            templateHtml += '						<td>';
+            templateHtml += '							<span class="yesIpt ipt_wSizeF">';
+            templateHtml += '								<label for="txtAddAddr">예) 층/동/호 입력</label>';
+            templateHtml += '								<input type="text" id="txtAddAddr" title="* 층 / 동 / 호" />';
+            templateHtml += '							</span>';
+            templateHtml += '						</td>';
+            templateHtml += '					</tr>';
+            templateHtml += '					</tbody>';
+            templateHtml += '				</table>';
+            templateHtml += '			</div>';
+            templateHtml += '			<div id="divAddressOk" class="popYUI_botBtn">';
+            templateHtml += '				<a href="javascript:void(0)" id="addressOK" class="btnC btn_blue w_80"><span class="bWrap"><em class="txt">주소입력</em></span></a>';
+            templateHtml += '			</div>';
+        }
+        
+        templateHtml += '		</div>';
+        templateHtml += '		<div id="postPopDes" class="yesFormGrayMulti mgt20">';
+        templateHtml += '			<div class="yesFormGrayMultiCont">';
+        templateHtml += '				<dl class="yesAlertDl">';
+        templateHtml += '					<dt>주소찾기 방법</dt>';
+        templateHtml += '					<dd>';
+        templateHtml += '						<ul class="yesAlertLi">';
+        templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>도로명 + 건물번호 <span class="txC_blue">예) 은행로 11, 강남대로 422</span></li>';
+        templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>지역명(동/리) + 번지 <span class="txC_blue">예) 여의도동 15-15, 역삼동 816</span></li>';
+        templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>지역명(동/리) + 건물명(아파트명) <span class="txC_blue">예) 여의도동 일신빌딩, 하안동 주공</span></li>';
+        templateHtml += '							<li><em class="bl_dot bgYUI">&nbsp;</em>사서함명 + 번호 <span class="txC_blue">예) 영등포우체국사서함 399</span></li>';
+        templateHtml += '						</ul>';
+        templateHtml += '					</dd>';
+        templateHtml += '				</dl>';
+        templateHtml += '			</div>';
+        templateHtml += '		</div>';
+
+        if (_isCart) {
+            templateHtml += '    <ul class="yesAlertLi mgt10">';
+            templateHtml += '			<li><em class="bl_dot bgYUI">&nbsp;</em>군부대는 우체국 택배로만 배송이 가능합니다. 사서함 주소지가 검색되지 않는 경우 고객센터로 문의 부탁드립니다.</li>';
+
+            if (myaddress != undefined && myaddress.LoginYn == "Y") {                
+                templateHtml += "		<li><em class=\"bgYUI bl_dot\"></em><strong>나의정보 주소 :</strong> " + myaddress.Addr + " <a href=\"javascript:setDelvAddrForCart(this,'" + myaddress.ZipCd + "','" + myaddress.ZipSeqNo + "','" + myaddress.Addr + "','" + myaddress.BuMngNo + "',event);\" class=\"btnC s_size\"><span class=\"bWrap\"><em class=\"txt\">선택</em></span></a></li>";
+                templateHtml += "		<li><em class=\"bgYUI bl_dot\"></em><strong>마지막 배송지 :</strong> " + myaddress.lastDelvAddr.Addr + " <a href=\"javascript:setDelvAddrForCart(this,'" + myaddress.lastDelvAddr.ZipCd + "','" + myaddress.lastDelvAddr.ZipSeqNo + "','" + myaddress.lastDelvAddr.Addr + "','" + myaddress.lastDelvAddr.BuMngNo + "',event);\" class=\"btnC s_size\"><span class=\"bWrap\"><em class=\"txt\">선택</em></span></a></li>";
+            } else {                
+                templateHtml += '       <li><em class="bgYUI bl_dot"></em>로그인하시면 변경하신 지역이 계속 저장되며,<br/> 회원정보의 주소나 마지막 배송지를 선택하여 확인하실 수 있습니다. <a href="javascript:LoginForCart();" class="btnC s_size"><span class="bWrap"><em class="txt">로그인</em></span></a></li>';          
+            }
+            templateHtml += '	</ul>';
+        }
+
+        templateHtml += '	</div>';
+        templateHtml += '	<div class="popYUI_close"><a href="javascript:closeAddressUIV2();"><em class="bgYUI btn_popClose">창 닫기</em></a></div>';
+        templateHtml += '</div>';
+        templateHtml += '<input type="hidden" id="hdPopupZipCD" value=""/>';
+        templateHtml += '<input type="hidden" id="hdPopupZipSEQ" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr1" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr2" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr3" value="" />';
+        templateHtml += '<input type="hidden" id="hdPopupAddr4" value="" />';
+        templateHtml += '</div>';
+
+        popupShowByString(templateHtml, obj, SetAddressUIV2)
+    }
+}
+
+function setDelvAddrForCart(obj, zipCd, zipSeq, addrText, buMngNo) {
+    var data = new Object();
+
+    data.BU_MNG_NO = buMngNo;
+
+    EventJson.SetAddress(obj, '', '', '', '', '', zipSeq, zipCd, addrText, '', '', data, EventJson);
+    $('#dPop_addr').remove();
+}
+
+function removePostPopSchWord() {
+    $("#txtJibunNm").val('');
+    $("#lblJibunNm").html('');
+    $('.popYUI_schBox.yesIpt').iptNorBox();
+}
+
+function replaceWithComma(val) {
+    return val.toString().replace(/(\d)(?=(?:\d{3})+(?!\d))/g,"$1,");
+}
+
+function addressSearchForMain() {
+    var addr = $('#txtJibunNm').val();
+
+    if (addr.length < 2) {
+        alert('검색어는 최소 2자리 이상 입력해야 합니다');
+        $("#sch_deliAddr").focus();
+        return false;
+    }
+
+    //        if (IsValidAddr(addr) == 0) {
+    //            alert('검색 결과가 너무 많습니다.\n주소를 상세히 입력해주세요.');
+    //            return false;
+    //        }
+
+    _addr = $('#txtJibunNm').val();
+
+    var url = _PC_URL + '/24/Address/SearchZipCodeV2?addr=' + escape(addr) + '&stCd=&dongCd=&pageNo=1&fetchSize=100';
+
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        success: function (data, status, xhr) {
+            var html = '';
+
+            $("#postPopResultTxt").html('');
+
+            if (data == undefined || data == null || data.TotalSize == 0) {
+                setDoroMsg(0);
+
+                $("#postPopResult").css('display', 'none');
+                $("#postPopDes").css('display', 'block');
+            } else {
+
+                $("#postNumLi li").not("li.deliHead").remove();
+
+                setDoroMsg(data.TotalSize);
+
+                createHtmlForMain(data);
+
+                $("#postPopResult").css('display', 'block');
+                $("#postPopDes").css('display', 'none');
+            }
+        }
+    });
+}
+
+//스크롤시 추가 조회
+function moreAddressSearchForMain() {
+
+    _pageNo = _pageNo + 1;
+
+    var url = _PC_URL + '/24/Address/SearchZipCodeV2?addr=' + escape(_addr) + '&pageNo=' + _pageNo + '&fetchSize=100';
+
+    $.ajax({
+        url: url,
+        dataType: 'jsonp',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        success: function (data, status, xhr) {
+            createHtmlForMain(data);
+        }
+    });
+}
+
+//클릭시 주소전달
+function SetAddressForMain(obj, addr1, addr2, addr3, addr4, stName, zipSeq, zipcd, simpleDoro, doro, jibun) {
+
+    var data = $(obj).data('data');
+
+    $('#hdPopupZipCD').val(zipcd);
+    $('#hdPopupZipSEQ').val(zipSeq);
+    $('#hdPopupAddr1').val(jibun);
+    $('#hdPopupAddr2').val('');
+    $('#hdPopupAddr3').val(simpleDoro);
+    $('#hdPopupAddr4').val(addr4);
+
+    if (EventJson != null && EventJson.SetAddress != undefined) {
+        EventJson.SetAddress(obj, addr1, addr2, addr3, addr4, stName, zipSeq, zipcd, simpleDoro, doro, jibun, data, EventJson);
+        $('#dPop_addr').remove();
+    }
+}
+
+//주소 쿠키설정
+function setDelvAddrForMain(obj, zipCd, zipSeq, addrText, buMngNo) {
+    var data = $(obj).data('data');
+    EventJson.SetAddress(obj, '', '', '', '', '', zipSeq, zipCd, addrText, '', '', obj, EventJson);
+    $('#dPop_addr').remove();
+}
+
+//검색결과
+function createHtmlForMain(data) {
+
+    var ul = $("#postNumLi");
+
+    for (var i = 0; i < data.address.length; i++) {
+        html = ' <li onclick="SetAddressForMain(this, \'' + data.address[i].ADDR1 + '\',\'' + data.address[i].ADDR2 + '\',\'' + data.address[i].ADDR3 + '\',\'' + DoroDongCityCheck(data.address[i].DONG_NM, scriptStringCheck(data.address[i].CITY_BU_NM), false) + '\',\'' + data.address[i].ST_NM + '\',\'' + data.address[i].ZIP_SEQ + '\',\'' + data.address[i].ZIP_CD + '\',\'' + scriptStringCheck(GetSimpleDoroName(data.address[i])) + '\',\'' + scriptStringCheck(GetFullDoroName(data.address[i])) + '\', \'' + scriptStringCheck(GetJibuName(data.address[i])) + '\');">';
+        html += '   <a href="javascript:void(0)" class="dp_b">';
+        html += '   <span class="postTxt"><em>';
+        html += '   ' + data.address[i].ZIP_CD;
+        html += '   </em></span>';
+        html += '   <span class="deliTxt">';
+        html += '   <span class="dp_b"><em class="iconC"><em class="txt">도로명</em></em>';
+        html += '   ' + GetFullDoroName(data.address[i]);
+        html += '   </span>';
+        html += '   <span class="dp_b mgt5"><em class="iconC"><em class="txt">지번</em></em>';
+        html += '   ' + GetJibuName(data.address[i]);
+        html += '   </span>';
+        html += '   </span>';
+        html += '   </a>';
+        html += '</li>';
+
+        var li = $(html).data('data', data.address[i]);
+        li.appendTo(ul);
+    }
+}
+
+function LoginForCart() {
+    document.location = "https://www.yes24.com/Templates/FTLogin.aspx?ReturnURL=https://ssl.yes24.com/Cart/Cart";
+}
+
+function PostalCodeCheckWindowInfo(eventJson, url, obj) {
+
+    // 변수 초기화
+    isDetailFirstAlert = true;
+    isDoro = false;
+
+    EventJson = eventJson;
+
+    // 생성된 창이 잇으면 취소
+    if ($('#dPop_addr').length > 0)
+        return false;
+
+    if (url != null && url != undefined && url != '') {
+
+        var addressCss = '<link rel="stylesheet" href="http://image.yes24.com/sysimage/yesUI/yesUI.css?ver=161226b" type="text/css" media="all" />';
+        var addressUI = '<div id="dPop_addr" style="display:none"></div>';
+
+        $('#wrapperContent').append(addressCss);
+        $('#wrapperContent').append(addressUI);
+
+        $.yesPop('dPop_addr', obj, { cock: true, mask: false, pWidth: 478, baseWidth: $('#wrapperContent').width(), ajaxURL: _url });
+    }
+}

@@ -55,7 +55,7 @@ namespace MachineProject
             nudNewDefectRateAlarm.DecimalPlaces = 2; // 누메릭업다운 소수점 설정
             nudNewDefectRateAlarm.Increment = 0.05m; // 누메릭업다운 화살표가 올리거나 낮추는 정도
 
-            // 권한에 따라 다른 폼을 보여주는 부분----------------
+            // 권한에 따라 다른 폼을 보여주는 부분-----------------------------------------------------------------------
             panForWork.Dock = DockStyle.Fill;
             panForDefectAlarm.Dock = DockStyle.Fill;
             if ((authority & 0b0010) == 0b0010) // 관리자 권한
@@ -454,6 +454,9 @@ namespace MachineProject
                 picServiceState02.Image = imageList1.Images[2];
             }
         } // 서비스를 불러와 상태 체크
+        /// <summary>
+        /// 안녕하세요
+        /// </summary>
         private void GetService(string seviceDisplayName)
         {
             services = ServiceController.GetServices();

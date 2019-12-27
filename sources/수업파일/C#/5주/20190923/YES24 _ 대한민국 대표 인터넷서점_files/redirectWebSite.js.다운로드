@@ -1,0 +1,226 @@
+﻿/*
+ * PC/Mobile 웹사이트 자동 리다렉트
+ * 대상 : http://www.yes24.com, http://m.yes24.com
+ * PC웹 js경로(momo) : /Javascript/redirectWebSite.js
+ * 모바일웹 js경로 : /Scripts/Common/redirectWebSite.js
+ */
+//테스트 환경여부
+var isDebug = false;
+
+var console = console || {
+    log: function () { },
+    warn: function () { },
+    error: function () { }
+};
+
+// 리다이렉트 처리 : js 최하단에서 호출
+function redirectWebSite(isDebug) {
+    var currentLocation = location.href.toLowerCase();
+
+    try {
+        var host = location.host;
+        var mobileHost, pcHost;
+
+        if (host == "yes24.com" || host == "www.yes24.com" || host == "ramses.yes24.com" || host == "dev.yes24.com" || location.href.indexOf("http://www.yes24.com/?NaPm=") > -1) {
+            mobileHost = "http://m.yes24.com";
+            pcHost = "http://" + host;
+        }
+        else if (host == "mdev.yes24.com" || host == "m.yes24.com") {
+            mobileHost = "http://" + host;
+            pcHost = "http://www.yes24.com";
+        }
+        else {
+            return;
+        }
+
+        var isMobileDevice = getIsMobileDevice(isDebug);
+        var filter, targetLocation = "", defaultLocation, targetPath, redirectArray;
+
+        if (isDebug) console.log("isMobileDevice : " + isMobileDevice);
+
+        if (isMobileDevice) {
+            defaultLocation = mobileHost
+
+            filter = [pcHost + "/24/goods/".toLowerCase()
+                , pcHost + "/Product/goods/".toLowerCase()
+                , pcHost + "/24/category/bestseller".toLowerCase()
+                , pcHost + "/Mall/Help/Main".toLowerCase()
+                , pcHost + "/Mall/Help/FAQ".toLowerCase()
+                , pcHost + "/Mall/Help/CS".toLowerCase()
+                , pcHost + "/Mall/Help/CS/View?aplNo=".toLowerCase()
+                , pcHost + "/Mall/Help/Notice".toLowerCase()
+                , pcHost + "/Mall/Store/Main?categorynumber=018".toLowerCase()
+                , pcHost + "/Mall/Store/Detail?STORE_CODE=001&CategoryNumber=018".toLowerCase()
+                , pcHost + "/Mall/Store/Detail?STORE_CODE=002&CategoryNumber=018".toLowerCase()
+                , pcHost + "/Mall/Store/Detail?STORE_CODE=006&CategoryNumber=018".toLowerCase()
+                , pcHost + "/Mall/Store/Detail?STORE_CODE=003&CategoryNumber=018".toLowerCase()
+                , pcHost + "/Mall/Store/Detail?STORE_CODE=005&CategoryNumber=018".toLowerCase()
+                , pcHost + "/Mall/Store/Detail?STORE_CODE=008&CategoryNumber=018".toLowerCase()
+                , pcHost + "/Mall/Main/Book/001?CategoryNumber=001".toLowerCase()
+                , pcHost + "/Mall/Main/Foreign/002?CategoryNumber=002".toLowerCase()
+                , pcHost + "/Mall/Main/eBook/017?CategoryNumber=017".toLowerCase()
+                , pcHost + "/Mall/Main/Music/003?CategoryNumber=003".toLowerCase()
+                , pcHost + "/Mall/Main/Dvd/004?CategoryNumber=004".toLowerCase()
+                , pcHost + "/Mall/Main/Gift/006?CategoryNumber=006".toLowerCase()
+                , pcHost + "/Mall/Main/used/018?CategoryNumber=018".toLowerCase()
+            ];
+
+            targetPath = [mobileHost + "/Goods/Detail/"
+                , mobileHost + "/Goods/Detail/"
+                , mobileHost + "/Category/BestSeller"
+                , mobileHost + "/Help/Main"
+                , mobileHost + "/Help/FAQ"
+                , mobileHost + "/Help/CS"
+                , mobileHost + "/Help/CS/View?aplNo="
+                , mobileHost + "/Help/Notice"
+                , mobileHost + "/UsedStore/Main"
+                , mobileHost + "/UsedStore/GangNam"
+                , mobileHost + "/UsedStore/Mokdong"
+                , mobileHost + "/UsedStore/HongDae"
+                , mobileHost + "/UsedStore/Seomyeon"
+                , mobileHost + "/UsedStore/F1963"
+                , mobileHost + "/UsedStore/Giheung"
+                , mobileHost + "/Main/Book"
+                , mobileHost + "/Main/Foreign"
+                , mobileHost + "/Main/EBook"
+                , mobileHost + "/Main/Music"
+                , mobileHost + "/Main/DVD"
+                , mobileHost + "/Main/Gift"
+                , mobileHost + "/Main/Used"
+            ];
+
+            targetLocation = getTargetLocation(currentLocation, filter, targetPath)
+
+            //if (targetLocation == '') {
+            //    targetLocation = defaultLocation;
+            //}
+
+            // 리다이렉트
+            redirectArray = new Array(
+                  pcHost
+                , pcHost + "/"
+                , pcHost + "/main/default.aspx"
+                , pcHost + "/?isdeviceredirect=n"
+            );
+
+        }
+        else {
+            defaultLocation = pcHost;
+
+            filter = [mobileHost + "/Goods/Detail/".toLowerCase()
+                , mobileHost + "/Category/BestSeller".toLowerCase()
+                , mobileHost + "/Help/Main".toLowerCase()
+                , mobileHost + "/Help/FAQ".toLowerCase()
+                , mobileHost + "/Help/CS".toLowerCase()
+                , mobileHost + "/Help/CS/View?aplNo=".toLowerCase()
+                , mobileHost + "/Help/Notice".toLowerCase()
+                , mobileHost + "/UsedStore/GangNam".toLowerCase()
+                , mobileHost + "/UsedStore/Mokdong".toLowerCase()
+                , mobileHost + "/UsedStore/HongDae".toLowerCase()
+                , mobileHost + "/UsedStore/Seomyeon".toLowerCase()
+                , mobileHost + "/UsedStore/F1963".toLowerCase()
+                , mobileHost + "/UsedStore/Giheung".toLowerCase()
+                , mobileHost + "/Main/Book".toLowerCase()
+                , mobileHost + "/Main/Foreign".toLowerCase()
+                , mobileHost + "/Main/EBook".toLowerCase()
+                , mobileHost + "/Main/Music".toLowerCase()
+                , mobileHost + "/Main/DVD".toLowerCase()
+                , mobileHost + "/Main/Gift".toLowerCase()
+                , mobileHost + "/Main/Used".toLowerCase()];
+
+            targetPath = [pcHost + "/Product/Goods/"
+                    , pcHost + "/24/category/bestseller"
+                    , pcHost + "/Mall/Help/Main"
+                    , pcHost + "/Mall/Help/FAQ"
+                    , pcHost + "/Mall/Help/CS"
+                    , pcHost + "/Mall/Help/CS/View?aplNo="
+                    , pcHost + "/Mall/Help/Notice"
+                    , pcHost + "/Mall/Store/Main?categorynumber=018"
+                    , pcHost + "/Mall/Store/Detail?STORE_CODE=001&CategoryNumber=018"
+                    , pcHost + "/Mall/Store/Detail?STORE_CODE=002&CategoryNumber=018"
+                    , pcHost + "/Mall/Store/Detail?STORE_CODE=006&CategoryNumber=018"
+                    , pcHost + "/Mall/Store/Detail?STORE_CODE=003&CategoryNumber=018"
+                    , pcHost + "/Mall/Store/Detail?STORE_CODE=005&CategoryNumber=018"
+                    , pcHost + "/Mall/Store/Detail?STORE_CODE=008&CategoryNumber=018"
+                    , pcHost + "/Mall/Main/Book/001?CategoryNumber=001"
+                    , pcHost + "/Mall/Main/Foreign/002?CategoryNumber=002"
+                    , pcHost + "/Mall/Main/eBook/017?CategoryNumber=017"
+                    , pcHost + "/Mall/Main/Music/003?CategoryNumber=003"
+                    , pcHost + "/Mall/Main/Dvd/004?CategoryNumber=004"
+                    , pcHost + "/Mall/Main/Gift/006?CategoryNumber=006"
+                    , pcHost + "/Mall/Main/used/018?CategoryNumber=018"];
+
+            targetLocation = getTargetLocation(currentLocation, filter, targetPath)
+
+            // 리다이렉트
+            redirectArray = new Array(
+                  mobileHost
+                , mobileHost + "/"
+            );
+        }
+
+        if (targetLocation == "") {
+            if (isRedirectTargetUrl(redirectArray, currentLocation, true)) {
+                if (isDebug) console.log("Redirected : " + currentLocation + " -> " + defaultLocation);
+                targetLocation = defaultLocation;
+            }
+            else {
+                if (isDebug) console.log("Fixed : " + currentLocation);
+                targetLocation = currentLocation;
+            }
+        }
+
+        if (isDebug) console.log("currentLocation: " + currentLocation + ", targetLocation: " + targetLocation);
+
+        if (targetLocation != currentLocation)
+            location.href = targetLocation;
+
+    } catch (e) {
+        console.log(e.toString());
+    }
+}
+
+// 모바일장치 여부를 가져온다.
+function getIsMobileDevice(isDebug) {
+    var mobileDevices = /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i;
+
+    if (isDebug) console.log("navigator.userAgent : " + navigator.userAgent)
+    if (isDebug) console.log("isMobile : " + (mobileDevices).test(navigator.userAgent));
+
+    return (mobileDevices).test(navigator.userAgent);
+}
+
+// 리다이렉트 대상주소를 가져온다.
+function getTargetLocation(currentLocation, filter, targetPath) {
+    var targetLocation = "";
+
+    for (var i = 0; i < filter.length; i++) {
+        if (currentLocation.indexOf(filter[i]) == 0) {
+            targetLocation = currentLocation.replace(filter[i], targetPath[i]);      
+        }
+    }
+    if (isDebug) console.log("Redirected : " + currentLocation + " -> " + targetLocation);
+    return targetLocation;
+}
+
+// 리다이렉트 대상인지 확인한다.
+function isRedirectTargetUrl(urlArray, currentLocation, isMatch) {
+    for (var i = 0; i < urlArray.length; i++) {
+        if (isMatch) {
+            if (currentLocation == urlArray[i])
+                return true;
+        }
+        else {
+            if (currentLocation.indexOf(urlArray[i]) == 0)
+                return true;
+        }
+    }
+
+    //네이버에서 검색결과로 왔을 시 보내기위함
+    if (location.href.indexOf("http://www.yes24.com/?NaPm=") > -1) return  true;
+    else return false;
+}
+
+// 리다이렉트 대상여부 확인후 처리
+if(getCookie('USEPC') != 'Y')
+    redirectWebSite(false);

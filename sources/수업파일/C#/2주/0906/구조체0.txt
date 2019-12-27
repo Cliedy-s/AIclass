@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0906
+{
+    struct Student
+    {
+        public string Name;
+        public string Phone;
+        public int Age;
+        public int Height;
+        public int Weight;
+    }
+
+    class structTest
+    {
+        static void Main(string[] args)
+        {
+            Student stu;
+            stu.Name = "홍길동";
+            stu.Phone = "010-1111-1111";
+            stu.Age = 25;
+            stu.Height = 160;
+            stu.Weight = 60;
+
+            Console.WriteLine(stu.Name);
+        }
+    }
+}

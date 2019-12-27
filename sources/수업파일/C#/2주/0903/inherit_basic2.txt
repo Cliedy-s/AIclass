@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp0903
+{
+    class Person
+    {
+        private string strFName;
+
+        public string FirstName
+        {
+            get { return strFName; }
+            set { strFName = value; }
+        }
+
+        private string strLName;
+
+        public string LastName
+        {
+            get { return strLName; }
+            set { strLName = value; }
+        }
+
+        public void Show()
+        {
+            Console.WriteLine("==============Person===========");
+            Console.WriteLine(" First Name: {0}", strFName);
+            Console.WriteLine(" Last  Name: {0}", strLName);
+            Console.WriteLine("===============================");
+        }
+    }
+
+    class Employee:Person
+    {
+        int iEmployeeID;
+
+        public Employee(int employeeId)
+        {
+            this.iEmployeeID = employeeId;
+        }
+    }
+
+    class inherit_basic
+    {
+        static void Main(string[] args)
+        {
+            Person per = new Person();
+            per.FirstName = "아";
+            per.LastName = "이유";
+            per.Show();
+
+            Employee emp1 = new Employee(2019005);
+            emp1.FirstName = "방탄";
+            emp1.LastName = "소년단";
+            emp1.Show();
+        }
+    }
+}
