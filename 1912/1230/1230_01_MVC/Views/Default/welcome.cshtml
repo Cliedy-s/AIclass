@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+@{ 
+    ViewBag.Title = "Welcome Razor";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        <!--ViewBag-->
+        @ViewBag.Title<br />
+        @ViewBag.Message<br />
+        @ViewBag.NumTimes
+        <ul>
+            @for (int i = 0; i < ViewBag.NumTimes; i++)
+            {
+                <li>@ViewBag.Message</li>
+            }
+        </ul>
+
+        <!--모델?-->
+        @ViewBag.ProductInfo.ProductID
+        @ViewBag.ProductInfo.ProductName
+
+    </div>
+</body>
+</html>

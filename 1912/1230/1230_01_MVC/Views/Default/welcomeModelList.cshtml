@@ -1,0 +1,30 @@
+﻿@model List< _1230_01_MVC.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>welcomeModelList</title>
+</head>
+<body>
+    <div> 
+        <table>
+            @foreach (var product in Model)
+            {
+            <tr>
+                <td>@product.ProductID</td>
+                <td>@product.CategoryID</td>
+                <td>@product.ProductName</td>
+                <td>@product.QuantityPerUnit</td>
+                <td>@Html.DisplayFor(modelitem => product.ProductID)</td>
+            </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

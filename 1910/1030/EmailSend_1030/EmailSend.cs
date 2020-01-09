@@ -1,41 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace EmailSend_1030
 {
     public class EmailSend
     {
-        public void Send(string emailTo, string emailFrom, string pwdFrom, string title, string content)
+        public void Send(string emailTo, string emailFrom, string emailName, string pwdFrom, string title, string Contents, bool ishtml)
         {
-            string emailSendFrom = ConfigurationManager.AppSettings["emailSendFrom"];
+            MailMessage myMail = new MailMessage();
+            myMail.To.Add(emailTo);
+            myMail.From = new MailAddress(emailFrom, emailName, Encoding.UTF8);
+            myMail.Subject = title;
+            myMail.Body = Contents;
+            myMail.BodyEncoding = Encoding.UTF8;
+            myMail.IsBodyHtml = ishtml;
+            myMail.Priority = MailPriority.High;
+
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new NetworkCredential(emailFrom, pwdFrom);
+            client.Port = 587; // Gmail works on this port
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true; //Gmail works on Server Secured Layer
             try
             {
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-                client.UseDefaultCredentials = false; // 시스템 인증 정보 x
-                client.EnableSsl = true; // SSL 인증 사용
-                client.DeliveryMethod = SmtpDeliveryMethod.Network; // Gmail 인증
-                client.Credentials = new NetworkCredential(emailFrom, pwdFrom); // 2단계 인증을 쓸 경우 => 앱 비밀번호 생성,  pwd에 넣기
-
-                MailAddress mailFrom = new MailAddress("bhb0047@gmail.com", "신소연", Encoding.UTF8); // 보내는 사람
-                MailAddress mailTo = new MailAddress(emailTo);
-                MailMessage message = new MailMessage(mailFrom, mailTo);
-
-                message.Subject = title;
-                message.Body = content;
-                message.BodyEncoding = Encoding.UTF8;
-                message.SubjectEncoding= Encoding.UTF8;
-
-                client.Send(message);
-                message.Dispose();
+                client.Send(myMail);
             }
-            catch (Exception ee){
-                throw ee;
+            catch (Exception ex)
+            {
+                Exception ex2 = ex;
+                string errorMessage = string.Empty;
+                while (ex2 != null)
+                {
+                    errorMessage += ex2.ToString();
+                    ex2 = ex2.InnerException;
+                }
+                HttpContext.Current.Response.Write(errorMessage);
             }
         }
     }

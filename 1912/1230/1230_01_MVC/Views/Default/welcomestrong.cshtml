@@ -1,0 +1,27 @@
+﻿@model _1230_01_MVC.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>welcomestrong</title>
+</head>
+<body>
+    <div>
+        <ul>
+            @for (int i = 0; i < ViewBag.NumTimes; i++)
+            {
+                <li>@ViewBag.Message</li>
+            }
+        </ul>
+        @Model.ProductID;
+        @Model.ProductName;
+        @Model.QuantityPerUnit;
+    </div>
+</body>
+</html>

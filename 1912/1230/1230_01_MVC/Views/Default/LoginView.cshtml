@@ -1,0 +1,22 @@
+﻿@model _1230_01_MVC.Models.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginView</title>
+</head>
+<body>
+    <div> 
+        <form method="post" action="LoginView">
+            <p>ID: @Html.TextBoxFor(user => user.ID)</p>
+            <p>PWD: @Html.TextBoxFor(user => user.PWD)</p>
+            <input type="submit" value="로그인"/>
+        </form>
+    </div>
+</body>
+</html>
