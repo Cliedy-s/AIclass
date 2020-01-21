@@ -1,0 +1,31 @@
+﻿@model Test_GVLoading.Models.Parking
+
+<!-- Notifications Menu -->
+<li class="dropdown notifications-menu">
+    <!-- Menu toggle button -->
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+        <span class="label label-warning">
+            @Model.Parked.Count()
+        </span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">주차된 대차 수 :@Model.Parked.Count()</li>
+        <li>
+            <!-- Inner Menu: contains the notifications -->
+            <ul class="menu">
+                <li>
+                    <!-- start notification -->
+                    <a href="#">
+                        <i class="fa fa-free-code-camp" aria-hidden="true"></i> HEAT: @Model.HeatGVCnt()
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-align-center" aria-hidden="true"></i> DRY: @Model.DryGVCnt()
+                    </a>
+                </li>
+                <!-- end notification -->
+            </ul>
+        </li>
+        <li class="footer"><a href="/Parking/Index">View all</a></li>
+    </ul>
+</li>

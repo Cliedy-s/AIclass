@@ -1,0 +1,15 @@
+﻿@model _0106GudiShop.Models.Cart
+
+<div class="navbar-right visible-xs">
+    <span style="color:aqua">Cart</span>
+</div>
+<div class="collapse navbar-collapse">
+    <div class="navbar-right hidden-xs">
+        @Html.ActionLink("Cart", "Index", "Cart", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-default navbar-btn" })
+    </div>
+    <div class="navbar-text navbar-right">
+        <b>cart:</b>
+        @Model.Lines.Sum(x => x.Qty) item(s),
+        @Model.ComputeTotalValue().ToString("c")
+    </div>
+</div>

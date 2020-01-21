@@ -1,0 +1,50 @@
+﻿@model _0106GudiShop.Models.CartIndexViewModel
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>장바구니</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">SubTotal</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-left">@item.Product.Name</td>
+                <td class="text-center">@item.Qty</td>
+                <td class="text-right">@item.Product.Price.ToString("c")</td>
+                <td class="text-right">@((item.Qty * item.Product.Price).ToString("c"))</td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("ProductID", item.Product.ProductID)
+                        @Html.Hidden("returnUrl", Model.ReturnUrl)
+                        <input type="submit" value="삭제" class="btn btn-warning"/>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Total</td>
+            <td class="text-right">@Model.Cart.ComputeTotalValue().ToString("c")</td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    @Html.ActionLink("쇼핑 계속하기","List","Product",null , new { @class= "btn btn-primary" } )
+    <a href="@Model.ReturnUrl" class="btn btn-primary">쇼핑 계속하기</a>
+    @Html.ActionLink("결제하기","CheckOut",null, new { @class= "btn btn-primary" } )
+</div>

@@ -19,13 +19,13 @@ namespace _0107_01_몸풀기
         }
         static int recursive(int input)
         {
-            Console.Write(input+" ");
+            Console.Write(input);
             if (input <= 1)
             {
-                Console.Write("=");
+                Console.Write(" = ");
                 return 1;
             }
-            Console.Write("*");
+            Console.Write(" * ");
             return input * recursive(input -2);
         }
     }

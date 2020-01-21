@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Test_GVLoading.Models.Category>
+
+    <ul class="treeview-menu">
+        <li>
+            @Html.RouteLink("전체 대차", new { controller = "GV", action = "List", categoryno = "", page = 1 })
+        </li>
+        @foreach (var link in Model)
+        {
+            <li>
+                @Html.RouteLink(link.CategoryName, new { controller = "GV", action = "List", categoryno = link.CategoryNo, page = 1 })
+            </li>
+        }
+    </ul>

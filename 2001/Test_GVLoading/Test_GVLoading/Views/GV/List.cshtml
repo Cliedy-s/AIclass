@@ -1,0 +1,13 @@
+﻿@model Test_GVLoading.Models.GVListViewModel
+
+@{
+    ViewBag.Title = "대차 목록";
+}
+
+@foreach (var p in Model.GVs)
+{
+    @Html.Partial("GVSummary", p)
+}
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>
