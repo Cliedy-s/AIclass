@@ -26,6 +26,11 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            Type systemInfoType = Type.GetType("ConsoleApplication1.SystemInfo");
+            object objInstnce = Activator.CreateInstance(systemInfoType);
+            MethodInfo methodInfo = systemInfoType.GetMethod("WriteInfo");
+            methodInfo.Invoke(objInstance, null);
+
             SystemInfo sysInfo = new SystemInfo();
             sysInfo.WriteInfo();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Deployment.Application;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -15,6 +16,16 @@ namespace _1002_01_SaveFileForm
         public Form1()
         {
             InitializeComponent();
+
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                ApplicationDeployment appDeployment = ApplicationDeployment.CurrentDeployment;
+                lblVersion.Text = $"Version : {appDeployment.CurrentVersion.ToString()}";
+            }
+            else
+            {
+                lblVersion.Text = "Version : NotDeploy";
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

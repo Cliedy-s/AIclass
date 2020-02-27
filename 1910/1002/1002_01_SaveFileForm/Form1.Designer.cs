@@ -43,6 +43,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.panWorkInfos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudWorkQty)).BeginInit();
             this.SuspendLayout();
@@ -192,11 +193,22 @@
             this.label3.TabIndex = 18;
             this.label3.Text = "작업자";
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblVersion.Location = new System.Drawing.Point(141, 54);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(39, 15);
+            this.lblVersion.TabIndex = 20;
+            this.lblVersion.Text = "버전";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(536, 397);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.dtpWorkDate);
             this.Controls.Add(this.btnFileSave);
             this.Controls.Add(this.listView);
@@ -232,6 +244,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblVersion;
     }
 }
 

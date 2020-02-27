@@ -1,0 +1,16 @@
+1. Excel Automation
+=> Excel Interop을 참조하는 방식
+=> 참조추가  COM>Microsoft Excel XX Object Library
+=> Microsoft.Office.Interop.Excel.dll 
+
+Excel Application, WorkBook, WorkSheet, cell
+
+
+
+2. OLEDB 를 이용해서 엑셀작업하는 경우
+
+Microsoft Access Database Engine 설치여부를 확인
+
+PS> (New-Object system.data.oledb.oledbenumerator).GetElements() | select SOURCES_NAME, SOURCES_DESCRIPTION
+
+https://www.microsoft.com/ko-kr/download/details.aspx?id=13255 
